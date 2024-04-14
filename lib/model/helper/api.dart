@@ -27,7 +27,7 @@ class Api {
       return data;
     } else {
       throw Exception(
-          'there is a problem with status code ${response.statusCode}');
+          'there is a problem with status code ${response.statusCode} with body ${jsonDecode(response.body)}');
     }
   }
 
@@ -51,7 +51,7 @@ class Api {
       return data;
     } else {
       throw Exception(
-          'there is a problem with status code ${response.statusCode} with body ${jsonDecode(response.body)}');
+          'there is a problem with status code ${response.statusCode} with body ${jsonDecode(response.body)}}');
     }
   }
 

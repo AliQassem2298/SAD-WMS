@@ -158,8 +158,10 @@ class SignInPage extends StatelessWidget {
                                 if (controller.formState.currentState!
                                     .validate()) {
                                   controller.loadingIndecatorTrue();
+
                                   try {
                                     await controller.signIn(controller);
+
                                     print('succsess');
                                     controller.loadingIndecatorFalse();
                                     print('token=$token');

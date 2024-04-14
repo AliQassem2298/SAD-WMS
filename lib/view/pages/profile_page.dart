@@ -65,7 +65,7 @@ class ProfilePage extends StatelessWidget {
                           ),
                           IconButton(
                             onPressed: () {
-                              Get.toNamed(WelcomePageController.id);
+                              Get.back();
                             },
                             icon: const Icon(
                               Icons.password,
