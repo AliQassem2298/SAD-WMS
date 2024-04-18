@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:warehouse_manegment_system/model/models/user_model.dart';
 
 class UpdateUserDetailsController extends GetxController {
   static String id = '/UpdateUserDetailsPage';
   double containerHeight = 0.0;
-
+  UserModel? userModel;
   GlobalKey<FormState> formState = GlobalKey();
 
   TextEditingController firstName = TextEditingController();
@@ -29,6 +30,10 @@ class UpdateUserDetailsController extends GetxController {
 
   void loadingIndecatorFalse() {
     isLoading = false;
+    update();
+  }
+
+  void up() {
     update();
   }
 

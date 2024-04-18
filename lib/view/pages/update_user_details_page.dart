@@ -2,36 +2,38 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:warehouse_manegment_system/controller/profile_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/update_user_details_controller.dart';
+import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
 import 'package:warehouse_manegment_system/model/models/user_model.dart';
+import 'package:warehouse_manegment_system/model/services/delete_account_service.dart';
 import 'package:warehouse_manegment_system/model/services/update_user_details_service.dart';
+import 'package:warehouse_manegment_system/view/pages/dialog_page.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_text_from_field.dart';
 
 class UpdateUserDetailsPage extends StatelessWidget {
-  UpdateUserDetailsPage({super.key});
+  const UpdateUserDetailsPage({super.key});
 
-  TextEditingController lastName = TextEditingController();
+  // TextEditingController lastName = TextEditingController();
 
-  TextEditingController firstNmae = TextEditingController();
+  // TextEditingController firstNmae = TextEditingController();
 
-  TextEditingController userName = TextEditingController();
+  // TextEditingController userName = TextEditingController();
 
-  TextEditingController email = TextEditingController();
+  // TextEditingController email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    UserModel userModel =
-        ModalRoute.of(context)!.settings.arguments as UserModel;
-
     return GetBuilder<UpdateUserDetailsController>(
       init: UpdateUserDetailsController(),
       builder: (controller) {
-        controller.firstName.text = userModel.firstName;
-        controller.lastName.text = userModel.lastName;
-        controller.email.text = userModel.email;
-
-        controller.userName.text = userModel.username;
+        controller.userModel =
+            ModalRoute.of(context)!.settings.arguments as UserModel;
+        // controller.firstName.text = controller.userModel!.firstName;
+        // controller.lastName.text = controller.userModel!.lastName;
+        // controller.email.text = controller.userModel!.email;
+        // controller.userName.text = controller.userModel!.username;
 
         return Scaffold(
           body: Container(
@@ -81,6 +83,7 @@ class UpdateUserDetailsPage extends StatelessWidget {
                           ),
                           IconButton(
                             onPressed: () {
+                              // Get.toNamed(ProfilePageController.id);
                               Get.back();
                             },
                             icon: const Icon(
@@ -124,11 +127,12 @@ class UpdateUserDetailsPage extends StatelessWidget {
                           CustomTextFromField(
                             onChanged: (value) {
                               if (value.isEmpty) {
-                                controller.firstName.text = userModel.firstName;
+                                controller.firstName.text =
+                                    controller.userModel!.firstName;
                               }
                               controller.firstName.text = value;
                             },
-                            textEditingController: firstNmae,
+                            textEditingController: controller.firstName,
                             hintText: 'Enter Your First Name',
                             text: 'First Name',
                             toggleVisibility: false,
@@ -136,11 +140,12 @@ class UpdateUserDetailsPage extends StatelessWidget {
                           CustomTextFromField(
                             onChanged: (value) {
                               if (value.isEmpty) {
-                                controller.lastName.text = userModel.lastName;
+                                controller.lastName.text =
+                                    controller.userModel!.lastName;
                               }
                               controller.lastName.text = value;
                             },
-                            textEditingController: lastName,
+                            textEditingController: controller.lastName,
                             hintText: 'Enter Your Last Name',
                             text: 'Last Name',
                             toggleVisibility: false,
@@ -148,11 +153,12 @@ class UpdateUserDetailsPage extends StatelessWidget {
                           CustomTextFromField(
                             onChanged: (value) {
                               if (value.isEmpty) {
-                                controller.userName.text = userModel.username;
+                                controller.userName.text =
+                                    controller.userModel!.username;
                               }
                               controller.userName.text = value;
                             },
-                            textEditingController: userName,
+                            textEditingController: controller.userName,
                             hintText: 'Enter Your User Name',
                             text: 'Username',
                             toggleVisibility: false,
@@ -160,11 +166,12 @@ class UpdateUserDetailsPage extends StatelessWidget {
                           CustomTextFromField(
                             onChanged: (value) {
                               if (value.isEmpty) {
-                                controller.email.text = userModel.email;
+                                controller.email.text =
+                                    controller.userModel!.email;
                               }
                               controller.email.text = value;
                             },
-                            textEditingController: email,
+                            textEditingController: controller.email,
                             validator: (value) {
                               if (value!.isNotEmpty && !value.isEmail) {
                                 return 'enter valid email address';
@@ -174,6 +181,39 @@ class UpdateUserDetailsPage extends StatelessWidget {
                             hintText: 'Enter Your Email',
                             text: 'Email',
                             toggleVisibility: false,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 142, top: 10),
+                            child: CustomButton(
+                              onPressed: () async {
+                                controller.loadingIndecatorTrue();
+
+                                try {
+                                  await DeleteAccountService().deleteAccount();
+                                  print('succsess');
+                                  controller.loadingIndecatorFalse();
+
+                                  Get.to(
+                                    () => DialogPage(
+                                      title: 'Account Deleted',
+                                      buttonText: 'Ok',
+                                      content: 'Successfully',
+                                      routeName: WelcomePageController.id,
+                                    ),
+                                  );
+                                } catch (e) {
+                                  print(e.toString());
+                                  controller.showSnackBar(
+                                    context,
+                                    e.toString(),
+                                  );
+                                }
+                                controller.loadingIndecatorFalse();
+                              },
+                              text: 'Delete Account',
+                              textColor: const Color(0xffBB1636),
+                              hasBorder: true,
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
@@ -189,19 +229,20 @@ class UpdateUserDetailsPage extends StatelessWidget {
                                   try {
                                     UpdateUserDetailsService()
                                         .userUpdateDetails(
-                                      firstName: firstNmae.text == ""
-                                          ? controller.firstName.text
-                                          : firstNmae.text,
-                                      lastName: lastName.text == ""
-                                          ? controller.lastName.text
-                                          : lastName.text,
-                                      userName: userName.text == ""
-                                          ? controller.userName.text
-                                          : userName.text,
-                                      email: email.text == ""
-                                          ? controller.email.text
-                                          : email.text,
+                                      firstName: controller.firstName.text == ""
+                                          ? controller.userModel!.firstName
+                                          : controller.firstName.text,
+                                      lastName: controller.lastName.text == ""
+                                          ? controller.userModel!.lastName
+                                          : controller.lastName.text,
+                                      userName: controller.userName.text == ""
+                                          ? controller.userModel!.username
+                                          : controller.userName.text,
+                                      email: controller.email.text == ""
+                                          ? controller.userModel!.email
+                                          : controller.email.text,
                                     );
+
                                     print('succsess');
                                     controller.loadingIndecatorFalse();
                                     controller.showSnackBar(

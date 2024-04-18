@@ -18,12 +18,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:warehouse_manegment_system/controller/change_password_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/home_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/profile_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/update_user_details_controller.dart';
-import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
 import 'package:warehouse_manegment_system/model/models/sign_in_model.dart';
 import 'package:warehouse_manegment_system/model/models/user_model.dart';
-import 'package:warehouse_manegment_system/model/services/delete_account_service.dart';
 import 'package:warehouse_manegment_system/model/services/get_user_details__by_token_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 
@@ -86,6 +85,7 @@ class ProfilePage extends StatelessWidget {
                             ),
                             IconButton(
                               onPressed: () {
+                                // Get.toNamed(HomePageController.id);
                                 Get.back();
                               },
                               icon: const Icon(
@@ -204,41 +204,6 @@ class ProfilePage extends StatelessWidget {
                                       );
                                     },
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 110),
-                                  child: userToken == null
-                                      ? null
-                                      : CustomButton(
-                                          onPressed: () async {
-                                            controller.loadingIndecatorTrue();
-
-                                            try {
-                                              await DeleteAccountService()
-                                                  .deleteAccount();
-                                              print("My token 3 :$userToken");
-                                              Get.offAllNamed(
-                                                WelcomePageController.id,
-                                              );
-                                              print('succsess');
-                                              controller
-                                                  .loadingIndecatorFalse();
-                                              controller.showSnackBar(
-                                                context,
-                                                'Account Deleted successfully',
-                                              );
-                                            } catch (e) {
-                                              print(e.toString());
-                                              controller.showSnackBar(
-                                                context,
-                                                'Authentication credentials were not provided.',
-                                              );
-                                            }
-                                            controller.loadingIndecatorFalse();
-                                          },
-                                          text: 'Delete Your Account',
-                                          textColor: const Color(0xffBB1636),
-                                        ),
                                 ),
                                 const SizedBox(height: 25),
                                 Padding(
