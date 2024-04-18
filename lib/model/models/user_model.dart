@@ -20,17 +20,22 @@ class UserModel {
   });
 
   factory UserModel.fromJson(jsonData) {
-    userId = jsonData['id'];
-    print('$userId');
+    // userId = jsonData['id'];
+    // print('$userId');
+    // firstnameM = jsonData['first_name'];
+    // lastnameM = jsonData['last_name'];
+    // usernameM = jsonData['username'];
+    // emailM = jsonData['email'];
     return UserModel(
-        id: jsonData['id'],
-        firstName: jsonData['first_name'],
-        lastName: jsonData['last_name'],
-        username: jsonData['username'],
-        email: jsonData['email'],
-        dateJoined: jsonData['date_joined'],
-        role: jsonData['role']);
+      id: jsonData['id'],
+      firstName: jsonData['first_name'],
+      lastName: jsonData['last_name'],
+      username: jsonData['username'],
+      email: jsonData['email'],
+      dateJoined: jsonData['date_joined'],
+      role: jsonData['role'],
+    );
   }
 }
 
-int? userId;
+// String? firstnameM, lastnameM, usernameM, emailM;

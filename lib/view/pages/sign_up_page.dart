@@ -140,7 +140,7 @@ class SignUpPage extends StatelessWidget {
                               return null;
                             },
                             hintText: 'Enter Your User Name',
-                            text: 'UserName',
+                            text: 'Username',
                             toggleVisibility: false,
                           ),
                           CustomTextFromField(

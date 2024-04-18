@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:warehouse_manegment_system/controller/forget_password_page_controller.dart';
+import 'package:warehouse_manegment_system/model/services/chek_code_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_text_from_field.dart';
 
@@ -150,6 +151,35 @@ class ForgetPasswordPage extends StatelessWidget {
                             ),
                             if (controller.isCodeVisible)
                               CustomTextFromField(
+                                icon: IconButton(
+                                  icon: const Icon(Icons.done),
+                                  onPressed: () async {
+                                    if (controller.formState.currentState!
+                                        .validate()) {
+                                      controller.loadingIndecatorTrue();
+                                      try {
+                                        await CheckCodeService().checkCode(
+                                          email: controller.email.text,
+                                          code: controller.code.text,
+                                        );
+                                        controller.showSnackBar(
+                                          context,
+                                          'Code is correct, Now you can change your password.',
+                                        );
+                                        controller.codeVisible();
+                                        controller.newPasswordVisible();
+                                        controller.loadingIndecatorFalse();
+                                      } catch (e) {
+                                        print(e.toString());
+                                        controller.showSnackBar(
+                                          context,
+                                          'Ivalid Code',
+                                        );
+                                      }
+                                      controller.loadingIndecatorFalse();
+                                    }
+                                  },
+                                ),
                                 onChanged: (value) {
                                   controller.code.text = value;
                                 },
@@ -164,7 +194,7 @@ class ForgetPasswordPage extends StatelessWidget {
                                 hintText: 'Enter The Code',
                                 toggleVisibility: false,
                               ),
-                            if (controller.isCodeVisible)
+                            if (controller.isnewPasswordVisible)
                               CustomTextFromField(
                                 onChanged: (value) {
                                   controller.password.text = value;
@@ -178,9 +208,10 @@ class ForgetPasswordPage extends StatelessWidget {
                                 },
                                 text: 'Password',
                                 hintText: 'Enter Your New Password',
-                                toggleVisibility: false,
+                                icon: const Icon(Icons.remove_red_eye),
+                                toggleVisibility: true,
                               ),
-                            if (controller.isCodeVisible)
+                            if (controller.isnewPasswordVisible)
                               CustomTextFromField(
                                 onChanged: (value) {
                                   controller.confirmPassword.text = value;
@@ -199,7 +230,8 @@ class ForgetPasswordPage extends StatelessWidget {
                                 },
                                 text: 'Confirm Password',
                                 hintText: 'Confirm Your New Password',
-                                toggleVisibility: false,
+                                icon: const Icon(Icons.remove_red_eye),
+                                toggleVisibility: true,
                               ),
                             // SlideTransition(
                             //   position: Tween<Offset>(
@@ -216,7 +248,7 @@ class ForgetPasswordPage extends StatelessWidget {
                             //     ),
                             //   ),
                             //   child: ),
-                            if (controller.isCodeVisible)
+                            if (controller.isnewPasswordVisible)
                               Padding(
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 15,

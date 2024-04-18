@@ -1,28 +1,3 @@
-// // ignore_for_file: must_be_immutable
-
-// import 'package:flutter/material.dart';
-
-// class CustomeButton extends StatelessWidget {
-//   CustomeButton({super.key, required this.text});
-//   String text;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 100),
-//       child: MaterialButton(
-//         color: Colors.amber,
-//         onPressed: () {},
-//         child: Center(
-//           child: Text(
-//             text,
-//             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/view/pages/dialog_page.dart';
@@ -37,7 +12,7 @@ class CustomButton extends StatelessWidget {
   final String? dialogButtonText;
   final String? routeName;
   final Gradient? gradient;
-  final VoidCallback? onPressed; // New onPressed callback
+  final VoidCallback? onPressed;
 
   const CustomButton({
     Key? key,
@@ -50,7 +25,7 @@ class CustomButton extends StatelessWidget {
     this.dialogButtonText,
     this.routeName,
     this.gradient,
-    this.onPressed, // Added onPressed parameter
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -58,7 +33,7 @@ class CustomButton extends StatelessWidget {
     return InkWell(
       onTap: () {
         if (onPressed != null) {
-          onPressed!(); // Execute the onPressed callback if provided
+          onPressed!();
         } else if (dialogTitle != null &&
             dialogContent != null &&
             dialogButtonText != null) {
@@ -98,10 +73,3 @@ class CustomButton extends StatelessWidget {
     );
   }
 }
-
-
-
-/*
-CustomButton(text: 'Button', hasBorder: true, borderColor: Colors.white)
-CustomButton(text: 'Button', hasBorder: false)
- */

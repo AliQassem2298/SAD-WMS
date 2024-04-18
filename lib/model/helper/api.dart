@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 String baseUrl = 'http://127.0.0.1:8000/api'; //////// windows
@@ -74,7 +75,29 @@ class Api {
       return data;
     } else {
       throw Exception(
-          'there is a problem with status code ${response.statusCode} with body ${jsonDecode(response.body)}');
+        'there is a problem with status code ${response.statusCode} with body ${jsonDecode(response.body)}',
+      );
+    }
+  }
+
+  Future<dynamic> delete({
+    required String url,
+    String? token,
+  }) async {
+    Map<String, String> headers = {};
+    if (token != null) {
+      headers.addAll({'Authorization': 'Bearer $token'});
+    }
+
+    http.Response response =
+        await http.delete(Uri.parse(url), headers: headers);
+
+    if (response.statusCode == 200 || response.statusCode == 204) {
+      return null;
+    } else {
+      throw Exception(
+        'There is a problem with status code ${response.statusCode} with body ${response.body}',
+      );
     }
   }
 }

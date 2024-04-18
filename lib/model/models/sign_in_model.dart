@@ -14,7 +14,7 @@ class SignInModel {
   });
 
   factory SignInModel.fromJson(jsonData) {
-    token = jsonData['access_token'];
+    userToken = jsonData['access_token'];
     return SignInModel(
       accessToken: jsonData['access_token'],
       tokenType: jsonData['token_type'],
@@ -24,4 +24,4 @@ class SignInModel {
   }
 }
 
-String? token;
+String? userToken;

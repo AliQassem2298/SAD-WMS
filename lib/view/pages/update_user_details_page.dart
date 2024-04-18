@@ -1,29 +1,35 @@
-// ignore_for_file: library_private_types_in_public_api, must_be_immutable, use_build_context_synchronously, avoid_print
+// ignore_for_file: avoid_print, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:warehouse_manegment_system/controller/forget_password_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/home_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/sign_in_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/sign_up_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
-import 'package:warehouse_manegment_system/model/models/sign_in_model.dart';
+import 'package:warehouse_manegment_system/controller/update_user_details_controller.dart';
+import 'package:warehouse_manegment_system/model/services/update_user_details_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_text_from_field.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({Key? key}) : super(key: key);
+class UpdateUserDetailsPage extends StatelessWidget {
+  const UpdateUserDetailsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SignInPageController>(
-      init: SignInPageController(),
+    return GetBuilder<UpdateUserDetailsController>(
+      init: UpdateUserDetailsController(),
       builder: (controller) {
-        return ModalProgressHUD(
-          inAsyncCall: controller.isLoading,
-          child: Scaffold(
-            body: Stack(
+        return Scaffold(
+          body: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.centerRight,
+                end: Alignment.centerLeft,
+                colors: [
+                  Color(0xff2B1836),
+                  Color(0xff591C3C),
+                  Color(0xff911C3A),
+                  Color(0xffBB1636)
+                ],
+              ),
+            ),
+            child: Stack(
               children: [
                 Container(
                   decoration: const BoxDecoration(
@@ -48,7 +54,7 @@ class SignInPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text(
-                            'Hello',
+                            'Update User',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 32,
@@ -57,9 +63,7 @@ class SignInPage extends StatelessWidget {
                           ),
                           IconButton(
                             onPressed: () {
-                              Get.offAllNamed(
-                                WelcomePageController.id,
-                              );
+                              Get.back();
                             },
                             icon: const Icon(
                               Icons.password,
@@ -69,7 +73,7 @@ class SignInPage extends StatelessWidget {
                         ],
                       ),
                       const Text(
-                        'Sign In',
+                        'Details Page',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 32,
@@ -95,64 +99,63 @@ class SignInPage extends StatelessWidget {
                       key: controller.formState,
                       child: ListView(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 30, vertical: 25),
+                          horizontal: 30,
+                          vertical: 25,
+                        ),
                         children: [
                           CustomTextFromField(
                             onChanged: (value) {
-                              controller.email.text = value;
-                            },
-                            textEditingController: controller.email,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'filed is empty';
+                              if (value.isNotEmpty) {
+                                controller.firstName.text = value;
                               }
-
-                              return null;
                             },
-                            hintText: 'Enter Your Email Or User Name',
-                            text: 'Email/Username',
+                            textEditingController: controller.firstName,
+                            hintText: 'Enter Your First Name',
+                            text: 'First Name',
                             toggleVisibility: false,
                           ),
                           CustomTextFromField(
                             onChanged: (value) {
-                              controller.password.text = value;
+                              controller.lastName.text = value;
                             },
-                            textEditingController: controller.password,
+                            textEditingController: controller.lastName,
+                            hintText: 'Enter Your Last Name',
+                            text: 'Last Name',
+                            toggleVisibility: false,
+                          ),
+                          CustomTextFromField(
+                            onChanged: (value) {
+                              if (value.isNotEmpty) {
+                                controller.userName.text = value;
+                              }
+                            },
+                            textEditingController: controller.userName,
+                            hintText: 'Enter Your User Name',
+                            text: 'Username',
+                            toggleVisibility: false,
+                          ),
+                          CustomTextFromField(
+                            onChanged: (value) {
+                              if (value.isNotEmpty) {
+                                controller.email.text = value;
+                              }
+                            },
+                            textEditingController: controller.email,
                             validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'filed is empty';
+                              if (value!.isNotEmpty && !value.isEmail) {
+                                return 'enter valid email address';
                               }
                               return null;
                             },
-                            hintText: 'Enter Your Password',
-                            text: 'Password',
-                            icon: const Icon(Icons.remove_red_eye),
-                            toggleVisibility: true,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 25),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    Get.toNamed(
-                                        ForgetPasswordPageController.id);
-                                  },
-                                  child: const Text(
-                                    'Forget Password?',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: Color(0xff2B1836),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                            hintText: 'Enter Your Email',
+                            text: 'Email',
+                            toggleVisibility: false,
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 50),
+                              horizontal: 15,
+                              vertical: 25,
+                            ),
                             child: CustomButton(
                               onPressed: () async {
                                 if (controller.formState.currentState!
@@ -160,25 +163,31 @@ class SignInPage extends StatelessWidget {
                                   controller.loadingIndecatorTrue();
 
                                   try {
-                                    await controller.signIn(controller);
+                                    await UpdateUserDetailsService()
+                                        .userUpdateDetails(
+                                      firstName: controller.firstName.text,
+                                      lastName: controller.lastName.text,
+                                      userName: controller.userName.text,
+                                      email: controller.email.text,
+                                    );
 
                                     print('succsess');
                                     controller.loadingIndecatorFalse();
-                                    print('token=$userToken');
                                     controller.showSnackBar(
                                       context,
-                                      'Sign in successful',
+                                      'User Info Updated successfully',
                                     );
-                                    Get.toNamed(HomePageController.id);
                                   } catch (e) {
                                     print(e.toString());
-                                    controller.showSnackBar(context,
-                                        'Unable to log in with provided credentials.');
+                                    controller.showSnackBar(
+                                      context,
+                                      'At least one of the following fields is required: First Name, Last Name, Email, Username',
+                                    );
                                   }
                                   controller.loadingIndecatorFalse();
                                 }
                               },
-                              text: 'SIGN IN',
+                              text: 'Update',
                               hasBorder: true,
                               gradient: const LinearGradient(
                                 colors: [
@@ -190,26 +199,7 @@ class SignInPage extends StatelessWidget {
                                 end: Alignment.topLeft,
                                 begin: Alignment.bottomRight,
                               ),
-                              routeName: HomePageController.id,
                             ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              const Text('Don\'t have an account?'),
-                              InkWell(
-                                onTap: () {
-                                  Get.toNamed(SignUpPageController.id);
-                                },
-                                child: const Text(
-                                  'Sign Up',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
                           ),
                         ],
                       ),

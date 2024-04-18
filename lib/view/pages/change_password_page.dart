@@ -1,24 +1,20 @@
-// ignore_for_file: library_private_types_in_public_api, must_be_immutable, use_build_context_synchronously, avoid_print
+// ignore_for_file: avoid_print, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:warehouse_manegment_system/controller/forget_password_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/home_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/sign_in_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/sign_up_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
-import 'package:warehouse_manegment_system/model/models/sign_in_model.dart';
+import 'package:warehouse_manegment_system/controller/change_password_page_controller.dart';
+import 'package:warehouse_manegment_system/model/services/change_password_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_text_from_field.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({Key? key}) : super(key: key);
+class ChangePasswordPage extends StatelessWidget {
+  const ChangePasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SignInPageController>(
-      init: SignInPageController(),
+    return GetBuilder<ChangePasswordPageController>(
+      init: ChangePasswordPageController(),
       builder: (controller) {
         return ModalProgressHUD(
           inAsyncCall: controller.isLoading,
@@ -57,9 +53,7 @@ class SignInPage extends StatelessWidget {
                           ),
                           IconButton(
                             onPressed: () {
-                              Get.offAllNamed(
-                                WelcomePageController.id,
-                              );
+                              Get.back();
                             },
                             icon: const Icon(
                               Icons.password,
@@ -99,9 +93,9 @@ class SignInPage extends StatelessWidget {
                         children: [
                           CustomTextFromField(
                             onChanged: (value) {
-                              controller.email.text = value;
+                              controller.oldPassword.text = value;
                             },
-                            textEditingController: controller.email,
+                            textEditingController: controller.oldPassword,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'filed is empty';
@@ -109,8 +103,8 @@ class SignInPage extends StatelessWidget {
 
                               return null;
                             },
-                            hintText: 'Enter Your Email Or User Name',
-                            text: 'Email/Username',
+                            hintText: 'Enter Your Old Password',
+                            text: ' Old Password',
                             toggleVisibility: false,
                           ),
                           CustomTextFromField(
@@ -124,31 +118,30 @@ class SignInPage extends StatelessWidget {
                               }
                               return null;
                             },
-                            hintText: 'Enter Your Password',
-                            text: 'Password',
+                            hintText: 'Enter Your New Password',
+                            text: 'New Password',
                             icon: const Icon(Icons.remove_red_eye),
                             toggleVisibility: true,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 25),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    Get.toNamed(
-                                        ForgetPasswordPageController.id);
-                                  },
-                                  child: const Text(
-                                    'Forget Password?',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: Color(0xff2B1836),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                          CustomTextFromField(
+                            onChanged: (value) {
+                              controller.confirmPassword.text = value;
+                            },
+                            textEditingController: controller.confirmPassword,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'filed is empty';
+                              }
+                              if (controller.password.value !=
+                                  controller.confirmPassword.value) {
+                                return 'password didn\'t match';
+                              }
+                              return null;
+                            },
+                            hintText: 'Enter Your Confirm New Password',
+                            text: 'Confirm Password',
+                            icon: const Icon(Icons.remove_red_eye),
+                            toggleVisibility: true,
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
@@ -160,25 +153,31 @@ class SignInPage extends StatelessWidget {
                                   controller.loadingIndecatorTrue();
 
                                   try {
-                                    await controller.signIn(controller);
-
+                                    await ChangePasswordService()
+                                        .changePassword(
+                                      oldPassword: controller.oldPassword.text,
+                                      password: controller.password.text,
+                                      confirmPassword:
+                                          controller.confirmPassword.text,
+                                    );
                                     print('succsess');
                                     controller.loadingIndecatorFalse();
-                                    print('token=$userToken');
+
                                     controller.showSnackBar(
                                       context,
-                                      'Sign in successful',
+                                      'Password changed successfully',
                                     );
-                                    Get.toNamed(HomePageController.id);
                                   } catch (e) {
                                     print(e.toString());
-                                    controller.showSnackBar(context,
-                                        'Unable to log in with provided credentials.');
+                                    controller.showSnackBar(
+                                      context,
+                                      'Old password is incorrect',
+                                    );
                                   }
                                   controller.loadingIndecatorFalse();
                                 }
                               },
-                              text: 'SIGN IN',
+                              text: 'Update Password',
                               hasBorder: true,
                               gradient: const LinearGradient(
                                 colors: [
@@ -190,26 +189,7 @@ class SignInPage extends StatelessWidget {
                                 end: Alignment.topLeft,
                                 begin: Alignment.bottomRight,
                               ),
-                              routeName: HomePageController.id,
                             ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              const Text('Don\'t have an account?'),
-                              InkWell(
-                                onTap: () {
-                                  Get.toNamed(SignUpPageController.id);
-                                },
-                                child: const Text(
-                                  'Sign Up',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
                           ),
                         ],
                       ),

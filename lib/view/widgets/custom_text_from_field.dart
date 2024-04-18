@@ -11,8 +11,8 @@ class CustomTextFromField extends StatelessWidget {
     required this.text,
     required this.hintText,
     required this.toggleVisibility,
-    required this.validator,
-    required this.textEditingController,
+    this.validator,
+    this.textEditingController,
     required this.onChanged,
   }) : super(key: key);
 
@@ -21,9 +21,9 @@ class CustomTextFromField extends StatelessWidget {
   TextInputType? keyboardType = TextInputType.none;
   final Widget? icon;
   final bool toggleVisibility;
-  final String? Function(String?) validator;
+  final String? Function(String?)? validator;
   final void Function(String) onChanged;
-  TextEditingController textEditingController = TextEditingController();
+  TextEditingController? textEditingController = TextEditingController();
   final RxBool isPasswordVisible = false.obs;
   final RxBool showError = false.obs;
 
@@ -70,7 +70,7 @@ class CustomTextFromField extends StatelessWidget {
             borderRadius: BorderRadius.circular(5),
           ),
           errorText:
-              showError.value ? validator(textEditingController.text) : null,
+              showError.value ? validator!(textEditingController?.text) : null,
         ),
         style: const TextStyle(
           color: Colors.black,
