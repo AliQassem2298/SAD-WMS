@@ -8,7 +8,7 @@ class CustomDropList extends StatelessWidget {
   final String option2;
   final String? Function(String?)? validator; // Updated validator type
   TextEditingController textEditingController = TextEditingController();
-
+  // String textEditingController;
   CustomDropList({
     Key? key,
     this.validator,

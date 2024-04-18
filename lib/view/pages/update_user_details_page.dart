@@ -13,7 +13,7 @@ import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_text_from_field.dart';
 
 class UpdateUserDetailsPage extends StatelessWidget {
-  const UpdateUserDetailsPage({super.key});
+  UpdateUserDetailsPage({super.key});
 
   // TextEditingController lastName = TextEditingController();
 
@@ -22,7 +22,8 @@ class UpdateUserDetailsPage extends StatelessWidget {
   // TextEditingController userName = TextEditingController();
 
   // TextEditingController email = TextEditingController();
-
+  ProfilePageController profilePageController =
+      Get.put(ProfilePageController());
   @override
   Widget build(BuildContext context) {
     return GetBuilder<UpdateUserDetailsController>(
@@ -221,13 +222,13 @@ class UpdateUserDetailsPage extends StatelessWidget {
                               vertical: 25,
                             ),
                             child: CustomButton(
-                              onPressed: () {
+                              onPressed: () async {
                                 if (controller.formState.currentState!
                                     .validate()) {
                                   controller.loadingIndecatorTrue();
 
                                   try {
-                                    UpdateUserDetailsService()
+                                    await UpdateUserDetailsService()
                                         .userUpdateDetails(
                                       firstName: controller.firstName.text == ""
                                           ? controller.userModel!.firstName
@@ -242,6 +243,8 @@ class UpdateUserDetailsPage extends StatelessWidget {
                                           ? controller.userModel!.email
                                           : controller.email.text,
                                     );
+                                    profilePageController.up();
+                                    // Get.toNamed(ProfilePageController.id);
 
                                     print('succsess');
                                     controller.loadingIndecatorFalse();

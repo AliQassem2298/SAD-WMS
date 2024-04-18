@@ -15,8 +15,8 @@ class Api {
   Future<dynamic> get({required String url, @required String? token}) async {
     Map<String, String> headers = {};
     print("My token 2 :$userToken");
-    if (userToken != null) {
-      headers.addAll({'Authorization': 'Bearer $userToken'});
+    if (token != null) {
+      headers.addAll({'Authorization': 'Bearer $token'});
     }
     http.Response response = await http.get(Uri.parse(url), headers: headers);
 

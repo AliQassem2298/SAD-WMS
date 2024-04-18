@@ -26,6 +26,10 @@ class ProfilePageController extends GetxController {
     update();
   }
 
+  void up() {
+    update();
+  }
+
   void loadingIndecatorTrue() {
     isLoading = true;
     update();

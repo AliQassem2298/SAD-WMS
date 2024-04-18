@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/model/models/sign_up_model.dart';
@@ -56,13 +58,15 @@ class SignUpPageController extends GetxController {
   }
 
   Future<SignUpModel> signUp(SignUpPageController controller) {
+    print('role: ${controller.role.text}');
     return SignUpService().signUp(
-        firstName: controller.firstName.text,
-        lastName: controller.lastName.text,
-        userName: controller.userName.text,
-        email: controller.email.text,
-        password: controller.password.text,
-        confirmPassword: controller.confirmPassword.text,
-        role: controller.role.text);
+      firstName: controller.firstName.text,
+      lastName: controller.lastName.text,
+      userName: controller.userName.text,
+      email: controller.email.text,
+      password: controller.password.text,
+      confirmPassword: controller.confirmPassword.text,
+      role: controller.role.text,
+    );
   }
 }

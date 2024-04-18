@@ -205,12 +205,14 @@ class SignUpPage extends StatelessWidget {
                               }
                               return null;
                             },
-                            option1: 'Customer',
-                            option2: 'Staff',
+                            option1: 'customer',
+                            option2: 'staff',
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 25),
+                              horizontal: 15,
+                              vertical: 25,
+                            ),
                             child: CustomButton(
                               onPressed: () async {
                                 if (controller.formState.currentState!
@@ -225,7 +227,8 @@ class SignUpPage extends StatelessWidget {
 
                                     Get.to(
                                       () => DialogPage(
-                                          routeName: SignInPageController.id),
+                                        routeName: SignInPageController.id,
+                                      ),
                                     );
                                   } catch (e) {
                                     print(e.toString());
@@ -261,7 +264,7 @@ class SignUpPage extends StatelessWidget {
                               ),
                               InkWell(
                                 onTap: () {
-                                  Get.toNamed(SignInPageController.id);
+                                  Get.offAllNamed(SignInPageController.id);
                                 },
                                 child: const Text(
                                   'SIGN IN',

@@ -152,7 +152,9 @@ class SignInPage extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 50),
+                              horizontal: 15,
+                              vertical: 50,
+                            ),
                             child: CustomButton(
                               onPressed: () async {
                                 if (controller.formState.currentState!
@@ -172,8 +174,10 @@ class SignInPage extends StatelessWidget {
                                     Get.toNamed(HomePageController.id);
                                   } catch (e) {
                                     print(e.toString());
-                                    controller.showSnackBar(context,
-                                        'Unable to log in with provided credentials.');
+                                    controller.showSnackBar(
+                                      context,
+                                      'Unable to log in with provided credentials.',
+                                    );
                                   }
                                   controller.loadingIndecatorFalse();
                                 }
@@ -199,7 +203,7 @@ class SignInPage extends StatelessWidget {
                               const Text('Don\'t have an account?'),
                               InkWell(
                                 onTap: () {
-                                  Get.toNamed(SignUpPageController.id);
+                                  Get.offAllNamed(SignUpPageController.id);
                                 },
                                 child: const Text(
                                   'Sign Up',
