@@ -205,6 +205,41 @@ class ProfilePage extends StatelessWidget {
                                     },
                                   ),
                                 ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 110),
+                                  child: userToken == null
+                                      ? null
+                                      : CustomButton(
+                                          onPressed: () async {
+                                            controller.loadingIndecatorTrue();
+
+                                            try {
+                                              await DeleteAccountService()
+                                                  .deleteAccount();
+                                              print("My token 3 :$userToken");
+                                              Get.offAllNamed(
+                                                WelcomePageController.id,
+                                              );
+                                              print('succsess');
+                                              controller
+                                                  .loadingIndecatorFalse();
+                                              controller.showSnackBar(
+                                                context,
+                                                'Account Deleted successfully',
+                                              );
+                                            } catch (e) {
+                                              print(e.toString());
+                                              controller.showSnackBar(
+                                                context,
+                                                'Authentication credentials were not provided.',
+                                              );
+                                            }
+                                            controller.loadingIndecatorFalse();
+                                          },
+                                          text: 'Delete Your Account',
+                                          textColor: const Color(0xffBB1636),
+                                        ),
+                                ),
                                 const SizedBox(height: 25),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(),

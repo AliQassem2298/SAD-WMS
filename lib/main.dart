@@ -64,7 +64,7 @@ class WeareHouseManegmentSystem extends StatelessWidget {
         ),
         GetPage(
           name: UpdateUserDetailsController.id,
-          page: () => const UpdateUserDetailsPage(),
+          page: () => UpdateUserDetailsPage(),
         ),
       ],
       initialRoute: WelcomePageController.id,

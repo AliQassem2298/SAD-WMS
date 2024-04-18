@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:warehouse_manegment_system/model/models/sign_in_model.dart';
 
 String baseUrl = 'http://127.0.0.1:8000/api'; //////// windows
 
@@ -13,9 +14,9 @@ String baseUrl = 'http://127.0.0.1:8000/api'; //////// windows
 class Api {
   Future<dynamic> get({required String url, @required String? token}) async {
     Map<String, String> headers = {};
-
-    if (token != null) {
-      headers.addAll({'Authorization': 'Bearer $token'});
+    print("My token 2 :$userToken");
+    if (userToken != null) {
+      headers.addAll({'Authorization': 'Bearer $userToken'});
     }
     http.Response response = await http.get(Uri.parse(url), headers: headers);
 
@@ -85,14 +86,17 @@ class Api {
     String? token,
   }) async {
     Map<String, String> headers = {};
+    print("Token :$token");
     if (token != null) {
-      headers.addAll({'Authorization': 'Bearer $token'});
+      headers.addAll({'Authorization': 'bearer $token'});
     }
 
     http.Response response =
         await http.delete(Uri.parse(url), headers: headers);
 
     if (response.statusCode == 200 || response.statusCode == 204) {
+      userToken = null;
+      print("userToken  :$userToken");
       return null;
     } else {
       throw Exception(

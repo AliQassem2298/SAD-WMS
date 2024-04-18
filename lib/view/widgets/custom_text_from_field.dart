@@ -13,7 +13,7 @@ class CustomTextFromField extends StatelessWidget {
     required this.toggleVisibility,
     this.validator,
     this.textEditingController,
-    required this.onChanged,
+    this.onChanged,
   }) : super(key: key);
 
   final String text;
@@ -22,7 +22,7 @@ class CustomTextFromField extends StatelessWidget {
   final Widget? icon;
   final bool toggleVisibility;
   final String? Function(String?)? validator;
-  final void Function(String) onChanged;
+  final void Function(String)? onChanged;
   TextEditingController? textEditingController = TextEditingController();
   final RxBool isPasswordVisible = false.obs;
   final RxBool showError = false.obs;
