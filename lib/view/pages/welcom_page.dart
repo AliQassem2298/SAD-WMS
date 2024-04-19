@@ -6,6 +6,7 @@ import 'package:warehouse_manegment_system/controller/home_page_controller.dart'
 import 'package:warehouse_manegment_system/controller/sign_in_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/sign_up_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
+import 'package:warehouse_manegment_system/view/pages/my_app_scanner.dart';
 
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 
@@ -157,6 +158,19 @@ class WelcomePage extends StatelessWidget {
               // SizedBox(
               //   height: 50,
               // ),
+              InkWell(
+                onTap: () {
+                  Get.to(() => const MyApp());
+                },
+                child: const Text(
+                  'Scanner',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
             ],
           ),
         );

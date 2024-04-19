@@ -174,9 +174,11 @@ class SignInPage extends StatelessWidget {
                                     Get.toNamed(HomePageController.id);
                                   } catch (e) {
                                     print(e.toString());
+
                                     controller.showSnackBar(
                                       context,
-                                      'Unable to log in with provided credentials.',
+                                      e.toString(),
+                                      // 'Unable to log in with provided credentials.',
                                     );
                                   }
                                   controller.loadingIndecatorFalse();
