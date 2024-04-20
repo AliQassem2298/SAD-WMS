@@ -1,3 +1,4 @@
+import 'package:warehouse_manegment_system/main.dart';
 import 'package:warehouse_manegment_system/model/models/user_model.dart';
 
 class SignInModel {
@@ -14,7 +15,8 @@ class SignInModel {
   });
 
   factory SignInModel.fromJson(jsonData) {
-    userToken = jsonData['access_token'];
+    sharedPreferences!.setString("token", jsonData['access_token']);
+    // userToken = jsonData['access_token'];
     return SignInModel(
       accessToken: jsonData['access_token'],
       tokenType: jsonData['token_type'],
@@ -24,4 +26,4 @@ class SignInModel {
   }
 }
 
-String? userToken;
+// String? userToken;

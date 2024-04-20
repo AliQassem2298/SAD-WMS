@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_print
 
+import 'package:warehouse_manegment_system/main.dart';
 import 'package:warehouse_manegment_system/model/helper/api.dart';
 import 'package:warehouse_manegment_system/model/models/logout_model.dart';
-import 'package:warehouse_manegment_system/model/models/sign_in_model.dart';
 
 class UpdateUserDetailsService {
   Future<LogoutModel> userUpdateDetails({
@@ -36,7 +36,7 @@ class UpdateUserDetailsService {
         "username": userName,
         "email": email,
       },
-      token: userToken,
+      token: sharedPreferences!.getString("token"),
     );
     return LogoutModel.fromJson(data);
   }

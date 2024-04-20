@@ -8,7 +8,7 @@ import 'package:warehouse_manegment_system/controller/home_page_controller.dart'
 import 'package:warehouse_manegment_system/controller/sign_in_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/sign_up_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
-import 'package:warehouse_manegment_system/model/models/sign_in_model.dart';
+import 'package:warehouse_manegment_system/main.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_text_from_field.dart';
 
@@ -163,10 +163,12 @@ class SignInPage extends StatelessWidget {
 
                                   try {
                                     await controller.signIn(controller);
-
+                                    // sharedPreferences!
+                                    //     .setString("token", userToken!);
+                                    print(sharedPreferences.toString());
                                     print('succsess');
                                     controller.loadingIndecatorFalse();
-                                    print('token=$userToken');
+                                    // print('token=$userToken');
                                     controller.showSnackBar(
                                       context,
                                       'Sign in successful',
@@ -177,8 +179,8 @@ class SignInPage extends StatelessWidget {
 
                                     controller.showSnackBar(
                                       context,
-                                      e.toString(),
-                                      // 'Unable to log in with provided credentials.',
+                                      // e.toString(),
+                                      'Unable to log in with provided credentials.',
                                     );
                                   }
                                   controller.loadingIndecatorFalse();

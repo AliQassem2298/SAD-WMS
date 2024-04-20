@@ -1,6 +1,6 @@
+import 'package:warehouse_manegment_system/main.dart';
 import 'package:warehouse_manegment_system/model/helper/api.dart';
 import 'package:warehouse_manegment_system/model/models/logout_model.dart';
-import 'package:warehouse_manegment_system/model/models/sign_in_model.dart';
 
 class CheckCodeService {
   Future<LogoutModel> checkCode(
@@ -11,7 +11,7 @@ class CheckCodeService {
         "email": email,
         "code": code,
       },
-      token: userToken,
+      token: sharedPreferences!.getString("token"),
     );
     return LogoutModel.fromJson(data);
   }

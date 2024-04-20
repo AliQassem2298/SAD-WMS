@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/controller/profile_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/update_user_details_controller.dart';
 import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
+import 'package:warehouse_manegment_system/main.dart';
 import 'package:warehouse_manegment_system/model/models/user_model.dart';
 import 'package:warehouse_manegment_system/model/services/delete_account_service.dart';
 import 'package:warehouse_manegment_system/model/services/update_user_details_service.dart';
@@ -191,6 +192,7 @@ class UpdateUserDetailsPage extends StatelessWidget {
 
                                 try {
                                   await DeleteAccountService().deleteAccount();
+                                  sharedPreferences!.clear();
                                   print('succsess');
                                   controller.loadingIndecatorFalse();
 

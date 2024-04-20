@@ -1,6 +1,6 @@
+import 'package:warehouse_manegment_system/main.dart';
 import 'package:warehouse_manegment_system/model/helper/api.dart';
 import 'package:warehouse_manegment_system/model/models/logout_model.dart';
-import 'package:warehouse_manegment_system/model/models/sign_in_model.dart';
 
 class ChangePasswordService {
   Future<LogoutModel> changePassword({
@@ -15,7 +15,7 @@ class ChangePasswordService {
         "new_password": password,
         "confirm_new_password": confirmPassword,
       },
-      token: userToken,
+      token: sharedPreferences!.getString("token"),
     );
     return LogoutModel.fromJson(data);
   }
