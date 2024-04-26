@@ -3,12 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/forget_password_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/home_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/sign_in_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/sign_up_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
-import 'package:warehouse_manegment_system/main.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_text_from_field.dart';
 
@@ -31,10 +31,10 @@ class SignInPage extends StatelessWidget {
                       begin: Alignment.centerRight,
                       end: Alignment.centerLeft,
                       colors: [
-                        Color(0xff2B1836),
-                        Color(0xff591C3C),
-                        Color(0xff911C3A),
-                        Color(0xffBB1636)
+                        kFirstColor,
+                        kSecondtColor,
+                        // kThierdColor,
+                        // kFourthColor,
                       ],
                     ),
                   ),
@@ -95,7 +95,9 @@ class SignInPage extends StatelessWidget {
                       key: controller.formState,
                       child: ListView(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 30, vertical: 25),
+                          horizontal: 30,
+                          vertical: 25,
+                        ),
                         children: [
                           CustomTextFromField(
                             onChanged: (value) {
@@ -143,7 +145,7 @@ class SignInPage extends StatelessWidget {
                                     'Forget Password?',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xff2B1836),
+                                      color: kFirstColor,
                                     ),
                                   ),
                                 ),
@@ -165,7 +167,6 @@ class SignInPage extends StatelessWidget {
                                     await controller.signIn(controller);
                                     // sharedPreferences!
                                     //     .setString("token", userToken!);
-                                    print(sharedPreferences.toString());
                                     print('succsess');
                                     controller.loadingIndecatorFalse();
                                     // print('token=$userToken');
@@ -190,10 +191,10 @@ class SignInPage extends StatelessWidget {
                               hasBorder: true,
                               gradient: const LinearGradient(
                                 colors: [
-                                  Color(0xff2B1836),
-                                  Color(0xff591C3C),
-                                  Color(0xff911C3A),
-                                  Color(0xffBB1636)
+                                  kFirstColor,
+                                  kSecondtColor,
+                                  // kThierdColor,
+                                  // kFourthColor,
                                 ],
                                 end: Alignment.topLeft,
                                 begin: Alignment.bottomRight,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:warehouse_manegment_system/model/models/details_model.dart';
-import 'package:warehouse_manegment_system/model/services/log_out_service.dart';
 
-class HomePageController extends GetxController {
-  static String id = '/homePage';
+class MyDialogController extends GetxController {
+  GlobalKey<FormState> formState = GlobalKey();
+  TextEditingController password = TextEditingController();
 
+  // String? dialogTitle;
   bool isLoading = false;
 
   void loadingIndecatorFalse() {
@@ -24,9 +24,5 @@ class HomePageController extends GetxController {
         content: Text(message),
       ),
     );
-  }
-
-  Future<DetailsModel> logOut() {
-    return LogoutService().logOut();
   }
 }

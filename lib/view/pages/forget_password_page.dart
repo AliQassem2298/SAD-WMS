@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/forget_password_page_controller.dart';
 import 'package:warehouse_manegment_system/model/services/chek_code_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
@@ -25,10 +26,10 @@ class ForgetPasswordPage extends StatelessWidget {
                   begin: Alignment.centerRight,
                   end: Alignment.centerLeft,
                   colors: [
-                    Color(0xff2B1836),
-                    Color(0xff591C3C),
-                    Color(0xff911C3A),
-                    Color(0xffBB1636)
+                    kFirstColor,
+                    kSecondtColor,
+                    // kThierdColor,
+                    // kFourthColor,
                   ],
                 ),
               ),
@@ -39,12 +40,7 @@ class ForgetPasswordPage extends StatelessWidget {
                       gradient: LinearGradient(
                         begin: Alignment.centerRight,
                         end: Alignment.centerLeft,
-                        colors: [
-                          Color(0xff2B1836),
-                          Color(0xff591C3C),
-                          Color(0xff911C3A),
-                          Color(0xffBB1636)
-                        ],
+                        colors: [],
                       ),
                     ),
                   ),
@@ -260,10 +256,10 @@ class ForgetPasswordPage extends StatelessWidget {
                                     begin: Alignment.centerRight,
                                     end: Alignment.centerLeft,
                                     colors: [
-                                      Color(0xff2B1836),
-                                      Color(0xff591C3C),
-                                      Color(0xff911C3A),
-                                      Color(0xffBB1636)
+                                      kFirstColor,
+                                      kSecondtColor,
+                                      // kThierdColor,
+                                      // kFourthColor,
                                     ],
                                   ),
                                   onPressed: () async {

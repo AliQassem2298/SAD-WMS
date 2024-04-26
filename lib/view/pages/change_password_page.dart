@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/change_password_page_controller.dart';
 import 'package:warehouse_manegment_system/model/services/change_password_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
@@ -27,10 +28,12 @@ class ChangePasswordPage extends StatelessWidget {
                       begin: Alignment.centerRight,
                       end: Alignment.centerLeft,
                       colors: [
-                        Color(0xff2B1836),
-                        Color(0xff591C3C),
-                        Color(0xff911C3A),
-                        Color(0xffBB1636)
+                        // Color(0xff2B1836),
+                        // Color(0xff591C3C),
+                        // Color(0xff911C3A),
+                        // Color(0xffBB1636)
+                        kFirstColor,
+                        kSecondtColor,
                       ],
                     ),
                   ),
@@ -44,7 +47,7 @@ class ChangePasswordPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text(
-                            'Hello',
+                            'Change',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 32,
@@ -63,7 +66,7 @@ class ChangePasswordPage extends StatelessWidget {
                         ],
                       ),
                       const Text(
-                        'Sign In',
+                        'Password Page',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 32,
@@ -181,10 +184,8 @@ class ChangePasswordPage extends StatelessWidget {
                               hasBorder: true,
                               gradient: const LinearGradient(
                                 colors: [
-                                  Color(0xff2B1836),
-                                  Color(0xff591C3C),
-                                  Color(0xff911C3A),
-                                  Color(0xffBB1636)
+                                  kFirstColor,
+                                  kSecondtColor,
                                 ],
                                 end: Alignment.topLeft,
                                 begin: Alignment.bottomRight,

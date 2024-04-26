@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/sign_in_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/sign_up_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
@@ -30,10 +31,10 @@ class SignUpPage extends StatelessWidget {
                       begin: Alignment.centerRight,
                       end: Alignment.centerLeft,
                       colors: [
-                        Color(0xff2B1836),
-                        Color(0xff591C3C),
-                        Color(0xff911C3A),
-                        Color(0xffBB1636)
+                        kFirstColor,
+                        kSecondtColor,
+                        // kThierdColor,
+                        // kFourthColor,
                       ],
                     ),
                   ),
@@ -245,10 +246,10 @@ class SignUpPage extends StatelessWidget {
                               hasBorder: true,
                               gradient: const LinearGradient(
                                 colors: [
-                                  Color(0xff2B1836),
-                                  Color(0xff591C3C),
-                                  Color(0xff911C3A),
-                                  Color(0xffBB1636)
+                                  kFirstColor,
+                                  kSecondtColor,
+                                  // kThierdColor,
+                                  // kFourthColor,
                                 ],
                                 end: Alignment.topLeft,
                                 begin: Alignment.bottomRight,

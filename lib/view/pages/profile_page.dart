@@ -17,6 +17,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/change_password_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/profile_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/update_user_details_controller.dart';
@@ -36,211 +37,196 @@ class ProfilePage extends StatelessWidget {
         return ModalProgressHUD(
           inAsyncCall: controller.isLoading,
           child: Scaffold(
-            body: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.centerRight,
-                  end: Alignment.centerLeft,
-                  colors: [
-                    Color(0xff2B1836),
-                    Color(0xff591C3C),
-                    Color(0xff911C3A),
-                    Color(0xffBB1636)
-                  ],
-                ),
-              ),
-              child: Stack(
-                children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.centerRight,
-                        end: Alignment.centerLeft,
-                        colors: [
-                          Color(0xff2B1836),
-                          Color(0xff591C3C),
-                          Color(0xff911C3A),
-                          Color(0xffBB1636)
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 25, top: 50, right: 25),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              'Welcome',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 32,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                // Get.toNamed(HomePageController.id);
-                                Get.back();
-                              },
-                              icon: const Icon(
-                                Icons.password,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const Text(
-                          'Profile Page',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 32,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
+            body: Stack(
+              children: [
+                Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.centerRight,
+                      end: Alignment.centerLeft,
+                      colors: [
+                        kFirstColor,
+                        kSecondtColor,
                       ],
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 700),
-                      height: controller.containerHeight,
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.vertical(
-                          top: Radius.circular(45),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 25, top: 50, right: 25),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Welcome',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 32,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              // Get.toNamed(HomePageController.id);
+                              Get.back();
+                            },
+                            icon: const Icon(
+                              Icons.password,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Text(
+                        'Profile Page',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 32,
+                          fontWeight: FontWeight.w500,
                         ),
-                        color: Colors.white,
                       ),
-                      child: FutureBuilder<UserModel>(
-                        future: sharedPreferences!.getString("token") != null
-                            ? GetUserDetailsByTokenService()
-                                .getUserDetailsByToken()
-                            : Future.error(
-                                'You are gest 😒😅 \n you don\'t have an account',
-                              ),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          } else if (snapshot.hasError) {
-                            return Center(
-                              child: Text(
-                                snapshot.error.toString(),
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                            );
-                          } else if (snapshot.hasData &&
-                              sharedPreferences!.getString("token") != null) {
-                            controller.userModel = snapshot.data!;
+                    ],
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 700),
+                    height: controller.containerHeight,
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(45),
+                      ),
+                      color: Colors.white,
+                    ),
+                    child: FutureBuilder<UserModel>(
+                      future: sharedPreferences!.getString("token") != null
+                          ? GetUserDetailsByTokenService()
+                              .getUserDetailsByToken()
+                          : Future.error(
+                              'You are gest 😒😅 \n you don\'t have an account',
+                            ),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        } else if (snapshot.hasError) {
+                          return Center(
+                            child: Text(
+                              snapshot.error.toString(),
+                              style: const TextStyle(fontSize: 18),
+                            ),
+                          );
+                        } else if (snapshot.hasData &&
+                            sharedPreferences!.getString("token") != null) {
+                          controller.userModel = snapshot.data!;
 
-                            return ListView(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 25,
-                                vertical: 25,
+                          return ListView(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 25,
+                              vertical: 25,
+                            ),
+                            children: [
+                              const SizedBox(height: 10),
+                              Text(
+                                'First Name: ${controller.userModel!.firstName}',
+                                style: const TextStyle(
+                                  color: kFirstColor,
+                                  fontSize: 18,
+                                ),
                               ),
-                              children: [
-                                const SizedBox(height: 10),
-                                Text(
-                                  'First Name: ${controller.userModel!.firstName}',
-                                  style: const TextStyle(
-                                    color: Color(0xffBB1636),
-                                    fontSize: 18,
-                                  ),
+                              const SizedBox(height: 10),
+                              Text(
+                                'Last Name: ${controller.userModel!.lastName}',
+                                style: const TextStyle(
+                                  color: kFirstColor,
+                                  fontSize: 18,
                                 ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  'Last Name: ${controller.userModel!.lastName}',
-                                  style: const TextStyle(
-                                    color: Color(0xffBB1636),
-                                    fontSize: 18,
-                                  ),
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                'username: ${controller.userModel!.username}',
+                                style: const TextStyle(
+                                  color: kFirstColor,
+                                  fontSize: 18,
                                 ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  'username: ${controller.userModel!.username}',
-                                  style: const TextStyle(
-                                    color: Color(0xffBB1636),
-                                    fontSize: 18,
-                                  ),
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                'Email: ${controller.userModel!.email}',
+                                style: const TextStyle(
+                                  color: kFirstColor,
+                                  fontSize: 18,
                                 ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  'Email: ${controller.userModel!.email}',
-                                  style: const TextStyle(
-                                    color: Color(0xffBB1636),
-                                    fontSize: 18,
-                                  ),
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                'Role: ${controller.userModel!.role}',
+                                style: const TextStyle(
+                                  color: kFirstColor,
+                                  fontSize: 18,
                                 ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  'Role: ${controller.userModel!.role}',
-                                  style: const TextStyle(
-                                    color: Color(0xffBB1636),
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                const SizedBox(height: 25),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 175),
-                                  child: InkWell(
-                                    child: const Text(
-                                      'Change Your Password',
-                                      style: TextStyle(
-                                        color: Color(0xff2B1836),
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                              ),
+                              const SizedBox(height: 25),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 175),
+                                child: InkWell(
+                                  child: const Text(
+                                    'Change Your Password',
+                                    style: TextStyle(
+                                      color: Color(0xff2B1836),
+                                      fontWeight: FontWeight.w600,
                                     ),
-                                    onTap: () {
-                                      Get.toNamed(
-                                        ChangePasswordPageController.id,
-                                      );
-                                    },
                                   ),
+                                  onTap: () {
+                                    Get.toNamed(
+                                      ChangePasswordPageController.id,
+                                    );
+                                  },
                                 ),
-                                const SizedBox(height: 25),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(),
-                                  child: CustomButton(
-                                    onPressed: () {
-                                      Get.toNamed(
-                                        UpdateUserDetailsController.id,
-                                        arguments: controller.userModel,
-                                      );
-                                    },
-                                    gradient: const LinearGradient(
-                                      begin: Alignment.centerRight,
-                                      end: Alignment.centerLeft,
-                                      colors: [
-                                        Color(0xff2B1836),
-                                        Color(0xff591C3C),
-                                        Color(0xff911C3A),
-                                        Color(0xffBB1636),
-                                      ],
-                                    ),
-                                    text: 'Update User Details',
+                              ),
+                              const SizedBox(height: 25),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(),
+                                child: CustomButton(
+                                  onPressed: () {
+                                    Get.toNamed(
+                                      UpdateUserDetailsController.id,
+                                      arguments: controller.userModel,
+                                    );
+                                  },
+                                  gradient: const LinearGradient(
+                                    begin: Alignment.centerRight,
+                                    end: Alignment.centerLeft,
+                                    colors: [
+                                      // Color(0xff2B1836),
+                                      // Color(0xff591C3C),
+                                      // Color(0xff911C3A),
+                                      // Color(0xffBB1636),
+                                      kFirstColor,
+                                      kSecondtColor,
+                                    ],
                                   ),
+                                  text: 'Update User Details',
                                 ),
-                              ],
-                            );
-                          } else {
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          }
-                        },
-                      ),
+                              ),
+                            ],
+                          );
+                        } else {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                      },
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );

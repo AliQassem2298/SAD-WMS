@@ -2,13 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 
 class CustomTextFromField extends StatelessWidget {
   CustomTextFromField({
     Key? key,
     this.icon,
     this.keyboardType,
-    required this.text,
+    this.text,
     required this.hintText,
     required this.toggleVisibility,
     this.validator,
@@ -16,7 +17,7 @@ class CustomTextFromField extends StatelessWidget {
     this.onChanged,
   }) : super(key: key);
 
-  final String text;
+  final String? text;
   final String hintText;
   TextInputType? keyboardType = TextInputType.none;
   final Widget? icon;
@@ -31,6 +32,8 @@ class CustomTextFromField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => TextFormField(
+        // textCapitalization: TextCapitalization.none, // Added this line
+
         controller: textEditingController,
         keyboardType: keyboardType,
         obscureText: toggleVisibility ? !isPasswordVisible.value : false,
@@ -50,11 +53,11 @@ class CustomTextFromField extends StatelessWidget {
                       ? (isPasswordVisible.value
                           ? const Icon(
                               Icons.visibility,
-                              color: Color(0xff591C3C),
+                              color: kFirstColor,
                             )
                           : const Icon(
                               Icons.visibility_off,
-                              color: Color(0xff591C3C),
+                              color: kFirstColor,
                             ))
                       : icon!,
                   color: const Color(0xff591C3C),
@@ -63,7 +66,7 @@ class CustomTextFromField extends StatelessWidget {
           hintText: hintText,
           labelText: text,
           labelStyle: const TextStyle(
-            color: Color(0xffBB1636),
+            color: kSecondtColor,
           ),
           border: UnderlineInputBorder(
             borderSide: const BorderSide(color: Colors.black),

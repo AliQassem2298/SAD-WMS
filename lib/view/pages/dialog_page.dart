@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 
 class DialogPage extends StatelessWidget {
   final String title;
@@ -25,10 +26,8 @@ class DialogPage extends StatelessWidget {
             begin: Alignment.centerRight,
             end: Alignment.centerLeft,
             colors: [
-              Color(0xff2B1836),
-              Color(0xff591C3C),
-              Color(0xff911C3A),
-              Color(0xffBB1636)
+              kFirstColor,
+              kSecondtColor,
             ],
           ),
         ),

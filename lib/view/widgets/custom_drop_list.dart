@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api, must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/cutom_drop_list_controller.dart';
 
 class CustomDropList extends StatelessWidget {
@@ -34,7 +35,7 @@ class CustomDropList extends StatelessWidget {
             controller.setSelectedOption(newValue);
           },
           style: const TextStyle(
-            color: Colors.black,
+            color: kFirstColor,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
@@ -50,7 +51,7 @@ class CustomDropList extends StatelessWidget {
                 child: Text(
                   value,
                   style: const TextStyle(
-                    color: Color(0xffBB1636),
+                    color: kSecondtColor,
                   ),
                 ),
               );

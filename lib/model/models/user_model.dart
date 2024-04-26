@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'package:warehouse_manegment_system/main.dart';
+
 class UserModel {
   final int id;
   final String firstName;
@@ -26,6 +28,7 @@ class UserModel {
     // lastnameM = jsonData['last_name'];
     // usernameM = jsonData['username'];
     // emailM = jsonData['email'];
+    sharedPreferences!.setString("role", jsonData['role']);
     return UserModel(
       id: jsonData['id'],
       firstName: jsonData['first_name'],
