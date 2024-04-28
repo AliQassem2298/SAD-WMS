@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/forget_password_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/home_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/home_page_with_drawer_controller.dart';
 import 'package:warehouse_manegment_system/controller/sign_in_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/sign_up_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
@@ -174,14 +174,15 @@ class SignInPage extends StatelessWidget {
                                       context,
                                       'Sign in successful',
                                     );
-                                    Get.toNamed(HomePageController.id);
+                                    Get.toNamed(
+                                        HomePageWithDrawerController.id);
                                   } catch (e) {
                                     print(e.toString());
 
                                     controller.showSnackBar(
                                       context,
-                                      // e.toString(),
-                                      'Unable to log in with provided credentials.',
+                                      e.toString(),
+                                      // 'Unable to log in with provided credentials.',
                                     );
                                   }
                                   controller.loadingIndecatorFalse();
@@ -199,7 +200,7 @@ class SignInPage extends StatelessWidget {
                                 end: Alignment.topLeft,
                                 begin: Alignment.bottomRight,
                               ),
-                              routeName: HomePageController.id,
+                              routeName: HomePageWithDrawerController.id,
                             ),
                           ),
                           Column(

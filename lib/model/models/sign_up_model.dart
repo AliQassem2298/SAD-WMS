@@ -1,9 +1,9 @@
-class SignUpModel {
-  final String message;
+// class SignUpModel {
+//   final String message;
 
-  SignUpModel({required this.message});
+//   SignUpModel({required this.message});
 
-  factory SignUpModel.fromJson(jsonData) {
-    return SignUpModel(message: jsonData['message']);
-  }
-}
+//   factory SignUpModel.fromJson(jsonData) {
+//     return SignUpModel(message: jsonData['message']);
+//   }
+// }

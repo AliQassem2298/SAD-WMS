@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
-import 'package:warehouse_manegment_system/controller/home_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/home_page_with_drawer_controller.dart';
 import 'package:warehouse_manegment_system/controller/sign_in_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/sign_up_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
@@ -43,7 +43,6 @@ class WelcomePage extends StatelessWidget {
                 end: Alignment.centerLeft,
                 colors: [
                   kFirstColor,
-
                   kSecondtColor,
                   // kThierdColor,
                   // kFourthColor,
@@ -142,7 +141,7 @@ class WelcomePage extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Get.toNamed(HomePageController.id);
+                            Get.toNamed(HomePageWithDrawerController.id);
                           },
                           child: const Text(
                             'Guest Mode',
@@ -162,7 +161,7 @@ class WelcomePage extends StatelessWidget {
                 // ),
                 InkWell(
                   onTap: () {
-                    Get.to(() => const MyApp());
+                    Get.to(() => MyApp());
                   },
                   child: const Text(
                     'Scanner',

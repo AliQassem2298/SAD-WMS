@@ -1,15 +1,15 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
-import 'package:dartz/dartz.dart';
+// import 'package:dartz/dartz.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-String baseUrl = 'http://127.0.0.1:8000/api'; //////// windows
+// String baseUrl = 'http://127.0.0.1:8000/api'; //////// windows
 
-// String baseUrl = 'http://10.0.2.2:8000/api'; ///// emulator
+String baseUrl = 'http://10.0.2.2:8000/api'; ///// emulator
 
 // String baseUrl = 'http://192.168.137.1:8000/api'; ///// mobilde
 
@@ -61,8 +61,9 @@ class Api {
     //   return data;
     // }
     else {
-      throw Exception(
-          'there is a problem with status code ${response.statusCode} with body ${jsonDecode(response.body)}}');
+      Map<String, dynamic> data = jsonDecode(response.body);
+      var detail = data['detail'];
+      throw detail;
     }
   }
 

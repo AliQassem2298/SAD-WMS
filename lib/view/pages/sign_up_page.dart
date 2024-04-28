@@ -236,7 +236,8 @@ class SignUpPage extends StatelessWidget {
 
                                     controller.showSnackBar(
                                       context,
-                                      'A user with that username or email is already exists.',
+                                      // 'A user with that username or email is already exists.',
+                                      e.toString(),
                                     );
                                   }
                                   controller.loadingIndecatorFalse();

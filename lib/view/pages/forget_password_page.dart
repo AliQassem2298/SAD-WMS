@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/forget_password_page_controller.dart';
-import 'package:warehouse_manegment_system/model/services/chek_code_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_text_from_field.dart';
 
@@ -122,8 +121,8 @@ class ForgetPasswordPage extends StatelessWidget {
                                       .validate()) {
                                     controller.loadingIndecatorTrue();
                                     try {
-                                      await controller
-                                          .forgetPasswordRequest(controller);
+                                      // await controller
+                                      //     .forgetPasswordRequest(controller);
                                       controller.showSnackBar(
                                         context,
                                         'Password reset code sent to your email',
@@ -154,10 +153,10 @@ class ForgetPasswordPage extends StatelessWidget {
                                         .validate()) {
                                       controller.loadingIndecatorTrue();
                                       try {
-                                        await CheckCodeService().checkCode(
-                                          email: controller.email.text,
-                                          code: controller.code.text,
-                                        );
+                                        // await CheckCodeService().checkCode(
+                                        //   email: controller.email.text,
+                                        //   code: controller.code.text,
+                                        // );
                                         controller.showSnackBar(
                                           context,
                                           'Code is correct, Now you can change your password.',
@@ -267,8 +266,8 @@ class ForgetPasswordPage extends StatelessWidget {
                                         .validate()) {
                                       controller.loadingIndecatorTrue();
                                       try {
-                                        await controller
-                                            .forgetPasswordConfirm(controller);
+                                        // await controller
+                                        //     .forgetPasswordConfirm(controller);
 
                                         controller.loadingIndecatorFalse();
 

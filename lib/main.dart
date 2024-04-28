@@ -3,9 +3,18 @@ import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/controller/change_password_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/forget_password_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/home_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/home_page_with_drawer_controller.dart';
+import 'package:warehouse_manegment_system/controller/inventory_scan_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/orders_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/profile_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/put_away_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/shipments_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/sign_in_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/sign_up_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/slide_menu_controller.dart';
+import 'package:warehouse_manegment_system/controller/stocktaking_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/supplier_shipment_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/transfer_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/update_user_details_controller.dart';
 import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
 import 'package:warehouse_manegment_system/middleware/auth_middleware.dart';
@@ -13,12 +22,21 @@ import 'package:warehouse_manegment_system/view/pages/change_password_page.dart'
 import 'package:warehouse_manegment_system/view/pages/dialog_page.dart';
 import 'package:warehouse_manegment_system/view/pages/forget_password_page.dart';
 import 'package:warehouse_manegment_system/view/pages/home_page.dart';
+import 'package:warehouse_manegment_system/view/pages/home_page_with_drawer.dart';
+import 'package:warehouse_manegment_system/view/pages/inventory_scan_page.dart';
+import 'package:warehouse_manegment_system/view/pages/orders_page.dart';
 import 'package:warehouse_manegment_system/view/pages/profile_page.dart';
+import 'package:warehouse_manegment_system/view/pages/put_away_page.dart';
+import 'package:warehouse_manegment_system/view/pages/shipments_page.dart';
 import 'package:warehouse_manegment_system/view/pages/sign_in_page.dart';
 import 'package:warehouse_manegment_system/view/pages/sign_up_page.dart';
+import 'package:warehouse_manegment_system/view/pages/stocktaking_page.dart';
+import 'package:warehouse_manegment_system/view/pages/supplier_shipment_page.dart';
+import 'package:warehouse_manegment_system/view/pages/transfer_page.dart';
 import 'package:warehouse_manegment_system/view/pages/update_user_details_page.dart';
 import 'package:warehouse_manegment_system/view/pages/welcom_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:warehouse_manegment_system/view/pages/slide_menu_page.dart';
 
 SharedPreferences? sharedPreferences;
 
@@ -52,8 +70,12 @@ class WeareHouseManegmentSystem extends StatelessWidget {
           page: () => const SignUpPage(),
         ),
         GetPage(
-          name: HomePageController.id,
-          page: () => const HomePage(),
+          name: UpdateUserDetailsController.id,
+          page: () => UpdateUserDetailsPage(),
+        ),
+        GetPage(
+          name: HomePageWithDrawerController.id,
+          page: () => HomePageWithDrawer(),
         ),
         GetPage(
           name: DialogPage.id,
@@ -72,8 +94,44 @@ class WeareHouseManegmentSystem extends StatelessWidget {
           page: () => const ChangePasswordPage(),
         ),
         GetPage(
-          name: UpdateUserDetailsController.id,
-          page: () => UpdateUserDetailsPage(),
+          name: ShipmentsPageController.id,
+          page: () => ShipmentsPage(),
+        ),
+        GetPage(
+          name: PutAwayPageController.id,
+          page: () => const PutAwayPage(),
+        ),
+        GetPage(
+          name: OrdersPageController.id,
+          page: () => const OrdersPage(),
+        ),
+        GetPage(
+          name: TransferPageController.id,
+          page: () => const TransferPage(),
+        ),
+        GetPage(
+          name: StocktakingPageController.id,
+          page: () => const StocktakingPage(),
+        ),
+        GetPage(
+          name: InventoryScanPageController.id,
+          page: () => const InventoryScanPage(),
+        ),
+        GetPage(
+          name: SupplierShipmentPagController.id,
+          page: () => const SupplierShipmentPag(),
+        ),
+        GetPage(
+          name: SlideMenuController.id,
+          page: () => const SlideMenuPage(),
+        ),
+        GetPage(
+          name: HomePageWithDrawerController.id,
+          page: () => HomePageWithDrawer(),
+        ),
+        GetPage(
+          name: HomePageController.id,
+          page: () => HomePage(),
         ),
       ],
       initialRoute: WelcomePageController.id,

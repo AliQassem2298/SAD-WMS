@@ -1,10 +1,10 @@
 // ignore_for_file: missing_required_param
 
 import 'package:warehouse_manegment_system/model/helper/api.dart';
-import 'package:warehouse_manegment_system/model/models/sign_up_model.dart';
+import 'package:warehouse_manegment_system/model/models/sign_in_model.dart';
 
 class SignUpService {
-  Future<SignUpModel> signUp({
+  Future<SignInModel> signUp({
     required String firstName,
     required String lastName,
     required String userName,
@@ -23,6 +23,6 @@ class SignUpService {
       "confirm_password": confirmPassword,
       "role": role,
     });
-    return SignUpModel.fromJson(data);
+    return SignInModel.fromJson(data);
   }
 }

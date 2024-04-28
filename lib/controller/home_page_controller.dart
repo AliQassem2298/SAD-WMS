@@ -1,32 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:warehouse_manegment_system/model/models/details_model.dart';
-import 'package:warehouse_manegment_system/model/services/log_out_service.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class HomePageController extends GetxController {
-  static String id = '/homePage';
-
-  bool isLoading = false;
-
-  void loadingIndecatorFalse() {
-    isLoading = false;
-    update();
-  }
-
-  void loadingIndecatorTrue() {
-    isLoading = true;
-    update();
-  }
-
-  void showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-      ),
-    );
-  }
-
-  Future<DetailsModel> logOut() {
-    return LogoutService().logOut();
-  }
+  static String id = '/HomePage';
 }

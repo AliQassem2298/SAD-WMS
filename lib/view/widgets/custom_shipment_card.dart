@@ -1,27 +1,24 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class CustomCard extends StatelessWidget {
-  CustomCard({
-    required this.text,
-    required this.image,
-    required this.routname,
+class CustomShipmentCard extends StatelessWidget {
+  CustomShipmentCard({
+    required this.supplierName,
+    required this.status,
     super.key,
   });
-  String text, image, routname;
+  String supplierName, status;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Get.toNamed(routname);
-      },
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Stack(
         children: [
           Container(
-            height: 175,
-            width: 175,
+            padding: EdgeInsets.all(25),
+            height: 125,
+            width: double.infinity,
             decoration: BoxDecoration(
               // border: Border.all(),
               // boxShadow: [],
@@ -29,7 +26,7 @@ class CustomCard extends StatelessWidget {
               color: Color(0xff9b9ca3),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Icon(
@@ -37,22 +34,25 @@ class CustomCard extends StatelessWidget {
                 //   color: Colors.white,
                 //   size: 110,
                 // ),
-                Image.asset(
-                  image,
-                  height: 110,
-                  width: 110,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Text(
-                    text,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                Text(
+                  'Shipment from (${supplierName})',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
-                )
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  'Status :${status}',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
           ),
@@ -60,8 +60,8 @@ class CustomCard extends StatelessWidget {
             padding: const EdgeInsets.only(),
             child: Container(
               // child:
-              height: 125,
-              width: 175,
+              height: 75,
+              width: double.infinity,
               decoration: BoxDecoration(
                 // border: Border.all(),
                 // boxShadow: [],

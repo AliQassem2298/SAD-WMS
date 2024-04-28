@@ -25,6 +25,7 @@ import 'package:warehouse_manegment_system/main.dart';
 import 'package:warehouse_manegment_system/model/models/user_model.dart';
 import 'package:warehouse_manegment_system/model/services/get_user_details__by_token_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
+import 'package:warehouse_manegment_system/view/widgets/custom_dialog.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -188,6 +189,28 @@ class ProfilePage extends StatelessWidget {
                                       ChangePasswordPageController.id,
                                     );
                                   },
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  right: 200,
+                                ),
+                                child: CustomButton(
+                                  hasBorder: true,
+
+                                  onPressed: () {
+                                    //   controller.loadingIndecatorTrue();
+
+                                    //   controller.loadingIndecatorFalse();
+                                    Get.to(
+                                      () => MyDialog(
+                                        dialogTitle: 'Delete Account',
+                                        hintText: 'Enter your password',
+                                      ),
+                                    );
+                                  },
+                                  text: 'Delete Account',
+                                  textColor: Colors.red, // hasBorder: true,
                                 ),
                               ),
                               const SizedBox(height: 25),
