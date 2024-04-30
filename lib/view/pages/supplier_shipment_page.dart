@@ -1,77 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:warehouse_manegment_system/constans.dart';
+import 'package:warehouse_manegment_system/controller/supplier_shipment_page_controller.dart';
+import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
+import 'package:warehouse_manegment_system/view/widgets/custom_supplier_card.dart';
 
 class SupplierShipmentPag extends StatelessWidget {
   const SupplierShipmentPag({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Supplier\'s Shipment'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: InkWell(
-          onTap: () {
-            // Get.toNamed(routname);
-          },
-          child: Stack(
-            children: [
-              Container(
-                height: 175,
-                width: 175,
-                decoration: BoxDecoration(
-                  // border: Border.all(),
-                  // boxShadow: [],
-                  borderRadius: BorderRadius.circular(35),
-                  color: Color(0xff9b9ca3),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Icon(
-                    //   Icons.local_shipping,
-                    //   color: Colors.white,
-                    //   size: 110,
-                    // ),
-                    Image.asset(
-                      'assets/nwms.png',
-                      height: 110,
-                      width: 110,
-                    ),
-                    Text(
-                      'text',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
-                ),
+    return GetBuilder<SupplierShipmentPagController>(
+      init: SupplierShipmentPagController(),
+      builder: (controller) {
+        return Scaffold(
+          backgroundColor: Color(0xFFB0BEC5),
+          appBar: AppBar(
+            iconTheme: IconThemeData(color: Colors.white),
+            title: Text(
+              'Supplier\'s Shipment',
+              style: TextStyle(
+                color: Colors.white,
               ),
-              Padding(
-                padding: const EdgeInsets.only(),
+            ),
+            centerTitle: true,
+            backgroundColor: kSecondtColor,
+          ),
+          body: Stack(
+            children: [
+              GridView.builder(
+                itemBuilder: (context, index) {
+                  return CustomSupplierCard();
+                },
+                padding: EdgeInsets.symmetric(horizontal: 8),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 15,
+                  crossAxisSpacing: 5,
+                  childAspectRatio: 5 / 6.5,
+                ),
+                // children: [
+                //   CustomSupplierCard(),
+                //   CustomSupplierCard(),
+                //   CustomSupplierCard()
+                // ],
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
                 child: Container(
-                  // child:
                   height: 125,
-                  width: 175,
+                  width: 400,
                   decoration: BoxDecoration(
-                    // border: Border.all(),
-                    // boxShadow: [],
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(35),
-                      topRight: Radius.circular(35),
-                    ),
-                    color: Colors.black,
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
+                    color: kBackGroundColor,
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 75, vertical: 33),
+                  child: CustomButton(
+                    hasBorder: true,
+                    borderColor: Colors.transparent,
+                    onPressed: () {},
+                    text: 'Scan',
+                    fontSize: 24,
+                    textColor: Colors.white,
+                    gradient: const LinearGradient(
                       colors: [
-                        const Color.fromARGB(130, 255, 255, 255),
-                        Colors.white38,
-                        Colors.white24,
-                        const Color.fromARGB(1, 255, 255, 255),
+                        kSecondtColor,
+                        kSecondtColor,
                       ],
                     ),
                   ),
@@ -79,8 +74,8 @@ class SupplierShipmentPag extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

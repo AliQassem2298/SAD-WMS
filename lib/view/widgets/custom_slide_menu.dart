@@ -1,39 +1,37 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class CustomSlideMenuTitle extends StatelessWidget {
-  const CustomSlideMenuTitle({
+  CustomSlideMenuTitle({
+    required this.icon,
+    required this.text,
+    required this.ontap,
     super.key,
   });
-
+  IconData icon;
+  String text;
+  VoidCallback ontap;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 24),
-          child: Divider(
-            color: Colors.white24,
-            height: 1,
+    return InkWell(
+      onTap: ontap,
+      child: ListTile(
+        leading: SizedBox(
+          height: 34,
+          width: 34,
+          child: Icon(
+            icon,
+            color: Colors.white,
           ),
         ),
-        ListTile(
-          leading: SizedBox(
-            height: 34,
-            width: 34,
-            child: Icon(
-              CupertinoIcons.profile_circled,
-              color: Colors.white,
-            ),
-          ),
-          title: Text(
-            'profile',
-            style: TextStyle(
-              color: Colors.white,
-            ),
+        title: Text(
+          text,
+          style: TextStyle(
+            color: Colors.white,
           ),
         ),
-      ],
+      ),
     );
   }
 }

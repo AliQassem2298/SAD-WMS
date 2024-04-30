@@ -29,6 +29,9 @@ class UserModel {
     // usernameM = jsonData['username'];
     // emailM = jsonData['email'];
     sharedPreferences!.setString("role", jsonData['role']);
+    sharedPreferences!.setString("firstName", jsonData['first_name']);
+    sharedPreferences!.setString("lastName", jsonData['last_name']);
+    sharedPreferences!.setString("email", jsonData['email']);
     return UserModel(
       id: jsonData['id'],
       firstName: jsonData['first_name'],

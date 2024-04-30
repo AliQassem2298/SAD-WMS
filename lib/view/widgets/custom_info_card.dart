@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class CustomInfoCard extends StatelessWidget {
   CustomInfoCard({
-    required this.name,
+    required this.lastName,
+    required this.firstName,
     required this.email,
     super.key,
   });
-  String name, email;
+  String lastName, firstName, email;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -19,9 +20,18 @@ class CustomInfoCard extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      title: Text(
-        name,
-        style: TextStyle(color: Colors.white),
+      title: Row(
+        children: [
+          Text(
+            firstName,
+            style: TextStyle(color: Colors.white),
+          ),
+          SizedBox(width: 3),
+          Text(
+            lastName,
+            style: TextStyle(color: Colors.white),
+          ),
+        ],
       ),
       subtitle: Text(
         email,

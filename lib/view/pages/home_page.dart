@@ -223,11 +223,25 @@ class HomePage extends StatelessWidget {
       //   )
       // ],
       appBar: AppBar(
+        backgroundColor: Color(0xFFB0BEC5),
+
         automaticallyImplyLeading:
             false, // // backgroundColor: Color(0xffd9dadb),
         // title: Text('Warehouse management system'),
-        title: Text('WMS'),
-        centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 27),
+            child: Text(
+              'WMS',
+              style: TextStyle(
+                color: Color(0xFF607D8B),
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+        // centerTitle: true,
 
         // leading: Builder(
         //   builder: (context) {
@@ -243,6 +257,7 @@ class HomePage extends StatelessWidget {
         // ),
         // automaticallyImplyLeading: false,
       ),
+      backgroundColor: Color(0xFFB0BEC5),
       body: sharedPreferences!.getString("role") == "staff"
           ? GridView(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

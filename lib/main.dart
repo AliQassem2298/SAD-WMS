@@ -11,7 +11,7 @@ import 'package:warehouse_manegment_system/controller/put_away_page_controller.d
 import 'package:warehouse_manegment_system/controller/shipments_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/sign_in_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/sign_up_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/slide_menu_controller.dart';
+import 'package:warehouse_manegment_system/controller/drawer_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/stocktaking_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/supplier_shipment_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/transfer_page_controller.dart';
@@ -36,7 +36,7 @@ import 'package:warehouse_manegment_system/view/pages/transfer_page.dart';
 import 'package:warehouse_manegment_system/view/pages/update_user_details_page.dart';
 import 'package:warehouse_manegment_system/view/pages/welcom_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:warehouse_manegment_system/view/pages/slide_menu_page.dart';
+import 'package:warehouse_manegment_system/view/pages/drawer_page.dart';
 
 SharedPreferences? sharedPreferences;
 
@@ -122,8 +122,8 @@ class WeareHouseManegmentSystem extends StatelessWidget {
           page: () => const SupplierShipmentPag(),
         ),
         GetPage(
-          name: SlideMenuController.id,
-          page: () => const SlideMenuPage(),
+          name: DrawerPageController.id,
+          page: () => const DrawerPage(),
         ),
         GetPage(
           name: HomePageWithDrawerController.id,

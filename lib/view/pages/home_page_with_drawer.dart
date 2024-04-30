@@ -19,7 +19,7 @@ import 'package:warehouse_manegment_system/constans.dart';
 // import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
 import 'package:warehouse_manegment_system/main.dart';
 import 'package:warehouse_manegment_system/view/pages/home_page.dart';
-import 'package:warehouse_manegment_system/view/pages/slide_menu_page.dart';
+import 'package:warehouse_manegment_system/view/pages/drawer_page.dart';
 // import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 // import 'package:warehouse_manegment_system/view/widgets/custom_card.dart';
 // import 'package:warehouse_manegment_system/view/widgets/custom_dialog.dart';
@@ -74,7 +74,7 @@ class _HomePageWithDrawerState extends State<HomePageWithDrawer>
     print(sharedPreferences!.getString("token"));
 
     return Scaffold(
-      backgroundColor: kSecondtColor,
+      backgroundColor: kFirstColor,
       body: Stack(
         children: [
           AnimatedPositioned(
@@ -83,7 +83,7 @@ class _HomePageWithDrawerState extends State<HomePageWithDrawer>
             width: 288,
             left: isSideMenuClose ? -288 : 0,
             height: MediaQuery.of(context).size.height,
-            child: SlideMenuPage(),
+            child: DrawerPage(),
           ),
           Transform(
             alignment: Alignment.center,
@@ -99,7 +99,7 @@ class _HomePageWithDrawerState extends State<HomePageWithDrawer>
                 scale: scaleAnimation.value,
                 child: ClipRRect(
                   borderRadius: BorderRadius.all(
-                    Radius.circular(24),
+                    Radius.circular(isDrawerClose ? 0 : 24),
                   ),
                   child: HomePage(),
                 ),

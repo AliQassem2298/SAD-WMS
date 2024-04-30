@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/model/models/details_model.dart';
 import 'package:warehouse_manegment_system/model/services/log_out_service.dart';
 
-class SlideMenuController extends GetxController {
+class DrawerPageController extends GetxController {
   static String id = '/SlideMenu';
   bool isLoading = false;
 

@@ -13,10 +13,11 @@ class CustomButton extends StatelessWidget {
   final String? routeName;
   final Gradient? gradient;
   final VoidCallback? onPressed;
-
+  final double? fontSize;
   const CustomButton({
     Key? key,
     required this.text,
+    this.fontSize,
     this.hasBorder = true,
     this.borderColor = Colors.white,
     this.textColor = Colors.white,
@@ -63,7 +64,7 @@ class CustomButton extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              fontSize: 16,
+              fontSize: fontSize ?? 16,
               color: hasBorder ? textColor : Colors.black,
               fontWeight: FontWeight.bold,
             ),
