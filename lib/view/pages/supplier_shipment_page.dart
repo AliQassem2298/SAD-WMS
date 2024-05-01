@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
+import 'package:warehouse_manegment_system/controller/barcode_scan_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/supplier_shipment_page_controller.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_supplier_card.dart';
 
 class SupplierShipmentPag extends StatelessWidget {
-  const SupplierShipmentPag({super.key});
+  SupplierShipmentPag({super.key});
+  final BarcodeController barcodeController = Get.put(BarcodeController());
 
   @override
   Widget build(BuildContext context) {
@@ -56,20 +58,38 @@ class SupplierShipmentPag extends StatelessWidget {
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 75, vertical: 33),
-                  child: CustomButton(
-                    hasBorder: true,
-                    borderColor: Colors.transparent,
-                    onPressed: () {},
-                    text: 'Scan',
-                    fontSize: 24,
-                    textColor: Colors.white,
-                    gradient: const LinearGradient(
-                      colors: [
-                        kSecondtColor,
-                        kSecondtColor,
-                      ],
-                    ),
+                  child: Column(
+                    children: [
+                      CustomButton(
+                        hasBorder: true,
+                        borderColor: Colors.transparent,
+                        onPressed: () {
+                          barcodeController.scanBarcode();
+                        },
+                        text: 'Scan',
+                        fontSize: 24,
+                        textColor: Colors.white,
+                        gradient: const LinearGradient(
+                          colors: [
+                            kSecondtColor,
+                            kSecondtColor,
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
+                ),
+              ),
+              Positioned(
+                bottom: 75,
+                left: 0,
+                child: Obx(
+                  () {
+                    return Text(
+                      'Scan result: ${barcodeController.scannedBarcodes}\n',
+                      // style: const TextStyle(fontSize: 20),
+                    );
+                  },
                 ),
               ),
             ],

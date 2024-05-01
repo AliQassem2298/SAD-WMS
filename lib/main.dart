@@ -34,7 +34,7 @@ import 'package:warehouse_manegment_system/view/pages/stocktaking_page.dart';
 import 'package:warehouse_manegment_system/view/pages/supplier_shipment_page.dart';
 import 'package:warehouse_manegment_system/view/pages/transfer_page.dart';
 import 'package:warehouse_manegment_system/view/pages/update_user_details_page.dart';
-import 'package:warehouse_manegment_system/view/pages/welcom_page.dart';
+import 'package:warehouse_manegment_system/view/pages/welcome_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:warehouse_manegment_system/view/pages/drawer_page.dart';
 
@@ -119,7 +119,7 @@ class WeareHouseManegmentSystem extends StatelessWidget {
         ),
         GetPage(
           name: SupplierShipmentPagController.id,
-          page: () => const SupplierShipmentPag(),
+          page: () => SupplierShipmentPag(),
         ),
         GetPage(
           name: DrawerPageController.id,

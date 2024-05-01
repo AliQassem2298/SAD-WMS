@@ -197,7 +197,6 @@ class ProfilePage extends StatelessWidget {
                                 ),
                                 child: CustomButton(
                                   hasBorder: true,
-
                                   onPressed: () {
                                     //   controller.loadingIndecatorTrue();
 
@@ -210,7 +209,7 @@ class ProfilePage extends StatelessWidget {
                                     );
                                   },
                                   text: 'Delete Account',
-                                  textColor: Colors.red, // hasBorder: true,
+                                  textColor: kSecondtColor,
                                 ),
                               ),
                               const SizedBox(height: 25),

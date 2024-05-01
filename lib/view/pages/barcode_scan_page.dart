@@ -93,76 +93,47 @@
 //             })));
 //   }
 // }
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:get/get.dart';
 
-class MyApp extends StatelessWidget {
-  final BarcodeController barcodeController = Get.put(BarcodeController());
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Barcode scan')),
-        body: Container(
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ElevatedButton(
-                onPressed: () => barcodeController.scanBarcodeNormal(),
-                child: const Text('Start barcode scan'),
-              ),
-              ElevatedButton(
-                onPressed: () => barcodeController.scanQR(),
-                child: const Text('Start QR scan'),
-              ),
-              ElevatedButton(
-                onPressed: () => barcodeController.startBarcodeScanStream(),
-                child: const Text('Start barcode scan stream'),
-              ),
-              Obx(() => Text(
-                    'Scan result: ${barcodeController.scanBarcode.value}\n',
-                    style: const TextStyle(fontSize: 20),
-                  )),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
 
-class BarcodeController extends GetxController {
-  RxString scanBarcode = 'Unknown'.obs;
 
-  void startBarcodeScanStream() {
-    FlutterBarcodeScanner.getBarcodeStreamReceiver(
-            '#ff6666', 'Cancel', true, ScanMode.BARCODE)!
-        .listen((barcode) => print(barcode));
-  }
+//////////////after supprate 
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:warehouse_manegment_system/controller/barcode_scan_page_controller.dart';
+// import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 
-  Future<void> scanQR() async {
-    try {
-      String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.QR);
-      print(barcodeScanRes);
-      scanBarcode.value = barcodeScanRes;
-    } on PlatformException {
-      scanBarcode.value = 'Failed to get platform version.';
-    }
-  }
+// class MyApp extends StatelessWidget {
+//   final BarcodeController barcodeController = Get.put(BarcodeController());
 
-  Future<void> scanBarcodeNormal() async {
-    try {
-      String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
-      print(barcodeScanRes);
-      scanBarcode.value = barcodeScanRes;
-    } on PlatformException {
-      scanBarcode.value = 'Failed to get platform version.';
-    }
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Barcode scan'),
+//       ),
+//       body: Container(
+//         alignment: Alignment.center,
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             CustomButton(
+//               onPressed: () {
+//               },hasBorder: ,
+//               text: 'Start barcode scan',
+//             ),
+//             // ElevatedButton(
+//             //   onPressed: () => barcodeController.scanQR(),
+//             //   child: const Text('Start QR scan'),
+//             // ),
+//             // ElevatedButton(
+//             //   onPressed: () => barcodeController.startBarcodeScanStream(),
+//             //   child: const Text('Start barcode scan stream'),
+//             // ),
+          
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

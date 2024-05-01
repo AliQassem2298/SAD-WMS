@@ -38,6 +38,9 @@ class MyDialog extends StatelessWidget {
                 ),
               ),
               child: AlertDialog(
+                elevation: 50,
+                backgroundColor: Colors.transparent,
+                // backgroundColor: kCardBackGroundColor,
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -117,9 +120,10 @@ class MyDialog extends StatelessWidget {
                               );
                             } catch (e) {
                               print(e.toString());
-                              controller.showSnackBar(context, 'Invalid Pawword'
-                                  // e.toString(),
-                                  );
+                              controller.showSnackBar(
+                                context,
+                                e.toString(),
+                              );
                             }
                             controller.loadingIndecatorFalse();
                           }

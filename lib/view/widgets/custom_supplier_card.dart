@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 
 class CustomSupplierCard extends StatelessWidget {
@@ -30,6 +31,13 @@ class CustomSupplierCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  Icon(
+                    Icons.watch_later_outlined,
+                    size: 20,
+                  ).paddingOnly(
+                    bottom: 40,
+                    right: 130,
+                  ),
                   // Icon(
                   //   Icons.local_shipping,
                   //   color: Colors.white,
@@ -54,28 +62,12 @@ class CustomSupplierCard extends StatelessWidget {
                     ),
                   ),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'status: pending',
-                        style: TextStyle(
-                          color: kFirstColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Icon(
-                        Icons.watch_later_outlined,
-                        size: 20,
-                      )
-
-                      // Image.asset(
-                      //   'assets/clock icon.png',
-                      //   width: 20,
-                      //   height: 20,
-                      //   color: kFirstColor,
-                      // ),
-                    ],
+                  Text(
+                    'status: pending',
+                    style: TextStyle(
+                      color: kFirstColor,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   SizedBox(
                     height: 10,
