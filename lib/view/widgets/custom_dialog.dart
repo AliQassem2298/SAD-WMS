@@ -39,8 +39,8 @@ class MyDialog extends StatelessWidget {
               ),
               child: AlertDialog(
                 elevation: 50,
-                backgroundColor: Colors.transparent,
-                // backgroundColor: kCardBackGroundColor,
+                // backgroundColor: Colors.transparent,
+                backgroundColor: kCardBackGroundColor,
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -68,7 +68,9 @@ class MyDialog extends StatelessWidget {
                         },
                         hintText: 'Enter Your Password',
                         text: 'Password',
-                        icon: const Icon(Icons.remove_red_eye),
+                        icon: const Icon(
+                          Icons.remove_red_eye,
+                        ),
                         toggleVisibility: true,
                       ),
                       IconButton(
@@ -128,7 +130,9 @@ class MyDialog extends StatelessWidget {
                             controller.loadingIndecatorFalse();
                           }
                         },
-                        icon: Icon(Icons.done),
+                        icon: Icon(
+                          Icons.done,
+                        ),
                       ),
                     ],
                   ),

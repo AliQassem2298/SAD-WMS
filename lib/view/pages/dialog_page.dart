@@ -33,17 +33,17 @@ class DialogPage extends StatelessWidget {
         ),
         child: AlertDialog(
           elevation: 50,
-          backgroundColor: Colors.transparent,
+          backgroundColor: kCardBackGroundColor,
           title: Text(
             title,
             style: const TextStyle(
-              color: Colors.white,
+              color: kFirstColor,
             ),
           ),
           content: Text(
             content,
             style: const TextStyle(
-              color: Colors.white,
+              color: kFirstColor,
             ),
           ),
           actions: [
@@ -56,7 +56,7 @@ class DialogPage extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: Colors.white,
+                  color: kFirstColor,
                 ),
               ),
             ),
