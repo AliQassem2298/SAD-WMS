@@ -5,6 +5,7 @@ import 'package:warehouse_manegment_system/controller/forget_password_page_contr
 import 'package:warehouse_manegment_system/controller/home_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/home_page_with_drawer_controller.dart';
 import 'package:warehouse_manegment_system/controller/inventory_scan_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/onbordingcontroller.dart';
 import 'package:warehouse_manegment_system/controller/orders_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/profile_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/put_away_page_controller.dart';
@@ -18,12 +19,14 @@ import 'package:warehouse_manegment_system/controller/transfer_page_controller.d
 import 'package:warehouse_manegment_system/controller/update_user_details_controller.dart';
 import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
 import 'package:warehouse_manegment_system/middleware/auth_middleware.dart';
+import 'package:warehouse_manegment_system/view/pages/IntroPages/splash.dart';
 import 'package:warehouse_manegment_system/view/pages/change_password_page.dart';
 import 'package:warehouse_manegment_system/view/pages/dialog_page.dart';
 import 'package:warehouse_manegment_system/view/pages/forget_password_page.dart';
 import 'package:warehouse_manegment_system/view/pages/home_page.dart';
 import 'package:warehouse_manegment_system/view/pages/home_page_with_drawer.dart';
 import 'package:warehouse_manegment_system/view/pages/inventory_scan_page.dart';
+import 'package:warehouse_manegment_system/view/pages/on_bording_page.dart';
 import 'package:warehouse_manegment_system/view/pages/orders_page.dart';
 import 'package:warehouse_manegment_system/view/pages/profile_page.dart';
 import 'package:warehouse_manegment_system/view/pages/put_away_page.dart';
@@ -37,12 +40,16 @@ import 'package:warehouse_manegment_system/view/pages/update_user_details_page.d
 import 'package:warehouse_manegment_system/view/pages/welcome_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:warehouse_manegment_system/view/pages/drawer_page.dart';
+// import 'package:flutter_background_service/flutter_background_service.dart';
 
 SharedPreferences? sharedPreferences;
 
 void main() async {
+  // final service = FlutterBackgroundService();
+
   WidgetsFlutterBinding.ensureInitialized();
   sharedPreferences = await SharedPreferences.getInstance();
+
   runApp(const WeareHouseManegmentSystem());
 }
 
@@ -133,8 +140,19 @@ class WeareHouseManegmentSystem extends StatelessWidget {
           name: HomePageController.id,
           page: () => HomePage(),
         ),
+        GetPage(
+          name: SplashScreen.id,
+          page: () => SplashScreen(),
+        ),
+        GetPage(
+          name: '/',
+          page: () => OnBordingPage(),
+          middlewares: [
+            onBoradingMiddleWare(),
+          ],
+        ),
       ],
-      initialRoute: WelcomePageController.id,
+      initialRoute: SplashScreen.id,
     );
   }
 }

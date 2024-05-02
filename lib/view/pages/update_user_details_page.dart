@@ -138,7 +138,6 @@ class UpdateUserDetailsPage extends StatelessWidget {
                             CustomTextFromField(
                               onChanged: (value) {
                                 if (value.isEmpty) {
-                                  controller.lastName.text =
                                       controller.userModel!.lastName;
                                 }
                                 controller.lastName.text = value;
