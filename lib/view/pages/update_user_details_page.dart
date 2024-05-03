@@ -138,7 +138,7 @@ class UpdateUserDetailsPage extends StatelessWidget {
                             CustomTextFromField(
                               onChanged: (value) {
                                 if (value.isEmpty) {
-                                      controller.userModel!.lastName;
+                                  controller.userModel!.lastName;
                                 }
                                 controller.lastName.text = value;
                               },
@@ -221,6 +221,7 @@ class UpdateUserDetailsPage extends StatelessWidget {
                                         context,
                                         'User Info Updated successfully',
                                       );
+                                      Get.back();
                                     } catch (e) {
                                       print(e.toString());
                                       controller.showSnackBar(

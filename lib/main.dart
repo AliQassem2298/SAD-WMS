@@ -153,6 +153,7 @@ class WeareHouseManegmentSystem extends StatelessWidget {
         ),
       ],
       initialRoute: SplashScreen.id,
+      // initialRoute: WelcomePageController.id,
     );
   }
 }
