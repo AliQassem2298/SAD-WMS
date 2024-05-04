@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
-import 'package:warehouse_manegment_system/controller/barcode_scan_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/supplier_shipment_page_controller.dart';
+// import 'package:warehouse_manegment_system/controller/barcode_scan_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/customers_order_page_controller.dart';
+// import 'package:warehouse_manegment_system/controller/supplier_shipment_page_controller.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
-import 'package:warehouse_manegment_system/view/widgets/custom_supplier_card.dart';
+import 'package:warehouse_manegment_system/view/widgets/custom_customer_order_card.dart';
+// import 'package:warehouse_manegment_system/view/widgets/custom_supplier_card.dart';
 
-class SupplierShipmentPag extends StatelessWidget {
-  SupplierShipmentPag({super.key});
-  final BarcodeController barcodeController = Get.put(BarcodeController());
+class CustomerOrderPage extends StatelessWidget {
+  CustomerOrderPage({super.key});
+  // final BarcodeController barcodeController = Get.put(BarcodeController());
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SupplierShipmentPagController>(
-      init: SupplierShipmentPagController(),
+    return GetBuilder<CustomerOrderPageController>(
+      init: CustomerOrderPageController(),
       builder: (controller) {
         return Scaffold(
           backgroundColor: Color(0xFFB0BEC5),
           appBar: AppBar(
             iconTheme: IconThemeData(color: Colors.white),
             title: Text(
-              'Supplier\'s Shipment',
+              'Customer\'s Order',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -32,14 +34,15 @@ class SupplierShipmentPag extends StatelessWidget {
             children: [
               GridView.builder(
                 itemBuilder: (context, index) {
-                  return CustomSupplierCard().paddingOnly(left: 5, right: 5);
+                  return CustomCustomerOrderCard()
+                      .paddingOnly(left: 10, right: 10);
                 },
-                padding: EdgeInsets.symmetric(horizontal: 8),
+                // padding: EdgeInsets.symmetric(horizontal: 8),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  mainAxisSpacing: 0,
-                  crossAxisSpacing: 0,
-                  childAspectRatio: 5 / 6.5,
+                  // mainAxisSpacing: 0,
+                  // crossAxisSpacing: 0,
+                  childAspectRatio: 5 / 7.5,
                 ),
                 // children: [
                 //   CustomSupplierCard(),
@@ -64,9 +67,9 @@ class SupplierShipmentPag extends StatelessWidget {
                         hasBorder: true,
                         borderColor: Colors.transparent,
                         onPressed: () {
-                          barcodeController.scanBarcode();
+                          // barcodeController.scanBarcode();
                         },
-                        text: 'Scan',
+                        text: 'Pack',
                         fontSize: 24,
                         textColor: Colors.white,
                         gradient: const LinearGradient(
@@ -80,18 +83,18 @@ class SupplierShipmentPag extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                bottom: 60,
-                left: 0,
-                child: Obx(
-                  () {
-                    return Text(
-                      'Scan result: ${barcodeController.scannedBarcodes}\n',
-                      // style: const TextStyle(fontSize: 20),
-                    );
-                  },
-                ),
-              ),
+              // Positioned(
+              //   bottom: 75,
+              //   left: 0,
+              //   child: Obx(
+              //     () {
+              //       return Text(
+              //         'Scan result: ${barcodeController.scannedBarcodes}\n',
+              //         // style: const TextStyle(fontSize: 20),
+              //       );
+              //     },
+              //   ),
+              // ),
             ],
           ),
         );

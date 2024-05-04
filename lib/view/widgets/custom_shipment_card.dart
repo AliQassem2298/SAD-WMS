@@ -8,9 +8,13 @@ class CustomShipmentCard extends StatelessWidget {
     required this.supplierName,
     required this.status,
     required this.image,
+    this.showPriority = false,
+    this.praiority = '',
     super.key,
   });
   String supplierName, status, image;
+  String? praiority;
+  bool showPriority;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -82,6 +86,30 @@ class CustomShipmentCard extends StatelessWidget {
                 ),
               ),
             ),
+            if (showPriority)
+              Positioned(
+                right: 0,
+                child: Container(
+                  width: 100,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: kSecondtColor,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(35),
+                      topRight: Radius.circular(35),
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      praiority!,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+              )
           ],
         ),
       ),

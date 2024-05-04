@@ -170,8 +170,12 @@ class SignInPage extends StatelessWidget {
                                     print('succsess');
                                     controller.loadingIndecatorFalse();
                                     // print('token=$userToken');
-                                    controller.showSnackBar(
-                                      context,
+                                    // controller.showSnackBar(
+                                    //   context,
+                                    //   'Sign in successful',
+                                    // );
+                                    Get.snackbar(
+                                      'Hi',
                                       'Sign in successful',
                                     );
                                     Get.toNamed(
@@ -179,10 +183,14 @@ class SignInPage extends StatelessWidget {
                                   } catch (e) {
                                     print(e.toString());
 
-                                    controller.showSnackBar(
-                                      context,
+                                    // controller.showSnackBar(
+                                    //   context,
+                                    //   e.toString(),
+                                    //   // 'Unable to log in with provided credentials.',
+                                    // );
+                                    Get.snackbar(
+                                      'Sorry',
                                       e.toString(),
-                                      // 'Unable to log in with provided credentials.',
                                     );
                                   }
                                   controller.loadingIndecatorFalse();

@@ -1,25 +1,34 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 
-class CustomSupplierCard extends StatelessWidget {
-  const CustomSupplierCard({
+class CustomOrdersCard extends StatelessWidget {
+  CustomOrdersCard({
+    required this.customerName,
+    required this.status,
+    required this.image,
+    required this.totalPrice,
+    this.praiority,
     super.key,
   });
-
+  String customerName, status, image, totalPrice;
+  String? praiority;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(top: 75),
-      child: InkWell(
-        onTap: () {},
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Padding(
+        padding: const EdgeInsets.only(
+          left: 16,
+        ),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
             Container(
-              padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-              height: 190,
-              width: 180,
+              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 25),
+              height: 150,
+              width: double.infinity,
               decoration: BoxDecoration(
                 color: kCardBackGroundColor,
                 // border: Border.all(),
@@ -28,75 +37,53 @@ class CustomSupplierCard extends StatelessWidget {
                 // color: Color(0xff9b9ca3),
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Image.asset('assets/clock icon.png').paddingOnly(
-                  //   bottom: 40,
-                  //   right: 130,
-                  // ),
                   // Icon(
                   //   Icons.local_shipping,
                   //   color: Colors.white,
                   //   size: 110,
                   // ),
-
                   Text(
-                    'name: cap',
-                    style: TextStyle(
-                      color: kFirstColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-
-                  Text(
-                    'quantity: 80',
+                    'Custome: (${customerName})',
                     style: TextStyle(
                       color: kFirstColor,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                    ),
-                  ),
-
-                  Text(
-                    'status: pending',
-                    style: TextStyle(
-                      color: kFirstColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
                     ),
                   ),
                   SizedBox(
                     height: 10,
                   ),
+                  Text(
+                    'Total Price :${totalPrice}',
+                    style: TextStyle(
+                      color: kFirstColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'Status :${status}',
+                    style: TextStyle(
+                      color: kFirstColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ],
               ),
             ),
             Positioned(
-              top: -50,
-              left: 40,
+              top: -20,
+              left: -20,
               child: Container(
-                height: 110,
-                width: 110,
-                decoration: BoxDecoration(
-                  // color: kSecondtColor,
-                  border: Border.all(color: kSecondtColor, width: 3),
-                  // boxShadow: [],
-                  borderRadius: BorderRadius.circular(100),
-                  color: Colors.white,
-                ),
-                child: Image.asset(
-                  'assets/nwms.png',
-                ),
-              ),
-            ),
-            Positioned(
-              top: 20,
-              left: 30,
-              child: Container(
-                height: 40,
-                width: 40,
+                height: 60,
+                width: 60,
                 decoration: BoxDecoration(
                   color: kSecondtColor,
                   // border: Border.all(),
@@ -105,7 +92,30 @@ class CustomSupplierCard extends StatelessWidget {
                   // color: Color(0xff9b9ca3),
                 ),
                 child: Image.asset(
-                  'assets/clock icon.png',
+                  image,
+                ),
+              ),
+            ),
+            Positioned(
+              right: 0,
+              child: Container(
+                width: 100,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: kSecondtColor,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(35),
+                    topRight: Radius.circular(35),
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    praiority!,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
                 ),
               ),
             ),

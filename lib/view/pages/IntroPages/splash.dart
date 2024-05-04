@@ -1,7 +1,8 @@
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:warehouse_manegment_system/controller/home_page_controller.dart';
+// import 'package:warehouse_manegment_system/controller/home_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/home_page_with_drawer_controller.dart';
 import 'package:warehouse_manegment_system/main.dart';
 import 'package:warehouse_manegment_system/view/pages/on_bording_page.dart';
 import 'package:warehouse_manegment_system/view/pages/welcome_page.dart';
@@ -22,10 +23,10 @@ class _SplashScreenState extends State<SplashScreen> {
       Duration(seconds: 5),
       () {
         if (sharedPreferences!.getBool('firstTimer') == false) {
-          if (sharedPreferences!.getString('access_token') == null)
+          if (sharedPreferences!.getString("token") == null)
             Get.offAll(() => WelcomePage());
           else {
-            Get.offAllNamed(HomePageController.id);
+            Get.offAllNamed(HomePageWithDrawerController.id);
           }
         } else {
           Get.offAll(() => OnBordingPage());

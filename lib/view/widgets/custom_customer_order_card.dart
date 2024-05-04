@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 
-class CustomSupplierCard extends StatelessWidget {
-  const CustomSupplierCard({
+class CustomCustomerOrderCard extends StatelessWidget {
+  const CustomCustomerOrderCard({
     super.key,
   });
 
@@ -18,7 +18,7 @@ class CustomSupplierCard extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-              height: 190,
+              height: 400,
               width: 180,
               decoration: BoxDecoration(
                 color: kCardBackGroundColor,
@@ -58,7 +58,14 @@ class CustomSupplierCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
+                  Text(
+                    r'price: 80$',
+                    style: TextStyle(
+                      color: kFirstColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   Text(
                     'status: pending',
                     style: TextStyle(
@@ -68,8 +75,12 @@ class CustomSupplierCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 35,
                   ),
+
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
                 ],
               ),
             ),
@@ -92,23 +103,52 @@ class CustomSupplierCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 20,
-              left: 30,
+              bottom: 0,
+              right: 0,
               child: Container(
-                height: 40,
-                width: 40,
+                height: 35,
+                width: 100,
                 decoration: BoxDecoration(
-                  color: kSecondtColor,
-                  // border: Border.all(),
+                  // color: kSecondtColor,
+                  border: Border.all(
+                    color: kSecondtColor,
+                  ),
                   // boxShadow: [],
-                  borderRadius: BorderRadius.circular(35),
-                  // color: Color(0xff9b9ca3),
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(35),
+                    topLeft: Radius.circular(35),
+                  ),
+                  color: kSecondtColor,
                 ),
-                child: Image.asset(
-                  'assets/clock icon.png',
+                child: Center(
+                  child: Text(
+                    'Pick',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
               ),
             ),
+            // Positioned(
+            //   top: 20,
+            //   left: 30,
+            //   child: Container(
+            //     height: 40,
+            //     width: 40,
+            //     decoration: BoxDecoration(
+            //       color: kSecondtColor,
+            //       // border: Border.all(),
+            //       // boxShadow: [],
+            //       borderRadius: BorderRadius.circular(35),
+            //       // color: Color(0xff9b9ca3),
+            //     ),
+            //     child: Image.asset(
+            //       'assets/clock icon.png',
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
