@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 
-class CustomCustomerOrderCard extends StatelessWidget {
-  const CustomCustomerOrderCard({
+class CustomPutAwayCard extends StatelessWidget {
+  const CustomPutAwayCard({
     super.key,
   });
 
@@ -17,7 +17,7 @@ class CustomCustomerOrderCard extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             Container(
-              padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+              padding: EdgeInsets.only(left: 10, right: 10, bottom: 15),
               height: 400,
               width: 180,
               decoration: BoxDecoration(
@@ -59,21 +59,21 @@ class CustomCustomerOrderCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    r'price: 80$',
+                    'location: asd',
                     style: TextStyle(
                       color: kFirstColor,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    'status: pending',
-                    style: TextStyle(
-                      color: kFirstColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
+                  // Text(
+                  //   'status: pending',
+                  //   style: TextStyle(
+                  //     color: kFirstColor,
+                  //     fontWeight: FontWeight.bold,
+                  //     fontSize: 18,
+                  //   ),
+                  // ),
                   SizedBox(
                     height: 35,
                   ),
@@ -122,7 +122,7 @@ class CustomCustomerOrderCard extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'Pick',
+                    'Scan',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -131,24 +131,24 @@ class CustomCustomerOrderCard extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned(
-              top: 20,
-              left: 30,
-              child: Container(
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(
-                  color: kSecondtColor,
-                  // border: Border.all(),
-                  // boxShadow: [],
-                  borderRadius: BorderRadius.circular(35),
-                  // color: Color(0xff9b9ca3),
-                ),
-                child: Image.asset(
-                  'assets/clock icon.png',
-                ),
-              ),
-            ),
+            // Positioned(
+            //   top: 20,
+            //   left: 30,
+            //   child: Container(
+            //     height: 40,
+            //     width: 40,
+            //     decoration: BoxDecoration(
+            //       color: kSecondtColor,
+            //       // border: Border.all(),
+            //       // boxShadow: [],
+            //       borderRadius: BorderRadius.circular(35),
+            //       // color: Color(0xff9b9ca3),
+            //     ),
+            //     child: Image.asset(
+            //       'assets/clock icon.png',
+            //     ),
+            //   ),
+            // ),
             // Positioned(
             //   top: 20,
             //   left: 30,
