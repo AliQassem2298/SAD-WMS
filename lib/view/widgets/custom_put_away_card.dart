@@ -122,7 +122,7 @@ class CustomPutAwayCard extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'Scan',
+                    'Put Away',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,

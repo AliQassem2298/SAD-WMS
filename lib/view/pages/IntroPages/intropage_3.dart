@@ -7,13 +7,16 @@ class IntroPage_3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: kBackGroundColor,
+        backgroundColor: kFirstColor,
         body: Column(
           children: [
+            SizedBox(
+              height: 20,
+            ),
             Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Color(0xffF2E7FE),
+                color: Colors.white,
               ),
               //alignment: Alignment.topCenter,
               child: Lottie.asset(
@@ -33,9 +36,7 @@ class IntroPage_3 extends StatelessWidget {
                   children: [
                     Text(
                       "we have an invintory scan,",
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(
@@ -43,9 +44,7 @@ class IntroPage_3 extends StatelessWidget {
                     ),
                     Text(
                       "put away, orders",
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(
@@ -53,9 +52,7 @@ class IntroPage_3 extends StatelessWidget {
                     ),
                     Text(
                       "from inventory tracking to order fulfillment.",
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                   ],

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/onbordingcontroller.dart';
 import 'package:warehouse_manegment_system/view/pages/IntroPages/intropage_1.dart';
 import 'package:warehouse_manegment_system/view/pages/IntroPages/intropage_2.dart';
@@ -37,7 +38,13 @@ class OnBordingPage extends StatelessWidget {
                 children: [
                   //SKIP
                   InkWell(
-                    child: Text("Skip"),
+                    child: Text(
+                      "Skip",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
                     onTap: () {
                       controller.jumpToPage(3);
                     },
@@ -51,7 +58,8 @@ class OnBordingPage extends StatelessWidget {
                     controller: controller,
                     count: 4,
                     effect: WormEffect(
-                      activeDotColor: Theme.of(context).primaryColor,
+                      dotColor: Colors.white,
+                      activeDotColor: kFifthColor,
                     ),
                   ),
                   SizedBox(
@@ -60,13 +68,25 @@ class OnBordingPage extends StatelessWidget {
                   //NEXT OR Get Sated
                   Getcontroller.isLast.value
                       ? GestureDetector(
-                          child: Text("Get Started"),
+                          child: Text(
+                            "Get Started",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
                           onTap: () async {
                             await Getcontroller.switchFirsTimer();
                           },
                         )
                       : GestureDetector(
-                          child: Text("Next"),
+                          child: Text(
+                            "Next",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
                           onTap: () {
                             controller.nextPage(
                               duration: Duration(milliseconds: 500),

@@ -89,7 +89,7 @@ class HomePageWithDrawer extends StatelessWidget {
                     child: InkWell(
                       onTap: () => controller.toggleDrawer(),
                       child: controller.isDrawerClose.value
-                          ? Image.asset('assets/nwms.png')
+                          ? Image.asset('assets/wms-logo-final.png')
                           : Icon(Icons.close),
                     ),
                   ),

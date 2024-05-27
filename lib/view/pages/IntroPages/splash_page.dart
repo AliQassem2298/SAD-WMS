@@ -1,26 +1,18 @@
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:warehouse_manegment_system/controller/home_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/home_page_with_drawer_controller.dart';
+import 'package:warehouse_manegment_system/controller/splash_page_controller.dart';
 import 'package:warehouse_manegment_system/main.dart';
 import 'package:warehouse_manegment_system/view/pages/on_bording_page.dart';
 import 'package:warehouse_manegment_system/view/pages/welcome_page.dart';
 
-class SplashScreen extends StatefulWidget {
-  static String id = '/SplashScreen';
-
-  const SplashScreen({Key? key}) : super(key: key);
+class SplashPage extends StatelessWidget {
+  final SplachPageController controller = Get.put(SplachPageController());
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
+  Widget build(BuildContext context) {
     Future.delayed(
-      Duration(seconds: 5),
+      Duration(seconds: 3),
       () {
         if (sharedPreferences!.getBool('firstTimer') == false) {
           if (sharedPreferences!.getString("token") == null)
@@ -33,21 +25,14 @@ class _SplashScreenState extends State<SplashScreen> {
         }
       },
     );
-    super.initState();
-  }
 
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
-          // child: Padding(
-          //   padding: const EdgeInsets.all(150.0),
-          child: Image(
-            image: AssetImage('assets/nwms.png'),
-          ),
+        child: Image.asset(
+          'assets/wms-logo-final.png',
+          height: 500,
+          width: 500,
         ),
-        // ),
       ),
     );
   }

@@ -17,7 +17,7 @@ class SignUpPageController extends GetxController {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
-  TextEditingController role = TextEditingController();
+  // TextEditingController role = TextEditingController();
 
   // String? fullName;
   // String? number;
@@ -59,7 +59,7 @@ class SignUpPageController extends GetxController {
   }
 
   Future<DetailsModel> signUp(SignUpPageController controller) {
-    print('role: ${controller.role.text}');
+    // print('role: ${controller.role.text}');
     return SignUpService().signUp(
       firstName: controller.firstName.text,
       lastName: controller.lastName.text,
@@ -67,7 +67,8 @@ class SignUpPageController extends GetxController {
       email: controller.email.text,
       password: controller.password.text,
       confirmPassword: controller.confirmPassword.text,
-      role: controller.role.text,
+      // role: controller.role.text
+      role: 'customer',
     );
   }
 }

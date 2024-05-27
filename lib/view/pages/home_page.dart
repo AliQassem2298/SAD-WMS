@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/inventory_scan_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/orders_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/put_away_page_controller.dart';
@@ -223,7 +224,7 @@ class HomePage extends StatelessWidget {
       //   )
       // ],
       appBar: AppBar(
-        backgroundColor: Color(0xFFB0BEC5),
+        backgroundColor: kFirstColor,
 
         automaticallyImplyLeading:
             false, // // backgroundColor: Color(0xffd9dadb),
@@ -234,7 +235,7 @@ class HomePage extends StatelessWidget {
             child: Text(
               'WMS',
               style: TextStyle(
-                color: Color(0xFF607D8B),
+                color: Colors.white,
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
               ),
@@ -257,7 +258,7 @@ class HomePage extends StatelessWidget {
         // ),
         // automaticallyImplyLeading: false,
       ),
-      backgroundColor: Color(0xFFB0BEC5),
+      backgroundColor: kFirstColor,
       body: sharedPreferences!.getString("role") == "staff"
           ? GridView(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -280,7 +281,7 @@ class HomePage extends StatelessWidget {
                 ),
                 CustomCard(
                   routname: PutAwayPageController.id,
-                  image: 'assets/Put Away.png',
+                  image: 'assets/put-away.png',
                   text: "Put Away",
                 ),
                 CustomCard(
@@ -289,19 +290,29 @@ class HomePage extends StatelessWidget {
                   text: "Orders",
                 ),
                 CustomCard(
+                  routname: PutAwayPageController.id,
+                  image: 'assets/delivery.png',
+                  text: "Delivery",
+                ),
+                CustomCard(
                   routname: TransferPageController.id,
                   image: 'assets/Transfer.png',
                   text: "Transfer",
                 ),
                 CustomCard(
                   routname: StocktakingPageController.id,
-                  image: 'assets/Stocktaking.png',
-                  text: "Stocktaking",
+                  image: 'assets/cycle-count.png',
+                  text: "Cycle Count",
                 ),
                 CustomCard(
                   routname: InventoryScanPageController.id,
-                  image: 'assets/Inventory Scan.png',
-                  text: "Inventory Scan",
+                  image: 'assets/replenishment.png',
+                  text: "Replenishment",
+                ),
+                CustomCard(
+                  routname: InventoryScanPageController.id,
+                  image: 'assets/scanner.png',
+                  text: "Barcode Scanner",
                 ),
               ],
             )
@@ -314,7 +325,7 @@ class HomePage extends StatelessWidget {
                 )
               : Center(
                   child: Text(
-                    'Welcome Geust',
+                    'Welcome Guest',
                     style: TextStyle(fontSize: 25),
                   ),
                 ),

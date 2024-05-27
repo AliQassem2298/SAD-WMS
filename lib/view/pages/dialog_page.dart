@@ -37,13 +37,13 @@ class DialogPage extends StatelessWidget {
           title: Text(
             title,
             style: const TextStyle(
-              color: kFirstColor,
+              color: kSecondtColor,
             ),
           ),
           content: Text(
             content,
             style: const TextStyle(
-              color: kFirstColor,
+              color: kSecondtColor,
             ),
           ),
           actions: [

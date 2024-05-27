@@ -26,6 +26,7 @@ import 'package:warehouse_manegment_system/model/models/user_model.dart';
 import 'package:warehouse_manegment_system/model/services/get_user_details__by_token_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_dialog.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -108,7 +109,7 @@ class ProfilePage extends StatelessWidget {
                           ? GetUserDetailsByTokenService()
                               .getUserDetailsByToken()
                           : Future.error(
-                              'You are gest 😒😅 \n you don\'t have an account',
+                              'You are guest 😒😅 \n you don\'t have an account',
                             ),
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
@@ -203,12 +204,12 @@ class ProfilePage extends StatelessWidget {
                                     //   controller.loadingIndecatorFalse();
                                     Get.to(
                                       () => MyDialog(
-                                        dialogTitle: 'Delete Account',
+                                        dialogTitle: 'Disable Account',
                                         hintText: 'Enter your password',
                                       ),
                                     );
                                   },
-                                  text: 'Delete Account',
+                                  text: 'Disable Account',
                                   textColor: kSecondtColor,
                                 ),
                               ),

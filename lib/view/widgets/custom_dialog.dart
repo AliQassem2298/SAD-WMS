@@ -7,7 +7,7 @@ import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/custom_dialog_controller.dart';
 import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
 import 'package:warehouse_manegment_system/main.dart';
-import 'package:warehouse_manegment_system/model/services/delete_account_service.dart';
+import 'package:warehouse_manegment_system/model/services/disable_account_service.dart';
 import 'package:warehouse_manegment_system/view/pages/dialog_page.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_text_from_field.dart';
 
@@ -44,7 +44,7 @@ class MyDialog extends StatelessWidget {
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(Icons.delete),
+                    Icon(Icons.disabled_visible),
                     // SizedBox(width: 8),
                     Text(dialogTitle ?? ''),
                   ],
@@ -104,7 +104,7 @@ class MyDialog extends StatelessWidget {
                             // }
 
                             try {
-                              await DeleteAccountService().deleteAccount(
+                              await DisableAccountService().disableAccount(
                                 password: controller.password.text,
                               );
                               sharedPreferences!.clear();
@@ -114,7 +114,7 @@ class MyDialog extends StatelessWidget {
 
                               Get.to(
                                 () => DialogPage(
-                                  title: 'Account Deleted',
+                                  title: 'Account Disabled',
                                   buttonText: 'Ok',
                                   content: 'Successfully',
                                   routeName: WelcomePageController.id,

@@ -66,7 +66,9 @@ class WelcomePage extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      Image.asset('assets/wms.png'),
+                      Image.asset(
+                        'assets/wms-white-new.png',
+                      ),
                       // Icon(Icons.house_outlined),
                       const Center(
                         child: Text(

@@ -15,6 +15,7 @@ import 'package:warehouse_manegment_system/controller/shipments_page_controller.
 import 'package:warehouse_manegment_system/controller/sign_in_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/sign_up_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/drawer_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/splash_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/stocktaking_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/supplier_shipment_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/transfer_page_controller.dart';
@@ -22,7 +23,7 @@ import 'package:warehouse_manegment_system/controller/update_user_details_contro
 import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
 import 'package:warehouse_manegment_system/middleware/auth_middleware.dart';
 import 'package:warehouse_manegment_system/middleware/onBoradingMiddleWare.dart';
-import 'package:warehouse_manegment_system/view/pages/IntroPages/splash.dart';
+import 'package:warehouse_manegment_system/view/pages/IntroPages/splash_page.dart';
 import 'package:warehouse_manegment_system/view/pages/change_password_page.dart';
 import 'package:warehouse_manegment_system/view/pages/customers_order_page.dart';
 import 'package:warehouse_manegment_system/view/pages/dialog_page.dart';
@@ -149,8 +150,8 @@ class WeareHouseManegmentSystem extends StatelessWidget {
           page: () => CustomerOrderPage(),
         ),
         GetPage(
-          name: SplashScreen.id,
-          page: () => SplashScreen(),
+          name: SplachPageController.id,
+          page: () => SplashPage(),
         ),
         GetPage(
           name: OnBordingController.id,
@@ -160,7 +161,7 @@ class WeareHouseManegmentSystem extends StatelessWidget {
           ],
         ),
       ],
-      initialRoute: SplashScreen.id,
+      initialRoute: SplachPageController.id,
       // initialRoute: WelcomePageController.id,
     );
   }

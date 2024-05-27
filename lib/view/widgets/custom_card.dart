@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 
 class CustomCard extends StatelessWidget {
   CustomCard({
@@ -20,13 +21,13 @@ class CustomCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           // border: Border.all(),
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(-3, -3),
-              color: Colors.white54,
-              blurRadius: 12,
-            ),
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //     offset: Offset(-3, -3),
+          //     color: Colors.red,
+          //     blurRadius: 12,
+          //   ),
+          // ],
           borderRadius: BorderRadius.circular(35),
         ),
         child: Stack(
@@ -44,7 +45,7 @@ class CustomCard extends StatelessWidget {
                   ),
                 ],
                 borderRadius: BorderRadius.circular(35),
-                color: Color(0xFFCFD8DC),
+                color: Colors.white,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,49 +58,49 @@ class CustomCard extends StatelessWidget {
                   // ),
                   Image.asset(
                     image,
-                    height: 110,
-                    width: 110,
+                    height: 135,
+                    width: 150,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: Text(
-                      text,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  Text(
+                    text,
+                    style: TextStyle(
+                      color: kSecondtColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
-                  )
+                  ),
+                  SizedBox(
+                    height: 7,
+                  ),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(),
-              child: Container(
-                // child:
-                height: 125,
-                width: 175,
-                decoration: BoxDecoration(
-                  // border: Border.all(),
-                  // boxShadow: [],
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(35),
-                    topRight: Radius.circular(35),
-                  ),
-                  // gradient: LinearGradient(
-                  //   begin: Alignment.topCenter,
-                  //   end: Alignment.bottomCenter,
-                  //   colors: [
-                  //     const Color.fromARGB(130, 255, 255, 255),
-                  //     Colors.white38,
-                  //     Colors.white24,
-                  //     const Color.fromARGB(1, 255, 255, 255),
-                  //   ],
-                  // ),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(),
+            //   child: Container(
+            //     // child:
+            //     height: 125,
+            //     width: 175,
+            //     decoration: BoxDecoration(
+            //       // border: Border.all(),
+            //       // boxShadow: [],
+            //       borderRadius: BorderRadius.only(
+            //         topLeft: Radius.circular(35),
+            //         topRight: Radius.circular(35),
+            //       ),
+            //       // gradient: LinearGradient(
+            //       //   begin: Alignment.topCenter,
+            //       //   end: Alignment.bottomCenter,
+            //       //   colors: [
+            //       //     const Color.fromARGB(130, 255, 255, 255),
+            //       //     Colors.white38,
+            //       //     Colors.white24,
+            //       //     const Color.fromARGB(1, 255, 255, 255),
+            //       //   ],
+            //       // ),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

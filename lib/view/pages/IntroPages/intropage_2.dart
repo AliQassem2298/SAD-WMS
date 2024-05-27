@@ -7,12 +7,17 @@ class IntroPage_2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: kBackGroundColor,
+        backgroundColor: kFirstColor,
         body: Column(
           children: [
+            SizedBox(
+              height: 20,
+            ),
             Container(
               decoration: BoxDecoration(
-                  shape: BoxShape.circle, color: Color(0xffecf5fc)),
+                shape: BoxShape.circle,
+                color: Colors.white,
+              ),
               child: Lottie.asset(
                 'assets/animations/Animation - 1714653397010.json',
                 width: MediaQuery.of(context).size.width * 0.8,
@@ -30,9 +35,7 @@ class IntroPage_2 extends StatelessWidget {
                   children: [
                     Text(
                       "With our WMS,",
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(
@@ -40,9 +43,7 @@ class IntroPage_2 extends StatelessWidget {
                     ),
                     Text(
                       "you'll experience streamlined processes,",
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(
@@ -50,9 +51,7 @@ class IntroPage_2 extends StatelessWidget {
                     ),
                     Text(
                       " accurate inventory management.",
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                   ],

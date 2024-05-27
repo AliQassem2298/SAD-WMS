@@ -24,7 +24,7 @@ class DrawerPage extends StatelessWidget {
 
         return Scaffold(
           body: Container(
-            color: kFirstColor,
+            color: kSecondtColor,
             width: 300,
             height: double.infinity,
             child: SafeArea(
@@ -33,18 +33,24 @@ class DrawerPage extends StatelessWidget {
                   SizedBox(
                     height: 40,
                   ),
-                  CustomInfoCard(
-                    firstName: sharedPreferences!.getString("firstName") ?? '',
-                    lastName: sharedPreferences!.getString("lastName") ?? '',
-                    email: sharedPreferences!.getString("email") ?? '',
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 24),
-                    child: Divider(
-                      color: Colors.white24,
-                      height: 1,
-                    ),
-                  ),
+                  sharedPreferences!.getString("token") != null
+                      ? CustomInfoCard(
+                          firstName:
+                              sharedPreferences!.getString("firstName") ?? '',
+                          lastName:
+                              sharedPreferences!.getString("lastName") ?? '',
+                          email: sharedPreferences!.getString("email") ?? '',
+                        )
+                      : Container(),
+                  sharedPreferences!.getString("token") != null
+                      ? Padding(
+                          padding: const EdgeInsets.only(left: 24),
+                          child: Divider(
+                            color: Colors.white24,
+                            height: 1,
+                          ),
+                        )
+                      : Container(),
                   CustomSlideMenuTitle(
                     icon: Icons.person,
                     text: 'profile',
@@ -83,13 +89,24 @@ class DrawerPage extends StatelessWidget {
                             controller.loadingIndecatorFalse();
                           },
                         )
-                      : IconButton(
-                          onPressed: () {
+                      : CustomSlideMenuTitle(
+                          icon: Icons.backspace_outlined,
+                          ontap: () {
                             Get.offAllNamed(WelcomePageController.id);
                             sharedPreferences!.clear();
                           },
-                          icon: const Icon(Icons.backspace_outlined),
+                          text: 'Back',
                         ),
+                  //  IconButton(
+                  //     onPressed: () {
+                  //       Get.offAllNamed(WelcomePageController.id);
+                  //       sharedPreferences!.clear();
+                  //     },
+                  //     icon: const Icon(
+                  //       Icons.backspace_outlined,
+                  //       color: Colors.white,
+                  //     ),
+                  //   ),
                   IconButton(
                     onPressed: () {
                       sharedPreferences!.clear();

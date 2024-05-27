@@ -7,9 +7,12 @@ class IntroPage_4 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: kBackGroundColor,
+        backgroundColor: kFirstColor,
         body: Column(
           children: [
+            SizedBox(
+              height: 20,
+            ),
             // SizedBox(height: 35,),
             ClipOval(
               clipBehavior: Clip.antiAlias,
@@ -40,9 +43,7 @@ class IntroPage_4 extends StatelessWidget {
                   children: [
                     Text(
                       "This is just the start",
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(
@@ -50,9 +51,7 @@ class IntroPage_4 extends StatelessWidget {
                     ),
                     Text(
                       "explore the app, find many more features",
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(
@@ -60,9 +59,7 @@ class IntroPage_4 extends StatelessWidget {
                     ),
                     Text(
                       "that will make your experience much better",
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                   ],

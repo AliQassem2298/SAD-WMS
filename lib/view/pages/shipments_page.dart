@@ -14,12 +14,12 @@ class ShipmentsPage extends StatelessWidget {
       init: ShipmentsPageController(),
       builder: (controller) {
         return Scaffold(
-          backgroundColor: Color(0xFFB0BEC5),
+          backgroundColor: Colors.white,
           appBar: AppBar(
             iconTheme: IconThemeData(
               color: Colors.white,
             ),
-            backgroundColor: kSecondtColor,
+            backgroundColor: kFirstColor,
             title: Text(
               'Shipments Page',
               style: TextStyle(
@@ -51,19 +51,19 @@ class ShipmentsPage extends StatelessWidget {
                 SizedBox(
                   height: 25,
                 ),
-                InkWell(
-                  onTap: () {
-                    Get.toNamed(SupplierShipmentPagController.id);
-                  },
-                  child: CustomShipmentCard(
-                    supplierName: 'Ali',
-                    status: 'pending',
-                    image: 'assets/box icon.png',
-                  ),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
+                // InkWell(
+                //   onTap: () {
+                //     Get.toNamed(SupplierShipmentPagController.id);
+                //   },
+                //   child: CustomShipmentCard(
+                //     supplierName: 'Ali',
+                //     status: 'pending',
+                //     image: 'assets/box icon.png',
+                //   ),
+                // ),
+                // SizedBox(
+                //   height: 25,
+                // ),
                 InkWell(
                   onTap: () {
                     Get.toNamed(SupplierShipmentPagController.id);

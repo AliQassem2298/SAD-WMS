@@ -106,7 +106,7 @@ class SignInPage extends StatelessWidget {
                             textEditingController: controller.email,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'filed is empty';
+                                return 'field is empty';
                               }
 
                               return null;
@@ -122,7 +122,10 @@ class SignInPage extends StatelessWidget {
                             textEditingController: controller.password,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'filed is empty';
+                                return 'field is empty';
+                              }
+                              if (value.length < 7) {
+                                return 'password is too short';
                               }
                               return null;
                             },
@@ -139,7 +142,8 @@ class SignInPage extends StatelessWidget {
                                 InkWell(
                                   onTap: () {
                                     Get.toNamed(
-                                        ForgetPasswordPageController.id);
+                                      ForgetPasswordPageController.id,
+                                    );
                                   },
                                   child: const Text(
                                     'Forget Password?',
@@ -177,6 +181,7 @@ class SignInPage extends StatelessWidget {
                                     Get.snackbar(
                                       'Hi',
                                       'Sign in successful',
+                                      // colorText: Colors.white,
                                     );
                                     Get.toNamed(
                                         HomePageWithDrawerController.id);
@@ -191,6 +196,7 @@ class SignInPage extends StatelessWidget {
                                     Get.snackbar(
                                       'Sorry',
                                       e.toString(),
+                                      colorText: Colors.white,
                                     );
                                   }
                                   controller.loadingIndecatorFalse();

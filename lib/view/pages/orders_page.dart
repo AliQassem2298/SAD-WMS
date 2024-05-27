@@ -64,7 +64,7 @@ class OrdersPage extends StatelessWidget {
                   },
                   child: CustomOrdersCard(
                     customerName: 'Ali',
-                    status: 'pending',
+                    status: 'Packed',
                     image: 'assets/box icon.png',
                     praiority: 'High',
                     totalPrice: r'20$',
@@ -81,7 +81,7 @@ class OrdersPage extends StatelessWidget {
                   },
                   child: CustomOrdersCard(
                     customerName: 'Ali',
-                    status: 'pending',
+                    status: 'Delivered',
                     image: 'assets/true icon.png',
                     praiority: 'Low',
                     totalPrice: r'20$',

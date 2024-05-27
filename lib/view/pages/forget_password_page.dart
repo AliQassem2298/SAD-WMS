@@ -35,15 +35,6 @@ class ForgetPasswordPage extends StatelessWidget {
               ),
               child: Stack(
                 children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.centerRight,
-                        end: Alignment.centerLeft,
-                        colors: [],
-                      ),
-                    ),
-                  ),
                   Padding(
                     padding:
                         const EdgeInsets.only(left: 25, top: 50, right: 25),
@@ -108,7 +99,7 @@ class ForgetPasswordPage extends StatelessWidget {
                               textEditingController: controller.email,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'filed is empty';
+                                  return 'field is empty';
                                 }
                                 if (!value.isEmail) {
                                   return 'enter a valid email address';
@@ -184,7 +175,7 @@ class ForgetPasswordPage extends StatelessWidget {
                                 textEditingController: controller.code,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return 'filed is empty';
+                                    return 'field is empty';
                                   }
                                   return null;
                                 },
@@ -200,7 +191,10 @@ class ForgetPasswordPage extends StatelessWidget {
                                 textEditingController: controller.password,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return 'filed is empty';
+                                    return 'field is empty';
+                                  }
+                                  if (value.length < 7) {
+                                    return 'password is too short';
                                   }
                                   return null;
                                 },
@@ -218,11 +212,14 @@ class ForgetPasswordPage extends StatelessWidget {
                                     controller.confirmPassword,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return 'filed is empty';
+                                    return 'field is empty';
                                   }
                                   if (controller.password.value !=
                                       controller.confirmPassword.value) {
                                     return 'password didn\'t match';
+                                  }
+                                  if (value.length < 7) {
+                                    return 'password is too short';
                                   }
                                   return null;
                                 },

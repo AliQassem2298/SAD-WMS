@@ -9,7 +9,7 @@ import 'package:warehouse_manegment_system/controller/sign_up_page_controller.da
 import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
 import 'package:warehouse_manegment_system/view/pages/dialog_page.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
-import 'package:warehouse_manegment_system/view/widgets/custom_drop_list.dart';
+// import 'package:warehouse_manegment_system/view/widgets/custom_drop_list.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_text_from_field.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -104,7 +104,7 @@ class SignUpPage extends StatelessWidget {
                             textEditingController: controller.firstName,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'filed is empty';
+                                return 'field is empty';
                               }
                               return null;
                             },
@@ -119,7 +119,7 @@ class SignUpPage extends StatelessWidget {
                             textEditingController: controller.lastName,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'filed is empty';
+                                return 'field is empty';
                               }
 
                               return null;
@@ -136,7 +136,7 @@ class SignUpPage extends StatelessWidget {
                             textEditingController: controller.userName,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'filed is empty';
+                                return 'field is empty';
                               }
                               return null;
                             },
@@ -151,7 +151,7 @@ class SignUpPage extends StatelessWidget {
                             textEditingController: controller.email,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'filed is empty';
+                                return 'field is empty';
                               }
                               if (!value.isEmail) {
                                 return 'enter valid email address';
@@ -169,7 +169,10 @@ class SignUpPage extends StatelessWidget {
                             textEditingController: controller.password,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'filed is empty';
+                                return 'field is empty';
+                              }
+                              if (value.length < 7) {
+                                return 'password is too short';
                               }
                               return null;
                             },
@@ -185,11 +188,14 @@ class SignUpPage extends StatelessWidget {
                             textEditingController: controller.confirmPassword,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'filed is empty';
+                                return 'field is empty';
                               }
                               if (controller.password.value !=
                                   controller.confirmPassword.value) {
                                 return 'password didn\'t match';
+                              }
+                              if (value.length < 7) {
+                                return 'password is too short';
                               }
                               return null;
                             },
@@ -198,17 +204,17 @@ class SignUpPage extends StatelessWidget {
                             icon: const Icon(Icons.remove_red_eye),
                             toggleVisibility: true,
                           ),
-                          CustomDropList(
-                            textEditingController: controller.role,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please select an option';
-                              }
-                              return null;
-                            },
-                            option1: 'customer',
-                            option2: 'staff',
-                          ),
+                          // CustomDropList(
+                          //   textEditingController: controller.role,
+                          //   validator: (value) {
+                          //     if (value == null || value.isEmpty) {
+                          //       return 'Please select an option';
+                          //     }
+                          //     return null;
+                          //   },
+                          //   option1: 'customer',
+                          //   option2: 'staff',
+                          // ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 15,
