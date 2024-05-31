@@ -48,7 +48,7 @@ class ProfilePage extends StatelessWidget {
                       end: Alignment.centerLeft,
                       colors: [
                         kFirstColor,
-                        kSecondtColor,
+                        kFirstColor2,
                       ],
                     ),
                   ),
@@ -138,7 +138,7 @@ class ProfilePage extends StatelessWidget {
                               Text(
                                 'First Name: ${controller.userModel!.firstName}',
                                 style: const TextStyle(
-                                  color: kFirstColor,
+                                  color: kFirstColor2,
                                   fontSize: 18,
                                 ),
                               ),
@@ -146,7 +146,7 @@ class ProfilePage extends StatelessWidget {
                               Text(
                                 'Last Name: ${controller.userModel!.lastName}',
                                 style: const TextStyle(
-                                  color: kFirstColor,
+                                  color: kFirstColor2,
                                   fontSize: 18,
                                 ),
                               ),
@@ -154,7 +154,7 @@ class ProfilePage extends StatelessWidget {
                               Text(
                                 'username: ${controller.userModel!.username}',
                                 style: const TextStyle(
-                                  color: kFirstColor,
+                                  color: kFirstColor2,
                                   fontSize: 18,
                                 ),
                               ),
@@ -162,7 +162,7 @@ class ProfilePage extends StatelessWidget {
                               Text(
                                 'Email: ${controller.userModel!.email}',
                                 style: const TextStyle(
-                                  color: kFirstColor,
+                                  color: kFirstColor2,
                                   fontSize: 18,
                                 ),
                               ),
@@ -170,7 +170,7 @@ class ProfilePage extends StatelessWidget {
                               Text(
                                 'Role: ${controller.userModel!.role}',
                                 style: const TextStyle(
-                                  color: kFirstColor,
+                                  color: kFirstColor2,
                                   fontSize: 18,
                                 ),
                               ),
@@ -232,7 +232,7 @@ class ProfilePage extends StatelessWidget {
                                       // Color(0xff911C3A),
                                       // Color(0xffBB1636),
                                       kFirstColor,
-                                      kSecondtColor,
+                                      kFirstColor2,
                                     ],
                                   ),
                                   text: 'Update User Details',

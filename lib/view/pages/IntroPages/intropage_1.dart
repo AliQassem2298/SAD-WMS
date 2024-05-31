@@ -9,7 +9,7 @@ class IntroPage_1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: kThierdColor,
+        // backgroundColor: kThierdColor,
         body: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -18,8 +18,10 @@ class IntroPage_1 extends StatelessWidget {
               colors: [
                 // kFirstColor,
                 // kSecondtColor,
-                kFourthColor,
-                kThierdColor,
+                // kFourthColor,
+                // kThierdColor,
+                kFirstColor,
+                kFirstColor2,
               ],
             ),
           ),
@@ -32,11 +34,17 @@ class IntroPage_1 extends StatelessWidget {
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Color.fromARGB(255, 0, 4, 211),
-                        kFirstColor,
+                        // Color.fromARGB(255, 0, 4, 211),
+                        // kFirstColor,
+                        kWhiteColor,
+                        kWhiteColor,
+                        kWhiteColor,
+                        kWhiteColor,
+                        kWhiteColor,
+                        kFourthColor,
                       ],
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
                     ),
                     shape: BoxShape.circle,
                     boxShadow: [
@@ -54,7 +62,7 @@ class IntroPage_1 extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 85,
               ),
               Center(
                 child: Container(
@@ -64,8 +72,8 @@ class IntroPage_1 extends StatelessWidget {
                       Text(
                         "Welcome to our WMS!",
                         style: TextStyle(
-                          fontSize: 20,
-                          color: kSecondtColor,
+                          fontSize: 24,
+                          color: kWhiteColor,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -76,7 +84,7 @@ class IntroPage_1 extends StatelessWidget {
                         "Our app empowers efficient warehouse operations.",
                         style: TextStyle(
                           fontSize: 20,
-                          color: kSecondtColor,
+                          color: kWhiteColor,
                         ),
                         textAlign: TextAlign.center,
                       ),

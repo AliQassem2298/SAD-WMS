@@ -34,7 +34,7 @@ class HomePageWithDrawer extends StatelessWidget {
         print(sharedPreferences!.getString("token"));
 
         return Scaffold(
-          backgroundColor: kSecondtColor,
+          backgroundColor: kFirstColor2,
           body: Stack(
             children: [
               AnimatedPositioned(

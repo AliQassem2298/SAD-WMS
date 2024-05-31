@@ -58,9 +58,9 @@ class OnBordingPage extends StatelessWidget {
                     controller: controller,
                     count: 4,
                     effect: WormEffect(
-                      dotColor: kFifthColor,
+                      dotColor: kWhiteColor,
                       paintStyle: PaintingStyle.stroke,
-                      activeDotColor: kFifthColor,
+                      activeDotColor: kFirstColor3,
                     ),
                   ),
                   SizedBox(

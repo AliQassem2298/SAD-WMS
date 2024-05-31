@@ -40,6 +40,7 @@ import 'package:warehouse_manegment_system/view/pages/sign_in_page.dart';
 import 'package:warehouse_manegment_system/view/pages/sign_up_page.dart';
 import 'package:warehouse_manegment_system/view/pages/stocktaking_page.dart';
 import 'package:warehouse_manegment_system/view/pages/supplier_shipment_page.dart';
+import 'package:warehouse_manegment_system/view/pages/test_page.dart';
 import 'package:warehouse_manegment_system/view/pages/transfer_page.dart';
 import 'package:warehouse_manegment_system/view/pages/update_user_details_page.dart';
 import 'package:warehouse_manegment_system/view/pages/welcome_page.dart';
@@ -153,6 +154,10 @@ class WeareHouseManegmentSystem extends StatelessWidget {
           name: SplachPageController.id,
           page: () => SplashPage(),
         ),
+        // GetPage(
+        //   name: Test.id,
+        //   page: () => Test(),
+        // ),
         GetPage(
           name: OnBordingController.id,
           page: () => OnBordingPage(),
@@ -162,6 +167,9 @@ class WeareHouseManegmentSystem extends StatelessWidget {
         ),
       ],
       initialRoute: SplachPageController.id,
+
+      // initialRoute: Test.id,
+
       // initialRoute: WelcomePageController.id,
     );
   }

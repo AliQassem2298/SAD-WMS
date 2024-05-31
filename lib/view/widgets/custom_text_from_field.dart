@@ -66,7 +66,7 @@ class CustomTextFromField extends StatelessWidget {
           hintText: hintText,
           labelText: text,
           labelStyle: const TextStyle(
-            color: kSecondtColor,
+            color: kFirstColor2,
           ),
           border: UnderlineInputBorder(
             borderSide: const BorderSide(color: Colors.black),

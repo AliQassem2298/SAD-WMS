@@ -41,11 +41,13 @@ class WelcomePage extends StatelessWidget {
                 begin: Alignment.centerRight,
                 end: Alignment.centerLeft,
                 colors: [
-                  // kFirstColor,
-                  // kSecondtColor,
-                  kThierdColor,
+                  kFirstColor,
+                  kFirstColor2,
 
-                  kFourthColor,
+                  // kSecondtColor,
+                  // kThierdColor,
+
+                  // kFourthColor,
                 ],
               ),
             ),
@@ -68,14 +70,14 @@ class WelcomePage extends StatelessWidget {
                   child: Column(
                     children: [
                       Image.asset(
-                        'assets/wms-logo-final.png',
+                        'assets/wms-white-new.png',
                       ),
                       // Icon(Icons.house_outlined),
                       const Center(
                         child: Text(
-                          'Welcome Back',
+                          'Welcome Back ...',
                           style: TextStyle(
-                            color: kSecondtColor,
+                            color: kWhiteColor,
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
                           ),
@@ -94,9 +96,9 @@ class WelcomePage extends StatelessWidget {
                         Get.toNamed(SignInPageController.id);
                       },
                       text: 'SIGN IN',
-                      textColor: kFirstColor,
+                      textColor: kWhiteColor,
                       hasBorder: true,
-                      borderColor: kFirstColor,
+                      borderColor: kWhiteColor,
                     ),
                   ),
                 ),
@@ -112,8 +114,12 @@ class WelcomePage extends StatelessWidget {
                       hasBorder: false,
                       gradient: const LinearGradient(
                         colors: [
-                          kSecondtColor,
-                          kSecondtColor,
+                          // kSecondtColor,
+                          // kSecondtColor,
+                          kWhiteColor,
+                          kWhiteColor,
+                          // kFirstColor2,
+                          // kFirstColor2,
                         ],
                       ),
                     ),
@@ -141,7 +147,7 @@ class WelcomePage extends StatelessWidget {
                         const Text(
                           'Continue with ',
                           style: TextStyle(
-                            color: kSecondtColor,
+                            color: kWhiteColor,
                             fontSize: 15,
                           ),
                         ),
@@ -152,7 +158,7 @@ class WelcomePage extends StatelessWidget {
                           child: const Text(
                             'Guest Mode',
                             style: TextStyle(
-                              color: kFirstColor,
+                              color: kWhiteColor,
                               fontSize: 17,
                               fontWeight: FontWeight.w600,
                             ),

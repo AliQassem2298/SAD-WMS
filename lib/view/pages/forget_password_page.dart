@@ -27,7 +27,7 @@ class ForgetPasswordPage extends StatelessWidget {
                   end: Alignment.centerLeft,
                   colors: [
                     kFirstColor,
-                    kSecondtColor,
+                    kFirstColor2,
                     // kThierdColor,
                     // kFourthColor,
                   ],
@@ -256,7 +256,7 @@ class ForgetPasswordPage extends StatelessWidget {
                                     end: Alignment.centerLeft,
                                     colors: [
                                       kFirstColor,
-                                      kSecondtColor,
+                                      kFirstColor2,
                                       // kThierdColor,
                                       // kFourthColor,
                                     ],

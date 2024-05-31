@@ -31,10 +31,12 @@ class SignInPage extends StatelessWidget {
                       begin: Alignment.centerRight,
                       end: Alignment.centerLeft,
                       colors: [
-                        // kFirstColor,
+                        kFirstColor,
+                        kFirstColor2,
+
                         // kSecondtColor,
-                        kThierdColor,
-                        kFourthColor,
+                        // kThierdColor,
+                        // kFourthColor,
                       ],
                     ),
                   ),
@@ -207,7 +209,7 @@ class SignInPage extends StatelessWidget {
                               gradient: const LinearGradient(
                                 colors: [
                                   kFirstColor,
-                                  kSecondtColor,
+                                  kFirstColor2,
                                   // kThierdColor,
                                   // kFourthColor,
                                 ],

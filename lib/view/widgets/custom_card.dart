@@ -28,14 +28,14 @@ class CustomCard extends StatelessWidget {
             //   blurRadius: 12,
             // ),
           ],
-          borderRadius: BorderRadius.circular(35),
         ),
         child: Stack(
           children: [
             Container(
               // height: 188,
-              width: 185,
+              width: double.infinity,
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(35),
                 // border: Border.all(),
                 boxShadow: [
                   BoxShadow(
@@ -44,7 +44,7 @@ class CustomCard extends StatelessWidget {
                     blurRadius: 10,
                   ),
                 ],
-                border: Border(top: BorderSide(width: 2)),
+
                 color: kThierdColor,
               ),
               child: Column(
@@ -56,11 +56,19 @@ class CustomCard extends StatelessWidget {
                   //   color: Colors.white,
                   //   size: 110,
                   // ),
-                  Image.asset(
-                    image,
-                    height: 135,
-                    width: 150,
-                    fit: BoxFit.cover,
+                  Container(
+                    clipBehavior: Clip.none,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(38, 159, 159, 159),
+                      borderRadius: BorderRadius.circular(35),
+                    ),
+                    child: Image.asset(
+                      image,
+                      height: 160,
+                      width: 300,
+                      fit: BoxFit.fitWidth,
+                    ),
                   ),
                   Text(
                     text,
@@ -105,6 +113,8 @@ class CustomCard extends StatelessWidget {
           ],
         ),
       ),
+    ).paddingSymmetric(
+      vertical: 10,
     );
   }
 }

@@ -224,10 +224,23 @@ class HomePage extends StatelessWidget {
       //   )
       // ],
       appBar: AppBar(
-        backgroundColor: kThierdColor,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.centerRight,
+              end: Alignment.centerLeft,
+              colors: [
+                kFirstColor,
+                kFirstColor2,
 
-        automaticallyImplyLeading:
-            false, // // backgroundColor: Color(0xffd9dadb),
+                // kSecondtColor,
+                // kThierdColor,
+
+                // kFourthColor,
+              ],
+            ),
+          ),
+        ),
         // title: Text('Warehouse management system'),
         actions: [
           Padding(
@@ -235,7 +248,7 @@ class HomePage extends StatelessWidget {
             child: Text(
               'WMS',
               style: TextStyle(
-                color: kSecondtColor,
+                color: kWhiteColor,
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
               ),
@@ -258,63 +271,81 @@ class HomePage extends StatelessWidget {
         // ),
         // automaticallyImplyLeading: false,
       ),
-      backgroundColor: kThierdColor,
+      // backgroundColor: kFirstColor,
       body: sharedPreferences!.getString("role") == "staff"
-          ? GridView(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 24,
-                mainAxisSpacing: 20,
+          ? Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerRight,
+                  end: Alignment.centerLeft,
+                  colors: [
+                    kFirstColor,
+                    kFirstColor2,
+
+                    // kSecondtColor,
+                    // kThierdColor,
+
+                    // kFourthColor,
+                  ],
+                ),
               ),
-              padding: EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 16,
-              ),
-              children: [
-                InkWell(
-                  onTap: () {},
-                  child: CustomCard(
-                    routname: ShipmentsPageController.id,
-                    image: 'assets/Shipments.png',
-                    text: "Shippments",
+              child: ListView(
+                clipBehavior: Clip.none,
+                // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                //   crossAxisCount: 2,
+                //   crossAxisSpacing: 24,
+                //   mainAxisSpacing: 20,
+                // ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 16,
+                ),
+                children: [
+                  InkWell(
+                    onTap: () {},
+                    child: CustomCard(
+                      routname: ShipmentsPageController.id,
+                      image: 'assets/Shipments.png',
+                      text: "Shippments",
+                    ),
                   ),
-                ),
-                CustomCard(
-                  routname: PutAwayPageController.id,
-                  image: 'assets/put-away.png',
-                  text: "Put Away",
-                ),
-                CustomCard(
-                  routname: OrdersPageController.id,
-                  image: 'assets/Orders.png',
-                  text: "Orders",
-                ),
-                CustomCard(
-                  routname: PutAwayPageController.id,
-                  image: 'assets/delivery.png',
-                  text: "Delivery",
-                ),
-                CustomCard(
-                  routname: TransferPageController.id,
-                  image: 'assets/Transfer.png',
-                  text: "Transfer",
-                ),
-                CustomCard(
-                  routname: StocktakingPageController.id,
-                  image: 'assets/cycle-count.png',
-                  text: "Cycle Count",
-                ),
-                CustomCard(
-                  routname: InventoryScanPageController.id,
-                  image: 'assets/replenishment.png',
-                  text: "Replenishment",
-                ),
-                CustomCard(
-                  routname: InventoryScanPageController.id,
-                  image: 'assets/scanner.png',
-                  text: "Barcode Scanner",
-                ),
-              ],
+                  CustomCard(
+                    routname: PutAwayPageController.id,
+                    image: 'assets/put-away.png',
+                    text: "Put Away",
+                  ),
+                  CustomCard(
+                    routname: OrdersPageController.id,
+                    image: 'assets/Orders.png',
+                    text: "Orders",
+                  ),
+                  CustomCard(
+                    routname: PutAwayPageController.id,
+                    image: 'assets/delivery.png',
+                    text: "Delivery",
+                  ),
+                  CustomCard(
+                    routname: TransferPageController.id,
+                    image: 'assets/Transfer.png',
+                    text: "Transfer",
+                  ),
+                  CustomCard(
+                    routname: StocktakingPageController.id,
+                    image: 'assets/cycle-count.png',
+                    text: "Cycle Count",
+                  ),
+                  CustomCard(
+                    routname: InventoryScanPageController.id,
+                    image: 'assets/replenishment.png',
+                    text: "Replenishment",
+                  ),
+                  CustomCard(
+                    routname: InventoryScanPageController.id,
+                    image: 'assets/scanner.png',
+                    text: "Barcode Scanner",
+                  ),
+                ],
+              ),
             )
           : sharedPreferences!.getString("role") == "customer"
               ? Center(
@@ -326,7 +357,7 @@ class HomePage extends StatelessWidget {
               : Center(
                   child: Text(
                     'Welcome Guest',
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 25, color: Colors.white),
                   ),
                 ),
     );
