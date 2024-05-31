@@ -34,7 +34,7 @@ class CustomShipmentCard extends StatelessWidget {
               height: 125,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: kCardBackGroundColor,
+                color: kFourthColor,
                 // border: Border.all(),
                 // boxShadow: [],
                 borderRadius: BorderRadius.circular(35),

@@ -56,6 +56,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/wms-logo-final.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/logo_icon2.png"
 # flutter_icons:
 #   indroid: true
 #   ios: true
@@ -110,9 +117,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: "AppIcon"
-  image_path: "assets/logo.png"
-  min_sdk_android: 21 # android min sdk min:16, default 21
-  remove_alpha_ios: true
+# flutter_launcher_icons:
+#   android: "launcher_icon"
+#   ios: "AppIcon"
+#   image_path: "assets/wms-logo-final.png"
+#   min_sdk_android: 21 # android min sdk min:16, default 21
+#   remove_alpha_ios: true

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/view/pages/dialog_page.dart';
 
 class CustomButton extends StatelessWidget {
@@ -65,7 +66,7 @@ class CustomButton extends StatelessWidget {
             text,
             style: TextStyle(
               fontSize: fontSize ?? 16,
-              color: hasBorder ? textColor : Colors.black,
+              color: hasBorder ? textColor : kThierdColor,
               fontWeight: FontWeight.bold,
             ),
           ),

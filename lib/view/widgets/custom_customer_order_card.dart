@@ -98,7 +98,7 @@ class CustomCustomerOrderCard extends StatelessWidget {
                   color: Colors.white,
                 ),
                 child: Image.asset(
-                  'assets/nwms.png',
+                  'assets/wms-logo-final.png',
                 ),
               ),
             ),

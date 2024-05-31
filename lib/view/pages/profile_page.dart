@@ -26,7 +26,7 @@ import 'package:warehouse_manegment_system/model/models/user_model.dart';
 import 'package:warehouse_manegment_system/model/services/get_user_details__by_token_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_dialog.dart';
-import 'package:image_picker/image_picker.dart';
+// import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

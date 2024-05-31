@@ -224,7 +224,7 @@ class HomePage extends StatelessWidget {
       //   )
       // ],
       appBar: AppBar(
-        backgroundColor: kFirstColor,
+        backgroundColor: kThierdColor,
 
         automaticallyImplyLeading:
             false, // // backgroundColor: Color(0xffd9dadb),
@@ -235,7 +235,7 @@ class HomePage extends StatelessWidget {
             child: Text(
               'WMS',
               style: TextStyle(
-                color: Colors.white,
+                color: kSecondtColor,
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
               ),
@@ -258,13 +258,13 @@ class HomePage extends StatelessWidget {
         // ),
         // automaticallyImplyLeading: false,
       ),
-      backgroundColor: kFirstColor,
+      backgroundColor: kThierdColor,
       body: sharedPreferences!.getString("role") == "staff"
           ? GridView(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 24,
-                mainAxisSpacing: 24,
+                mainAxisSpacing: 20,
               ),
               padding: EdgeInsets.symmetric(
                 horizontal: 16,
