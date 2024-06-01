@@ -6,6 +6,7 @@ class ProfilePageController extends GetxController {
   static String id = '/ProfilePage';
 
   double containerHeight = 0.0;
+  bool isVisible = false;
   UserModel? userModel;
   @override
   void onInit() {
@@ -14,6 +15,7 @@ class ProfilePageController extends GetxController {
       const Duration(microseconds: 1),
       () {
         containerHeight = 500;
+        isVisible = true;
         update();
       },
     );

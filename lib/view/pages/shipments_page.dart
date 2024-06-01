@@ -16,6 +16,18 @@ class ShipmentsPage extends StatelessWidget {
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerRight,
+                  end: Alignment.centerLeft,
+                  colors: [
+                    kFirstColor,
+                    kFirstColor2,
+                  ],
+                ),
+              ),
+            ),
             iconTheme: IconThemeData(
               color: Colors.white,
             ),
@@ -28,63 +40,75 @@ class ShipmentsPage extends StatelessWidget {
             ),
             centerTitle: true,
           ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 16,
+          body: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.centerRight,
+                end: Alignment.centerLeft,
+                colors: [
+                  kFirstColor,
+                  kFirstColor2,
+                ],
+              ),
             ),
-            child: ListView(
-              children: [
-                SizedBox(
-                  height: 5,
-                ),
-                InkWell(
-                  onTap: () {
-                    Get.toNamed(SupplierShipmentPagController.id);
-                  },
-                  child: CustomShipmentCard(
-                    supplierName: 'Ali',
-                    status: 'pending',
-                    image: 'assets/clock icon.png',
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 16,
+              ),
+              child: ListView(
+                children: [
+                  SizedBox(
+                    height: 5,
                   ),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                // InkWell(
-                //   onTap: () {
-                //     Get.toNamed(SupplierShipmentPagController.id);
-                //   },
-                //   child: CustomShipmentCard(
-                //     supplierName: 'Ali',
-                //     status: 'pending',
-                //     image: 'assets/box icon.png',
-                //   ),
-                // ),
-                // SizedBox(
-                //   height: 25,
-                // ),
-                InkWell(
-                  onTap: () {
-                    Get.toNamed(SupplierShipmentPagController.id);
-                  },
-                  child: CustomShipmentCard(
-                    supplierName: 'Ali',
-                    status: 'pending',
-                    image: 'assets/true icon.png',
+                  InkWell(
+                    onTap: () {
+                      Get.toNamed(SupplierShipmentPagController.id);
+                    },
+                    child: CustomShipmentCard(
+                      supplierName: 'Ali',
+                      status: 'pending',
+                      image: 'assets/clock icon.png',
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                // InkWell(
-                //   onTap: () {},
-                //   child: CustomShipmentCard(
-                //     supplierName: 'Ali',
-                //     status: 'pending',
-                //   ),
-                // ),
-              ],
+                  SizedBox(
+                    height: 25,
+                  ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     Get.toNamed(SupplierShipmentPagController.id);
+                  //   },
+                  //   child: CustomShipmentCard(
+                  //     supplierName: 'Ali',
+                  //     status: 'pending',
+                  //     image: 'assets/box icon.png',
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   height: 25,
+                  // ),
+                  InkWell(
+                    onTap: () {
+                      Get.toNamed(SupplierShipmentPagController.id);
+                    },
+                    child: CustomShipmentCard(
+                      supplierName: 'Ali',
+                      status: 'pending',
+                      image: 'assets/true icon.png',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  // InkWell(
+                  //   onTap: () {},
+                  //   child: CustomShipmentCard(
+                  //     supplierName: 'Ali',
+                  //     status: 'pending',
+                  //   ),
+                  // ),
+                ],
+              ),
             ),
           ),
         );

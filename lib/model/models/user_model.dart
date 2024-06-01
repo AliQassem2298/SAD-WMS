@@ -8,7 +8,7 @@ class UserModel {
   final String lastName;
   final String username;
   final String email;
-  final String dateJoined;
+  final DateTime  dateJoined;
   final String role;
 
   UserModel({
@@ -38,7 +38,7 @@ class UserModel {
       lastName: jsonData['last_name'],
       username: jsonData['username'],
       email: jsonData['email'],
-      dateJoined: jsonData['date_joined'],
+      dateJoined: DateTime.parse(jsonData['date_joined']),
       role: jsonData['role'],
     );
   }

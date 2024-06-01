@@ -24,7 +24,21 @@ class DrawerPage extends StatelessWidget {
 
         return Scaffold(
           body: Container(
-            color: kFirstColor2,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: [
+                  kFirstColor,
+                  kFirstColor2,
+
+                  // kSecondtColor,
+                  // kThierdColor,
+
+                  // kFourthColor,
+                ],
+              ),
+            ),
             width: 300,
             height: double.infinity,
             child: SafeArea(

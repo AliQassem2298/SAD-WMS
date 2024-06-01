@@ -8,13 +8,11 @@ class CustomShipmentCard extends StatelessWidget {
     required this.supplierName,
     required this.status,
     required this.image,
-    this.showPriority = false,
     this.praiority = '',
     super.key,
   });
   String supplierName, status, image;
   String? praiority;
-  bool showPriority;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,14 +32,14 @@ class CustomShipmentCard extends StatelessWidget {
               height: 125,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: kFourthColor,
+                color: kThierdColor,
                 // border: Border.all(),
                 // boxShadow: [],
                 borderRadius: BorderRadius.circular(35),
                 // color: Color(0xff9b9ca3),
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Icon(
@@ -72,13 +70,13 @@ class CustomShipmentCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: -20,
-              left: -20,
+              top: 30,
+              left: 20,
               child: Container(
                 height: 60,
                 width: 60,
                 decoration: BoxDecoration(
-                  color: kFirstColor,
+                  color: kFirstColor2,
                   // border: Border.all(),
                   // boxShadow: [],
                   borderRadius: BorderRadius.circular(35),
@@ -89,30 +87,22 @@ class CustomShipmentCard extends StatelessWidget {
                 ),
               ),
             ),
-            if (showPriority)
-              Positioned(
-                right: 0,
-                child: Container(
-                  width: 100,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: kSecondtColor,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(35),
-                      topRight: Radius.circular(35),
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      praiority!,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
+            Positioned(
+              top: 40,
+              right: 25,
+              child: Container(
+                width: 35,
+                height: 35,
+                decoration: BoxDecoration(
+                  color: kFirstColor,
+                  borderRadius: BorderRadius.circular(20),
                 ),
-              )
+                child: Icon(
+                  Icons.arrow_forward_ios,
+                  color: kWhiteColor,
+                ),
+              ),
+            )
           ],
         ),
       ),

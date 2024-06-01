@@ -18,6 +18,18 @@ class OrdersPage extends StatelessWidget {
         return Scaffold(
           backgroundColor: Color(0xFFB0BEC5),
           appBar: AppBar(
+              flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerRight,
+                  end: Alignment.centerLeft,
+                  colors: [
+                    kFirstColor,
+                    kFirstColor2,
+                  ],
+                ),
+              ),
+            ),
             iconTheme: IconThemeData(
               color: Colors.white,
             ),
@@ -30,74 +42,86 @@ class OrdersPage extends StatelessWidget {
             ),
             centerTitle: true,
           ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 16,
+          body: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.centerRight,
+                end: Alignment.centerLeft,
+                colors: [
+                  kFirstColor,
+                  kFirstColor2,
+                ],
+              ),
             ),
-            child: ListView(
-              children: [
-                SizedBox(
-                  height: 5,
-                ),
-                InkWell(
-                  onTap: () {
-                    Get.toNamed(CustomerOrderPageController.id);
-
-                    // Get.toNamed(SupplierShipmentPagController.id);
-                  },
-                  child: CustomOrdersCard(
-                    customerName: 'Ali',
-                    status: 'pending',
-                    image: 'assets/clock icon.png',
-                    praiority: 'High',
-                    totalPrice: r'20$',
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 16,
+              ),
+              child: ListView(
+                children: [
+                  SizedBox(
+                    height: 5,
                   ),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                InkWell(
-                  onTap: () {
-                    Get.toNamed(CustomerOrderPageController.id);
-                    // Get.toNamed(SupplierShipmentPagController.id);
-                  },
-                  child: CustomOrdersCard(
-                    customerName: 'Ali',
-                    status: 'Packed',
-                    image: 'assets/box icon.png',
-                    praiority: 'High',
-                    totalPrice: r'20$',
+                  InkWell(
+                    onTap: () {
+                      Get.toNamed(CustomerOrderPageController.id);
+          
+                      // Get.toNamed(SupplierShipmentPagController.id);
+                    },
+                    child: CustomOrdersCard(
+                      customerName: 'Ali',
+                      status: 'pending',
+                      image: 'assets/clock icon.png',
+                      praiority: 'High',
+                      totalPrice: r'20$',
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                InkWell(
-                  onTap: () {
-                    Get.toNamed(CustomerOrderPageController.id);
-
-                    // Get.toNamed(SupplierShipmentPagController.id);
-                  },
-                  child: CustomOrdersCard(
-                    customerName: 'Ali',
-                    status: 'Delivered',
-                    image: 'assets/true icon.png',
-                    praiority: 'Low',
-                    totalPrice: r'20$',
+                  SizedBox(
+                    height: 25,
                   ),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                // InkWell(
-                //   onTap: () {},
-                //   child: CustomShipmentCard(
-                //     supplierName: 'Ali',
-                //     status: 'pending',
-                //   ),
-                // ),
-              ],
+                  InkWell(
+                    onTap: () {
+                      Get.toNamed(CustomerOrderPageController.id);
+                      // Get.toNamed(SupplierShipmentPagController.id);
+                    },
+                    child: CustomOrdersCard(
+                      customerName: 'Ali',
+                      status: 'Packed',
+                      image: 'assets/box icon.png',
+                      praiority: 'High',
+                      totalPrice: r'20$',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Get.toNamed(CustomerOrderPageController.id);
+          
+                      // Get.toNamed(SupplierShipmentPagController.id);
+                    },
+                    child: CustomOrdersCard(
+                      customerName: 'Ali',
+                      status: 'Delivered',
+                      image: 'assets/true icon.png',
+                      praiority: 'Low',
+                      totalPrice: r'20$',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  // InkWell(
+                  //   onTap: () {},
+                  //   child: CustomShipmentCard(
+                  //     supplierName: 'Ali',
+                  //     status: 'pending',
+                  //   ),
+                  // ),
+                ],
+              ),
             ),
           ),
         );

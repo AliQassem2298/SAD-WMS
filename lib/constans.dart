@@ -11,8 +11,8 @@ import 'package:flutter/material.dart';
 // const kFourthColor = Color(0xffd9dadb);
 
 //////// ours
-const kFirstColor = Color(0xFF00237D); //0xff2d77c1
-const kFirstColor2 = Color(0xff2d77c1); //0xff2d77c1
+const kFirstColor = Color(0xFF1B3799); //0xff2d77c1 //////////////////////////0xFF00237D
+const kFirstColor2 = Color(0xff2D5BFF); //0xff2d77c1 /////////////////////////0xff2d77c1
 const kFirstColor3 = Color.fromARGB(243, 0, 191, 255); //0xff2d77c1
 
 const kSecondtColor = Color(0xff35626e);

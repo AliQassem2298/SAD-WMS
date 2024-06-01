@@ -224,6 +224,7 @@ class HomePage extends StatelessWidget {
       //   )
       // ],
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(

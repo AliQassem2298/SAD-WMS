@@ -85,7 +85,7 @@ class CustomOrdersCard extends StatelessWidget {
                 height: 60,
                 width: 60,
                 decoration: BoxDecoration(
-                  color: kSecondtColor,
+                  color: kFifthColor,
                   // border: Border.all(),
                   // boxShadow: [],
                   borderRadius: BorderRadius.circular(35),
@@ -102,7 +102,7 @@ class CustomOrdersCard extends StatelessWidget {
                 width: 100,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: kSecondtColor,
+                  color: kFifthColor,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(35),
                     topRight: Radius.circular(35),

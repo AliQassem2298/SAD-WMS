@@ -40,7 +40,7 @@ import 'package:warehouse_manegment_system/view/pages/sign_in_page.dart';
 import 'package:warehouse_manegment_system/view/pages/sign_up_page.dart';
 import 'package:warehouse_manegment_system/view/pages/stocktaking_page.dart';
 import 'package:warehouse_manegment_system/view/pages/supplier_shipment_page.dart';
-import 'package:warehouse_manegment_system/view/pages/test_page.dart';
+// import 'package:warehouse_manegment_system/view/pages/test_page.dart';
 import 'package:warehouse_manegment_system/view/pages/transfer_page.dart';
 import 'package:warehouse_manegment_system/view/pages/update_user_details_page.dart';
 import 'package:warehouse_manegment_system/view/pages/welcome_page.dart';
@@ -96,7 +96,7 @@ class WeareHouseManegmentSystem extends StatelessWidget {
         ),
         GetPage(
           name: ProfilePageController.id,
-          page: () => const ProfilePage(),
+          page: () => ProfilePage(),
         ),
         GetPage(
           name: ForgetPasswordPageController.id,

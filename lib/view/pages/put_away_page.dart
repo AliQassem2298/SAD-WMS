@@ -16,6 +16,18 @@ class PutAwayPage extends StatelessWidget {
         return Scaffold(
           backgroundColor: Color(0xFFB0BEC5),
           appBar: AppBar(
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerRight,
+                  end: Alignment.centerLeft,
+                  colors: [
+                    kFirstColor,
+                    kFirstColor2,
+                  ],
+                ),
+              ),
+            ),
             iconTheme: IconThemeData(color: Colors.white),
             title: Text(
               'Put Away',
@@ -26,71 +38,83 @@ class PutAwayPage extends StatelessWidget {
             centerTitle: true,
             backgroundColor: kSecondtColor,
           ),
-          body: Stack(
-            children: [
-              GridView.builder(
-                itemBuilder: (context, index) {
-                  return CustomPutAwayCard().paddingOnly(left: 10, right: 10);
-                },
-                // padding: EdgeInsets.symmetric(horizontal: 8),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  // mainAxisSpacing: 0,
-                  // crossAxisSpacing: 0,
-                  childAspectRatio: 5 / 7,
-                ),
-                // children: [
-                //   CustomSupplierCard(),
-                //   CustomSupplierCard(),
-                //   CustomSupplierCard()
-                // ],
+          body: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.centerRight,
+                end: Alignment.centerLeft,
+                colors: [
+                  kFirstColor,
+                  kFirstColor2,
+                ],
               ),
-              // Positioned(
-              //   bottom: 0,
-              //   left: 0,
-              //   child: Container(
-              //     height: 100,
-              //     width: 400,
-              //     decoration: BoxDecoration(
-              //       color: kBackGroundColor,
-              //     ),
-              //     padding:
-              //         const EdgeInsets.symmetric(horizontal: 75, vertical: 25),
-              //     child: Column(
-              //       children: [
-              //         CustomButton(
-              //           hasBorder: true,
-              //           borderColor: Colors.transparent,
-              //           onPressed: () {
-              //             // barcodeController.scanBarcode();
-              //           },
-              //           text: 'Pack',
-              //           fontSize: 24,
-              //           textColor: Colors.white,
-              //           gradient: const LinearGradient(
-              //             colors: [
-              //               kSecondtColor,
-              //               kSecondtColor,
-              //             ],
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              // Positioned(
-              //   bottom: 75,
-              //   left: 0,
-              //   child: Obx(
-              //     () {
-              //       return Text(
-              //         'Scan result: ${barcodeController.scannedBarcodes}\n',
-              //         // style: const TextStyle(fontSize: 20),
-              //       );
-              //     },
-              //   ),
-              // ),
-            ],
+            ),
+            child: Stack(
+              children: [
+                GridView.builder(
+                  itemBuilder: (context, index) {
+                    return CustomPutAwayCard().paddingOnly(left: 10, right: 10);
+                  },
+                  // padding: EdgeInsets.symmetric(horizontal: 8),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    // mainAxisSpacing: 0,
+                    // crossAxisSpacing: 0,
+                    childAspectRatio: 5 / 7,
+                  ),
+                  // children: [
+                  //   CustomSupplierCard(),
+                  //   CustomSupplierCard(),
+                  //   CustomSupplierCard()
+                  // ],
+                ),
+                // Positioned(
+                //   bottom: 0,
+                //   left: 0,
+                //   child: Container(
+                //     height: 100,
+                //     width: 400,
+                //     decoration: BoxDecoration(
+                //       color: kBackGroundColor,
+                //     ),
+                //     padding:
+                //         const EdgeInsets.symmetric(horizontal: 75, vertical: 25),
+                //     child: Column(
+                //       children: [
+                //         CustomButton(
+                //           hasBorder: true,
+                //           borderColor: Colors.transparent,
+                //           onPressed: () {
+                //             // barcodeController.scanBarcode();
+                //           },
+                //           text: 'Pack',
+                //           fontSize: 24,
+                //           textColor: Colors.white,
+                //           gradient: const LinearGradient(
+                //             colors: [
+                //               kSecondtColor,
+                //               kSecondtColor,
+                //             ],
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
+                // Positioned(
+                //   bottom: 75,
+                //   left: 0,
+                //   child: Obx(
+                //     () {
+                //       return Text(
+                //         'Scan result: ${barcodeController.scannedBarcodes}\n',
+                //         // style: const TextStyle(fontSize: 20),
+                //       );
+                //     },
+                //   ),
+                // ),
+              ],
+            ),
           ),
         );
       },
