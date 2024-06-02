@@ -33,7 +33,7 @@ class ChangePasswordPage extends StatelessWidget {
                         // Color(0xff911C3A),
                         // Color(0xffBB1636)
                         kFirstColor,
-                        kSecondtColor,
+                        kFirstColor2,
                       ],
                     ),
                   ),
@@ -185,7 +185,7 @@ class ChangePasswordPage extends StatelessWidget {
                               gradient: const LinearGradient(
                                 colors: [
                                   kFirstColor,
-                                  kSecondtColor,
+                                  kFirstColor2,
                                 ],
                                 end: Alignment.topLeft,
                                 begin: Alignment.bottomRight,

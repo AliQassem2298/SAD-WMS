@@ -119,7 +119,13 @@ class IntroPage_4 extends StatelessWidget {
                       ],
                     ),
                     // shape: BoxShape.circle,
-                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Color.fromRGBO(30, 30, 30, 0.41),
+                          blurRadius: 6,
+                          offset: Offset(1, 2))
+                    ],
                   ),
                   //alignment: Alignment.topCenter,
                   child: Lottie.asset(

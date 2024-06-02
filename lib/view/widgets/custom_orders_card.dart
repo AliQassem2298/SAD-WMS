@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 
 class CustomOrdersCard extends StatelessWidget {
@@ -76,16 +77,15 @@ class CustomOrdersCard extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
+              ).paddingOnly(left: 40),
             ),
             Positioned(
-              top: -20,
-              left: -20,
+              top: 40,
+              left: 10,
               child: Container(
                 height: 60,
                 width: 60,
                 decoration: BoxDecoration(
-                  color: kFifthColor,
                   // border: Border.all(),
                   // boxShadow: [],
                   borderRadius: BorderRadius.circular(35),
@@ -102,7 +102,7 @@ class CustomOrdersCard extends StatelessWidget {
                 width: 100,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: kFifthColor,
+                  color: kFirstColor2,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(35),
                     topRight: Radius.circular(35),

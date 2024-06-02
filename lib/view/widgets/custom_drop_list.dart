@@ -5,17 +5,16 @@ import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/cutom_drop_list_controller.dart';
 
 class CustomDropList extends StatelessWidget {
-  final String option1;
-  final String option2;
-  final String? Function(String?)? validator; // Updated validator type
+  final List<String> options;
+  final String? Function(String?)? validator;
   TextEditingController textEditingController = TextEditingController();
-  // String textEditingController;
+  String text;
   CustomDropList({
     Key? key,
     this.validator,
     required this.textEditingController,
-    required this.option1,
-    required this.option2,
+    required this.options,
+    required this.text,
   }) : super(key: key);
 
   @override
@@ -29,7 +28,10 @@ class CustomDropList extends StatelessWidget {
           value: controller.selectedOption.isNotEmpty
               ? controller.selectedOption.value
               : null,
-          hint: const Text('Select Your Role'),
+          hint: Text(
+            text,
+            style: TextStyle(color: kFirstColor2),
+          ),
           onChanged: (String? newValue) {
             textEditingController.text = newValue!;
             controller.setSelectedOption(newValue);
@@ -41,22 +43,17 @@ class CustomDropList extends StatelessWidget {
           ),
           dropdownColor: Colors.white,
           elevation: 2,
-          items: <String>[
-            option1,
-            option2,
-          ].map(
-            (String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(
-                  value,
-                  style: const TextStyle(
-                    color: kSecondtColor,
-                  ),
+          items: options.map((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(
+                value,
+                style: const TextStyle(
+                  color: kFirstColor,
                 ),
-              );
-            },
-          ).toList(),
+              ),
+            );
+          }).toList(),
         );
       },
     );

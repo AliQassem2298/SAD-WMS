@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:warehouse_manegment_system/constans.dart';
+import 'package:warehouse_manegment_system/controller/delivery_page._controller.dart';
 import 'package:warehouse_manegment_system/controller/inventory_scan_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/orders_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/put_away_page_controller.dart';
@@ -321,7 +322,7 @@ class HomePage extends StatelessWidget {
                     text: "Orders",
                   ),
                   CustomCard(
-                    routname: PutAwayPageController.id,
+                    routname: DeliveryPageController.id,
                     image: 'assets/delivery.png',
                     text: "Delivery",
                   ),
@@ -349,16 +350,64 @@ class HomePage extends StatelessWidget {
               ),
             )
           : sharedPreferences!.getString("role") == "customer"
-              ? Center(
-                  child: Text(
-                    'Welcome Customer',
-                    style: TextStyle(fontSize: 25),
+              ? Scaffold(
+                  body: Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.centerRight,
+                        end: Alignment.centerLeft,
+                        colors: [
+                          kFirstColor,
+                          kFirstColor2,
+
+                          // kSecondtColor,
+                          // kThierdColor,
+
+                          // kFourthColor,
+                        ],
+                      ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Welcome Customer',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
                   ),
                 )
-              : Center(
-                  child: Text(
-                    'Welcome Guest',
-                    style: TextStyle(fontSize: 25, color: Colors.white),
+              : Scaffold(
+                  body: Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.centerRight,
+                        end: Alignment.centerLeft,
+                        colors: [
+                          kFirstColor,
+                          kFirstColor2,
+
+                          // kSecondtColor,
+                          // kThierdColor,
+
+                          // kFourthColor,
+                        ],
+                      ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Welcome Guest',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
     );

@@ -90,7 +90,9 @@ class CustomerOrderPage extends StatelessWidget {
                       ),
                     ),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 75, vertical: 25),
+                      horizontal: 75,
+                      vertical: 25,
+                    ),
                     child: Column(
                       children: [
                         CustomButton(
@@ -101,11 +103,11 @@ class CustomerOrderPage extends StatelessWidget {
                           },
                           text: 'Pack',
                           fontSize: 24,
-                          textColor: Colors.white,
+                          textColor: kSecondtColor,
                           gradient: const LinearGradient(
                             colors: [
-                              kSecondtColor,
-                              kSecondtColor,
+                              kWhiteColor,
+                              kWhiteColor,
                             ],
                           ),
                         ),

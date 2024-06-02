@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 
 class CustomShipmentCard extends StatelessWidget {
@@ -8,11 +9,9 @@ class CustomShipmentCard extends StatelessWidget {
     required this.supplierName,
     required this.status,
     required this.image,
-    this.praiority = '',
     super.key,
   });
   String supplierName, status, image;
-  String? praiority;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,14 +31,14 @@ class CustomShipmentCard extends StatelessWidget {
               height: 125,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: kThierdColor,
+                color: kCardBackGroundColor,
                 // border: Border.all(),
                 // boxShadow: [],
                 borderRadius: BorderRadius.circular(35),
                 // color: Color(0xff9b9ca3),
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Icon(
@@ -48,7 +47,7 @@ class CustomShipmentCard extends StatelessWidget {
                   //   size: 110,
                   // ),
                   Text(
-                    'Shipment from (${supplierName})',
+                    'Shipment from ${supplierName}',
                     style: TextStyle(
                       color: kSecondtColor,
                       fontSize: 18,
@@ -67,7 +66,7 @@ class CustomShipmentCard extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
+              ).paddingOnly(left: 40),
             ),
             Positioned(
               top: 30,
@@ -76,7 +75,6 @@ class CustomShipmentCard extends StatelessWidget {
                 height: 60,
                 width: 60,
                 decoration: BoxDecoration(
-                  color: kFirstColor2,
                   // border: Border.all(),
                   // boxShadow: [],
                   borderRadius: BorderRadius.circular(35),
@@ -88,18 +86,18 @@ class CustomShipmentCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 40,
-              right: 25,
+              top: 35,
+              right: 20,
               child: Container(
-                width: 35,
-                height: 35,
+                width: 50,
+                height: 50,
                 decoration: BoxDecoration(
-                  color: kFirstColor,
-                  borderRadius: BorderRadius.circular(20),
+                  color: Color.fromARGB(255, 224, 224, 224),
+                  borderRadius: BorderRadius.circular(500),
                 ),
                 child: Icon(
                   Icons.arrow_forward_ios,
-                  color: kWhiteColor,
+                  color: kSecondtColor,
                 ),
               ),
             )

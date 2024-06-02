@@ -111,21 +111,22 @@ class CustomPutAwayCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   // color: kSecondtColor,
                   border: Border.all(
-                    color: kSecondtColor,
+                    color: kFirstColor3,
                   ),
                   // boxShadow: [],
                   borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(35),
                     topLeft: Radius.circular(35),
                   ),
-                  color: kSecondtColor,
+                  color: kFirstColor3,
                 ),
                 child: Center(
                   child: Text(
                     'Put Away',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: kFirstColor,
                       fontSize: 16,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

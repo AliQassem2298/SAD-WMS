@@ -60,7 +60,7 @@ class CustomCard extends StatelessWidget {
                     clipBehavior: Clip.none,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(38, 159, 159, 159),
+                      color: Color(0x259F9F9F),
                       borderRadius: BorderRadius.circular(35),
                     ),
                     child: Image.asset(

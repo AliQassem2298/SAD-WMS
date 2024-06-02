@@ -11,7 +11,7 @@ import 'package:http/http.dart' as http;
 
 String baseUrl = 'http://10.0.2.2:8000/api'; ///// emulator
 
-// String baseUrl = 'http://192.168.137.1:8000/api'; ///// mobilde
+// String baseUrl = 'http://192.168.43.148:8000/api'; ///// mobilde
 
 class Api {
   Future<dynamic> get({required String url, @required String? token}) async {

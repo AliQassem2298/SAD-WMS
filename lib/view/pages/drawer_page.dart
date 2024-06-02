@@ -50,10 +50,10 @@ class DrawerPage extends StatelessWidget {
                   sharedPreferences!.getString("token") != null
                       ? CustomInfoCard(
                           firstName:
-                              sharedPreferences!.getString("firstName") ?? '',
+                              sharedPreferences!.getString("firstName")!  ,
                           lastName:
-                              sharedPreferences!.getString("lastName") ?? '',
-                          email: sharedPreferences!.getString("email") ?? '',
+                              sharedPreferences!.getString("lastName")!,
+                          email: sharedPreferences!.getString("email")!,
                         )
                       : Container(),
                   sharedPreferences!.getString("token") != null

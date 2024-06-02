@@ -47,7 +47,13 @@ class IntroPage_2 extends StatelessWidget {
                       ],
                     ),
                     // shape: BoxShape.circle,
-                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Color.fromRGBO(30, 30, 30, 0.41),
+                          blurRadius: 6,
+                          offset: Offset(1, 2))
+                    ],
                   ),
                   child: Lottie.asset(
                     'assets/animations/Animation - 1714653397010.json',

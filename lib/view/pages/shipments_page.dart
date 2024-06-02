@@ -68,7 +68,7 @@ class ShipmentsPage extends StatelessWidget {
                     child: CustomShipmentCard(
                       supplierName: 'Ali',
                       status: 'pending',
-                      image: 'assets/clock icon.png',
+                      image: 'assets/clock.jpg',
                     ),
                   ),
                   SizedBox(
@@ -93,8 +93,8 @@ class ShipmentsPage extends StatelessWidget {
                     },
                     child: CustomShipmentCard(
                       supplierName: 'Ali',
-                      status: 'pending',
-                      image: 'assets/true icon.png',
+                      status: 'recived',
+                      image: 'assets/done.jpg',
                     ),
                   ),
                   SizedBox(

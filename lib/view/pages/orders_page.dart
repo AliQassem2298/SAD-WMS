@@ -18,7 +18,7 @@ class OrdersPage extends StatelessWidget {
         return Scaffold(
           backgroundColor: Color(0xFFB0BEC5),
           appBar: AppBar(
-              flexibleSpace: Container(
+            flexibleSpace: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.centerRight,
@@ -66,13 +66,13 @@ class OrdersPage extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       Get.toNamed(CustomerOrderPageController.id);
-          
+
                       // Get.toNamed(SupplierShipmentPagController.id);
                     },
                     child: CustomOrdersCard(
                       customerName: 'Ali',
                       status: 'pending',
-                      image: 'assets/clock icon.png',
+                      image: 'assets/clock.jpg',
                       praiority: 'High',
                       totalPrice: r'20$',
                     ),
@@ -99,13 +99,13 @@ class OrdersPage extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       Get.toNamed(CustomerOrderPageController.id);
-          
+
                       // Get.toNamed(SupplierShipmentPagController.id);
                     },
                     child: CustomOrdersCard(
                       customerName: 'Ali',
                       status: 'Delivered',
-                      image: 'assets/true icon.png',
+                      image: 'assets/done.jpg',
                       praiority: 'Low',
                       totalPrice: r'20$',
                     ),

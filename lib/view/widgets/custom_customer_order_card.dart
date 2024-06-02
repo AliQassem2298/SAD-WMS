@@ -111,14 +111,14 @@ class CustomCustomerOrderCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   // color: kSecondtColor,
                   border: Border.all(
-                    color: kSecondtColor,
+                    color: kFifthColor,
                   ),
                   // boxShadow: [],
                   borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(35),
                     topLeft: Radius.circular(35),
                   ),
-                  color: kSecondtColor,
+                  color: kFifthColor,
                 ),
                 child: Center(
                   child: Text(
@@ -126,6 +126,7 @@ class CustomCustomerOrderCard extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -138,7 +139,7 @@ class CustomCustomerOrderCard extends StatelessWidget {
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(
-                  color: kSecondtColor,
+                  color: kFifthColor,
                   // border: Border.all(),
                   // boxShadow: [],
                   borderRadius: BorderRadius.circular(35),

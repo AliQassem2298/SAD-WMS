@@ -14,13 +14,13 @@ import 'package:warehouse_manegment_system/view/widgets/custom_text_from_field.d
 class UpdateUserDetailsPage extends StatelessWidget {
   UpdateUserDetailsPage({super.key});
 
-  // TextEditingController lastName = TextEditingController();
+  TextEditingController lastName = TextEditingController();
 
-  // TextEditingController firstNmae = TextEditingController();
+  TextEditingController firstNmae = TextEditingController();
 
-  // TextEditingController userName = TextEditingController();
+  TextEditingController userName = TextEditingController();
 
-  // TextEditingController email = TextEditingController();
+  TextEditingController email = TextEditingController();
   ProfilePageController profilePageController =
       Get.put(ProfilePageController());
   @override
@@ -30,10 +30,10 @@ class UpdateUserDetailsPage extends StatelessWidget {
       builder: (controller) {
         controller.userModel =
             ModalRoute.of(context)!.settings.arguments as UserModel;
-        // controller.firstName.text = controller.userModel!.firstName;
-        // controller.lastName.text = controller.userModel!.lastName;
-        // controller.email.text = controller.userModel!.email;
-        // controller.userName.text = controller.userModel!.username;
+        controller.firstName.text = controller.userModel!.firstName;
+        controller.lastName.text = controller.userModel!.lastName;
+        controller.email.text = controller.userModel!.email;
+        controller.userName.text = controller.userModel!.username;
 
         return ModalProgressHUD(
           inAsyncCall: controller.isLoading,

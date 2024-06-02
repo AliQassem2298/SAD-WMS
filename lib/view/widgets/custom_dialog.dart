@@ -32,8 +32,10 @@ class MyDialog extends StatelessWidget {
                   begin: Alignment.centerRight,
                   end: Alignment.centerLeft,
                   colors: [
+                    // kFirstColor,
+                    // kSecondtColor,
                     kFirstColor,
-                    kSecondtColor,
+                    kFirstColor2,
                   ],
                 ),
               ),
@@ -132,6 +134,7 @@ class MyDialog extends StatelessWidget {
                         },
                         icon: Icon(
                           Icons.done,
+                          color: kFirstColor,
                         ),
                       ),
                     ],

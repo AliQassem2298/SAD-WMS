@@ -27,7 +27,7 @@ class DialogPage extends StatelessWidget {
             end: Alignment.centerLeft,
             colors: [
               kFirstColor,
-              kSecondtColor,
+              kFirstColor2,
             ],
           ),
         ),
