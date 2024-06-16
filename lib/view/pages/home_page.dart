@@ -226,25 +226,13 @@ class HomePage extends StatelessWidget {
       // ],
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.centerRight,
-              end: Alignment.centerLeft,
-              colors: [
-                kFirstColor,
-                kFirstColor2,
-
-                // kSecondtColor,
-                // kThierdColor,
-
-                // kFourthColor,
-              ],
-            ),
-          ),
-        ),
+        backgroundColor: kFirstColor2,
         // title: Text('Warehouse management system'),
         actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.abc),
+          ),
           Padding(
             padding: const EdgeInsets.only(right: 27),
             child: Text(
@@ -281,8 +269,8 @@ class HomePage extends StatelessWidget {
                   begin: Alignment.centerRight,
                   end: Alignment.centerLeft,
                   colors: [
-                    kFirstColor,
-                    kFirstColor2,
+                    kWhiteColor,
+                    kWhiteColor,
 
                     // kSecondtColor,
                     // kThierdColor,

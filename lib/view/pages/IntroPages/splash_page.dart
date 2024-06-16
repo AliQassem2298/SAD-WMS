@@ -12,7 +12,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(
-      Duration(seconds: 3),
+      Duration(milliseconds: 3),
       () {
         if (sharedPreferences!.getBool('firstTimer') == false) {
           if (sharedPreferences!.getString("token") == null)

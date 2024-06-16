@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 // String baseUrl = 'http://127.0.0.1:8000/api'; //////// windows
-
+String baseUrlImage = 'http://10.0.2.2:8000';
 String baseUrl = 'http://10.0.2.2:8000/api'; ///// emulator
 
-// String baseUrl = 'http://192.168.43.148:8000/api'; ///// mobilde
+// String baseUrl = 'http://192.168.43.198:8000/api'; ///// mobilde
 
 class Api {
   Future<dynamic> get({required String url, @required String? token}) async {
@@ -24,7 +24,7 @@ class Api {
 
     print('url= $url ,headrs=$headers');
     if (response.statusCode == 200) {
-      Map<String, dynamic> data = jsonDecode(response.body);
+      dynamic data = jsonDecode(response.body);
       print('url= $url ,headrs=$headers');
 
       print(data);

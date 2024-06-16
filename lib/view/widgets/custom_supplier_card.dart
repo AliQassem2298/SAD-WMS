@@ -1,12 +1,16 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
+import 'package:warehouse_manegment_system/model/helper/api.dart';
+import 'package:warehouse_manegment_system/model/models/shipment_details_model.dart';
 
 class CustomSupplierCard extends StatelessWidget {
-  const CustomSupplierCard({
+  ShipmentDetailsModel shipmentDetailsModel;
+  CustomSupplierCard({
+    required this.shipmentDetailsModel,
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +25,7 @@ class CustomSupplierCard extends StatelessWidget {
               height: 190,
               width: 180,
               decoration: BoxDecoration(
-                color: kCardBackGroundColor,
+                border: Border.all(color: kFirstColor2, width: 3),
                 // border: Border.all(),
                 // boxShadow: [],
                 borderRadius: BorderRadius.circular(35),
@@ -42,27 +46,32 @@ class CustomSupplierCard extends StatelessWidget {
                   // ),
 
                   Text(
-                    'name: cap',
+                    'name: ${shipmentDetailsModel.product.name}',
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.clip,
                     style: TextStyle(
-                      color: kFirstColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-
-                  Text(
-                    'quantity: 80',
-                    style: TextStyle(
-                      color: kFirstColor,
+                      color: kSecondtColor,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
 
                   Text(
-                    'status: pending',
+                    'quantity: ${shipmentDetailsModel.quantity}',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: kFirstColor,
+                      color: kSecondtColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  Text(
+                    'status: ${shipmentDetailsModel.status}',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: kSecondtColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
@@ -81,13 +90,15 @@ class CustomSupplierCard extends StatelessWidget {
                 width: 110,
                 decoration: BoxDecoration(
                   // color: kSecondtColor,
-                  border: Border.all(color: kSecondtColor, width: 3),
+                  border: Border.all(color: kFirstColor2, width: 3),
                   // boxShadow: [],
                   borderRadius: BorderRadius.circular(100),
                   color: Colors.white,
                 ),
-                child: Image.asset(
-                  'assets/wms-logo-final.png',
+                child: Image.network(
+                  '${baseUrlImage}${shipmentDetailsModel.product.photo}',
+                  height: 100,
+                  width: 100,
                 ),
               ),
             ),
@@ -98,7 +109,7 @@ class CustomSupplierCard extends StatelessWidget {
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(
-                  color: kSecondtColor,
+                  color: kCardBackGroundColor,
                   // border: Border.all(),
                   // boxShadow: [],
                   borderRadius: BorderRadius.circular(35),
@@ -106,6 +117,7 @@ class CustomSupplierCard extends StatelessWidget {
                 ),
                 child: Image.asset(
                   'assets/clock icon.png',
+                  color: kSecondtColor,
                 ),
               ),
             ),

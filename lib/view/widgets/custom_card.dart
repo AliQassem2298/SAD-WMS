@@ -45,7 +45,7 @@ class CustomCard extends StatelessWidget {
                   ),
                 ],
 
-                color: kThierdColor,
+                color: kFirstColor2,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -60,7 +60,8 @@ class CustomCard extends StatelessWidget {
                     clipBehavior: Clip.none,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: Color(0x259F9F9F),
+                      border: Border.all(width: 7, color: kFirstColor2),
+                      color: Color.fromARGB(255, 255, 255, 255),
                       borderRadius: BorderRadius.circular(35),
                     ),
                     child: Image.asset(
@@ -73,7 +74,7 @@ class CustomCard extends StatelessWidget {
                   Text(
                     text,
                     style: TextStyle(
-                      color: kSecondtColor,
+                      color: kWhiteColor,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),

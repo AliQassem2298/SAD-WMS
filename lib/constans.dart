@@ -12,15 +12,15 @@ import 'package:flutter/material.dart';
 
 //////// ours
 const kFirstColor = Color(
-    0xFF1B3799); //0xff2d77c1 //////////////////////////0xFF00237D///1B3799
+    0xFF00457c); //0xff2d77c1 //////////////////////////0xFF00237D///1B3799//////00457c
 const kFirstColor2 = Color(
-    0xff2D5BFF); //0xff2d77c1 /////////////////////////0xff2d77c1////2D5BFF
+    0xff0079c1); //0xff2d77c1 /////////////////////////0xff2d77c1 ////2D5BFF//////0079c1
 const kFirstColor3 = Color(0xF300BFFF); //0xff2d77c1
 
 const kSecondtColor = Color(0xff35626e); ////35626e
 const kFourthColor = Color(0xff9b9ca3);
 const kThierdColor = Color(0xffC1C1C1); //0xffd9dadb//0xFFBCBCBC////C1C1C1
-const kFifthColor = Color(0xffF3A46C);
+const kFifthColor = Color(0xffF3A46C); //////////
 
 const kBackGroundColor = Color(0xFFB0BEC5); /////B0BEC5//////E8E8E8
 const kCardBackGroundColor = Color(0xFFEBEBEB);
@@ -37,5 +37,3 @@ const kTextColor = Color(0xFF607D8B);
 // const kSecondtColor = Color(0xffC60C30);
 // const kThierdColor = Color(0xffB0B7BC);
 // const kFourthColor = Color(0xff4C2E34);
-
-
