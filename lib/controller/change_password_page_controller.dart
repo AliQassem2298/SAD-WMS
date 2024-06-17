@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 
 class ChangePasswordPageController extends GetxController {
   static String id = '/ChangePasswordPage';
@@ -16,7 +17,7 @@ class ChangePasswordPageController extends GetxController {
     Future.delayed(
       const Duration(microseconds: 1),
       () {
-        containerHeight = 500;
+        containerHeight = 65.h;
         update();
       },
     );

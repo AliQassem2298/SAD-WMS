@@ -33,25 +33,27 @@ class SignUpPage extends StatelessWidget {
                       colors: [
                         kFirstColor,
                         kFirstColor2,
-                        // kThierdColor,
-                        // kFourthColor,
                       ],
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 50, right: 25),
+                  padding: EdgeInsets.only(
+                    left: 6.w,
+                    top: 10.h,
+                    right: 6.w,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             'Create Your',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 32,
+                              fontSize: 8.w,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -68,11 +70,11 @@ class SignUpPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const Text(
+                      Text(
                         'Account',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 32,
+                          fontSize: 8.w,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -94,8 +96,10 @@ class SignUpPage extends StatelessWidget {
                     child: Form(
                       key: controller.formState,
                       child: ListView(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 30, vertical: 25),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 7.5.w,
+                          vertical: 5.h,
+                        ),
                         children: [
                           CustomTextFromField(
                             onChanged: (value) {
@@ -104,7 +108,7 @@ class SignUpPage extends StatelessWidget {
                             textEditingController: controller.firstName,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'field is empty';
+                                return 'Field is empty';
                               }
                               return null;
                             },
@@ -112,6 +116,7 @@ class SignUpPage extends StatelessWidget {
                             text: 'First Name',
                             toggleVisibility: false,
                           ),
+                          SizedBox(height: 2.h),
                           CustomTextFromField(
                             onChanged: (value) {
                               controller.lastName.text = value;
@@ -119,16 +124,15 @@ class SignUpPage extends StatelessWidget {
                             textEditingController: controller.lastName,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'field is empty';
+                                return 'Field is empty';
                               }
-
                               return null;
                             },
                             hintText: 'Enter Your Last Name',
                             text: 'Last Name',
-                            // keyboardType: TextInputType.text,
                             toggleVisibility: false,
                           ),
+                          SizedBox(height: 2.h),
                           CustomTextFromField(
                             onChanged: (value) {
                               controller.userName.text = value;
@@ -136,7 +140,7 @@ class SignUpPage extends StatelessWidget {
                             textEditingController: controller.userName,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'field is empty';
+                                return 'Field is empty';
                               }
                               return null;
                             },
@@ -144,6 +148,7 @@ class SignUpPage extends StatelessWidget {
                             text: 'Username',
                             toggleVisibility: false,
                           ),
+                          SizedBox(height: 2.h),
                           CustomTextFromField(
                             onChanged: (value) {
                               controller.email.text = value;
@@ -151,10 +156,10 @@ class SignUpPage extends StatelessWidget {
                             textEditingController: controller.email,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'field is empty';
+                                return 'Field is empty';
                               }
                               if (!value.isEmail) {
-                                return 'enter valid email address';
+                                return 'Enter valid email address';
                               }
                               return null;
                             },
@@ -162,6 +167,7 @@ class SignUpPage extends StatelessWidget {
                             text: 'Email',
                             toggleVisibility: false,
                           ),
+                          SizedBox(height: 2.h),
                           CustomTextFromField(
                             onChanged: (value) {
                               controller.password.text = value;
@@ -169,10 +175,10 @@ class SignUpPage extends StatelessWidget {
                             textEditingController: controller.password,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'field is empty';
+                                return 'Field is empty';
                               }
                               if (value.length < 7) {
-                                return 'password is too short';
+                                return 'Password is too short';
                               }
                               return null;
                             },
@@ -181,6 +187,7 @@ class SignUpPage extends StatelessWidget {
                             icon: const Icon(Icons.remove_red_eye),
                             toggleVisibility: true,
                           ),
+                          SizedBox(height: 2.h),
                           CustomTextFromField(
                             onChanged: (value) {
                               controller.confirmPassword.text = value;
@@ -188,37 +195,26 @@ class SignUpPage extends StatelessWidget {
                             textEditingController: controller.confirmPassword,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'field is empty';
+                                return 'Field is empty';
                               }
-                              if (controller.password.value !=
-                                  controller.confirmPassword.value) {
-                                return 'password didn\'t match';
+                              if (controller.password.text !=
+                                  controller.confirmPassword.text) {
+                                return 'Passwords didn\'t match';
                               }
                               if (value.length < 7) {
-                                return 'password is too short';
+                                return 'Password is too short';
                               }
                               return null;
                             },
-                            hintText: 'Enter Your Password',
+                            hintText: 'Confirm Your Password',
                             text: 'Confirm Password',
                             icon: const Icon(Icons.remove_red_eye),
                             toggleVisibility: true,
                           ),
-                          // CustomDropList(
-                          //   textEditingController: controller.role,
-                          //   validator: (value) {
-                          //     if (value == null || value.isEmpty) {
-                          //       return 'Please select an option';
-                          //     }
-                          //     return null;
-                          //   },
-                          //   option1: 'customer',
-                          //   option2: 'staff',
-                          // ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 15,
-                              vertical: 25,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 5.w,
+                              vertical: 5.h,
                             ),
                             child: CustomButton(
                               onPressed: () async {
@@ -228,10 +224,8 @@ class SignUpPage extends StatelessWidget {
 
                                   try {
                                     await controller.signUp(controller);
-
-                                    print('succsess');
+                                    print('Success');
                                     controller.loadingIndecatorFalse();
-
                                     Get.to(
                                       () => DialogPage(
                                         routeName: SignInPageController.id,
@@ -239,10 +233,8 @@ class SignUpPage extends StatelessWidget {
                                     );
                                   } catch (e) {
                                     print(e.toString());
-
                                     controller.showSnackBar(
                                       context,
-                                      // 'A user with that username or email is already exists.',
                                       e.toString(),
                                     );
                                   }
@@ -255,8 +247,6 @@ class SignUpPage extends StatelessWidget {
                                 colors: [
                                   kFirstColor,
                                   kFirstColor2,
-                                  // kThierdColor,
-                                  // kFourthColor,
                                 ],
                                 end: Alignment.topLeft,
                                 begin: Alignment.bottomRight,
@@ -266,10 +256,12 @@ class SignUpPage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              const Text(
+                              Text(
                                 'Already have an account?',
                                 style: TextStyle(
-                                    fontSize: 16, color: Colors.black),
+                                  fontSize: 4.w,
+                                  color: Colors.black,
+                                ),
                               ),
                               InkWell(
                                 onTap: () {

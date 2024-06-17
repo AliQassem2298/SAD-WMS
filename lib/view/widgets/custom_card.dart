@@ -9,82 +9,71 @@ class CustomCard extends StatelessWidget {
     required this.text,
     required this.image,
     required this.routname,
-    super.key,
-  });
-  String text, image, routname;
+    Key? key,
+  }) : super(key: key);
+
+  final String text;
+  final String image;
+  final String routname;
+
   @override
   Widget build(BuildContext context) {
+    ScreenSizeConfig.init(context);
+
     return InkWell(
       onTap: () {
         Get.toNamed(routname);
       },
       child: Container(
+        width: ScreenSizeConfig.blockSizeHorizontal * 90,
         decoration: BoxDecoration(
-          // border: Border.all(),
+          borderRadius: BorderRadius.circular(35),
           boxShadow: [
-            // BoxShadow(
-            //   offset: Offset(-3, -3),
-            //   color: kWhiteColor,
-            //   blurRadius: 12,
-            // ),
+            BoxShadow(
+              offset: Offset(5, 5),
+              color: Color.fromARGB(50, 0, 0, 0),
+              blurRadius: 10,
+            ),
           ],
+          color: kFirstColor2,
         ),
-        child: Stack(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              // height: 188,
+              clipBehavior: Clip.none,
               width: double.infinity,
               decoration: BoxDecoration(
+                border: Border.all(width: 7, color: kFirstColor2),
+                color: Color.fromARGB(255, 255, 255, 255),
                 borderRadius: BorderRadius.circular(35),
-                // border: Border.all(),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(5, 5),
-                    color: Color.fromARGB(50, 0, 0, 0),
-                    blurRadius: 10,
-                  ),
-                ],
-
-                color: kFirstColor2,
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Icon(
-                  //   Icons.local_shipping,
-                  //   color: Colors.white,
-                  //   size: 110,
-                  // ),
-                  Container(
-                    clipBehavior: Clip.none,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 7, color: kFirstColor2),
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(35),
-                    ),
-                    child: Image.asset(
-                      image,
-                      height: 160,
-                      width: 300,
-                      fit: BoxFit.fitWidth,
-                    ),
-                  ),
-                  Text(
-                    text,
-                    style: TextStyle(
-                      color: kWhiteColor,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                ],
+              child: Image.asset(
+                image,
+                height: ScreenSizeConfig.blockSizeVertical * 21,
+                width: double.infinity,
+                fit: BoxFit.fitWidth,
               ),
             ),
+            Text(
+              text,
+              style: TextStyle(
+                color: kWhiteColor,
+                fontSize: ScreenSizeConfig.blockSizeHorizontal * 4.6,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: ScreenSizeConfig.blockSizeVertical * 1.5),
+          ],
+        ),
+      ),
+    ).paddingSymmetric(
+      vertical: ScreenSizeConfig.blockSizeVertical * 1.3,
+    );
+  }
+}
+
             // Padding(
             //   padding: const EdgeInsets.only(),
             //   child: Container(
@@ -111,11 +100,4 @@ class CustomCard extends StatelessWidget {
             //     ),
             //   ),
             // ),
-          ],
-        ),
-      ),
-    ).paddingSymmetric(
-      vertical: 10,
-    );
-  }
-}
+  

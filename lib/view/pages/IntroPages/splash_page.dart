@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/home_page_with_drawer_controller.dart';
 import 'package:warehouse_manegment_system/controller/splash_page_controller.dart';
 import 'package:warehouse_manegment_system/main.dart';
@@ -11,13 +12,15 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenSizeConfig.init(context);
+
     Future.delayed(
-      Duration(milliseconds: 3),
+      Duration(seconds: 3),
       () {
         if (sharedPreferences!.getBool('firstTimer') == false) {
-          if (sharedPreferences!.getString("token") == null)
+          if (sharedPreferences!.getString("token") == null) {
             Get.offAll(() => WelcomePage());
-          else {
+          } else {
             Get.offAllNamed(HomePageWithDrawerController.id);
           }
         } else {
@@ -30,8 +33,8 @@ class SplashPage extends StatelessWidget {
       body: Center(
         child: Image.asset(
           'assets/wms-logo-final.png',
-          height: 500,
-          width: 500,
+          height: ScreenSizeConfig.getProportionateScreenHeight(50),
+          width: ScreenSizeConfig.getProportionateScreenWidth(50),
         ),
       ),
     );

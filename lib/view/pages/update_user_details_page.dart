@@ -53,18 +53,22 @@ class UpdateUserDetailsPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 50, right: 25),
+                  padding: EdgeInsets.only(
+                    left: 6.w,
+                    top: 10.h,
+                    right: 6.w,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             'Update User',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 32,
+                              fontSize: 8.w,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -80,11 +84,11 @@ class UpdateUserDetailsPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const Text(
+                      Text(
                         'Details Page',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 32,
+                          fontSize: 8.w,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -106,9 +110,9 @@ class UpdateUserDetailsPage extends StatelessWidget {
                     child: Form(
                       key: controller.formState,
                       child: ListView(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 30,
-                          vertical: 25,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 7.5.w,
+                          vertical: 5.h,
                         ),
                         children: [
                           CustomTextFromField(
@@ -124,6 +128,8 @@ class UpdateUserDetailsPage extends StatelessWidget {
                             text: 'First Name',
                             toggleVisibility: false,
                           ),
+                          SizedBox(height: 2.h),
+
                           CustomTextFromField(
                             onChanged: (value) {
                               if (value.isEmpty) {
@@ -136,6 +142,8 @@ class UpdateUserDetailsPage extends StatelessWidget {
                             text: 'Last Name',
                             toggleVisibility: false,
                           ),
+                          SizedBox(height: 2.h),
+
                           CustomTextFromField(
                             onChanged: (value) {
                               if (value.isEmpty) {
@@ -149,6 +157,8 @@ class UpdateUserDetailsPage extends StatelessWidget {
                             text: 'Username',
                             toggleVisibility: false,
                           ),
+                          SizedBox(height: 2.h),
+
                           CustomTextFromField(
                             onChanged: (value) {
                               if (value.isEmpty) {
@@ -174,9 +184,9 @@ class UpdateUserDetailsPage extends StatelessWidget {
                           //   child:
                           // ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 15,
-                              vertical: 25,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 5.w,
+                              vertical: 5.h,
                             ),
                             child: CustomButton(
                               onPressed: () async {

@@ -24,20 +24,20 @@ class CustomShipmentCard extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: EdgeInsets.symmetric(vertical: 1.5.h),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
             Container(
               padding: EdgeInsets.symmetric(
-                horizontal: 50,
-                vertical: 25,
+                horizontal: 15.w,
+                vertical: 3.h,
               ),
-              height: 125,
+              height: 17.h,
               width: double.infinity,
               decoration: BoxDecoration(
                 // color: kCardBackGroundColor,
-                border: Border.all(color: kFirstColor2, width: 3),
+                border: Border.all(color: kFirstColor2, width: 0.8.w),
                 // boxShadow: [],
                 borderRadius: BorderRadius.circular(35),
                 // color: Color(0xff9b9ca3),
@@ -57,30 +57,30 @@ class CustomShipmentCard extends StatelessWidget {
                     maxLines: 1,
                     style: TextStyle(
                       color: kSecondtColor,
-                      fontSize: 18,
+                      fontSize: 5.w,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(
-                    height: 8,
+                    height: 0.7.h,
                   ),
                   Text(
                     'Status :${listShipmentModel.status}',
                     style: TextStyle(
                       color: kSecondtColor,
-                      fontSize: 18,
+                      fontSize: 5.w,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
-              ).paddingOnly(left: 40),
+              ).paddingOnly(left: 10.w),
             ),
             Positioned(
-              top: 30,
-              left: 20,
+              top: -2.h,
+              left: 3.w,
               child: Container(
-                  height: 60,
-                  width: 60,
+                  height: 20.h,
+                  width: 20.w,
                   decoration: BoxDecoration(
                     // border: Border.all(),
                     // boxShadow: [],
@@ -89,8 +89,8 @@ class CustomShipmentCard extends StatelessWidget {
                   ),
                   child: Image.network(
                     '${baseUrlImage}${listShipmentModel.supplierModel.photo}',
-                    height: 60,
-                    width: 60,
+                    height: 20.h,
+                    width: 20.w,
                   )
                   //  listShipmentModel.status == 'pending'
                   //     ? Image.asset('assets/clock.jpg')
@@ -100,11 +100,11 @@ class CustomShipmentCard extends StatelessWidget {
                   ),
             ),
             Positioned(
-              top: 35,
-              right: 20,
+              top: 5.h,
+              right: 6.w,
               child: Container(
-                width: 50,
-                height: 50,
+                height: 6.h,
+                width: 12.w,
                 decoration: BoxDecoration(
                   color: kCardBackGroundColor,
                   borderRadius: BorderRadius.circular(500),

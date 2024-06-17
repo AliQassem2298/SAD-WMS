@@ -20,16 +20,16 @@ class CustomSupplierCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 75),
+      padding: EdgeInsets.only(top: 9.h),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           Container(
-            padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.2.h),
             height: 400,
             width: 180,
             decoration: BoxDecoration(
-              border: Border.all(color: kFirstColor2, width: 3),
+              border: Border.all(color: kFirstColor2, width: 0.8.w),
               // border: Border.all(),
               // boxShadow: [],
               borderRadius: BorderRadius.circular(35),
@@ -56,7 +56,7 @@ class CustomSupplierCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: kSecondtColor,
-                    fontSize: 18,
+                    fontSize: 4.5.w,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -66,7 +66,7 @@ class CustomSupplierCard extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: kSecondtColor,
-                    fontSize: 18,
+                    fontSize: 4.5.w,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -77,41 +77,41 @@ class CustomSupplierCard extends StatelessWidget {
                   style: TextStyle(
                     color: kSecondtColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: 18,
+                    fontSize: 4.5.w,
                   ),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 4.5.h,
                 ),
               ],
             ),
           ),
           Positioned(
-            top: -50,
-            left: 40,
+            top: -7.h,
+            left: 9.w,
             child: Container(
-              height: 110,
-              width: 110,
+              height: 15.h,
+              width: 30.w,
               decoration: BoxDecoration(
                 // color: kSecondtColor,
-                border: Border.all(color: kFirstColor2, width: 3),
+                border: Border.all(color: kFirstColor2, width: 0.8.w),
                 // boxShadow: [],
                 borderRadius: BorderRadius.circular(100),
                 color: Colors.white,
               ),
               child: Image.network(
                 '${baseUrlImage}${shipmentDetailsModel.product.photo}',
-                height: 100,
-                width: 100,
+                height: 15.h,
+                width: 30.w,
               ),
             ),
           ),
           Positioned(
-            top: 20,
-            left: 30,
+            top: 3.h,
+            left: 7.w,
             child: Container(
-              height: 40,
-              width: 40,
+              height: 5.h,
+              width: 10.w,
               decoration: BoxDecoration(
                 color: kCardBackGroundColor,
                 // border: Border.all(),
@@ -127,14 +127,14 @@ class CustomSupplierCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 0,
-            right: 0,
+            bottom: 0.h,
+            right: 0.w,
             child: Container(
-              height: 35,
-              width: 100,
+              height: 5.h,
+              width: 25.w,
               decoration: BoxDecoration(
                 // color: kSecondtColor,
-                border: Border.all(color: kFirstColor2, width: 3),
+                border: Border.all(color: kFirstColor2, width: 0.8.w),
                 // boxShadow: [],
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(35),
@@ -146,10 +146,9 @@ class CustomSupplierCard extends StatelessWidget {
                   String scannedBarcode = await barcodeController.scanBarcode();
 
                   try {
-                    // Use the scanned barcode to call the API
                     DetailsModel response =
                         await ReceiveShipmentProduct().receiveShipmentProduct(
-                      id: shipmentDetailsModel.id,
+                      id: shipmentDetailsModel.shipment,
                       barcode: scannedBarcode,
                     );
 
@@ -162,7 +161,7 @@ class CustomSupplierCard extends StatelessWidget {
                   } catch (e) {
                     print(e.toString());
                     Get.snackbar(
-                      'Sorry',
+                      '',
                       e.toString(),
                       colorText: Colors.white,
                     );
@@ -173,7 +172,7 @@ class CustomSupplierCard extends StatelessWidget {
                     'Scan',
                     style: TextStyle(
                       color: kFirstColor,
-                      fontSize: 18,
+                      fontSize: 4.5.w,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

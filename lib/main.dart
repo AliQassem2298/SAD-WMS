@@ -24,6 +24,7 @@ import 'package:warehouse_manegment_system/controller/update_user_details_contro
 import 'package:warehouse_manegment_system/controller/welcome_page_controller.dart';
 import 'package:warehouse_manegment_system/middleware/auth_middleware.dart';
 import 'package:warehouse_manegment_system/middleware/onBoradingMiddleWare.dart';
+import 'package:warehouse_manegment_system/middleware/screen_size_middleware.dart';
 import 'package:warehouse_manegment_system/view/pages/IntroPages/splash_page.dart';
 import 'package:warehouse_manegment_system/view/pages/change_password_page.dart';
 import 'package:warehouse_manegment_system/view/pages/customers_order_page.dart';
@@ -155,6 +156,7 @@ class WeareHouseManegmentSystem extends StatelessWidget {
         GetPage(
           name: SplachPageController.id,
           page: () => SplashPage(),
+          middlewares: [ScreenSizeMiddleware()],
         ),
         GetPage(
           name: DeliveryPageController.id,

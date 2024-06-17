@@ -28,6 +28,8 @@ import 'package:warehouse_manegment_system/view/pages/drawer_page.dart';
 class HomePageWithDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ScreenSizeConfig.init(context);
+
     return GetBuilder<HomePageWithDrawerController>(
       init: HomePageWithDrawerController(),
       builder: (controller) {
@@ -35,67 +37,81 @@ class HomePageWithDrawer extends StatelessWidget {
 
         return Scaffold(
           backgroundColor: kFirstColor2,
-          body: Stack(
-            children: [
-              AnimatedPositioned(
-                duration: Duration(milliseconds: 250),
-                curve: Curves.fastOutSlowIn,
-                width: 288,
-                left: controller.isSideMenuClose.value ? -288 : 0,
-                height: MediaQuery.of(context).size.height,
-                child: DrawerPage(),
-              ),
-              Transform(
-                alignment: Alignment.center,
-                transform: Matrix4.identity()
-                  ..setEntry(3, 2, 0.001)
-                  ..rotateY(controller.animation.value -
-                      30 * controller.animation.value * pi / 180),
-                child: Transform.translate(
-                  offset: Offset(controller.animation.value * 265, 0),
-                  child: Transform.scale(
-                    scale: controller.scaleAnimation.value,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(
-                            controller.isDrawerClose.value ? 0 : 24),
-                      ),
-                      child: HomePage(),
-                    ),
+          body: LayoutBuilder(
+            builder: (context, constraints) {
+              return Stack(
+                children: [
+                  AnimatedPositioned(
+                    duration: Duration(milliseconds: 250),
+                    curve: Curves.fastOutSlowIn,
+                    width: 0.7 * ScreenSizeConfig.screenWidth,
+                    left: controller.isSideMenuClose.value
+                        ? -0.7 * ScreenSizeConfig.screenWidth
+                        : 0,
+                    height: ScreenSizeConfig.screenHeight,
+                    child: DrawerPage(),
                   ),
-                ),
-              ),
-              AnimatedPositioned(
-                duration: Duration(milliseconds: 250),
-                curve: Curves.fastOutSlowIn,
-                top: controller.isDrawerClose.value ? 0 : 16,
-                left: controller.isDrawerClose.value ? 0 : 220,
-                child: SafeArea(
-                  child: Container(
-                    margin: EdgeInsets.only(left: 16, top: 10),
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 8,
-                          offset: Offset(0, 3),
+                  Transform(
+                    alignment: Alignment.center,
+                    transform: Matrix4.identity()
+                      ..setEntry(3, 2, 0.001)
+                      ..rotateY(controller.animation.value -
+                          30 * controller.animation.value * pi / 180),
+                    child: Transform.translate(
+                      offset: Offset(
+                          controller.animation.value *
+                              0.63 *
+                              ScreenSizeConfig.screenWidth,
+                          0),
+                      child: Transform.scale(
+                        scale: controller.scaleAnimation.value,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(
+                                controller.isDrawerClose.value ? 0 : 10.w),
+                          ),
+                          child: HomePage(),
                         ),
-                      ],
-                    ),
-                    child: InkWell(
-                      onTap: () => controller.toggleDrawer(),
-                      child: controller.isDrawerClose.value
-                          ? Image.asset('assets/wms-logo-final.png')
-                          : Icon(Icons.close),
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ],
+                  AnimatedPositioned(
+                    duration: Duration(milliseconds: 250),
+                    curve: Curves.fastOutSlowIn,
+                    top: controller.isDrawerClose.value ? -2.5.h : 3.h,
+                    left: controller.isDrawerClose.value
+                        ? 0
+                        : 0.5 * ScreenSizeConfig.screenWidth,
+                    child: SafeArea(
+                      child: Container(
+                        margin: EdgeInsets.only(
+                          left: 5.w,
+                        ),
+                        height: 12.h,
+                        width: 12.w,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 8.w,
+                              offset: Offset(0, 3.h),
+                            ),
+                          ],
+                        ),
+                        child: InkWell(
+                          onTap: () => controller.toggleDrawer(),
+                          child: controller.isDrawerClose.value
+                              ? Image.asset('assets/wms-logo-final.png')
+                              : Icon(Icons.close),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
         );
       },

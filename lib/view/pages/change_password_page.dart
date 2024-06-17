@@ -39,18 +39,22 @@ class ChangePasswordPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 50, right: 25),
+                  padding: EdgeInsets.only(
+                    left: 6.w,
+                    top: 10.h,
+                    right: 6.w,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             'Change',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 32,
+                              fontSize: 8.w,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -65,11 +69,11 @@ class ChangePasswordPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const Text(
+                      Text(
                         'Password Page',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 32,
+                          fontSize: 8.w,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -91,8 +95,10 @@ class ChangePasswordPage extends StatelessWidget {
                     child: Form(
                       key: controller.formState,
                       child: ListView(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 30, vertical: 25),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 7.5.w,
+                          vertical: 5.h,
+                        ),
                         children: [
                           CustomTextFromField(
                             onChanged: (value) {
@@ -110,6 +116,7 @@ class ChangePasswordPage extends StatelessWidget {
                             text: ' Old Password',
                             toggleVisibility: false,
                           ),
+                          SizedBox(height: 2.h),
                           CustomTextFromField(
                             onChanged: (value) {
                               controller.password.text = value;
@@ -126,6 +133,7 @@ class ChangePasswordPage extends StatelessWidget {
                             icon: const Icon(Icons.remove_red_eye),
                             toggleVisibility: true,
                           ),
+                          SizedBox(height: 2.h),
                           CustomTextFromField(
                             onChanged: (value) {
                               controller.confirmPassword.text = value;
@@ -147,8 +155,10 @@ class ChangePasswordPage extends StatelessWidget {
                             toggleVisibility: true,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 50),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 5.w,
+                              vertical: 5.h,
+                            ),
                             child: CustomButton(
                               onPressed: () async {
                                 if (controller.formState.currentState!

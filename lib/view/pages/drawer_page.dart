@@ -39,29 +39,28 @@ class DrawerPage extends StatelessWidget {
                 ],
               ),
             ),
-            width: 300,
+            width: ScreenSizeConfig.blockSizeHorizontal * 75,
             height: double.infinity,
             child: SafeArea(
               child: ListView(
                 children: [
                   SizedBox(
-                    height: 40,
+                    height: ScreenSizeConfig.blockSizeVertical * 5.5,
                   ),
                   sharedPreferences!.getString("token") != null
                       ? CustomInfoCard(
-                          firstName:
-                              sharedPreferences!.getString("firstName")!  ,
-                          lastName:
-                              sharedPreferences!.getString("lastName")!,
+                          firstName: sharedPreferences!.getString("firstName")!,
+                          lastName: sharedPreferences!.getString("lastName")!,
                           email: sharedPreferences!.getString("email")!,
                         )
                       : Container(),
                   sharedPreferences!.getString("token") != null
                       ? Padding(
-                          padding: const EdgeInsets.only(left: 24),
+                          padding: EdgeInsets.only(
+                              left: ScreenSizeConfig.blockSizeHorizontal * 5),
                           child: Divider(
                             color: Colors.white24,
-                            height: 1,
+                            height: ScreenSizeConfig.blockSizeVertical * 0.5,
                           ),
                         )
                       : Container(),

@@ -96,7 +96,7 @@ class ShipmentsPage extends StatelessWidget {
             //   ],
             // ),
             child: Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
+              padding: EdgeInsets.only(left: 4.w, right: 4.w, top: 3.h),
               child: FutureBuilder<List<ListShipmentModel>>(
                 future: ListShipmentService().listShipment(),
                 builder: (context, snapshot) {

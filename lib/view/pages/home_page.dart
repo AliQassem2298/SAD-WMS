@@ -23,6 +23,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenSizeConfig.init(context);
+
     return Scaffold(
       // backgroundColor: Color(0xffd9dadb),
       // backgroundColor: Colors.white,
@@ -240,7 +242,6 @@ class HomePage extends StatelessWidget {
               String scannedBarcode = await barcodeController.scanBarcode();
 
               try {
-                // Use the scanned barcode to call the API
                 DetailsModel response =
                     await ReceiveShipmentProduct().receiveShipmentProduct(
                   id: 10,
@@ -265,12 +266,13 @@ class HomePage extends StatelessWidget {
             icon: Icon(Icons.abc),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 27),
+            padding: EdgeInsets.symmetric(
+                horizontal: ScreenSizeConfig.blockSizeHorizontal * 4),
             child: Text(
               'WMS',
               style: TextStyle(
                 color: kWhiteColor,
-                fontSize: 32,
+                fontSize: ScreenSizeConfig.blockSizeHorizontal * 8,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -318,17 +320,14 @@ class HomePage extends StatelessWidget {
                 //   mainAxisSpacing: 20,
                 // ),
                 padding: EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 16,
+                  horizontal: ScreenSizeConfig.blockSizeHorizontal * 4,
+                  vertical: ScreenSizeConfig.blockSizeVertical * 2,
                 ),
                 children: [
-                  InkWell(
-                    onTap: () {},
-                    child: CustomCard(
-                      routname: ShipmentsPageController.id,
-                      image: 'assets/Shipments.png',
-                      text: "Shippments",
-                    ),
+                  CustomCard(
+                    routname: ShipmentsPageController.id,
+                    image: 'assets/Shipments.png',
+                    text: "Shippments",
                   ),
                   CustomCard(
                     routname: PutAwayPageController.id,
@@ -392,7 +391,7 @@ class HomePage extends StatelessWidget {
                       child: Text(
                         'Welcome Customer',
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: ScreenSizeConfig.blockSizeHorizontal * 6,
                           color: Colors.white,
                         ),
                       ),
@@ -422,7 +421,7 @@ class HomePage extends StatelessWidget {
                       child: Text(
                         'Welcome Guest',
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: ScreenSizeConfig.blockSizeHorizontal * 6,
                           color: Colors.white,
                         ),
                       ),

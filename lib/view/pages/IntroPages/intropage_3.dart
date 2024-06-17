@@ -5,6 +5,8 @@ import 'package:warehouse_manegment_system/constans.dart';
 class IntroPage_3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ScreenSizeConfig.init(context);
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: kFirstColor,
@@ -14,10 +16,6 @@ class IntroPage_3 extends StatelessWidget {
               begin: Alignment.centerRight,
               end: Alignment.centerLeft,
               colors: [
-                // kFirstColor,
-                // kSecondtColor,
-                // kFourthColor,
-                // kThierdColor,
                 kFirstColor,
                 kFirstColor2,
               ],
@@ -26,7 +24,7 @@ class IntroPage_3 extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: 20,
+                height: ScreenSizeConfig.getProportionateScreenHeight(2),
               ),
               Container(
                 decoration: BoxDecoration(
@@ -45,21 +43,20 @@ class IntroPage_3 extends StatelessWidget {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                        color: Color.fromRGBO(30, 30, 30, 0.41),
-                        blurRadius: 6,
-                        offset: Offset(1, 2))
+                      color: Color.fromRGBO(30, 30, 30, 0.41),
+                      blurRadius: 6,
+                      offset: Offset(1, 2),
+                    ),
                   ],
                 ),
-                //alignment: Alignment.topCenter,
                 child: Lottie.asset(
                   'assets/animations/Animation - 1714655947424.json',
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  height: MediaQuery.of(context).size.width * 0.8,
-                  //fit: BoxFit.fill
+                  width: ScreenSizeConfig.getProportionateScreenWidth(80),
+                  height: ScreenSizeConfig.getProportionateScreenWidth(80),
                 ),
               ),
               SizedBox(
-                height: 85,
+                height: ScreenSizeConfig.getProportionateScreenHeight(10),
               ),
               Center(
                 child: Container(
@@ -68,23 +65,37 @@ class IntroPage_3 extends StatelessWidget {
                     children: [
                       Text(
                         "we have an invintory scan, put away,",
-                        style: TextStyle(fontSize: 20, color: Colors.white),
+                        style: TextStyle(
+                          fontSize:
+                              ScreenSizeConfig.getProportionateScreenWidth(5),
+                          color: Colors.white,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(
-                        height: 5,
+                        height:
+                            ScreenSizeConfig.getProportionateScreenHeight(1),
                       ),
                       Text(
                         "orders from inventory tracking",
-                        style: TextStyle(fontSize: 20, color: Colors.white),
+                        style: TextStyle(
+                          fontSize:
+                              ScreenSizeConfig.getProportionateScreenWidth(5),
+                          color: Colors.white,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(
-                        height: 5,
+                        height:
+                            ScreenSizeConfig.getProportionateScreenHeight(1),
                       ),
                       Text(
                         "to order fulfillment.",
-                        style: TextStyle(fontSize: 20, color: Colors.white),
+                        style: TextStyle(
+                          fontSize:
+                              ScreenSizeConfig.getProportionateScreenWidth(5),
+                          color: Colors.white,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ],

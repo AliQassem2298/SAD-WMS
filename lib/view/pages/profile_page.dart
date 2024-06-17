@@ -61,18 +61,22 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 50, right: 25),
+                  padding: EdgeInsets.only(
+                    left: 6.w,
+                    top: 10.h,
+                    right: 6.w,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             'Welcome',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 32,
+                              fontSize: 8.w,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -88,11 +92,11 @@ class ProfilePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const Text(
+                      Text(
                         'Profile Page',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 32,
+                          fontSize: 8.w,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -128,7 +132,7 @@ class ProfilePage extends StatelessWidget {
                           return Center(
                             child: Text(
                               snapshot.error.toString(),
-                              style: const TextStyle(fontSize: 18),
+                              style: TextStyle(fontSize: 6.5.w),
                             ),
                           );
                         } else if (snapshot.hasData &&
@@ -136,30 +140,30 @@ class ProfilePage extends StatelessWidget {
                           controller.userModel = snapshot.data!;
 
                           return ListView(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 25,
-                              vertical: 25,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 7.5.w,
+                              vertical: 2.h,
                             ),
                             children: [
-                              const SizedBox(height: 70),
+                              SizedBox(height: 8.h),
                               Column(
                                 children: [
                                   Text(
                                     controller.userModel!.username,
-                                    style: const TextStyle(
-                                      fontSize: 23,
+                                    style: TextStyle(
+                                      fontSize: 6.5.w,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Text(
                                     controller.userModel!.email,
-                                    style: const TextStyle(
-                                      fontSize: 20,
+                                    style: TextStyle(
+                                      fontSize: 5.5.w,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                   SizedBox(
-                                    height: 50,
+                                    height: 7.5.h,
                                   ),
                                 ],
                               ),
@@ -178,7 +182,7 @@ class ProfilePage extends StatelessWidget {
                                 ],
                               ),
                               SizedBox(
-                                height: 10,
+                                height: 2.h,
                               ),
                               Row(
                                 mainAxisAlignment:
@@ -195,20 +199,20 @@ class ProfilePage extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 35),
+                              SizedBox(height: 3.5.h),
                               InkWell(
-                                child: const Row(
+                                child: Row(
                                   children: [
                                     Text(
                                       'Change Password',
                                       style: TextStyle(
-                                        color: Color(0xff2B1836),
-                                        fontSize: 15,
+                                        color: Colors.black,
+                                        fontSize: 3.8.w,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 10,
+                                      width: 2.5.w,
                                     ),
                                     Icon(Icons.edit_outlined)
                                   ],
@@ -219,7 +223,7 @@ class ProfilePage extends StatelessWidget {
                                   );
                                 },
                               ),
-                              const SizedBox(height: 35),
+                              SizedBox(height: 5.h),
                               CustomButton(
                                 onPressed: () {
                                   Get.toNamed(
@@ -240,8 +244,8 @@ class ProfilePage extends StatelessWidget {
                                   ],
                                 ),
                                 text: 'Edit Profile',
-                              ).paddingSymmetric(horizontal: 50),
-                              const SizedBox(height: 10),
+                              ).paddingSymmetric(horizontal: 12.w),
+                              SizedBox(height: 1.2.h),
                               CustomButton(
                                 gradient: const LinearGradient(
                                   begin: Alignment.centerRight,
@@ -269,7 +273,7 @@ class ProfilePage extends StatelessWidget {
                                 },
                                 text: 'Disable Account',
                                 textColor: kWhiteColor,
-                              ).paddingSymmetric(horizontal: 50),
+                              ).paddingSymmetric(horizontal: 12.w),
                             ],
                           );
                         } else {
@@ -282,8 +286,8 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 175,
-                  left: 110,
+                  top: 25.h,
+                  left: 30.w,
                   child: AnimatedOpacity(
                     opacity: controller.isVisible ? 1.0 : 0.0,
                     duration: Duration(milliseconds: 1020),
@@ -292,23 +296,23 @@ class ProfilePage extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Color.fromARGB(137, 68, 68, 68),
                           borderRadius: BorderRadius.circular(100),
-                          border:
-                              Border.all(width: 1, color: Color(0xFF444444)),
+                          border: Border.all(
+                              width: 0.3.w, color: Color(0xFF444444)),
                         ),
-                        width: 175,
-                        height: 175,
+                        width: 40.w,
+                        height: 20.h,
                         child: Icon(
                           CupertinoIcons.person_solid,
                           color: Color.fromARGB(255, 0, 0, 0),
-                          size: 100,
+                          size: 30.w,
                         ),
                       ),
                     ),
                   ),
                 ),
                 Positioned(
-                  top: 300,
-                  right: 85,
+                  top: 40.h,
+                  left: 65.w,
                   child: AnimatedOpacity(
                     opacity: controller.isVisible ? 1.0 : 0.0,
                     duration: Duration(milliseconds: 1020),
@@ -316,7 +320,7 @@ class ProfilePage extends StatelessWidget {
                       onPressed: () {},
                       icon: Icon(
                         Icons.camera_alt_rounded,
-                        size: 25,
+                        size: 6.5.w,
                       ),
                     ),
                   ),
@@ -344,9 +348,8 @@ class CustomRowWidget extends StatelessWidget {
     if (icon is String) {
       iconWidget = SvgPicture.asset(
         icon,
-        width: 24,
-        height: 24,
-        // colorFilter: ColorFilter.mode(Colors.red, BlendMode.srcIn),
+        width: 4.w,
+        height: 4.h,
       );
     } else if (icon is IconData) {
       iconWidget = Icon(icon);
@@ -354,12 +357,12 @@ class CustomRowWidget extends StatelessWidget {
       iconWidget = Container();
     }
     return Container(
-      width: 150,
+      width: 38.w,
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
             color: Colors.black,
-            width: 1.0,
+            width: 0.3.w,
           ),
         ),
       ),
@@ -368,9 +371,9 @@ class CustomRowWidget extends StatelessWidget {
         children: [
           Text(
             text,
-            style: const TextStyle(
+            style: TextStyle(
               color: kFirstColor2,
-              fontSize: 18,
+              fontSize: 5.w,
             ),
           ),
           iconWidget,

@@ -28,27 +28,28 @@ class ForgetPasswordPage extends StatelessWidget {
                   colors: [
                     kFirstColor,
                     kFirstColor2,
-                    // kThierdColor,
-                    // kFourthColor,
                   ],
                 ),
               ),
               child: Stack(
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsets.only(left: 25, top: 50, right: 25),
+                    padding: EdgeInsets.only(
+                      left: 6.w,
+                      top: 10.h,
+                      right: 6.w,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
+                            Text(
                               'Reset Password',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 32,
+                                fontSize: 8.w,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -63,11 +64,11 @@ class ForgetPasswordPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const Text(
+                        Text(
                           'Page',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 32,
+                            fontSize: 8.w,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -89,8 +90,10 @@ class ForgetPasswordPage extends StatelessWidget {
                       child: Form(
                         key: controller.formState,
                         child: ListView(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 25, vertical: 25),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 7.5.w,
+                            vertical: 5.h,
+                          ),
                           children: [
                             CustomTextFromField(
                               onChanged: (value) {
@@ -99,10 +102,10 @@ class ForgetPasswordPage extends StatelessWidget {
                               textEditingController: controller.email,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'field is empty';
+                                  return 'Field is empty';
                                 }
                                 if (!value.isEmail) {
-                                  return 'enter a valid email address';
+                                  return 'Enter a valid email address';
                                 }
                                 return null;
                               },
@@ -125,7 +128,6 @@ class ForgetPasswordPage extends StatelessWidget {
                                       print(e.toString());
                                       controller.showSnackBar(
                                         context,
-                                        // 'Sorry, email not found in the database',
                                         e.toString(),
                                       );
                                     }
@@ -138,155 +140,144 @@ class ForgetPasswordPage extends StatelessWidget {
                               toggleVisibility: false,
                             ),
                             if (controller.isCodeVisible)
-                              CustomTextFromField(
-                                icon: IconButton(
-                                  icon: const Icon(Icons.done),
-                                  onPressed: () async {
-                                    if (controller.formState.currentState!
-                                        .validate()) {
-                                      controller.loadingIndecatorTrue();
-                                      try {
-                                        await CheckCodeService().checkCode(
-                                          email: controller.email.text,
-                                          code: controller.code.text,
-                                        );
-                                        controller.showSnackBar(
-                                          context,
-                                          'Code is correct, Now you can change your password.',
-                                        );
-                                        controller.codeVisible();
-                                        controller.newPasswordVisible();
-                                        controller.loadingIndecatorFalse();
-                                      } catch (e) {
-                                        print(e.toString());
-                                        controller.showSnackBar(
-                                          context,
-                                          // 'Ivalid Code',
-                                          e.toString(),
-                                        );
+                              Column(
+                                children: [
+                                  SizedBox(height: 2.h),
+                                  CustomTextFromField(
+                                    icon: IconButton(
+                                      icon: const Icon(Icons.done),
+                                      onPressed: () async {
+                                        if (controller.formState.currentState!
+                                            .validate()) {
+                                          controller.loadingIndecatorTrue();
+                                          try {
+                                            await CheckCodeService().checkCode(
+                                              email: controller.email.text,
+                                              code: controller.code.text,
+                                            );
+                                            controller.showSnackBar(
+                                              context,
+                                              'Code is correct, Now you can change your password.',
+                                            );
+                                            controller.codeVisible();
+                                            controller.newPasswordVisible();
+                                            controller.loadingIndecatorFalse();
+                                          } catch (e) {
+                                            print(e.toString());
+                                            controller.showSnackBar(
+                                              context,
+                                              e.toString(),
+                                            );
+                                          }
+                                          controller.loadingIndecatorFalse();
+                                        }
+                                      },
+                                    ),
+                                    onChanged: (value) {
+                                      controller.code.text = value;
+                                    },
+                                    textEditingController: controller.code,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return 'Field is empty';
                                       }
-                                      controller.loadingIndecatorFalse();
-                                    }
-                                  },
-                                ),
-                                onChanged: (value) {
-                                  controller.code.text = value;
-                                },
-                                textEditingController: controller.code,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'field is empty';
-                                  }
-                                  return null;
-                                },
-                                text: 'Code',
-                                hintText: 'Enter The Code',
-                                toggleVisibility: false,
-                              ),
-                            if (controller.isnewPasswordVisible)
-                              CustomTextFromField(
-                                onChanged: (value) {
-                                  controller.password.text = value;
-                                },
-                                textEditingController: controller.password,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'field is empty';
-                                  }
-                                  if (value.length < 7) {
-                                    return 'password is too short';
-                                  }
-                                  return null;
-                                },
-                                text: 'Password',
-                                hintText: 'Enter Your New Password',
-                                icon: const Icon(Icons.remove_red_eye),
-                                toggleVisibility: true,
-                              ),
-                            if (controller.isnewPasswordVisible)
-                              CustomTextFromField(
-                                onChanged: (value) {
-                                  controller.confirmPassword.text = value;
-                                },
-                                textEditingController:
-                                    controller.confirmPassword,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'field is empty';
-                                  }
-                                  if (controller.password.value !=
-                                      controller.confirmPassword.value) {
-                                    return 'password didn\'t match';
-                                  }
-                                  if (value.length < 7) {
-                                    return 'password is too short';
-                                  }
-                                  return null;
-                                },
-                                text: 'Confirm Password',
-                                hintText: 'Confirm Your New Password',
-                                icon: const Icon(Icons.remove_red_eye),
-                                toggleVisibility: true,
-                              ),
-                            // SlideTransition(
-                            //   position: Tween<Offset>(
-                            //     begin: const Offset(0, 5),
-                            //     end: const Offset(0, 0),
-                            //   ).animate(
-                            //     CurvedAnimation(
-                            //       parent: controller.animationController,
-                            //       curve: const Interval(
-                            //         0.6,
-                            //         1.0,
-                            //         curve: Curves.easeOut,
-                            //       ),
-                            //     ),
-                            //   ),
-                            //   child: ),
-                            if (controller.isnewPasswordVisible)
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 15,
-                                  vertical: 25,
-                                ),
-                                child: CustomButton(
-                                  text: 'Submit',
-                                  gradient: const LinearGradient(
-                                    begin: Alignment.centerRight,
-                                    end: Alignment.centerLeft,
-                                    colors: [
-                                      kFirstColor,
-                                      kFirstColor2,
-                                      // kThierdColor,
-                                      // kFourthColor,
-                                    ],
+                                      return null;
+                                    },
+                                    text: 'Code',
+                                    hintText: 'Enter The Code',
+                                    toggleVisibility: false,
                                   ),
-                                  onPressed: () async {
-                                    if (controller.formState.currentState!
-                                        .validate()) {
-                                      controller.loadingIndecatorTrue();
-                                      try {
-                                        await controller
-                                            .forgetPasswordConfirm(controller);
-
-                                        controller.loadingIndecatorFalse();
-
-                                        controller.showSnackBar(
-                                          context,
-                                          ' Password reset successful',
-                                        );
-                                      } catch (e) {
-                                        print(e.toString());
-                                        controller.showSnackBar(
-                                          context,
-                                          // 'Invalid code',
-                                          e.toString(),
-                                        );
+                                ],
+                              ),
+                            if (controller.isnewPasswordVisible)
+                              Column(
+                                children: [
+                                  SizedBox(height: 2.h),
+                                  CustomTextFromField(
+                                    onChanged: (value) {
+                                      controller.password.text = value;
+                                    },
+                                    textEditingController: controller.password,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return 'Field is empty';
                                       }
-                                      controller.loadingIndecatorFalse();
-                                    }
-                                  },
-                                ),
+                                      if (value.length < 7) {
+                                        return 'Password is too short';
+                                      }
+                                      return null;
+                                    },
+                                    text: 'Password',
+                                    hintText: 'Enter Your New Password',
+                                    icon: const Icon(Icons.remove_red_eye),
+                                    toggleVisibility: true,
+                                  ),
+                                  SizedBox(height: 2.h),
+                                  CustomTextFromField(
+                                    onChanged: (value) {
+                                      controller.confirmPassword.text = value;
+                                    },
+                                    textEditingController:
+                                        controller.confirmPassword,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return 'Field is empty';
+                                      }
+                                      if (controller.password.text !=
+                                          controller.confirmPassword.text) {
+                                        return 'Passwords didn\'t match';
+                                      }
+                                      if (value.length < 7) {
+                                        return 'Password is too short';
+                                      }
+                                      return null;
+                                    },
+                                    text: 'Confirm Password',
+                                    hintText: 'Confirm Your New Password',
+                                    icon: const Icon(Icons.remove_red_eye),
+                                    toggleVisibility: true,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 5.w,
+                                      vertical: 5.h,
+                                    ),
+                                    child: CustomButton(
+                                      text: 'Submit',
+                                      gradient: const LinearGradient(
+                                        begin: Alignment.centerRight,
+                                        end: Alignment.centerLeft,
+                                        colors: [
+                                          kFirstColor,
+                                          kFirstColor2,
+                                        ],
+                                      ),
+                                      onPressed: () async {
+                                        if (controller.formState.currentState!
+                                            .validate()) {
+                                          controller.loadingIndecatorTrue();
+                                          try {
+                                            await controller
+                                                .forgetPasswordConfirm(
+                                                    controller);
+                                            controller.loadingIndecatorFalse();
+                                            controller.showSnackBar(
+                                              context,
+                                              'Password reset successful',
+                                            );
+                                          } catch (e) {
+                                            print(e.toString());
+                                            controller.showSnackBar(
+                                              context,
+                                              e.toString(),
+                                            );
+                                          }
+                                          controller.loadingIndecatorFalse();
+                                        }
+                                      },
+                                    ),
+                                  ),
+                                ],
                               ),
                           ],
                         ),

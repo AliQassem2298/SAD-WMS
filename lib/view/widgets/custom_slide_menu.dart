@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 
 class CustomSlideMenuTitle extends StatelessWidget {
   CustomSlideMenuTitle({
@@ -18,8 +19,8 @@ class CustomSlideMenuTitle extends StatelessWidget {
       onTap: ontap,
       child: ListTile(
         leading: SizedBox(
-          height: 34,
-          width: 34,
+          height: ScreenSizeConfig.blockSizeVertical * 4,
+          width: ScreenSizeConfig.blockSizeHorizontal * 10,
           child: Icon(
             icon,
             color: Colors.white,

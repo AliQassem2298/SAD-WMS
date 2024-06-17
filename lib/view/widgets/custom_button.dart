@@ -15,6 +15,7 @@ class CustomButton extends StatelessWidget {
   final Gradient? gradient;
   final VoidCallback? onPressed;
   final double? fontSize;
+
   const CustomButton({
     Key? key,
     required this.text,
@@ -32,6 +33,8 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenSizeConfig.init(context);
+
     return InkWell(
       onTap: () {
         if (onPressed != null) {
@@ -55,7 +58,7 @@ class CustomButton extends StatelessWidget {
         }
       },
       child: Container(
-        height: 50,
+        height: ScreenSizeConfig.getProportionateScreenHeight(7),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
           border: hasBorder ? Border.all(color: borderColor, width: 2) : null,
@@ -65,7 +68,8 @@ class CustomButton extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              fontSize: fontSize ?? 16,
+              fontSize:
+                  fontSize ?? ScreenSizeConfig.getProportionateScreenWidth(4),
               color: hasBorder ? textColor : kFirstColor,
               fontWeight: FontWeight.bold,
             ),

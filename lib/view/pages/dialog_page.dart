@@ -7,6 +7,7 @@ class DialogPage extends StatelessWidget {
   final String content;
   final String buttonText;
   final String routeName;
+
   const DialogPage({
     Key? key,
     required this.routeName,
@@ -19,6 +20,8 @@ class DialogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenSizeConfig.init(context); // Initialize ScreenSizeConfig
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -36,14 +39,16 @@ class DialogPage extends StatelessWidget {
           backgroundColor: kCardBackGroundColor,
           title: Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               color: kSecondtColor,
+              fontSize: ScreenSizeConfig.blockSizeHorizontal * 6,
             ),
           ),
           content: Text(
             content,
-            style: const TextStyle(
+            style: TextStyle(
               color: kSecondtColor,
+              fontSize: ScreenSizeConfig.blockSizeHorizontal * 4.5,
             ),
           ),
           actions: [
@@ -53,8 +58,8 @@ class DialogPage extends StatelessWidget {
               },
               child: Text(
                 buttonText,
-                style: const TextStyle(
-                  fontSize: 18,
+                style: TextStyle(
+                  fontSize: ScreenSizeConfig.blockSizeHorizontal * 5,
                   fontWeight: FontWeight.w600,
                   color: kFirstColor,
                 ),

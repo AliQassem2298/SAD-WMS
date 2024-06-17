@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/model/models/user_model.dart';
 
 class ProfilePageController extends GetxController {
@@ -14,7 +15,7 @@ class ProfilePageController extends GetxController {
     Future.delayed(
       const Duration(microseconds: 1),
       () {
-        containerHeight = 500;
+        containerHeight = 65.h;
         isVisible = true;
         update();
       },

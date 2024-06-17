@@ -101,7 +101,7 @@ class BarcodeController extends GetxController {
       if (barcodeScanRes != '-1') {
         scannedBarcodes.add(barcodeScanRes);
         await assetsAudioPlayer.open(
-          Audio("assets/red.wav"),
+          Audio("assets/Barcode scanner.m4a"),
         );
         return barcodeScanRes;
       } else {

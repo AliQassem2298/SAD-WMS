@@ -33,27 +33,27 @@ class SignInPage extends StatelessWidget {
                       colors: [
                         kFirstColor,
                         kFirstColor2,
-
-                        // kSecondtColor,
-                        // kThierdColor,
-                        // kFourthColor,
                       ],
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 50, right: 25),
+                  padding: EdgeInsets.only(
+                    left: 6.w,
+                    top: 10.h,
+                    right: 6.w,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             'Hello',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 32,
+                              fontSize: 8.w,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -70,11 +70,11 @@ class SignInPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const Text(
+                      Text(
                         'Sign In',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 32,
+                          fontSize: 8.w,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -96,9 +96,9 @@ class SignInPage extends StatelessWidget {
                     child: Form(
                       key: controller.formState,
                       child: ListView(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 30,
-                          vertical: 25,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 7.5.w,
+                          vertical: 5.h,
                         ),
                         children: [
                           CustomTextFromField(
@@ -108,15 +108,15 @@ class SignInPage extends StatelessWidget {
                             textEditingController: controller.email,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'field is empty';
+                                return 'Field is empty';
                               }
-
                               return null;
                             },
                             hintText: 'Enter Your Email Or User Name',
                             text: 'Email/Username',
                             toggleVisibility: false,
                           ),
+                          SizedBox(height: 2.h),
                           CustomTextFromField(
                             onChanged: (value) {
                               controller.password.text = value;
@@ -124,10 +124,10 @@ class SignInPage extends StatelessWidget {
                             textEditingController: controller.password,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'field is empty';
+                                return 'Field is empty';
                               }
                               if (value.length < 7) {
-                                return 'password is too short';
+                                return 'Password is too short';
                               }
                               return null;
                             },
@@ -137,7 +137,7 @@ class SignInPage extends StatelessWidget {
                             toggleVisibility: true,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 25),
+                            padding: EdgeInsets.only(top: 2.h),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
@@ -159,9 +159,9 @@ class SignInPage extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 15,
-                              vertical: 50,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 5.w,
+                              vertical: 5.h,
                             ),
                             child: CustomButton(
                               onPressed: () async {
@@ -171,30 +171,17 @@ class SignInPage extends StatelessWidget {
 
                                   try {
                                     await controller.signIn(controller);
-                                    // sharedPreferences!
-                                    //     .setString("token", userToken!);
-                                    print('succsess');
+                                    print('Success');
                                     controller.loadingIndecatorFalse();
-                                    // print('token=$userToken');
-                                    // controller.showSnackBar(
-                                    //   context,
-                                    //   'Sign in successful',
-                                    // );
                                     Get.snackbar(
                                       'Hi',
                                       'Sign in successful',
-                                      // colorText: Colors.white,
                                     );
                                     Get.toNamed(
-                                        HomePageWithDrawerController.id);
+                                      HomePageWithDrawerController.id,
+                                    );
                                   } catch (e) {
                                     print(e.toString());
-
-                                    // controller.showSnackBar(
-                                    //   context,
-                                    //   e.toString(),
-                                    //   // 'Unable to log in with provided credentials.',
-                                    // );
                                     Get.snackbar(
                                       'Sorry',
                                       e.toString(),
@@ -210,8 +197,6 @@ class SignInPage extends StatelessWidget {
                                 colors: [
                                   kFirstColor,
                                   kFirstColor2,
-                                  // kThierdColor,
-                                  // kFourthColor,
                                 ],
                                 end: Alignment.topLeft,
                                 begin: Alignment.bottomRight,

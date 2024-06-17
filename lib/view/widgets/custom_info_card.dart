@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:warehouse_manegment_system/constans.dart';
 
 // ignore: must_be_immutable
 class CustomInfoCard extends StatelessWidget {
@@ -26,7 +27,7 @@ class CustomInfoCard extends StatelessWidget {
             firstName,
             style: TextStyle(color: Colors.white),
           ),
-          SizedBox(width: 3),
+          SizedBox(width: ScreenSizeConfig.blockSizeHorizontal),
           Text(
             lastName,
             style: TextStyle(color: Colors.white),

@@ -15,23 +15,9 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenSizeConfig.init(context);
+
     return Scaffold(
-      // appBar: AppBar(
-      //   flexibleSpace: Container(
-      //     decoration: const BoxDecoration(
-      //       gradient: LinearGradient(
-      //         begin: Alignment.centerRight,
-      //         end: Alignment.centerLeft,
-      //         colors: [
-      //           Color(0xff2B1836),
-      //           Color(0xff591C3C),
-      //           Color(0xff911C3A),
-      //           Color(0xffBB1636),
-      //         ],
-      //       ),
-      //     ),
-      //   ),
-      // ),
       body: GetBuilder<WelcomePageController>(
         init: WelcomePageController(),
         builder: (controller) {
@@ -43,11 +29,6 @@ class WelcomePage extends StatelessWidget {
                 colors: [
                   kFirstColor,
                   kFirstColor2,
-
-                  // kSecondtColor,
-                  // kThierdColor,
-
-                  // kFourthColor,
                 ],
               ),
             ),
@@ -71,14 +52,15 @@ class WelcomePage extends StatelessWidget {
                     children: [
                       Image.asset(
                         'assets/wms-white-new.png',
+                        width: 100.w,
+                        height: 100.w,
                       ),
-                      // Icon(Icons.house_outlined),
-                      const Center(
+                      Center(
                         child: Text(
                           'Welcome Back ...',
                           style: TextStyle(
                             color: kWhiteColor,
-                            fontSize: 28,
+                            fontSize: 4.h,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -89,8 +71,10 @@ class WelcomePage extends StatelessWidget {
                 SlideTransition(
                   position: controller.slideAnimation1,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 25, vertical: 24),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 6.w,
+                      vertical: 3.h,
+                    ),
                     child: CustomButton(
                       onPressed: () {
                         Get.toNamed(SignInPageController.id);
@@ -105,7 +89,7 @@ class WelcomePage extends StatelessWidget {
                 SlideTransition(
                   position: controller.slideAnimation2,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    padding: EdgeInsets.symmetric(horizontal: 6.w),
                     child: CustomButton(
                       onPressed: () {
                         Get.toNamed(SignUpPageController.id);
@@ -114,12 +98,8 @@ class WelcomePage extends StatelessWidget {
                       hasBorder: false,
                       gradient: const LinearGradient(
                         colors: [
-                          // kSecondtColor,
-                          // kSecondtColor,
                           kWhiteColor,
                           kWhiteColor,
-                          // kFirstColor2,
-                          // kFirstColor2,
                         ],
                       ),
                     ),
@@ -140,26 +120,26 @@ class WelcomePage extends StatelessWidget {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 25),
+                    padding: EdgeInsets.symmetric(vertical: 3.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
+                        Text(
                           'Continue with ',
                           style: TextStyle(
                             color: kWhiteColor,
-                            fontSize: 15,
+                            fontSize: 2.h,
                           ),
                         ),
                         InkWell(
                           onTap: () {
                             Get.toNamed(HomePageWithDrawerController.id);
                           },
-                          child: const Text(
+                          child: Text(
                             'Guest Mode',
                             style: TextStyle(
                               color: kWhiteColor,
-                              fontSize: 17,
+                              fontSize: 2.5.h,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -168,22 +148,6 @@ class WelcomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                // SizedBox(
-                //   height: 50,
-                // ),
-                // InkWell(
-                //   onTap: () {
-                //     Get.to(() => MyApp());
-                //   },
-                //   child: const Text(
-                //     'Scanner',
-                //     style: TextStyle(
-                //       color: Colors.white,
-                //       fontSize: 17,
-                //       fontWeight: FontWeight.w700,
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           );

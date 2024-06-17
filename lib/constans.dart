@@ -28,6 +28,7 @@ const kCardBackGroundColor = Color(0xFFEBEBEB);
 ///EBEBEB
 const kWhiteColor = Colors.white;
 const kTextColor = Color(0xFF607D8B);
+
 // const kFirstColor = Color(0xff002244);
 // const kSecondtColor = Color(0xff69BE28);
 // const kThierdColor = Color(0xffD0D5D8);
@@ -37,3 +38,31 @@ const kTextColor = Color(0xFF607D8B);
 // const kSecondtColor = Color(0xffC60C30);
 // const kThierdColor = Color(0xffB0B7BC);
 // const kFourthColor = Color(0xff4C2E34);
+
+class ScreenSizeConfig {
+  static late double screenWidth;
+  static late double screenHeight;
+  static late double blockSizeHorizontal;
+  static late double blockSizeVertical;
+
+  static void init(BuildContext context) {
+    final mediaQueryData = MediaQuery.of(context);
+    screenWidth = mediaQueryData.size.width;
+    screenHeight = mediaQueryData.size.height;
+    blockSizeHorizontal = screenWidth / 100;
+    blockSizeVertical = screenHeight / 100;
+  }
+
+  static double getProportionateScreenWidth(double inputWidth) {
+    return (inputWidth / 100) * screenWidth;
+  }
+
+  static double getProportionateScreenHeight(double inputHeight) {
+    return (inputHeight / 100) * screenHeight;
+  }
+}
+
+extension SizeExtension on num {
+  double get w => ScreenSizeConfig.getProportionateScreenWidth(toDouble());
+  double get h => ScreenSizeConfig.getProportionateScreenHeight(toDouble());
+}

@@ -9,17 +9,12 @@ class IntroPage_1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: kThierdColor,
         body: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.centerRight,
               end: Alignment.centerLeft,
               colors: [
-                // kFirstColor,
-                // kSecondtColor,
-                // kFourthColor,
-                // kThierdColor,
                 kFirstColor,
                 kFirstColor2,
               ],
@@ -28,41 +23,39 @@ class IntroPage_1 extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: 20,
+                height: ScreenSizeConfig.getProportionateScreenHeight(2),
               ),
               Container(
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        // Color.fromARGB(255, 0, 4, 211),
-                        // kFirstColor,
-                        kWhiteColor,
-                        kWhiteColor,
-                        kWhiteColor,
-                        kWhiteColor,
-                        kWhiteColor,
-                        kFourthColor,
-                      ],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
+                  gradient: LinearGradient(
+                    colors: [
+                      kWhiteColor,
+                      kWhiteColor,
+                      kWhiteColor,
+                      kWhiteColor,
+                      kWhiteColor,
+                      kFourthColor,
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color.fromRGBO(30, 30, 30, 0.41),
+                      blurRadius: 6,
+                      offset: Offset(1, 2),
                     ),
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Color.fromRGBO(30, 30, 30, 0.41),
-                          blurRadius: 6,
-                          offset: Offset(1, 2))
-                    ]),
+                  ],
+                ),
                 child: Lottie.asset(
                   'assets/animations/85795-man-and-woman-say-hi.json',
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  height: MediaQuery.of(context).size.width * 0.8,
-
-                  //fit: BoxFit.fill,
+                  width: ScreenSizeConfig.getProportionateScreenWidth(80),
+                  height: ScreenSizeConfig.getProportionateScreenWidth(80),
                 ),
               ),
               SizedBox(
-                height: 85,
+                height: ScreenSizeConfig.getProportionateScreenHeight(10),
               ),
               Center(
                 child: Container(
@@ -72,32 +65,29 @@ class IntroPage_1 extends StatelessWidget {
                       Text(
                         "Welcome to our WMS!",
                         style: TextStyle(
-                          fontSize: 24,
+                          fontSize:
+                              ScreenSizeConfig.getProportionateScreenWidth(6),
                           color: kWhiteColor,
                         ),
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(
-                        height: 5,
+                        height:
+                            ScreenSizeConfig.getProportionateScreenHeight(1),
                       ),
                       Text(
                         "Our app empowers efficient warehouse operations.",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize:
+                              ScreenSizeConfig.getProportionateScreenWidth(5),
                           color: kWhiteColor,
                         ),
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(
-                        height: 5,
+                        height:
+                            ScreenSizeConfig.getProportionateScreenHeight(1),
                       ),
-                      // Text(
-                      //   "",
-                      //   style: TextStyle(
-                      //     fontSize: 20,
-                      //   ),
-                      //   textAlign: TextAlign.center,
-                      // ),
                     ],
                   ),
                 ),

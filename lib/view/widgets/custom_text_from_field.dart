@@ -30,10 +30,10 @@ class CustomTextFromField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenSizeConfig.init(context);
+
     return Obx(
       () => TextFormField(
-        // textCapitalization: TextCapitalization.none, // Added this line
-
         controller: textEditingController,
         keyboardType: keyboardType,
         obscureText: toggleVisibility ? !isPasswordVisible.value : false,
@@ -45,9 +45,7 @@ class CustomTextFromField extends StatelessWidget {
                   onPressed: () {
                     if (toggleVisibility) {
                       isPasswordVisible.toggle();
-                    } else {
-                      // Handle the case when the icon is not provided
-                    }
+                    } else {}
                   },
                   icon: toggleVisibility
                       ? (isPasswordVisible.value
@@ -64,9 +62,13 @@ class CustomTextFromField extends StatelessWidget {
                 )
               : null,
           hintText: hintText,
+          hintStyle: TextStyle(
+            fontSize: 2.h,
+          ),
           labelText: text,
-          labelStyle: const TextStyle(
+          labelStyle: TextStyle(
             color: kFirstColor2,
+            fontSize: 2.h,
           ),
           border: UnderlineInputBorder(
             borderSide: const BorderSide(color: Colors.black),
@@ -75,13 +77,15 @@ class CustomTextFromField extends StatelessWidget {
           errorText:
               showError.value ? validator!(textEditingController?.text) : null,
         ),
-        style: const TextStyle(
+        style: TextStyle(
           color: Colors.black,
+          fontSize: 2.h,
         ),
       ),
     );
   }
 }
+
 
 ///////////////////////////////////////////////////////////////////////
 // // ignore_for_file: must_be_immutable
