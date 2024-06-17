@@ -24,7 +24,9 @@ class SupplierShipmentPag extends StatelessWidget {
           appBar: AppBar(
             iconTheme: IconThemeData(color: Colors.white),
             title: Text(
-              '${products.supplierModel.name}\'s Shipment',
+              '${products.supplierModel.name.substring(0, 6)}\'s... Shipment',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -63,7 +65,7 @@ class SupplierShipmentPag extends StatelessWidget {
                         crossAxisCount: 2,
                         mainAxisSpacing: 0,
                         crossAxisSpacing: 0,
-                        childAspectRatio: 5 / 6.5,
+                        childAspectRatio: 5 / 7,
                       ),
                       itemCount: controller.products!.length,
                       clipBehavior: Clip.none,
@@ -126,9 +128,14 @@ class SupplierShipmentPag extends StatelessWidget {
                 left: 0,
                 child: Obx(
                   () {
-                    return Text(
-                      'Scan result: ${barcodeController.scannedBarcodes}\n',
-                      // style: const TextStyle(fontSize: 20),
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: barcodeController.scannedBarcodes.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(barcodeController.scannedBarcodes[index]),
+                        );
+                      },
                     );
                   },
                 ),

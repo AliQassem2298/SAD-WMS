@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
+import 'package:warehouse_manegment_system/controller/barcode_scan_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/delivery_page._controller.dart';
 import 'package:warehouse_manegment_system/controller/inventory_scan_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/orders_page_controller.dart';
@@ -8,10 +10,14 @@ import 'package:warehouse_manegment_system/controller/shipments_page_controller.
 import 'package:warehouse_manegment_system/controller/stocktaking_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/transfer_page_controller.dart';
 import 'package:warehouse_manegment_system/main.dart';
+import 'package:warehouse_manegment_system/model/models/details_model.dart';
+import 'package:warehouse_manegment_system/model/services/receive_shipment_product.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_card.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({
+  final BarcodeController barcodeController = Get.put(BarcodeController());
+
+  HomePage({
     super.key,
   });
 
@@ -230,7 +236,32 @@ class HomePage extends StatelessWidget {
         // title: Text('Warehouse management system'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              String scannedBarcode = await barcodeController.scanBarcode();
+
+              try {
+                // Use the scanned barcode to call the API
+                DetailsModel response =
+                    await ReceiveShipmentProduct().receiveShipmentProduct(
+                  id: 10,
+                  barcode: scannedBarcode,
+                );
+
+                print('Success: ${response.detail}');
+                Get.snackbar(
+                  'Success',
+                  response.detail,
+                  colorText: Colors.white,
+                );
+              } catch (e) {
+                print(e.toString());
+                Get.snackbar(
+                  'Sorry',
+                  e.toString(),
+                  colorText: Colors.white,
+                );
+              }
+            },
             icon: Icon(Icons.abc),
           ),
           Padding(

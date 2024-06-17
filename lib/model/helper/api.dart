@@ -7,11 +7,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+// String baseUrlImage = 'http://127.0.0.1:8000';
 // String baseUrl = 'http://127.0.0.1:8000/api'; //////// windows
-String baseUrlImage = 'http://10.0.2.2:8000';
-String baseUrl = 'http://10.0.2.2:8000/api'; ///// emulator
 
-// String baseUrl = 'http://192.168.43.198:8000/api'; ///// mobilde
+// String baseUrlImage = 'http://10.0.2.2:8000';
+// String baseUrl = 'http://10.0.2.2:8000/api'; ///// emulator
+
+String baseUrlImage = 'http://192.168.1.100:8000';
+String baseUrl = 'http://192.168.1.100:8000/api'; ///// mobilde
 
 class Api {
   Future<dynamic> get({required String url, @required String? token}) async {

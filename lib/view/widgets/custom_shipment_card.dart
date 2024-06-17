@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/supplier_shipment_page_controller.dart';
+import 'package:warehouse_manegment_system/model/helper/api.dart';
 import 'package:warehouse_manegment_system/model/models/list_shipment_model.dart';
 
 class CustomShipmentCard extends StatelessWidget {
@@ -52,7 +53,7 @@ class CustomShipmentCard extends StatelessWidget {
                   // ),
                   Text(
                     'Shipment from ${listShipmentModel.supplierModel.name}',
-                    overflow: TextOverflow.clip,
+                    overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: TextStyle(
                       color: kSecondtColor,
@@ -78,20 +79,25 @@ class CustomShipmentCard extends StatelessWidget {
               top: 30,
               left: 20,
               child: Container(
-                height: 60,
-                width: 60,
-                decoration: BoxDecoration(
-                  // border: Border.all(),
-                  // boxShadow: [],
-                  borderRadius: BorderRadius.circular(35),
-                  // color: Color(0xff9b9ca3),
-                ),
-                child: listShipmentModel.status == 'pending'
-                    ? Image.asset('assets/clock.jpg')
-                    : listShipmentModel.status == 'received'
-                        ? Image.asset('assets/done.jpg')
-                        : Image.asset('assets/box icon.png'),
-              ),
+                  height: 60,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    // border: Border.all(),
+                    // boxShadow: [],
+                    borderRadius: BorderRadius.circular(35),
+                    // color: Color(0xff9b9ca3),
+                  ),
+                  child: Image.network(
+                    '${baseUrlImage}${listShipmentModel.supplierModel.photo}',
+                    height: 60,
+                    width: 60,
+                  )
+                  //  listShipmentModel.status == 'pending'
+                  //     ? Image.asset('assets/clock.jpg')
+                  //     : listShipmentModel.status == 'received'
+                  //         ? Image.asset('assets/done.jpg')
+                  //         : Image.asset('assets/box icon.png'),
+                  ),
             ),
             Positioned(
               top: 35,

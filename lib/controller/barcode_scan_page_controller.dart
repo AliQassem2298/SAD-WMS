@@ -50,17 +50,46 @@
 // }
 // }
 
+// import 'package:assets_audio_player/assets_audio_player.dart';
+// import 'package:flutter/services.dart';
+// import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+// import 'package:get/get.dart';
+
+// class BarcodeController extends GetxController {
+//   RxList<String> scannedBarcodes = <String>[].obs;
+//   final assetsAudioPlayer = AssetsAudioPlayer();
+
+//   Future<void> scanBarcode() async {
+//     try {
+//       String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+//         '#C60C30',
+//         'Ok',
+//         true,
+//         ScanMode.BARCODE,
+//       );
+
+//       if (barcodeScanRes != '-1') {
+//         scannedBarcodes.add(barcodeScanRes);
+//         assetsAudioPlayer.open(
+//           Audio("assets/red.wav"),
+//         );
+//         scanBarcode();
+//       }
+//     } on PlatformException {
+//       Get.snackbar('Error', 'Failed to get platform version.');
+//     }
+//   }
+
 import 'package:assets_audio_player/assets_audio_player.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
 
 class BarcodeController extends GetxController {
   RxList<String> scannedBarcodes = <String>[].obs;
-  final assetsAudioPlayer = AssetsAudioPlayer();
+  final AssetsAudioPlayer assetsAudioPlayer = AssetsAudioPlayer();
 
-  Future<void> scanBarcode() async {
+  Future<String> scanBarcode() async {
     try {
       String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
         '#C60C30',
@@ -71,23 +100,26 @@ class BarcodeController extends GetxController {
 
       if (barcodeScanRes != '-1') {
         scannedBarcodes.add(barcodeScanRes);
-        assetsAudioPlayer.open(
+        await assetsAudioPlayer.open(
           Audio("assets/red.wav"),
         );
-        scanBarcode();
+        return barcodeScanRes;
+      } else {
+        throw 'Scan cancelled';
       }
     } on PlatformException {
-      Get.snackbar('Error', 'Failed to get platform version.');
+      throw 'Failed to get platform version.';
+    } catch (e) {
+      throw 'Failed to scan barcode.';
     }
   }
+}
 
-  void showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-      ),
-    );
-  }
+
+
+
+
+
 
   // void clearScannedBarcodes() {
   //   scannedBarcodes.clear();
@@ -97,4 +129,3 @@ class BarcodeController extends GetxController {
   //   print(scannedBarcodes);
   //   Get.snackbar('Scanned Barcodes', scannedBarcodes.join(', '));
   // }
-}
