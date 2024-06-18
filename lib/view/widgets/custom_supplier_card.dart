@@ -26,8 +26,8 @@ class CustomSupplierCard extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.2.h),
-            height: 400,
-            width: 180,
+            height: 30.h,
+            width: 50.w,
             decoration: BoxDecoration(
               border: Border.all(color: kFirstColor2, width: 0.8.w),
               // border: Border.all(),

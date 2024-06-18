@@ -41,60 +41,6 @@ class ShipmentsPage extends StatelessWidget {
                 ],
               ),
             ),
-
-            // child: ListView(
-            //   children: [
-            //     SizedBox(
-            //       height: 5,
-            //     ),
-            //     InkWell(
-            //       onTap: () {
-            //         Get.toNamed(SupplierShipmentPagController.id);
-            //       },
-            //       child: CustomShipmentCard(
-            //         supplierName: 'Ali',
-            //         status: 'pending',
-            //         image: 'assets/clock.jpg',
-            //       ),
-            //     ),
-            //     SizedBox(
-            //       height: 25,
-            //     ),
-            //     // InkWell(
-            //     //   onTap: () {
-            //     //     Get.toNamed(SupplierShipmentPagController.id);
-            //     //   },
-            //     //   child: CustomShipmentCard(
-            //     //     supplierName: 'Ali',
-            //     //     status: 'pending',
-            //     //     image: 'assets/box icon.png',
-            //     //   ),
-            //     // ),
-            //     // SizedBox(
-            //     //   height: 25,
-            //     // ),
-            //     InkWell(
-            //       onTap: () {
-            //         Get.toNamed(SupplierShipmentPagController.id);
-            //       },
-            //       child: CustomShipmentCard(
-            //         supplierName: 'Ali',
-            //         status: 'recived',
-            //         image: 'assets/done.jpg',
-            //       ),
-            //     ),
-            //     SizedBox(
-            //       height: 25,
-            //     ),
-            //     // InkWell(
-            //     //   onTap: () {},
-            //     //   child: CustomShipmentCard(
-            //     //     supplierName: 'Ali',
-            //     //     status: 'pending',
-            //     //   ),
-            //     // ),
-            //   ],
-            // ),
             child: Padding(
               padding: EdgeInsets.only(left: 4.w, right: 4.w, top: 3.h),
               child: FutureBuilder<List<ListShipmentModel>>(

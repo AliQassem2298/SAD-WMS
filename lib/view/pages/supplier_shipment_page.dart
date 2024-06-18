@@ -57,12 +57,11 @@ class SupplierShipmentPag extends StatelessWidget {
                   if (snapshot.hasData) {
                     controller.products = snapshot.data!;
                     return GridView.builder(
-                      padding: EdgeInsets.symmetric(horizontal: 2.w),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: 0.h,
                         crossAxisSpacing: 0.w,
-                        childAspectRatio: 5.5.w / 4.h,
+                        childAspectRatio: 5.w / 3.5.h,
                       ),
                       itemCount: controller.products!.length,
                       clipBehavior: Clip.none,
@@ -70,7 +69,7 @@ class SupplierShipmentPag extends StatelessWidget {
                         return CustomSupplierCard(
                                 shipmentDetailsModel:
                                     controller.products![index])
-                            .paddingOnly(left: 1.5.w, right: 1.5.w);
+                            .paddingOnly(left: 2.5.w, right: 2.5.w);
                       },
                     );
                   } else {

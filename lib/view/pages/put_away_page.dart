@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/put_away_page_controller.dart';
-// import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
+import 'package:warehouse_manegment_system/model/models/shipment_details_model.dart';
+import 'package:warehouse_manegment_system/model/services/list_recived_products_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_put_away_card.dart';
+// import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 
 class PutAwayPage extends StatelessWidget {
   const PutAwayPage({super.key});
@@ -16,18 +18,6 @@ class PutAwayPage extends StatelessWidget {
         return Scaffold(
           backgroundColor: Color(0xFFB0BEC5),
           appBar: AppBar(
-            flexibleSpace: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.centerRight,
-                  end: Alignment.centerLeft,
-                  colors: [
-                    kFirstColor,
-                    kFirstColor2,
-                  ],
-                ),
-              ),
-            ),
             iconTheme: IconThemeData(color: Colors.white),
             title: Text(
               'Put Away',
@@ -36,38 +26,57 @@ class PutAwayPage extends StatelessWidget {
               ),
             ),
             centerTitle: true,
-            backgroundColor: kSecondtColor,
+            backgroundColor: kFirstColor2,
           ),
           body: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.centerRight,
-                end: Alignment.centerLeft,
-                colors: [
-                  kFirstColor,
-                  kFirstColor2,
-                ],
-              ),
-            ),
+            color: kWhiteColor,
             child: Stack(
               children: [
-                GridView.builder(
-                  itemBuilder: (context, index) {
-                    return CustomPutAwayCard().paddingOnly(left: 10, right: 10);
+                FutureBuilder<List<ShipmentDetailsModel>>(
+                  future: ListRecivedProducts().listRecivedProducts(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      controller.products = snapshot.data!;
+                      return GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 0.h,
+                          crossAxisSpacing: 0.w,
+                          childAspectRatio: 5.w / 3.5.h,
+                        ),
+                        itemCount: controller.products!.length,
+                        clipBehavior: Clip.none,
+                        itemBuilder: (context, index) {
+                          return CustomPutAwayCard(
+                            shipmentDetailsModel: controller.products![index],
+                          ).paddingOnly(left: 2.5.w, right: 2.5.w);
+                        },
+                      );
+                    } else {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
                   },
-                  // padding: EdgeInsets.symmetric(horizontal: 8),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    // mainAxisSpacing: 0,
-                    // crossAxisSpacing: 0,
-                    childAspectRatio: 5 / 7,
-                  ),
-                  // children: [
-                  //   CustomSupplierCard(),
-                  //   CustomSupplierCard(),
-                  //   CustomSupplierCard()
-                  // ],
                 ),
+                // GridView.builder(
+                //   itemBuilder: (context, index) {
+                //     return CustomPutAwayCard()
+                //         .paddingOnly(left: 2.5.w, right: 2.5.w);
+                //   },
+                //   // padding: EdgeInsets.symmetric(horizontal: 8),
+                //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                //     crossAxisCount: 2,
+                //     // mainAxisSpacing: 0,
+                //     // crossAxisSpacing: 0,
+                //     childAspectRatio: 5.w / 3.5.h,
+                //   ),
+                //   // children: [
+                //   //   CustomSupplierCard(),
+                //   //   CustomSupplierCard(),
+                //   //   CustomSupplierCard()
+                //   // ],
+                // ),
                 // Positioned(
                 //   bottom: 0,
                 //   left: 0,

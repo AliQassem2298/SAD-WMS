@@ -10,9 +10,10 @@ import 'package:warehouse_manegment_system/controller/shipments_page_controller.
 import 'package:warehouse_manegment_system/controller/stocktaking_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/transfer_page_controller.dart';
 import 'package:warehouse_manegment_system/main.dart';
-import 'package:warehouse_manegment_system/model/models/details_model.dart';
-import 'package:warehouse_manegment_system/model/services/receive_shipment_product.dart';
+import 'package:warehouse_manegment_system/model/services/put_away_product_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_card.dart';
+
+import '../../model/models/details_model.dart';
 
 class HomePage extends StatelessWidget {
   final BarcodeController barcodeController = Get.put(BarcodeController());
@@ -239,15 +240,14 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () async {
-              String scannedBarcode = await barcodeController.scanBarcode();
-
               try {
+                String scannedBarcode = await barcodeController.scanBarcode();
                 DetailsModel response =
-                    await ReceiveShipmentProduct().receiveShipmentProduct(
-                  id: 10,
-                  barcode: scannedBarcode,
+                    await PutAwayProductService().putAwayProduct(
+                  shipmentDetailId: 30.toString(),
+                  locationBarcode: scannedBarcode,
+                  quantity: 2.toString(),
                 );
-
                 print('Success: ${response.detail}');
                 Get.snackbar(
                   'Success',
@@ -257,7 +257,7 @@ class HomePage extends StatelessWidget {
               } catch (e) {
                 print(e.toString());
                 Get.snackbar(
-                  'Sorry',
+                  '',
                   e.toString(),
                   colorText: Colors.white,
                 );
