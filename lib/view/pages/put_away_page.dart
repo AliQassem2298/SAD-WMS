@@ -33,26 +33,50 @@ class PutAwayPage extends StatelessWidget {
             child: Stack(
               children: [
                 FutureBuilder<List<ShipmentDetailsModel>>(
-                  future: ListRecivedProducts().listRecivedProducts(),
+                  future: _fetchListRecivedProducts(),
                   builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      controller.products = snapshot.data!;
-                      return GridView.builder(
-                        padding: EdgeInsets.only(bottom: 2.h),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 0.h,
-                          crossAxisSpacing: 0.w,
-                          childAspectRatio: 5.w / 3.5.h,
-                        ),
-                        itemCount: controller.products!.length,
-                        clipBehavior: Clip.none,
-                        itemBuilder: (context, index) {
-                          return CustomPutAwayCard(
-                            shipmentDetailsModel: controller.products![index],
-                          ).paddingOnly(left: 2.5.w, right: 2.5.w);
-                        },
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
                       );
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Text(
+                          snapshot.error.toString(),
+                          style: TextStyle(
+                              fontSize: 16.0), // Adjust the font size as needed
+                        ),
+                      );
+                    } else if (snapshot.hasData) {
+                      if (snapshot.data!.isEmpty) {
+                        return Center(
+                          child: Text(
+                            'No products found',
+                            style: TextStyle(
+                                fontSize:
+                                    16.0), // Adjust the font size as needed
+                          ),
+                        );
+                      } else {
+                        controller.products = snapshot.data!;
+                        return GridView.builder(
+                          padding: EdgeInsets.only(bottom: 2.h),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 0.h,
+                            crossAxisSpacing: 0.w,
+                            childAspectRatio: 5.w / 3.5.h,
+                          ),
+                          itemCount: controller.products!.length,
+                          clipBehavior: Clip.none,
+                          itemBuilder: (context, index) {
+                            return CustomPutAwayCard(
+                              shipmentDetailsModel: controller.products![index],
+                            ).paddingOnly(left: 2.5.w, right: 2.5.w);
+                          },
+                        );
+                      }
                     } else {
                       return Center(
                         child: CircularProgressIndicator(),
@@ -66,6 +90,14 @@ class PutAwayPage extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+Future<List<ShipmentDetailsModel>> _fetchListRecivedProducts() async {
+  try {
+    return await ListRecivedProducts().listRecivedProducts();
+  } catch (e) {
+    throw Exception('Failed to load received products: $e');
   }
 }
                 // GridView.builder(

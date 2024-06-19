@@ -32,6 +32,8 @@ class Api {
 
       print(data);
       return data;
+    } else if (response.statusCode == 404) {
+      return [];
     } else {
       Map<String, dynamic> data = jsonDecode(response.body);
       var detail = data['detail'];
