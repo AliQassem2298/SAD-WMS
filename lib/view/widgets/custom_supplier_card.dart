@@ -93,7 +93,7 @@ class CustomSupplierCard extends StatelessWidget {
           ),
           Positioned(
             top: -7.h,
-            left: 9.w,
+            left: 8.w,
             child: Container(
               height: 15.h,
               width: 30.w,
@@ -113,7 +113,7 @@ class CustomSupplierCard extends StatelessWidget {
           ),
           Positioned(
             top: 3.h,
-            left: 7.w,
+            left: 6.w,
             child: Container(
               height: 5.h,
               width: 10.w,

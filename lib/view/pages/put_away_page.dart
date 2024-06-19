@@ -33,7 +33,7 @@ class PutAwayPage extends StatelessWidget {
             child: Stack(
               children: [
                 FutureBuilder<List<ShipmentDetailsModel>>(
-                  future: _fetchListRecivedProducts(),
+                  future: ListRecivedProducts().listRecivedProducts(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Center(
@@ -44,7 +44,8 @@ class PutAwayPage extends StatelessWidget {
                         child: Text(
                           snapshot.error.toString(),
                           style: TextStyle(
-                              fontSize: 16.0), // Adjust the font size as needed
+                            fontSize: 6.w,
+                          ),
                         ),
                       );
                     } else if (snapshot.hasData) {
@@ -52,9 +53,7 @@ class PutAwayPage extends StatelessWidget {
                         return Center(
                           child: Text(
                             'No products found',
-                            style: TextStyle(
-                                fontSize:
-                                    16.0), // Adjust the font size as needed
+                            style: TextStyle(fontSize: 6.w),
                           ),
                         );
                       } else {
@@ -93,13 +92,7 @@ class PutAwayPage extends StatelessWidget {
   }
 }
 
-Future<List<ShipmentDetailsModel>> _fetchListRecivedProducts() async {
-  try {
-    return await ListRecivedProducts().listRecivedProducts();
-  } catch (e) {
-    throw Exception('Failed to load received products: $e');
-  }
-}
+
                 // GridView.builder(
                 //   itemBuilder: (context, index) {
                 //     return CustomPutAwayCard()
