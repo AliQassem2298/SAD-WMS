@@ -38,6 +38,7 @@ class PutAwayPage extends StatelessWidget {
                     if (snapshot.hasData) {
                       controller.products = snapshot.data!;
                       return GridView.builder(
+                        padding: EdgeInsets.only(bottom: 2.h),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           mainAxisSpacing: 0.h,
@@ -59,6 +60,14 @@ class PutAwayPage extends StatelessWidget {
                     }
                   },
                 ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
                 // GridView.builder(
                 //   itemBuilder: (context, index) {
                 //     return CustomPutAwayCard()
@@ -122,11 +131,3 @@ class PutAwayPage extends StatelessWidget {
                 //     },
                 //   ),
                 // ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-}

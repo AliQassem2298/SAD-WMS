@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/barcode_scan_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/shipments_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/supplier_shipment_page_controller.dart';
 import 'package:warehouse_manegment_system/model/helper/api.dart';
 import 'package:warehouse_manegment_system/model/models/details_model.dart';
 import 'package:warehouse_manegment_system/model/models/shipment_details_model.dart';
@@ -11,7 +13,10 @@ import 'package:warehouse_manegment_system/model/services/receive_shipment_produ
 
 class CustomSupplierCard extends StatelessWidget {
   final BarcodeController barcodeController = Get.put(BarcodeController());
-
+  final SupplierShipmentPagController supplierShipmentPagController =
+      Get.put(SupplierShipmentPagController());
+  final ShipmentsPageController shipmentsPageController =
+      Get.put(ShipmentsPageController());
   ShipmentDetailsModel shipmentDetailsModel;
   CustomSupplierCard({
     required this.shipmentDetailsModel,
@@ -151,7 +156,8 @@ class CustomSupplierCard extends StatelessWidget {
                       id: shipmentDetailsModel.shipment,
                       barcode: scannedBarcode,
                     );
-
+                    supplierShipmentPagController.up();
+                    shipmentsPageController.up();
                     print('Success: ${response.detail}');
                     Get.snackbar(
                       'Success',

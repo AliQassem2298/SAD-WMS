@@ -4,4 +4,7 @@ import 'package:warehouse_manegment_system/model/models/shipment_details_model.d
 class PutAwayPageController extends GetxController {
   static String id = '/PutAwayPage';
   List<ShipmentDetailsModel>? products;
+  void up() {
+    update();
+  }
 }

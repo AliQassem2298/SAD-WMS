@@ -4,4 +4,7 @@ import 'package:warehouse_manegment_system/model/models/suggested_locations_mode
 class SuggestedLocationsPageController extends GetxController {
   static String id = '/SuggestedLocationsPage';
   SuggestedLocationModel? locations;
+  void up() {
+    update();
+  }
 }

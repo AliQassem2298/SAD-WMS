@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/barcode_scan_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/put_away_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/suggested_locations_page_controller.dart';
 import 'package:warehouse_manegment_system/model/models/details_model.dart';
 import 'package:warehouse_manegment_system/model/models/shipment_details_model.dart';
@@ -14,6 +15,9 @@ import 'package:warehouse_manegment_system/view/widgets/custom_suggested_locatio
 class SuggestedLocationsPage extends StatelessWidget {
   SuggestedLocationsPage({super.key});
   final BarcodeController barcodeController = Get.put(BarcodeController());
+
+  final PutAwayPageController putAwayPageController =
+      Get.put(PutAwayPageController());
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +62,12 @@ class SuggestedLocationsPage extends StatelessWidget {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(left: 4.w, right: 4.w, top: 3.h),
+                  padding: EdgeInsets.only(
+                    left: 4.w,
+                    right: 4.w,
+                    top: 3.h,
+                    bottom: 3.h,
+                  ),
                   child: FutureBuilder<SuggestedLocationModel>(
                     future: SuggestedLocationsService().suggestedLocations(
                       id: shipments.id,
@@ -108,17 +117,23 @@ class SuggestedLocationsPage extends StatelessWidget {
                       CustomButton(
                         hasBorder: true,
                         onPressed: () async {
-                          String scannedBarcode =
-                              await barcodeController.scanBarcode();
-                          DetailsModel response =
-                              await PutAwayProductService().putAwayProduct(
-                            shipmentDetailId: controller
-                                .locations!.shipmentDetailId
-                                .toString(),
-                            locationBarcode: scannedBarcode,
-                            quantity: controller.locations!.quantity.toString(),
-                          );
                           try {
+                            String scannedBarcode =
+                                await barcodeController.scanBarcode();
+                            DetailsModel response =
+                                await PutAwayProductService().putAwayProduct(
+                              shipmentDetailId: controller
+                                  .locations!.shipmentDetailId
+                                  .toString(),
+                              locationBarcode: scannedBarcode,
+                              quantity:
+                                  controller.locations!.quantity.toString(),
+                            );
+
+                            putAwayPageController.up();
+
+                            Get.back();
+
                             print('Success: ${response.detail}');
                             Get.snackbar(
                               'Success',
