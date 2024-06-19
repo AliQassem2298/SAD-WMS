@@ -89,34 +89,46 @@ class BarcodeController extends GetxController {
   RxList<String> scannedBarcodes = <String>[].obs;
   final AssetsAudioPlayer assetsAudioPlayer = AssetsAudioPlayer();
 
-  Future<String> scanBarcode() async {
+  static const String scanCancelled = '-1';
+  static const String audioFilePath = "assets/Barcode scanner.m4a";
+  static const String scanColor = '#C60C30';
+  static const String scanButtonText = 'Ok';
+
+  Future<String?> scanBarcode() async {
     try {
+      // Initiate barcode scanning
       String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-        '#C60C30',
-        'Ok',
+        scanColor,
+        scanButtonText,
         true,
         ScanMode.BARCODE,
       );
 
-      if (barcodeScanRes != '-1') {
+      // Check if the scan was successful
+      if (barcodeScanRes != scanCancelled) {
         scannedBarcodes.add(barcodeScanRes);
+        // Play success sound
         await assetsAudioPlayer.open(
-          Audio("assets/Barcode scanner.m4a"),
+          Audio(audioFilePath),
         );
         return barcodeScanRes;
       } else {
-        throw 'Scan cancelled';
+        return null; // Return null if the scan was cancelled
       }
     } on PlatformException {
-      throw 'Failed to get platform version.';
+      return Future.error('Failed to get platform version.');
     } catch (e) {
-      throw 'Failed to scan barcode.';
+      return Future.error('Failed to scan barcode.');
     }
   }
+
+  @override
+  void onClose() {
+    // Release resources
+    assetsAudioPlayer.dispose();
+    super.onClose();
+  }
 }
-
-
-
 
 
 

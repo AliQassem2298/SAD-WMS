@@ -134,57 +134,72 @@ class CustomSupplierCard extends StatelessWidget {
           Positioned(
             bottom: 0.h,
             right: 0.w,
-            child: Container(
-              height: 5.h,
-              width: 25.w,
-              decoration: BoxDecoration(
-                // color: kSecondtColor,
-                border: Border.all(color: kFirstColor2, width: 0.8.w),
-                // boxShadow: [],
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(35),
-                  topLeft: Radius.circular(35),
-                ),
-              ),
-              child: InkWell(
-                onTap: () async {
-                  String scannedBarcode = await barcodeController.scanBarcode();
-
-                  try {
-                    DetailsModel response =
-                        await ReceiveShipmentProduct().receiveShipmentProduct(
-                      id: shipmentDetailsModel.shipment,
-                      barcode: scannedBarcode,
-                    );
-                    supplierShipmentPagController.up();
-                    shipmentsPageController.up();
-                    print('Success: ${response.detail}');
-                    Get.snackbar(
-                      'Success',
-                      response.detail,
-                      colorText: Colors.white,
-                    );
-                  } catch (e) {
-                    print(e.toString());
-                    Get.snackbar(
-                      '',
-                      e.toString(),
-                      colorText: Colors.white,
-                    );
-                  }
-                },
-                child: Center(
-                  child: Text(
-                    'Scan',
-                    style: TextStyle(
-                      color: kFirstColor,
-                      fontSize: 4.5.w,
-                      fontWeight: FontWeight.bold,
+            child: shipmentDetailsModel.status == 'pending'
+                ? Container(
+                    height: 5.h,
+                    width: 25.w,
+                    decoration: BoxDecoration(
+                      // color: kSecondtColor,
+                      border: Border.all(color: kFirstColor2, width: 0.8.w),
+                      // boxShadow: [],
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(35),
+                        topLeft: Radius.circular(35),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-            ),
+                    child: InkWell(
+                      onTap: () async {
+                        try {
+                          String? scannedBarcode =
+                              await barcodeController.scanBarcode();
+
+                          if (scannedBarcode != null) {
+                            DetailsModel response =
+                                await ReceiveShipmentProduct()
+                                    .receiveShipmentProduct(
+                              id: shipmentDetailsModel.shipment,
+                              barcode: scannedBarcode,
+                            );
+                            supplierShipmentPagController.up();
+                            shipmentsPageController.up();
+                            print('Success: ${response.detail}');
+                            Get.snackbar(
+                              'Success',
+                              response.detail,
+                              colorText: Colors.white,
+                            );
+                          } else {
+                            // Handle the case where the scan was cancelled
+                            print('Scan was cancelled.');
+                            Get.snackbar(
+                              'Cancelled',
+                              'Scan was cancelled.',
+                              colorText: Colors.white,
+                            );
+                          }
+                        } catch (e) {
+                          // Handle any errors
+                          print(e.toString());
+                          Get.snackbar(
+                            'Error',
+                            e.toString(),
+                            colorText: Colors.white,
+                          );
+                        }
+                      },
+                      child: Center(
+                        child: Text(
+                          'Scan',
+                          style: TextStyle(
+                            color: kFirstColor,
+                            fontSize: 4.5.w,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                : Container(),
           ),
         ],
       ),

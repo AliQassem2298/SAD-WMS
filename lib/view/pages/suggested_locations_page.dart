@@ -118,32 +118,42 @@ class SuggestedLocationsPage extends StatelessWidget {
                         hasBorder: true,
                         onPressed: () async {
                           try {
-                            String scannedBarcode =
+                            String? scannedBarcode =
                                 await barcodeController.scanBarcode();
-                            DetailsModel response =
-                                await PutAwayProductService().putAwayProduct(
-                              shipmentDetailId: controller
-                                  .locations!.shipmentDetailId
-                                  .toString(),
-                              locationBarcode: scannedBarcode,
-                              quantity:
-                                  controller.locations!.quantity.toString(),
-                            );
+                            if (scannedBarcode != null) {
+                              DetailsModel response =
+                                  await PutAwayProductService().putAwayProduct(
+                                shipmentDetailId: controller
+                                    .locations!.shipmentDetailId
+                                    .toString(),
+                                locationBarcode: scannedBarcode,
+                                quantity:
+                                    controller.locations!.quantity.toString(),
+                              );
 
-                            putAwayPageController.up();
+                              putAwayPageController.up();
 
-                            Get.back();
+                              Get.back();
 
-                            print('Success: ${response.detail}');
-                            Get.snackbar(
-                              'Success',
-                              response.detail,
-                              colorText: Colors.white,
-                            );
+                              print('Success: ${response.detail}');
+                              Get.snackbar(
+                                'Success',
+                                response.detail,
+                                colorText: Colors.white,
+                              );
+                            } else {
+                              // Handle the case where the scan was cancelled
+                              print('Scan was cancelled.');
+                              Get.snackbar(
+                                'Cancelled',
+                                'Scan was cancelled.',
+                                colorText: Colors.white,
+                              );
+                            }
                           } catch (e) {
                             print(e.toString());
                             Get.snackbar(
-                              '',
+                              'Error',
                               e.toString(),
                               colorText: Colors.white,
                             );

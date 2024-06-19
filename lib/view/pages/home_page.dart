@@ -240,21 +240,7 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () async {
-              try {
-                String scannedBarcode = await barcodeController.scanBarcode();
-                DetailsModel response =
-                    await PutAwayProductService().putAwayProduct(
-                  shipmentDetailId: 30.toString(),
-                  locationBarcode: scannedBarcode,
-                  quantity: 2.toString(),
-                );
-                print('Success: ${response.detail}');
-                Get.snackbar(
-                  'Success',
-                  response.detail,
-                  colorText: Colors.white,
-                );
-              } catch (e) {
+              try {} catch (e) {
                 print(e.toString());
                 Get.snackbar(
                   '',
