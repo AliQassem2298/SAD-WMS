@@ -7,7 +7,7 @@ class SeeOrderDetailModel {
   final String totalPrice;
   final DateTime createdAt;
   final DateTime updatedAt;
-  final DateTime deliveredAt;
+  final DateTime? deliveredAt;
   final String priority;
   final String status;
   final List<OrderModel> details;
@@ -31,7 +31,9 @@ class SeeOrderDetailModel {
       totalPrice: jsonData['total_price'],
       createdAt: DateTime.parse(jsonData['created_at']),
       updatedAt: DateTime.parse(jsonData['updated_at']),
-      deliveredAt: DateTime.parse(jsonData['delivered_at']),
+      deliveredAt: jsonData['delivered_at'] != null
+          ? DateTime.parse(jsonData['delivered_at'])
+          : null,
       priority: jsonData['priority'],
       status: jsonData['status'],
       details: List<OrderModel>.from(

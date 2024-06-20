@@ -1,9 +1,9 @@
 import 'package:warehouse_manegment_system/main.dart';
 import 'package:warehouse_manegment_system/model/helper/api.dart';
-import 'package:warehouse_manegment_system/model/models/details_model.dart';
+import 'package:warehouse_manegment_system/model/models/detail_model.dart';
 
 class PutAwayProductService {
-  Future<DetailsModel> putAwayProduct({
+  Future<DetailModel> putAwayProduct({
     required String shipmentDetailId,
     required String locationBarcode,
     required String quantity,
@@ -17,6 +17,6 @@ class PutAwayProductService {
       },
       token: sharedPreferences!.getString("token"),
     );
-    return DetailsModel.fromJson(data);
+    return DetailModel.fromJson(data);
   }
 }

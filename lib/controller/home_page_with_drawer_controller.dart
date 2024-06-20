@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:warehouse_manegment_system/model/models/details_model.dart';
+import 'package:warehouse_manegment_system/model/models/detail_model.dart';
 import 'package:warehouse_manegment_system/model/services/log_out_service.dart';
 
 class HomePageWithDrawerController extends GetxController
@@ -71,7 +71,7 @@ class HomePageWithDrawerController extends GetxController
     );
   }
 
-  Future<DetailsModel> logOut() {
+  Future<DetailModel> logOut() {
     return LogoutService().logOut();
   }
 }

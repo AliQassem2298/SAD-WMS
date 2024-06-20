@@ -1,9 +1,9 @@
 import 'package:warehouse_manegment_system/main.dart';
 import 'package:warehouse_manegment_system/model/helper/api.dart';
-import 'package:warehouse_manegment_system/model/models/details_model.dart';
+import 'package:warehouse_manegment_system/model/models/detail_model.dart';
 
 class ChangePasswordService {
-  Future<DetailsModel> changePassword({
+  Future<DetailModel> changePassword({
     required String oldPassword,
     required String password,
     required String confirmPassword,
@@ -17,6 +17,6 @@ class ChangePasswordService {
       },
       token: sharedPreferences!.getString("token"),
     );
-    return DetailsModel.fromJson(data);
+    return DetailModel.fromJson(data);
   }
 }

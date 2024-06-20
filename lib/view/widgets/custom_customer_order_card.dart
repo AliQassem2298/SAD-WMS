@@ -1,9 +1,17 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 // import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
+import 'package:warehouse_manegment_system/controller/suggested_locations_page_controller.dart';
+import 'package:warehouse_manegment_system/model/helper/api.dart';
+import 'package:warehouse_manegment_system/model/models/order_model.dart';
 
 class CustomCustomerOrderCard extends StatelessWidget {
-  const CustomCustomerOrderCard({
+  OrderModel orderModel;
+  CustomCustomerOrderCard({
+    required this.orderModel,
     super.key,
   });
 
@@ -12,7 +20,11 @@ class CustomCustomerOrderCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 10.h),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Get.toNamed(
+            SuggestedLocationsPageController.id,
+          );
+        },
         child: Stack(
           clipBehavior: Clip.none,
           children: [
@@ -41,7 +53,9 @@ class CustomCustomerOrderCard extends StatelessWidget {
                   // ),
 
                   Text(
-                    'name: cap',
+                    'name: ${orderModel.productModel.name}',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: kFirstColor,
                       fontSize: 5.5.w,
@@ -50,7 +64,7 @@ class CustomCustomerOrderCard extends StatelessWidget {
                   ),
 
                   Text(
-                    'quantity: 80',
+                    'quantity: ${orderModel.quantity}',
                     style: TextStyle(
                       color: kFirstColor,
                       fontSize: 4.7.w,
@@ -58,7 +72,7 @@ class CustomCustomerOrderCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    r'price: 80$',
+                    'price: ${orderModel.productModel.price}' + r'$',
                     style: TextStyle(
                       color: kFirstColor,
                       fontSize: 4.7.w,
@@ -66,7 +80,7 @@ class CustomCustomerOrderCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'status: pending',
+                    'status: ${orderModel.status}',
                     style: TextStyle(
                       color: kFirstColor,
                       fontWeight: FontWeight.bold,
@@ -96,8 +110,8 @@ class CustomCustomerOrderCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100),
                   color: Colors.white,
                 ),
-                child: Image.asset(
-                  'assets/wms-logo-final.png',
+                child: Image.network(
+                  '${baseUrlImage}${orderModel.productModel.photo}',
                   height: 14.h,
                   width: 28.w,
                 ),
@@ -106,40 +120,42 @@ class CustomCustomerOrderCard extends StatelessWidget {
             Positioned(
               bottom: 0.h,
               right: 0.w,
-              child: Container(
-                height: 5.h,
-                width: 45.w,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.centerRight,
-                    end: Alignment.centerLeft,
-                    colors: [
-                      kFirstColor2,
-                      kFirstColor,
-                    ],
-                  ),
-                  // color: kSecondtColor,
-                  // border: Border.all(
-                  //   color: kFifthColor,
-                  // ),
-                  // boxShadow: [],
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(35),
-                    bottomLeft: Radius.circular(35),
-                  ),
-                  color: kBackGroundColor,
-                ),
-                child: Center(
-                  child: Text(
-                    'Pick',
-                    style: TextStyle(
-                      color: kWhiteColor,
-                      fontSize: 5.w,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
+              child: orderModel.status == 'pending'
+                  ? Container(
+                      height: 5.h,
+                      width: 45.w,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerRight,
+                          end: Alignment.centerLeft,
+                          colors: [
+                            kFirstColor2,
+                            kFirstColor,
+                          ],
+                        ),
+                        // color: kSecondtColor,
+                        // border: Border.all(
+                        //   color: kFifthColor,
+                        // ),
+                        // boxShadow: [],
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(35),
+                          bottomLeft: Radius.circular(35),
+                        ),
+                        color: kBackGroundColor,
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Pick',
+                          style: TextStyle(
+                            color: kWhiteColor,
+                            fontSize: 5.w,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    )
+                  : Container(),
             ),
             Positioned(
               top: 3.h,
@@ -154,9 +170,35 @@ class CustomCustomerOrderCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(35),
                   // color: Color(0xff9b9ca3),
                 ),
-                child: Image.asset(
-                  'assets/clock2.jpg',
-                ),
+                child: orderModel.status == 'pending'
+                    ? Image.asset(
+                        'assets/clock2.jpg',
+                        height: 8.h,
+                        width: 15.w,
+                      )
+                    : orderModel.status == 'picked'
+                        ? Image.asset(
+                            'assets/picked.png',
+                            height: 8.h,
+                            width: 15.w,
+                          )
+                        : orderModel.status == 'packed'
+                            ? Image.asset(
+                                'assets/packed.png',
+                                height: 8.h,
+                                width: 15.w,
+                              )
+                            : orderModel.status == 'delivered'
+                                ? Image.asset(
+                                    'assets/done.png',
+                                    height: 8.h,
+                                    width: 15.w,
+                                  )
+                                : Image.asset(
+                                    'assets/cancelled.png',
+                                    height: 8.h,
+                                    width: 15.w,
+                                  ),
               ),
             ),
             // Positioned(

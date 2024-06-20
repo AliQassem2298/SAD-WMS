@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
-import 'package:warehouse_manegment_system/model/models/details_model.dart';
+import 'package:warehouse_manegment_system/model/models/detail_model.dart';
 // import 'package:warehouse_manegment_system/model/models/sign_in_model.dart';
 import 'package:warehouse_manegment_system/model/services/sign_up_service.dart';
 
@@ -59,7 +59,7 @@ class SignUpPageController extends GetxController {
     );
   }
 
-  Future<DetailsModel> signUp(SignUpPageController controller) {
+  Future<DetailModel> signUp(SignUpPageController controller) {
     // print('role: ${controller.role.text}');
     return SignUpService().signUp(
       firstName: controller.firstName.text,

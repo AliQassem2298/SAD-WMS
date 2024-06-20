@@ -4,7 +4,7 @@ import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/barcode_scan_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/put_away_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/suggested_locations_page_controller.dart';
-import 'package:warehouse_manegment_system/model/models/details_model.dart';
+import 'package:warehouse_manegment_system/model/models/detail_model.dart';
 import 'package:warehouse_manegment_system/model/models/shipment_details_model.dart';
 import 'package:warehouse_manegment_system/model/models/suggested_locations_model.dart';
 import 'package:warehouse_manegment_system/model/services/put_away_product_service.dart';
@@ -163,7 +163,7 @@ class SuggestedLocationsPage extends StatelessWidget {
                             String? scannedBarcode =
                                 await barcodeController.scanBarcode();
                             if (scannedBarcode != null) {
-                              DetailsModel response =
+                              DetailModel response =
                                   await PutAwayProductService().putAwayProduct(
                                 shipmentDetailId: controller
                                     .locations!.shipmentDetailId

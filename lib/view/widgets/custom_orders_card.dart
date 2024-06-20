@@ -19,7 +19,12 @@ class CustomOrdersCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 1.h),
       child: InkWell(
         onTap: () {
-          Get.toNamed(CustomerOrderPageController.id);
+          listAllOrdersModel.status == 'cancelled'
+              ? null
+              : Get.toNamed(
+                  CustomerOrderPageController.id,
+                  arguments: listAllOrdersModel,
+                );
         },
         child: Stack(
           clipBehavior: Clip.none,
@@ -56,7 +61,7 @@ class CustomOrdersCard extends StatelessWidget {
                     height: 1.h,
                   ),
                   Text(
-                    'Total Price :${listAllOrdersModel.totalPrice}',
+                    'Total Price :${listAllOrdersModel.totalPrice}' + r'$',
                     style: TextStyle(
                       color: kFirstColor,
                       fontSize: 5.w,

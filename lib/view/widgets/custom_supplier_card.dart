@@ -7,7 +7,7 @@ import 'package:warehouse_manegment_system/controller/barcode_scan_page_controll
 import 'package:warehouse_manegment_system/controller/shipments_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/supplier_shipment_page_controller.dart';
 import 'package:warehouse_manegment_system/model/helper/api.dart';
-import 'package:warehouse_manegment_system/model/models/details_model.dart';
+import 'package:warehouse_manegment_system/model/models/detail_model.dart';
 import 'package:warehouse_manegment_system/model/models/shipment_details_model.dart';
 import 'package:warehouse_manegment_system/model/services/receive_shipment_product.dart';
 
@@ -154,7 +154,7 @@ class CustomSupplierCard extends StatelessWidget {
                               await barcodeController.scanBarcode();
 
                           if (scannedBarcode != null) {
-                            DetailsModel response =
+                            DetailModel response =
                                 await ReceiveShipmentProduct()
                                     .receiveShipmentProduct(
                               id: shipmentDetailsModel.shipment,
