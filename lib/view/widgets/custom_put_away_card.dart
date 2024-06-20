@@ -99,6 +99,20 @@ class CustomPutAwayCard extends StatelessWidget {
           ),
           Positioned(
             bottom: 0.h,
+            right: 0.5.w,
+            child: Container(
+              height: 6.5.h,
+              width: 44.w,
+              decoration: BoxDecoration(
+                color: kFirstColor2,
+                border: Border.all(color: kFirstColor2, width: 0.8.w),
+                // boxShadow: [],
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(35),
+                  bottomLeft: Radius.circular(35),
+                ),
+                /*
+                 bottom: 0.h,
             right: 1.5.w,
             child: Container(
               height: 6.5.h,
@@ -109,7 +123,7 @@ class CustomPutAwayCard extends StatelessWidget {
                 // boxShadow: [],
                 borderRadius: BorderRadius.all(
                   Radius.circular(35),
-                ),
+                ),                 */
               ),
               child: InkWell(
                 onTap: () {

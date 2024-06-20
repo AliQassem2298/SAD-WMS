@@ -125,9 +125,9 @@ class CustomSupplierCard extends StatelessWidget {
                 // color: Color(0xff9b9ca3),
               ),
               child: shipmentDetailsModel.status == 'pending'
-                  ? Image.asset('assets/clock.jpg')
+                  ? Image.asset('assets/clock2.jpg')
                   : shipmentDetailsModel.status == 'received'
-                      ? Image.asset('assets/done.jpg')
+                      ? Image.asset('assets/done.png')
                       : Image.asset('assets/box icon.png'),
             ),
           ),

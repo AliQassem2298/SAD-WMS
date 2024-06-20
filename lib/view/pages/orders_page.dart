@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:warehouse_manegment_system/constans.dart';
-import 'package:warehouse_manegment_system/controller/customers_order_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/orders_page_controller.dart';
+import 'package:warehouse_manegment_system/model/models/list_all_orders_model.dart';
+import 'package:warehouse_manegment_system/model/services/list_all_orders_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_orders_card.dart';
 // import 'package:warehouse_manegment_system/view/widgets/custom_shipment_card.dart';
 
@@ -16,7 +17,6 @@ class OrdersPage extends StatelessWidget {
       init: OrdersPageController(),
       builder: (controller) {
         return Scaffold(
-          backgroundColor: Color(0xFFB0BEC5),
           appBar: AppBar(
             flexibleSpace: Container(
               decoration: BoxDecoration(
@@ -54,74 +54,111 @@ class OrdersPage extends StatelessWidget {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 16,
+              padding: EdgeInsets.symmetric(
+                horizontal: 4.w,
+                vertical: 2.h,
               ),
-              child: ListView(
-                children: [
-                  SizedBox(
-                    height: 5,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.toNamed(CustomerOrderPageController.id);
-
-                      // Get.toNamed(SupplierShipmentPagController.id);
-                    },
-                    child: CustomOrdersCard(
-                      customerName: 'Ali',
-                      status: 'pending',
-                      image: 'assets/clock.jpg',
-                      praiority: 'High',
-                      totalPrice: r'20$',
-                    ),
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.toNamed(CustomerOrderPageController.id);
-                      // Get.toNamed(SupplierShipmentPagController.id);
-                    },
-                    child: CustomOrdersCard(
-                      customerName: 'Ali',
-                      status: 'Packed',
-                      image: 'assets/box icon.png',
-                      praiority: 'High',
-                      totalPrice: r'20$',
-                    ),
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.toNamed(CustomerOrderPageController.id);
-
-                      // Get.toNamed(SupplierShipmentPagController.id);
-                    },
-                    child: CustomOrdersCard(
-                      customerName: 'Ali',
-                      status: 'Delivered',
-                      image: 'assets/done.jpg',
-                      praiority: 'Low',
-                      totalPrice: r'20$',
-                    ),
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  // InkWell(
-                  //   onTap: () {},
-                  //   child: CustomShipmentCard(
-                  //     supplierName: 'Ali',
-                  //     status: 'pending',
-                  //   ),
-                  // ),
-                ],
+              child: FutureBuilder<List<ListAllOrdersModel>>(
+                future: ListAllOrdersService().listAllOrders(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Center(
+                      child: Text(
+                        snapshot.error.toString(),
+                        style: TextStyle(
+                          fontSize: 6.w,
+                        ),
+                      ),
+                    );
+                  } else if (snapshot.hasData) {
+                    if (snapshot.data!.isEmpty) {
+                      return Center(
+                        child: Text(
+                          'No Orders found',
+                          style: TextStyle(fontSize: 6.w),
+                        ),
+                      );
+                    } else {
+                      controller.orders = snapshot.data!;
+                      return ListView.builder(
+                        itemCount: controller.orders!.length,
+                        clipBehavior: Clip.none,
+                        itemBuilder: (context, index) {
+                          return CustomOrdersCard(
+                            listAllOrdersModel: controller.orders![index],
+                          ).paddingSymmetric(vertical: 1.h);
+                        },
+                      );
+                    }
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
               ),
+              // ListView(
+              //   children: [
+              //     SizedBox(
+              //       height: 1.h,
+              //     ),
+              //     InkWell(
+              //       onTap: () {
+              //         Get.toNamed(CustomerOrderPageController.id);
+
+              //         // Get.toNamed(SupplierShipmentPagController.id);
+              //       },
+              //       child: CustomOrdersCard(
+              //         customerName: 'Ali',
+              //         status: 'pending',
+              //         image: 'assets/clock.jpg',
+              //         praiority: 'High',
+              //         totalPrice: r'20$',
+              //       ),
+              //     ),
+              //     SizedBox(
+              //       height: 2.5.h,
+              //     ),
+              //     InkWell(
+              //       onTap: () {
+              //         Get.toNamed(CustomerOrderPageController.id);
+              //         // Get.toNamed(SupplierShipmentPagController.id);
+              //       },
+              //       child: CustomOrdersCard(
+              //         customerName: 'Ali',
+              //         status: 'Packed',
+              //         image: 'assets/box icon.png',
+              //         praiority: 'High',
+              //         totalPrice: r'20$',
+              //       ),
+              //     ),
+              //     SizedBox(
+              //       height: 2.5.h,
+              //     ),
+              //     InkWell(
+              //       onTap: () {
+              //         Get.toNamed(CustomerOrderPageController.id);
+
+              //         // Get.toNamed(SupplierShipmentPagController.id);
+              //       },
+              //       child: CustomOrdersCard(
+              //         customerName: 'Ali',
+              //         status: 'Delivered',
+              //         image: 'assets/done.jpg',
+              //         praiority: 'Low',
+              //         totalPrice: r'20$',
+              //       ),
+              //     ),
+              //     SizedBox(
+              //       height: 2.5.h,
+              //     ),
+
+              //   ],
+              // ),
             ),
           ),
         );

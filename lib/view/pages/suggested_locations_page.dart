@@ -61,37 +61,79 @@ class SuggestedLocationsPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    left: 4.w,
-                    right: 4.w,
-                    top: 3.h,
-                    bottom: 3.h,
-                  ),
-                  child: FutureBuilder<SuggestedLocationModel>(
-                    future: SuggestedLocationsService().suggestedLocations(
-                      id: shipments.id,
-                    ),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        controller.locations = snapshot.data!;
-                        return ListView.builder(
-                          itemCount: controller.locations!.locationModel.length,
-                          clipBehavior: Clip.none,
-                          itemBuilder: (context, index) {
-                            return CustomSuggestedLocationCard(
+                child: FutureBuilder<SuggestedLocationModel>(
+                  future: SuggestedLocationsService()
+                      .suggestedLocations(id: shipments.id),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (snapshot.hasData &&
+                        snapshot.data!.locationModel.isNotEmpty) {
+                      controller.locations = snapshot.data!;
+                      int locationCount =
+                          controller.locations!.locationModel.length;
+
+                      if (locationCount == 2) {
+                        return Column(
+                          children: [
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                CustomSuggestedLocationCard(
+                                  locationsModel:
+                                      controller.locations!.locationModel[0],
+                                ).paddingOnly(right: 1.5.w),
+                                CustomSuggestedLocationCard(
+                                  locationsModel:
+                                      controller.locations!.locationModel[1],
+                                ).paddingOnly(left: 1.5.w),
+                              ],
+                            ).paddingSymmetric(horizontal: 2.w),
+                          ],
+                        ).paddingOnly(top: 1.h);
+                      } else if (locationCount >= 3) {
+                        return Column(
+                          children: [
+                            SizedBox(
+                              height: 12.h,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                CustomSuggestedLocationCard(
+                                  locationsModel:
+                                      controller.locations!.locationModel[0],
+                                ).paddingOnly(right: 1.5.w),
+                                CustomSuggestedLocationCard(
+                                  locationsModel:
+                                      controller.locations!.locationModel[1],
+                                ).paddingOnly(left: 1.5.w),
+                              ],
+                            ).paddingSymmetric(horizontal: 2.w),
+                            CustomSuggestedLocationCard(
                               locationsModel:
-                                  controller.locations!.locationModel[index],
-                            );
-                          },
-                        );
+                                  controller.locations!.locationModel[2],
+                            ).paddingOnly(top: 1.h),
+                          ],
+                        ).paddingOnly(top: 1.h);
                       } else {
-                        return Center(
-                          child: CircularProgressIndicator(),
-                        );
+                        return Container();
                       }
-                    },
-                  ),
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Text('Error: ${snapshot.error}'),
+                      );
+                    } else {
+                      return Center(
+                        child: Text('No data available'),
+                      );
+                    }
+                  },
                 ),
               ),
               Positioned(
@@ -142,7 +184,6 @@ class SuggestedLocationsPage extends StatelessWidget {
                                 colorText: Colors.white,
                               );
                             } else {
-                              // Handle the case where the scan was cancelled
                               print('Scan was cancelled.');
                               Get.snackbar(
                                 'Cancelled',

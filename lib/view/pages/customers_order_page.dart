@@ -18,7 +18,6 @@ class CustomerOrderPage extends StatelessWidget {
       init: CustomerOrderPageController(),
       builder: (controller) {
         return Scaffold(
-          backgroundColor: Color(0xFFB0BEC5),
           appBar: AppBar(
             flexibleSpace: Container(
               decoration: BoxDecoration(
@@ -74,11 +73,11 @@ class CustomerOrderPage extends StatelessWidget {
                   // ],
                 ),
                 Positioned(
-                  bottom: 0,
-                  left: 0,
+                  bottom: 0.h,
+                  left: 0.w,
                   child: Container(
-                    height: 100,
-                    width: 400,
+                    height: 13.h,
+                    width: 100.w,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.centerRight,
@@ -89,21 +88,58 @@ class CustomerOrderPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 75,
-                      vertical: 25,
-                    ),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 15.w, vertical: 3.h),
                     child: Column(
                       children: [
                         CustomButton(
                           hasBorder: true,
-                          borderColor: Colors.transparent,
-                          onPressed: () {
-                            // barcodeController.scanBarcode();
+                          onPressed: () async {
+                            try {
+                              // String? scannedBarcode =
+                              //     await barcodeController.scanBarcode();
+                              // if (scannedBarcode != null) {
+                              //   DetailsModel response =
+                              //       await PutAwayProductService()
+                              //           .putAwayProduct(
+                              //     shipmentDetailId: controller
+                              //         .locations!.shipmentDetailId
+                              //         .toString(),
+                              //     locationBarcode: scannedBarcode,
+                              //     quantity:
+                              //         controller.locations!.quantity.toString(),
+                              //   );
+
+                              //   putAwayPageController.up();
+
+                              //   Get.back();
+
+                              //   print('Success: ${response.detail}');
+                              //   Get.snackbar(
+                              //     'Success',
+                              //     response.detail,
+                              //     colorText: Colors.white,
+                              //   );
+                              // } else {
+                              //   print('Scan was cancelled.');
+                              //   Get.snackbar(
+                              //     'Cancelled',
+                              //     'Scan was cancelled.',
+                              //     colorText: Colors.white,
+                              //   );
+                              // }
+                            } catch (e) {
+                              print(e.toString());
+                              Get.snackbar(
+                                'Error',
+                                e.toString(),
+                                colorText: Colors.white,
+                              );
+                            }
                           },
                           text: 'Pack',
-                          fontSize: 24,
-                          textColor: kSecondtColor,
+                          fontSize: 7.w,
+                          textColor: kFirstColor,
                           gradient: const LinearGradient(
                             colors: [
                               kWhiteColor,
@@ -115,6 +151,49 @@ class CustomerOrderPage extends StatelessWidget {
                     ),
                   ),
                 ),
+                // Positioned(
+                //   bottom: 0,
+                //   left: 0,
+                //   child: Container(
+                //     height: 100,
+                //     width: 400,
+                //     decoration: const BoxDecoration(
+                //       gradient: LinearGradient(
+                //         begin: Alignment.centerRight,
+                //         end: Alignment.centerLeft,
+                //         colors: [
+                //           kFirstColor,
+                //           kFirstColor2,
+                //         ],
+                //       ),
+                //     ),
+                //     padding: const EdgeInsets.symmetric(
+                //       horizontal: 75,
+                //       vertical: 25,
+                //     ),
+                //     child: Column(
+                //       children: [
+                //         CustomButton(
+                //           hasBorder: true,
+                //           borderColor: Colors.transparent,
+                //           onPressed: () {
+                //             // barcodeController.scanBarcode();
+                //           },
+                //           text: 'Pack',
+                //           fontSize: 24,
+                //           textColor: kSecondtColor,
+                //           gradient: const LinearGradient(
+                //             colors: [
+                //               kWhiteColor,
+                //               kWhiteColor,
+                //             ],
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
+                /////////////////////////////////////////////////////////////////////////////////////
                 // Positioned(
                 //   bottom: 75,
                 //   left: 0,

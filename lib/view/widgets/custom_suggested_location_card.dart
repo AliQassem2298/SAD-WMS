@@ -26,17 +26,17 @@ class CustomSuggestedLocationCard extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 1.5.h),
+        padding: EdgeInsets.symmetric(vertical: 1.h),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
             Container(
               padding: EdgeInsets.symmetric(
-                horizontal: 15.w,
+                // horizontal: 15.w,
                 vertical: 2.h,
               ),
-              height: 17.h,
-              width: double.infinity,
+              height: 25.h,
+              width: 45.w,
               decoration: BoxDecoration(
                 // color: kCardBackGroundColor,
                 border: Border.all(color: kFirstColor2, width: 0.8.w),
@@ -45,37 +45,29 @@ class CustomSuggestedLocationCard extends StatelessWidget {
                 // color: Color(0xff9b9ca3),
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // Icon(
-                  //   Icons.local_shipping,
-                  //   color: Colors.white,
-                  //   size: 110,
-                  // ),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Aisle :${locationsModel.aisle}',
-                        style: TextStyle(
-                          color: kSecondtColor,
-                          fontSize: 5.w,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        'Rack :${locationsModel.rack}',
-                        style: TextStyle(
-                          color: kSecondtColor,
-                          fontSize: 5.w,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ).paddingOnly(top: 4.5.h),
+                  Text(
+                    'Aisle :${locationsModel.aisle}',
+                    style: TextStyle(
+                      color: kSecondtColor,
+                      fontSize: 5.w,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    'Rack :${locationsModel.rack}',
+                    style: TextStyle(
+                      color: kSecondtColor,
+                      fontSize: 5.w,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 1.h,
+                  ),
                 ],
-              ),
+              ).paddingOnly(top: 3.5.h),
             ),
             // Positioned(
             //   top: -2.h,
@@ -108,7 +100,7 @@ class CustomSuggestedLocationCard extends StatelessWidget {
                 height: 6.h,
                 width: 35.w,
                 decoration: BoxDecoration(
-                  // color: kSecondtColor,
+                  color: kFirstColor2,
                   border: Border.all(color: kFirstColor2, width: 0.8.w),
                   // boxShadow: [],
                   borderRadius: BorderRadius.only(
@@ -120,7 +112,7 @@ class CustomSuggestedLocationCard extends StatelessWidget {
                   child: Text(
                     '${locationsModel.name}',
                     style: TextStyle(
-                      color: kSecondtColor,
+                      color: kWhiteColor,
                       fontSize: 5.5.w,
                       fontWeight: FontWeight.w800,
                     ),
@@ -135,7 +127,7 @@ class CustomSuggestedLocationCard extends StatelessWidget {
                 height: 6.h,
                 width: 35.w,
                 decoration: BoxDecoration(
-                  // color: kSecondtColor,
+                  color: kFirstColor2,
                   border: Border.all(color: kFirstColor2, width: 0.8.w),
                   // boxShadow: [],
                   borderRadius: BorderRadius.only(
@@ -146,7 +138,7 @@ class CustomSuggestedLocationCard extends StatelessWidget {
                 child: Text(
                   'Level: ${locationsModel.level}',
                   style: TextStyle(
-                    color: kSecondtColor,
+                    color: kWhiteColor,
                     fontSize: 5.w,
                     fontWeight: FontWeight.bold,
                   ),

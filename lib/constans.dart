@@ -22,7 +22,8 @@ const kFourthColor = Color(0xff9b9ca3);
 const kThierdColor = Color(0xffC1C1C1); //0xffd9dadb//0xFFBCBCBC////C1C1C1
 const kFifthColor = Color(0xffF3A46C); //////////
 
-const kBackGroundColor = Color(0xFFB0BEC5); /////B0BEC5//////E8E8E8
+const kBackGroundColor =
+    Color.fromARGB(255, 110, 181, 217); /////B0BEC5//////E8E8E8
 const kCardBackGroundColor = Color(0xFFEBEBEB);
 
 ///EBEBEB

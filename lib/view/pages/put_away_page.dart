@@ -20,7 +20,7 @@ class PutAwayPage extends StatelessWidget {
           appBar: AppBar(
             iconTheme: IconThemeData(color: Colors.white),
             title: Text(
-              'Put Away',
+              'Put Away Page',
               style: TextStyle(
                 color: Colors.white,
               ),

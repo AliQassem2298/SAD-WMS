@@ -10,16 +10,15 @@ class CustomCustomerOrderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 75),
+      padding: EdgeInsets.only(top: 10.h),
       child: InkWell(
         onTap: () {},
         child: Stack(
           clipBehavior: Clip.none,
           children: [
             Container(
-              padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-              height: 400,
-              width: 180,
+              padding: EdgeInsets.only(left: 1.w, right: 1.w, bottom: 1.h),
+              width: 60.w,
               decoration: BoxDecoration(
                 color: kCardBackGroundColor,
                 // border: Border.all(),
@@ -45,7 +44,7 @@ class CustomCustomerOrderCard extends StatelessWidget {
                     'name: cap',
                     style: TextStyle(
                       color: kFirstColor,
-                      fontSize: 20,
+                      fontSize: 5.5.w,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -54,7 +53,7 @@ class CustomCustomerOrderCard extends StatelessWidget {
                     'quantity: 80',
                     style: TextStyle(
                       color: kFirstColor,
-                      fontSize: 18,
+                      fontSize: 4.7.w,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -62,7 +61,7 @@ class CustomCustomerOrderCard extends StatelessWidget {
                     r'price: 80$',
                     style: TextStyle(
                       color: kFirstColor,
-                      fontSize: 18,
+                      fontSize: 4.7.w,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -71,11 +70,11 @@ class CustomCustomerOrderCard extends StatelessWidget {
                     style: TextStyle(
                       color: kFirstColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                      fontSize: 4.7.w,
                     ),
                   ),
                   SizedBox(
-                    height: 35,
+                    height: 5.h,
                   ),
 
                   // SizedBox(
@@ -85,47 +84,57 @@ class CustomCustomerOrderCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: -50,
-              left: 40,
+              top: -7.h,
+              left: 9.w,
               child: Container(
-                height: 110,
-                width: 110,
+                height: 14.h,
+                width: 28.w,
                 decoration: BoxDecoration(
                   // color: kSecondtColor,
-                  border: Border.all(color: kSecondtColor, width: 3),
+                  border: Border.all(color: kSecondtColor, width: 0.8.w),
                   // boxShadow: [],
                   borderRadius: BorderRadius.circular(100),
                   color: Colors.white,
                 ),
                 child: Image.asset(
                   'assets/wms-logo-final.png',
+                  height: 14.h,
+                  width: 28.w,
                 ),
               ),
             ),
             Positioned(
-              bottom: 0,
-              right: 0,
+              bottom: 0.h,
+              right: 0.w,
               child: Container(
-                height: 35,
-                width: 100,
+                height: 5.h,
+                width: 45.w,
                 decoration: BoxDecoration(
-                  // color: kSecondtColor,
-                  border: Border.all(
-                    color: kFifthColor,
+                  gradient: LinearGradient(
+                    begin: Alignment.centerRight,
+                    end: Alignment.centerLeft,
+                    colors: [
+                      kFirstColor2,
+                      kFirstColor,
+                    ],
                   ),
+                  // color: kSecondtColor,
+                  // border: Border.all(
+                  //   color: kFifthColor,
+                  // ),
                   // boxShadow: [],
                   borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(35),
-                    topLeft: Radius.circular(35),
+                    bottomLeft: Radius.circular(35),
                   ),
-                  color: kFifthColor,
+                  color: kBackGroundColor,
                 ),
                 child: Center(
                   child: Text(
                     'Pick',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
+                      color: kWhiteColor,
+                      fontSize: 5.w,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -133,20 +142,20 @@ class CustomCustomerOrderCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 20,
-              left: 30,
+              top: 3.h,
+              left: 8.w,
               child: Container(
-                height: 40,
-                width: 40,
+                height: 5.h,
+                width: 10.w,
                 decoration: BoxDecoration(
-                  color: kFifthColor,
+                  color: kBackGroundColor,
                   // border: Border.all(),
                   // boxShadow: [],
                   borderRadius: BorderRadius.circular(35),
                   // color: Color(0xff9b9ca3),
                 ),
                 child: Image.asset(
-                  'assets/clock icon.png',
+                  'assets/clock2.jpg',
                 ),
               ),
             ),

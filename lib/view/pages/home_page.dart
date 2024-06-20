@@ -10,10 +10,7 @@ import 'package:warehouse_manegment_system/controller/shipments_page_controller.
 import 'package:warehouse_manegment_system/controller/stocktaking_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/transfer_page_controller.dart';
 import 'package:warehouse_manegment_system/main.dart';
-import 'package:warehouse_manegment_system/model/services/put_away_product_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_card.dart';
-
-import '../../model/models/details_model.dart';
 
 class HomePage extends StatelessWidget {
   final BarcodeController barcodeController = Get.put(BarcodeController());
@@ -230,7 +227,7 @@ class HomePage extends StatelessWidget {
       //           ],
       //         ),
       //       ),
-      //     ),
+      //     ),`
       //   )
       // ],
       appBar: AppBar(

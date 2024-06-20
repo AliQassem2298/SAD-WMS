@@ -3,32 +3,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
+import 'package:warehouse_manegment_system/controller/customers_order_page_controller.dart';
+import 'package:warehouse_manegment_system/model/models/list_all_orders_model.dart';
 
 class CustomOrdersCard extends StatelessWidget {
   CustomOrdersCard({
-    required this.customerName,
-    required this.status,
-    required this.image,
-    required this.totalPrice,
-    this.praiority,
+    required this.listAllOrdersModel,
     super.key,
   });
-  String customerName, status, image, totalPrice;
-  String? praiority;
+  ListAllOrdersModel listAllOrdersModel;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Padding(
-        padding: const EdgeInsets.only(
-          left: 16,
-        ),
+      padding: EdgeInsets.symmetric(vertical: 1.h),
+      child: InkWell(
+        onTap: () {
+          Get.toNamed(CustomerOrderPageController.id);
+        },
         child: Stack(
           clipBehavior: Clip.none,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 25),
-              height: 150,
+              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 2.h),
+              height: 20.h,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: kCardBackGroundColor,
@@ -47,60 +45,86 @@ class CustomOrdersCard extends StatelessWidget {
                   //   size: 110,
                   // ),
                   Text(
-                    'Custome: (${customerName})',
+                    'Custome: ${listAllOrdersModel.customerModel.username}',
                     style: TextStyle(
                       color: kFirstColor,
-                      fontSize: 18,
+                      fontSize: 5.w,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 1.h,
                   ),
                   Text(
-                    'Total Price :${totalPrice}',
+                    'Total Price :${listAllOrdersModel.totalPrice}',
                     style: TextStyle(
                       color: kFirstColor,
-                      fontSize: 18,
+                      fontSize: 5.w,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 1.h,
                   ),
                   Text(
-                    'Status :${status}',
+                    'Status :${listAllOrdersModel.status}',
                     style: TextStyle(
                       color: kFirstColor,
-                      fontSize: 18,
+                      fontSize: 5.w,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
-              ).paddingOnly(left: 40),
+              ).paddingOnly(left: 10.w),
             ),
             Positioned(
-              top: 40,
-              left: 10,
+              top: 6.h,
+              left: 5.w,
               child: Container(
-                height: 60,
-                width: 60,
+                height: 8.h,
+                width: 15.w,
                 decoration: BoxDecoration(
                   // border: Border.all(),
                   // boxShadow: [],
                   borderRadius: BorderRadius.circular(35),
                   // color: Color(0xff9b9ca3),
                 ),
-                child: Image.asset(
-                  image,
-                ),
+                child: listAllOrdersModel.status == 'pending'
+                    ? Image.asset(
+                        'assets/clock2.jpg',
+                        height: 8.h,
+                        width: 15.w,
+                      )
+                    : listAllOrdersModel.status == 'picked'
+                        ? Image.asset(
+                            'assets/picked.png',
+                            height: 8.h,
+                            width: 15.w,
+                          )
+                        : listAllOrdersModel.status == 'packed'
+                            ? Image.asset(
+                                'assets/packed.png',
+                                height: 8.h,
+                                width: 15.w,
+                              )
+                            : listAllOrdersModel.status == 'delivered'
+                                ? Image.asset(
+                                    'assets/done.png',
+                                    height: 8.h,
+                                    width: 15.w,
+                                  )
+                                : Image.asset(
+                                    'assets/cancelled.png',
+                                    height: 8.h,
+                                    width: 15.w,
+                                  ),
               ),
             ),
             Positioned(
-              right: 0,
+              right: 0.w,
               child: Container(
-                width: 100,
-                height: 40,
+                width: 25.w,
+                height: 5.h,
                 decoration: BoxDecoration(
                   color: kFirstColor2,
                   borderRadius: BorderRadius.only(
@@ -110,10 +134,10 @@ class CustomOrdersCard extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    praiority!,
+                    listAllOrdersModel.priority,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 5.w,
                     ),
                   ),
                 ),
