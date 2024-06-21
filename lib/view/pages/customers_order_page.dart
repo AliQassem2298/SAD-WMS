@@ -3,8 +3,11 @@ import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 // import 'package:warehouse_manegment_system/controller/barcode_scan_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/customers_order_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/orders_page_controller.dart';
+import 'package:warehouse_manegment_system/model/models/detail_model.dart';
 import 'package:warehouse_manegment_system/model/models/list_all_orders_model.dart';
 import 'package:warehouse_manegment_system/model/models/see_order_details_model.dart';
+import 'package:warehouse_manegment_system/model/services/pack_order_service.dart';
 import 'package:warehouse_manegment_system/model/services/see_order_details_service.dart';
 // import 'package:warehouse_manegment_system/controller/supplier_shipment_page_controller.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
@@ -14,7 +17,8 @@ import 'package:warehouse_manegment_system/view/widgets/custom_customer_order_ca
 class CustomerOrderPage extends StatelessWidget {
   CustomerOrderPage({super.key});
   // final BarcodeController barcodeController = Get.put(BarcodeController());
-
+  final OrdersPageController ordersPageController =
+      Get.put(OrdersPageController());
   @override
   Widget build(BuildContext context) {
     ListAllOrdersModel listAllOrdersModel =
@@ -142,61 +146,45 @@ class CustomerOrderPage extends StatelessWidget {
                         EdgeInsets.symmetric(horizontal: 15.w, vertical: 3.h),
                     child: Column(
                       children: [
-                        CustomButton(
-                          hasBorder: true,
-                          onPressed: () async {
-                            try {
-                              // String? scannedBarcode =
-                              //     await barcodeController.scanBarcode();
-                              // if (scannedBarcode != null) {
-                              //   DetailsModel response =
-                              //       await PutAwayProductService()
-                              //           .putAwayProduct(
-                              //     shipmentDetailId: controller
-                              //         .locations!.shipmentDetailId
-                              //         .toString(),
-                              //     locationBarcode: scannedBarcode,
-                              //     quantity:
-                              //         controller.locations!.quantity.toString(),
-                              //   );
+                        listAllOrdersModel.status == 'picked'
+                            ? CustomButton(
+                                hasBorder: true,
+                                onPressed: () async {
+                                  try {
+                                    DetailModel response =
+                                        await PackOrderService().packOrder(
+                                      id: listAllOrdersModel.id,
+                                    );
+                                    controller.up();
+                                    ordersPageController.up();
+                                    Get.back();
 
-                              //   putAwayPageController.up();
-
-                              //   Get.back();
-
-                              //   print('Success: ${response.detail}');
-                              //   Get.snackbar(
-                              //     'Success',
-                              //     response.detail,
-                              //     colorText: Colors.white,
-                              //   );
-                              // } else {
-                              //   print('Scan was cancelled.');
-                              //   Get.snackbar(
-                              //     'Cancelled',
-                              //     'Scan was cancelled.',
-                              //     colorText: Colors.white,
-                              //   );
-                              // }
-                            } catch (e) {
-                              print(e.toString());
-                              Get.snackbar(
-                                'Error',
-                                e.toString(),
-                                colorText: Colors.white,
-                              );
-                            }
-                          },
-                          text: 'Pack',
-                          fontSize: 7.w,
-                          textColor: kFirstColor,
-                          gradient: const LinearGradient(
-                            colors: [
-                              kWhiteColor,
-                              kWhiteColor,
-                            ],
-                          ),
-                        ),
+                                    print('Success: ${response.detail}');
+                                    Get.snackbar(
+                                      'Success',
+                                      response.detail,
+                                      colorText: Colors.white,
+                                    );
+                                  } catch (e) {
+                                    print(e.toString());
+                                    Get.snackbar(
+                                      'Error',
+                                      e.toString(),
+                                      colorText: Colors.white,
+                                    );
+                                  }
+                                },
+                                text: 'Pack',
+                                fontSize: 7.w,
+                                textColor: kFirstColor,
+                                gradient: const LinearGradient(
+                                  colors: [
+                                    kWhiteColor,
+                                    kWhiteColor,
+                                  ],
+                                ),
+                              )
+                            : Container(),
                       ],
                     ),
                   ),

@@ -10,6 +10,7 @@ import 'package:warehouse_manegment_system/controller/shipments_page_controller.
 import 'package:warehouse_manegment_system/controller/stocktaking_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/transfer_page_controller.dart';
 import 'package:warehouse_manegment_system/main.dart';
+import 'package:warehouse_manegment_system/model/services/list_packed_orders_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -237,7 +238,9 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () async {
-              try {} catch (e) {
+              try {
+                ListPackedOrdersService().listPackedOrders();
+              } catch (e) {
                 print(e.toString());
                 Get.snackbar(
                   '',

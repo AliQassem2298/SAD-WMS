@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/model/models/suggested_locations_model.dart';
 
-class SuggestedLocationsPageController extends GetxController {
-  static String id = '/SuggestedLocationsPage';
+class SuggestedLocationsForShipmentPageController extends GetxController {
+  static String id = '/SuggestedLocationsForShipmentPage';
   SuggestedLocationModel? locations;
   void up() {
     update();

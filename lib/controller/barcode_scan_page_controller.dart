@@ -92,7 +92,7 @@ class BarcodeController extends GetxController {
   static const String scanCancelled = '-1';
   static const String audioFilePath = "assets/Barcode scanner.m4a";
   static const String scanColor = '#C60C30';
-  static const String scanButtonText = 'Ok';
+  static const String scanButtonText = 'Cancel';
 
   Future<String?> scanBarcode() async {
     try {
@@ -104,16 +104,14 @@ class BarcodeController extends GetxController {
         ScanMode.BARCODE,
       );
 
-      // Check if the scan was successful
       if (barcodeScanRes != scanCancelled) {
         scannedBarcodes.add(barcodeScanRes);
-        // Play success sound
         await assetsAudioPlayer.open(
           Audio(audioFilePath),
         );
         return barcodeScanRes;
       } else {
-        return null; // Return null if the scan was cancelled
+        return null;
       }
     } on PlatformException {
       return Future.error('Failed to get platform version.');
@@ -124,7 +122,6 @@ class BarcodeController extends GetxController {
 
   @override
   void onClose() {
-    // Release resources
     assetsAudioPlayer.dispose();
     super.onClose();
   }

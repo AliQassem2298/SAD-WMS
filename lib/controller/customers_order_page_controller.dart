@@ -4,4 +4,7 @@ import 'package:warehouse_manegment_system/model/models/see_order_details_model.
 class CustomerOrderPageController extends GetxController {
   static String id = '/CustomerOrderPageController';
   SeeOrderDetailModel? seeOrderDetailModel;
+  void up() {
+    update();
+  }
 }

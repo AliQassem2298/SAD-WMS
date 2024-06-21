@@ -3,17 +3,17 @@ import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/barcode_scan_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/put_away_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/suggested_locations_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/suggested_locations_for_shipment_page_controller.dart';
 import 'package:warehouse_manegment_system/model/models/detail_model.dart';
 import 'package:warehouse_manegment_system/model/models/shipment_details_model.dart';
 import 'package:warehouse_manegment_system/model/models/suggested_locations_model.dart';
 import 'package:warehouse_manegment_system/model/services/put_away_product_service.dart';
 import 'package:warehouse_manegment_system/model/services/suggersted_locations_service.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
-import 'package:warehouse_manegment_system/view/widgets/custom_suggested_location_card.dart';
+import 'package:warehouse_manegment_system/view/widgets/custom_suggested_location_for_shipment_card.dart';
 
-class SuggestedLocationsPage extends StatelessWidget {
-  SuggestedLocationsPage({super.key});
+class SuggestedLocationsForShipmentPage extends StatelessWidget {
+  SuggestedLocationsForShipmentPage({super.key});
   final BarcodeController barcodeController = Get.put(BarcodeController());
 
   final PutAwayPageController putAwayPageController =
@@ -23,8 +23,8 @@ class SuggestedLocationsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     ShipmentDetailsModel shipments =
         ModalRoute.of(context)!.settings.arguments as ShipmentDetailsModel;
-    return GetBuilder<SuggestedLocationsPageController>(
-      init: SuggestedLocationsPageController(),
+    return GetBuilder<SuggestedLocationsForShipmentPageController>(
+      init: SuggestedLocationsForShipmentPageController(),
       builder: (controller) {
         return Scaffold(
           backgroundColor: Colors.white,
@@ -84,11 +84,11 @@ class SuggestedLocationsPage extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                CustomSuggestedLocationCard(
+                                CustomSuggestedLocationForShipmentCard(
                                   locationsModel:
                                       controller.locations!.locationModel[0],
                                 ).paddingOnly(right: 1.5.w),
-                                CustomSuggestedLocationCard(
+                                CustomSuggestedLocationForShipmentCard(
                                   locationsModel:
                                       controller.locations!.locationModel[1],
                                 ).paddingOnly(left: 1.5.w),
@@ -105,17 +105,17 @@ class SuggestedLocationsPage extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                CustomSuggestedLocationCard(
+                                CustomSuggestedLocationForShipmentCard(
                                   locationsModel:
                                       controller.locations!.locationModel[0],
                                 ).paddingOnly(right: 1.5.w),
-                                CustomSuggestedLocationCard(
+                                CustomSuggestedLocationForShipmentCard(
                                   locationsModel:
                                       controller.locations!.locationModel[1],
                                 ).paddingOnly(left: 1.5.w),
                               ],
                             ).paddingSymmetric(horizontal: 2.w),
-                            CustomSuggestedLocationCard(
+                            CustomSuggestedLocationForShipmentCard(
                               locationsModel:
                                   controller.locations!.locationModel[2],
                             ).paddingOnly(top: 1.h),

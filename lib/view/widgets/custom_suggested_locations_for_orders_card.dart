@@ -3,12 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
-import 'package:warehouse_manegment_system/model/models/locations_model.dart';
+import 'package:warehouse_manegment_system/model/models/pick_list_for_order_detail_model.dart';
 
-class CustomSuggestedLocationCard extends StatelessWidget {
-  LocationsModel locationsModel;
-  CustomSuggestedLocationCard({
-    required this.locationsModel,
+class CustomSuggestedLocationForOrdersCard extends StatelessWidget {
+  PickLocationsModel pickLocationsModel;
+  CustomSuggestedLocationForOrdersCard({
+    required this.pickLocationsModel,
     super.key,
   });
 
@@ -48,7 +48,7 @@ class CustomSuggestedLocationCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    'Aisle :${locationsModel.aisle}',
+                    'Aisle :${pickLocationsModel.aisle}',
                     style: TextStyle(
                       color: kSecondtColor,
                       fontSize: 5.w,
@@ -56,7 +56,7 @@ class CustomSuggestedLocationCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Rack :${locationsModel.rack}',
+                    'Rack :${pickLocationsModel.rack}',
                     style: TextStyle(
                       color: kSecondtColor,
                       fontSize: 5.w,
@@ -110,7 +110,7 @@ class CustomSuggestedLocationCard extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    '${locationsModel.name}',
+                    '${pickLocationsModel.locationName}',
                     style: TextStyle(
                       color: kWhiteColor,
                       fontSize: 5.5.w,
@@ -136,7 +136,7 @@ class CustomSuggestedLocationCard extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'Level: ${locationsModel.level}',
+                  'Level: ${pickLocationsModel.level}',
                   style: TextStyle(
                     color: kWhiteColor,
                     fontSize: 5.w,

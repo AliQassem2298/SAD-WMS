@@ -18,7 +18,8 @@ import 'package:warehouse_manegment_system/controller/sign_up_page_controller.da
 import 'package:warehouse_manegment_system/controller/drawer_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/splash_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/stocktaking_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/suggested_locations_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/suggested_locations_for_orders_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/suggested_locations_for_shipment_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/supplier_shipment_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/transfer_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/update_user_details_controller.dart';
@@ -43,7 +44,8 @@ import 'package:warehouse_manegment_system/view/pages/shipments_page.dart';
 import 'package:warehouse_manegment_system/view/pages/sign_in_page.dart';
 import 'package:warehouse_manegment_system/view/pages/sign_up_page.dart';
 import 'package:warehouse_manegment_system/view/pages/stocktaking_page.dart';
-import 'package:warehouse_manegment_system/view/pages/suggested_locations_page.dart';
+import 'package:warehouse_manegment_system/view/pages/suggested_locations_for_orders_page.dart';
+import 'package:warehouse_manegment_system/view/pages/suggested_locations_for_shipment_page.dart';
 import 'package:warehouse_manegment_system/view/pages/supplier_shipment_page.dart';
 // import 'package:warehouse_manegment_system/view/pages/test_page.dart';
 import 'package:warehouse_manegment_system/view/pages/transfer_page.dart';
@@ -165,8 +167,12 @@ class WeareHouseManegmentSystem extends StatelessWidget {
           page: () => DeliveryPage(),
         ),
         GetPage(
-          name: SuggestedLocationsPageController.id,
-          page: () => SuggestedLocationsPage(),
+          name: SuggestedLocationsForShipmentPageController.id,
+          page: () => SuggestedLocationsForShipmentPage(),
+        ),
+        GetPage(
+          name: SuggestedLocationsForOrdersPageController.id,
+          page: () => SuggestedLocationsForOrdersPage(),
         ),
         // GetPage(
         //   name: Test.id,
