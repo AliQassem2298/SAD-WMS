@@ -21,11 +21,11 @@ class CustomerOrderPage extends StatelessWidget {
       Get.put(OrdersPageController());
   @override
   Widget build(BuildContext context) {
-    ListAllOrdersModel listAllOrdersModel =
-        ModalRoute.of(context)!.settings.arguments as ListAllOrdersModel;
     return GetBuilder<CustomerOrderPageController>(
       init: CustomerOrderPageController(),
       builder: (controller) {
+        ListAllOrdersModel listAllOrdersModel =
+            ModalRoute.of(context)!.settings.arguments as ListAllOrdersModel;
         return Scaffold(
           appBar: AppBar(
             flexibleSpace: Container(
@@ -155,8 +155,10 @@ class CustomerOrderPage extends StatelessWidget {
                                         await PackOrderService().packOrder(
                                       id: listAllOrdersModel.id,
                                     );
-                                    controller.up();
                                     ordersPageController.up();
+
+                                    controller.up();
+
                                     Get.back();
 
                                     print('Success: ${response.detail}');

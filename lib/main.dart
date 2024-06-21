@@ -8,6 +8,7 @@ import 'package:warehouse_manegment_system/controller/home_page_controller.dart'
 import 'package:warehouse_manegment_system/controller/home_page_with_drawer_controller.dart';
 import 'package:warehouse_manegment_system/controller/inventory_scan_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/onbordingcontroller.dart';
+import 'package:warehouse_manegment_system/controller/orders_for_delivery_page_controller.dart';
 // import 'package:warehouse_manegment_system/controller/onbordingcontroller.dart';
 import 'package:warehouse_manegment_system/controller/orders_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/profile_page_controller.dart';
@@ -37,6 +38,7 @@ import 'package:warehouse_manegment_system/view/pages/home_page.dart';
 import 'package:warehouse_manegment_system/view/pages/home_page_with_drawer.dart';
 import 'package:warehouse_manegment_system/view/pages/inventory_scan_page.dart';
 import 'package:warehouse_manegment_system/view/pages/on_bording_page.dart';
+import 'package:warehouse_manegment_system/view/pages/orders_for_delivery_page.dart';
 import 'package:warehouse_manegment_system/view/pages/orders_page.dart';
 import 'package:warehouse_manegment_system/view/pages/profile_page.dart';
 import 'package:warehouse_manegment_system/view/pages/put_away_page.dart';
@@ -173,6 +175,10 @@ class WeareHouseManegmentSystem extends StatelessWidget {
         GetPage(
           name: SuggestedLocationsForOrdersPageController.id,
           page: () => SuggestedLocationsForOrdersPage(),
+        ),
+        GetPage(
+          name: OrdersForDeliveryPageController.id,
+          page: () => OrdersForDeliveryPage(),
         ),
         // GetPage(
         //   name: Test.id,

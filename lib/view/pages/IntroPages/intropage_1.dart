@@ -76,7 +76,7 @@ class IntroPage_1 extends StatelessWidget {
                             ScreenSizeConfig.getProportionateScreenHeight(1),
                       ),
                       Text(
-                        "Our app empowers efficient warehouse operations.",
+                        "Our app empowers efficient",
                         style: TextStyle(
                           fontSize:
                               ScreenSizeConfig.getProportionateScreenWidth(5),
@@ -87,6 +87,15 @@ class IntroPage_1 extends StatelessWidget {
                       SizedBox(
                         height:
                             ScreenSizeConfig.getProportionateScreenHeight(1),
+                      ),
+                      Text(
+                        "warehouse operations.",
+                        style: TextStyle(
+                          fontSize:
+                              ScreenSizeConfig.getProportionateScreenWidth(5),
+                          color: kWhiteColor,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ],
                   ),

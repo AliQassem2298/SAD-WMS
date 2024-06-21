@@ -4,6 +4,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/delivery_page._controller.dart';
 import 'package:warehouse_manegment_system/controller/home_page_with_drawer_controller.dart';
+import 'package:warehouse_manegment_system/controller/orders_for_delivery_page_controller.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_drop_list.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_text_from_field.dart';
@@ -74,9 +75,9 @@ class DeliveryPage extends StatelessWidget {
                     child: Form(
                       key: controller.formState,
                       child: ListView(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 30,
-                          vertical: 25,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 7.5.w,
+                          vertical: 5.h,
                         ),
                         children: [
                           CustomDropList(
@@ -123,7 +124,7 @@ class DeliveryPage extends StatelessWidget {
                               return null;
                             },
                             hintText: 'Enter Your Phone Number',
-                            text: '+963',
+                            text: 'Phone Number',
                             toggleVisibility: true,
                             keyboardType: TextInputType.number,
                           ),
@@ -139,6 +140,9 @@ class DeliveryPage extends StatelessWidget {
                                   controller.loadingIndecatorTrue();
 
                                   try {
+                                    Get.toNamed(
+                                      OrdersForDeliveryPageController.id,
+                                    );
                                     // sharedPreferences!
                                     //     .setString("token", userToken!);
                                     print('succsess');
@@ -148,11 +152,6 @@ class DeliveryPage extends StatelessWidget {
                                     //   context,
                                     //   'Sign in successful',
                                     // );
-                                    Get.snackbar(
-                                      'Hi',
-                                      'Sign in successful',
-                                      // colorText: Colors.white,
-                                    );
                                   } catch (e) {
                                     print(e.toString());
 

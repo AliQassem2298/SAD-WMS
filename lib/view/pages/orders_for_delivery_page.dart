@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:warehouse_manegment_system/constans.dart';
-import 'package:warehouse_manegment_system/controller/orders_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/orders_for_delivery_page_controller.dart';
 import 'package:warehouse_manegment_system/model/models/list_all_orders_model.dart';
-import 'package:warehouse_manegment_system/model/services/list_all_orders_service.dart';
-import 'package:warehouse_manegment_system/view/widgets/custom_orders_card.dart';
-// import 'package:warehouse_manegment_system/view/widgets/custom_shipment_card.dart';
+import 'package:warehouse_manegment_system/model/services/list_packed_orders_service.dart';
+import 'package:warehouse_manegment_system/view/widgets/custom_card_orders_for_delivery.dart';
 
-class OrdersPage extends StatelessWidget {
-  const OrdersPage({super.key});
+class OrdersForDeliveryPage extends StatelessWidget {
+  const OrdersForDeliveryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<OrdersPageController>(
-      init: OrdersPageController(),
+    return GetBuilder<OrdersForDeliveryPageController>(
+      init: OrdersForDeliveryPageController(),
       builder: (controller) {
         return Scaffold(
           appBar: AppBar(
@@ -35,7 +33,7 @@ class OrdersPage extends StatelessWidget {
             ),
             backgroundColor: kSecondtColor,
             title: Text(
-              'Orders Page',
+              'Orders For Delivery Page',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -59,7 +57,7 @@ class OrdersPage extends StatelessWidget {
                 vertical: 2.h,
               ),
               child: FutureBuilder<List<ListAllOrdersModel>>(
-                future: ListAllOrdersService().listAllOrders(),
+                future: ListPackedOrdersService().listPackedOrders(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(
@@ -88,7 +86,7 @@ class OrdersPage extends StatelessWidget {
                         itemCount: controller.orders!.length,
                         clipBehavior: Clip.none,
                         itemBuilder: (context, index) {
-                          return CustomOrdersCard(
+                          return CustomOrdersForDeliveryCard(
                             listAllOrdersModel: controller.orders![index],
                           ).paddingSymmetric(vertical: 1.h);
                         },
@@ -108,63 +106,3 @@ class OrdersPage extends StatelessWidget {
     );
   }
 }
-
-              // ListView(
-              //   children: [
-              //     SizedBox(
-              //       height: 1.h,
-              //     ),
-              //     InkWell(
-              //       onTap: () {
-              //         Get.toNamed(CustomerOrderPageController.id);
-
-              //         // Get.toNamed(SupplierShipmentPagController.id);
-              //       },
-              //       child: CustomOrdersCard(
-              //         customerName: 'Ali',
-              //         status: 'pending',
-              //         image: 'assets/clock.jpg',
-              //         praiority: 'High',
-              //         totalPrice: r'20$',
-              //       ),
-              //     ),
-              //     SizedBox(
-              //       height: 2.5.h,
-              //     ),
-              //     InkWell(
-              //       onTap: () {
-              //         Get.toNamed(CustomerOrderPageController.id);
-              //         // Get.toNamed(SupplierShipmentPagController.id);
-              //       },
-              //       child: CustomOrdersCard(
-              //         customerName: 'Ali',
-              //         status: 'Packed',
-              //         image: 'assets/box icon.png',
-              //         praiority: 'High',
-              //         totalPrice: r'20$',
-              //       ),
-              //     ),
-              //     SizedBox(
-              //       height: 2.5.h,
-              //     ),
-              //     InkWell(
-              //       onTap: () {
-              //         Get.toNamed(CustomerOrderPageController.id);
-
-              //         // Get.toNamed(SupplierShipmentPagController.id);
-              //       },
-              //       child: CustomOrdersCard(
-              //         customerName: 'Ali',
-              //         status: 'Delivered',
-              //         image: 'assets/done.jpg',
-              //         praiority: 'Low',
-              //         totalPrice: r'20$',
-              //       ),
-              //     ),
-              //     SizedBox(
-              //       height: 2.5.h,
-              //     ),
-
-              //   ],
-              // ),
-          

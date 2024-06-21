@@ -3,11 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
-import 'package:warehouse_manegment_system/controller/customers_order_page_controller.dart';
 import 'package:warehouse_manegment_system/model/models/list_all_orders_model.dart';
 
-class CustomOrdersCard extends StatelessWidget {
-  CustomOrdersCard({
+class CustomOrdersForDeliveryCard extends StatelessWidget {
+  CustomOrdersForDeliveryCard({
     required this.listAllOrdersModel,
     super.key,
   });
@@ -19,12 +18,12 @@ class CustomOrdersCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 1.h),
       child: InkWell(
         onTap: () {
-          listAllOrdersModel.status == 'cancelled'
-              ? null
-              : Get.toNamed(
-                  CustomerOrderPageController.id,
-                  arguments: listAllOrdersModel,
-                );
+          // listAllOrdersModel.status == 'cancelled'
+          //     ? null
+          //     : Get.toNamed(
+          //         CustomerOrderPageController.id,
+          //         arguments: listAllOrdersModel,
+          //       );
         },
         child: Stack(
           clipBehavior: Clip.none,
