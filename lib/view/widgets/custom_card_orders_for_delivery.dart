@@ -6,25 +6,23 @@ import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/model/models/list_all_orders_model.dart';
 
 class CustomOrdersForDeliveryCard extends StatelessWidget {
+  final ListAllOrdersModel listAllOrdersModel;
+  final bool isSelected;
+  final VoidCallback onTap;
+
   CustomOrdersForDeliveryCard({
     required this.listAllOrdersModel,
+    required this.isSelected,
+    required this.onTap,
     super.key,
   });
-  ListAllOrdersModel listAllOrdersModel;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 1.h),
       child: InkWell(
-        onTap: () {
-          // listAllOrdersModel.status == 'cancelled'
-          //     ? null
-          //     : Get.toNamed(
-          //         CustomerOrderPageController.id,
-          //         arguments: listAllOrdersModel,
-          //       );
-        },
+        onTap: onTap,
         child: Stack(
           clipBehavior: Clip.none,
           children: [
@@ -33,21 +31,13 @@ class CustomOrdersForDeliveryCard extends StatelessWidget {
               height: 20.h,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: kCardBackGroundColor,
-                // border: Border.all(),
-                // boxShadow: [],
+                color: isSelected ? kFirstColor3 : kCardBackGroundColor,
                 borderRadius: BorderRadius.circular(35),
-                // color: Color(0xff9b9ca3),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Icon(
-                  //   Icons.local_shipping,
-                  //   color: Colors.white,
-                  //   size: 110,
-                  // ),
                   Text(
                     'Customer: ${listAllOrdersModel.customerModel.username}',
                     style: TextStyle(
@@ -56,9 +46,7 @@ class CustomOrdersForDeliveryCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
-                    height: 1.h,
-                  ),
+                  SizedBox(height: 1.h),
                   Text(
                     'Total Price :${listAllOrdersModel.totalPrice}' + r'$',
                     style: TextStyle(
@@ -67,9 +55,7 @@ class CustomOrdersForDeliveryCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
-                    height: 1.h,
-                  ),
+                  SizedBox(height: 1.h),
                   Text(
                     'Status :${listAllOrdersModel.status}',
                     style: TextStyle(
@@ -88,10 +74,7 @@ class CustomOrdersForDeliveryCard extends StatelessWidget {
                 height: 8.h,
                 width: 15.w,
                 decoration: BoxDecoration(
-                  // border: Border.all(),
-                  // boxShadow: [],
                   borderRadius: BorderRadius.circular(35),
-                  // color: Color(0xff9b9ca3),
                 ),
                 child: listAllOrdersModel.status == 'pending'
                     ? Image.asset(

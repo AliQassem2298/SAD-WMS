@@ -15,7 +15,7 @@ class AssignOrderToDeliveryManService {
         "delivery_company": deliveryCompany,
         "delivery_man_name": deliveryManName,
         "delivery_man_phone": deliveryManPhone,
-        "orders": [2] ////// ordersId
+        "orders": ordersIds
       },
       token: sharedPreferences!.getString("token"),
     );

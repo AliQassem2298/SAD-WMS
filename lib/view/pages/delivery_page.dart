@@ -94,9 +94,9 @@ class DeliveryPage extends StatelessWidget {
                           ),
                           CustomTextFromField(
                             onChanged: (value) {
-                              controller.email.text = value;
+                              controller.deliveryMan.text = value;
                             },
-                            textEditingController: controller.email,
+                            textEditingController: controller.deliveryMan,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'field is empty';
@@ -110,9 +110,9 @@ class DeliveryPage extends StatelessWidget {
                           ),
                           CustomTextFromField(
                             onChanged: (value) {
-                              controller.password.text = value;
+                              controller.phoneNumber.text = value;
                             },
-                            textEditingController: controller.password,
+                            textEditingController: controller.phoneNumber,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'field is empty';
@@ -142,6 +142,12 @@ class DeliveryPage extends StatelessWidget {
                                   try {
                                     Get.toNamed(
                                       OrdersForDeliveryPageController.id,
+                                      arguments: {
+                                        'textEditingController':
+                                            controller.textEditingController,
+                                        'deliveryMan': controller.deliveryMan,
+                                        'phoneNumber': controller.phoneNumber,
+                                      },
                                     );
                                     // sharedPreferences!
                                     //     .setString("token", userToken!);

@@ -8,8 +8,8 @@ class DeliveryPageController extends GetxController {
   double containerHeight = 0.0;
   GlobalKey<FormState> formState = GlobalKey();
   TextEditingController textEditingController = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
+  TextEditingController deliveryMan = TextEditingController();
+  TextEditingController phoneNumber = TextEditingController();
 
   @override
   void onInit() {
