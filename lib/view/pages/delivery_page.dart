@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/delivery_page._controller.dart';
-import 'package:warehouse_manegment_system/controller/home_page_with_drawer_controller.dart';
 import 'package:warehouse_manegment_system/controller/orders_for_delivery_page_controller.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_drop_list.dart';
@@ -129,9 +128,9 @@ class DeliveryPage extends StatelessWidget {
                             keyboardType: TextInputType.number,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 15,
-                              vertical: 50,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 3.w,
+                              vertical: 5.h,
                             ),
                             child: CustomButton(
                               onPressed: () async {
@@ -187,7 +186,6 @@ class DeliveryPage extends StatelessWidget {
                                 end: Alignment.topLeft,
                                 begin: Alignment.bottomRight,
                               ),
-                              routeName: HomePageWithDrawerController.id,
                             ),
                           ),
                         ],

@@ -10,6 +10,7 @@ import 'package:warehouse_manegment_system/controller/shipments_page_controller.
 import 'package:warehouse_manegment_system/controller/stocktaking_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/transfer_page_controller.dart';
 import 'package:warehouse_manegment_system/main.dart';
+import 'package:warehouse_manegment_system/model/services/list_replenishment_requests_service.dart';
 
 import 'package:warehouse_manegment_system/view/widgets/custom_card.dart';
 
@@ -238,7 +239,10 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () async {
-              try {} catch (e) {
+              try {
+                await ListReplenishmentRequestsService()
+                    .listReplenishmentRequests();
+              } catch (e) {
                 print(e.toString());
                 Get.snackbar(
                   '',
@@ -253,7 +257,7 @@ class HomePage extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 horizontal: ScreenSizeConfig.blockSizeHorizontal * 4),
             child: Text(
-              'WMS',
+              'S.A.D',
               style: TextStyle(
                 color: kWhiteColor,
                 fontSize: ScreenSizeConfig.blockSizeHorizontal * 8,

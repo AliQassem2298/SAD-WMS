@@ -79,25 +79,25 @@ class CustomShipmentCard extends StatelessWidget {
               top: -2.h,
               left: 3.w,
               child: Container(
+                height: 20.h,
+                width: 20.w,
+                decoration: BoxDecoration(
+                  // border: Border.all(),
+                  // boxShadow: [],
+                  borderRadius: BorderRadius.circular(35),
+                  // color: Color(0xff9b9ca3),
+                ),
+                child: Image.network(
+                  '${baseUrlImage}${listShipmentModel.supplierModel.photo}',
                   height: 20.h,
                   width: 20.w,
-                  decoration: BoxDecoration(
-                    // border: Border.all(),
-                    // boxShadow: [],
-                    borderRadius: BorderRadius.circular(35),
-                    // color: Color(0xff9b9ca3),
-                  ),
-                  child: Image.network(
-                    '${baseUrlImage}${listShipmentModel.supplierModel.photo}',
-                    height: 20.h,
-                    width: 20.w,
-                  )
-                  //  listShipmentModel.status == 'pending'
-                  //     ? Image.asset('assets/clock.jpg')
-                  //     : listShipmentModel.status == 'received'
-                  //         ? Image.asset('assets/done.jpg')
-                  //         : Image.asset('assets/box icon.png'),
-                  ),
+                ),
+                //  listShipmentModel.status == 'pending'
+                //     ? Image.asset('assets/clock.jpg')
+                //     : listShipmentModel.status == 'received'
+                //         ? Image.asset('assets/done.jpg')
+                //         : Image.asset('assets/box icon.png'),
+              ),
             ),
             Positioned(
               top: 5.h,

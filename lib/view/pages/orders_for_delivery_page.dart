@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/orders_for_delivery_page_controller.dart';
-import 'package:warehouse_manegment_system/model/models/detail_model.dart';
 import 'package:warehouse_manegment_system/model/models/list_all_orders_model.dart';
 import 'package:warehouse_manegment_system/model/services/assign_order_to_delivery_man.dart';
 import 'package:warehouse_manegment_system/model/services/list_packed_orders_service.dart';
@@ -148,9 +147,8 @@ class OrdersForDeliveryPage extends StatelessWidget {
                                   hasBorder: true,
                                   onPressed: () async {
                                     try {
-                                      DetailModel response =
-                                          await AssignOrderToDeliveryManService()
-                                              .assignOrderToDeliveryMan(
+                                      await AssignOrderToDeliveryManService()
+                                          .assignOrderToDeliveryMan(
                                         deliveryCompany:
                                             textEditingController.text,
                                         deliveryManName: deliveryMan.text,
@@ -162,7 +160,7 @@ class OrdersForDeliveryPage extends StatelessWidget {
 
                                       Get.snackbar(
                                         '',
-                                        response.toString(),
+                                        'Orders assigned to delivery man successfully',
                                       );
                                     } catch (e) {
                                       print(e.toString());

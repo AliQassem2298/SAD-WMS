@@ -129,7 +129,7 @@ class WeareHouseManegmentSystem extends StatelessWidget {
         ),
         GetPage(
           name: TransferPageController.id,
-          page: () => const TransferPage(),
+          page: () => TransferPage(),
         ),
         GetPage(
           name: StocktakingPageController.id,

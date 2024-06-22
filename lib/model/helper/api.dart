@@ -69,7 +69,8 @@ class Api {
     } else {
       Map<String, dynamic> data = jsonDecode(response.body);
       var detail = data['detail'];
-      throw Exception(detail);
+      throw detail;
+      // throw Exception(detail);
     }
   }
 
