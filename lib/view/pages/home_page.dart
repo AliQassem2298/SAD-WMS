@@ -10,8 +10,7 @@ import 'package:warehouse_manegment_system/controller/shipments_page_controller.
 import 'package:warehouse_manegment_system/controller/stocktaking_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/transfer_page_controller.dart';
 import 'package:warehouse_manegment_system/main.dart';
-import 'package:warehouse_manegment_system/model/models/detail_model.dart';
-import 'package:warehouse_manegment_system/model/services/assign_order_to_delivery_man.dart';
+
 import 'package:warehouse_manegment_system/view/widgets/custom_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -239,16 +238,7 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () async {
-              try {
-                DetailModel response = await AssignOrderToDeliveryManService()
-                    .assignOrderToDeliveryMan(
-                  deliveryCompany: 'DHL',
-                  deliveryManName: 'Omar Ahmad',
-                  deliveryManPhone: '+963947580454',
-                  ordersIds: [3], // Ensure this is a List<int>
-                );
-                print(response.detail); // Handle the response as needed
-              } catch (e) {
+              try {} catch (e) {
                 print(e.toString());
                 Get.snackbar(
                   '',

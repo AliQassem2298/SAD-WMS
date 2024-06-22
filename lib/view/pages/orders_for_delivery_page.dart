@@ -80,6 +80,7 @@ class OrdersForDeliveryPage extends StatelessWidget {
                             snapshot.error.toString(),
                             style: TextStyle(
                               fontSize: 6.w,
+                              color: kWhiteColor,
                             ),
                           ),
                         );
@@ -88,7 +89,10 @@ class OrdersForDeliveryPage extends StatelessWidget {
                           return Center(
                             child: Text(
                               'No Orders found',
-                              style: TextStyle(fontSize: 6.w),
+                              style: TextStyle(
+                                fontSize: 6.w,
+                                color: kWhiteColor,
+                              ),
                             ),
                           );
                         } else {
@@ -102,8 +106,9 @@ class OrdersForDeliveryPage extends StatelessWidget {
                                 listAllOrdersModel: order,
                                 isSelected: controller.selectedOrderIds
                                     .contains(order.id),
-                                onTap: () =>
-                                    controller.toggleSelection(order.id),
+                                onTap: () {
+                                  controller.toggleSelection(order.id);
+                                },
                               ).paddingSymmetric(vertical: 1.h);
                             },
                           );
@@ -115,64 +120,74 @@ class OrdersForDeliveryPage extends StatelessWidget {
                       }
                     },
                   ),
-                  Positioned(
-                    bottom: 0.h,
-                    left: 0.w,
-                    child: Container(
-                      height: 13.h,
-                      width: 100.w,
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.centerRight,
-                          end: Alignment.centerLeft,
-                          colors: [
-                            kFirstColor,
-                            kFirstColor2,
-                          ],
-                        ),
-                      ),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15.w, vertical: 3.h),
-                      child: Column(
-                        children: [
-                          CustomButton(
-                            hasBorder: true,
-                            onPressed: () async {
-                              try {
-                                DetailModel response =
-                                    await AssignOrderToDeliveryManService()
-                                        .assignOrderToDeliveryMan(
-                                  deliveryCompany:
-                                      textEditingController.toString(),
-                                  deliveryManName: deliveryMan.toString(),
-                                  deliveryManPhone: phoneNumber.toString(),
-                                  ordersIds: controller.selectedOrderIds,
-                                );
-                                print(controller.selectedOrderIds);
-                                print('Success: ${response}');
-                              } catch (e) {
-                                print(e.toString());
-                                Get.snackbar(
-                                  'Error',
-                                  e.toString(),
-                                  colorText: Colors.white,
-                                );
-                              }
-                            },
-                            text: 'Submit',
-                            fontSize: 7.w,
-                            textColor: kFirstColor,
-                            gradient: const LinearGradient(
-                              colors: [
-                                kWhiteColor,
-                                kWhiteColor,
+                  controller.selectedOrderIds.isNotEmpty &&
+                          controller.orders!.isNotEmpty
+                      ? Positioned(
+                          bottom: 0.h,
+                          left: 0.w,
+                          child: Container(
+                            height: 13.h,
+                            width: 100.w,
+                            decoration: const BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.centerRight,
+                                end: Alignment.centerLeft,
+                                colors: [
+                                  kFirstColor,
+                                  kFirstColor2,
+                                ],
+                              ),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 15.w,
+                              vertical: 3.h,
+                            ),
+                            child: Column(
+                              children: [
+                                CustomButton(
+                                  hasBorder: true,
+                                  onPressed: () async {
+                                    try {
+                                      DetailModel response =
+                                          await AssignOrderToDeliveryManService()
+                                              .assignOrderToDeliveryMan(
+                                        deliveryCompany:
+                                            textEditingController.text,
+                                        deliveryManName: deliveryMan.text,
+                                        deliveryManPhone: phoneNumber.text,
+                                        ordersIds: controller.selectedOrderIds,
+                                      );
+                                      controller.clearOrders();
+                                      print('Success');
+
+                                      Get.snackbar(
+                                        '',
+                                        response.toString(),
+                                      );
+                                    } catch (e) {
+                                      print(e.toString());
+                                      Get.snackbar(
+                                        'Error',
+                                        e.toString(),
+                                        colorText: Colors.white,
+                                      );
+                                    }
+                                  },
+                                  text: 'Submit',
+                                  fontSize: 7.w,
+                                  textColor: kFirstColor,
+                                  gradient: const LinearGradient(
+                                    colors: [
+                                      kWhiteColor,
+                                      kWhiteColor,
+                                    ],
+                                  ),
+                                )
                               ],
                             ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                          ),
+                        )
+                      : Container(),
                 ],
               ),
             ),

@@ -4,7 +4,7 @@ import 'package:warehouse_manegment_system/model/models/list_all_orders_model.da
 class OrdersForDeliveryPageController extends GetxController {
   static String id = '/OrdersForDeliveryPageController';
   List<ListAllOrdersModel>? orders;
-  var selectedOrderIds = <int>[];
+  var selectedOrderIds = <int>[].obs;
 
   void toggleSelection(int orderId) {
     if (selectedOrderIds.contains(orderId)) {
@@ -16,6 +16,11 @@ class OrdersForDeliveryPageController extends GetxController {
   }
 
   void up() {
+    update();
+  }
+
+  void clearOrders() {
+    orders?.clear();
     update();
   }
 }

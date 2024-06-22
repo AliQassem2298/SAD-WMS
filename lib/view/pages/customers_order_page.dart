@@ -24,8 +24,7 @@ class CustomerOrderPage extends StatelessWidget {
     return GetBuilder<CustomerOrderPageController>(
       init: CustomerOrderPageController(),
       builder: (controller) {
-        ListAllOrdersModel listAllOrdersModel =
-            ModalRoute.of(context)!.settings.arguments as ListAllOrdersModel;
+        ListAllOrdersModel listAllOrdersModel = Get.arguments;
         return Scaffold(
           appBar: AppBar(
             flexibleSpace: Container(

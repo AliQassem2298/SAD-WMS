@@ -41,35 +41,35 @@ class Api {
     }
   }
 
-  Future<dynamic> post(
-      {required String url,
-      @required dynamic body,
-      @required String? token}) async {
-    Map<String, String> headers = {};
+  Future<dynamic> post({
+    required String url,
+    @required dynamic body,
+    @required String? token,
+  }) async {
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+    };
 
     if (token != null) {
-      headers.addAll({'Authorization': 'Bearer $token'});
+      headers['Authorization'] = 'Bearer $token';
     }
-    http.Response response =
-        await http.post(Uri.parse(url), body: body, headers: headers);
-    print('url= $url ,body=$body ,headrs=$headers');
+
+    http.Response response = await http.post(
+      Uri.parse(url),
+      body: jsonEncode(body),
+      headers: headers,
+    );
+
+    print('url= $url ,body=$body ,headers=$headers');
+
     if (response.statusCode == 200 || response.statusCode == 201) {
       Map<String, dynamic> data = jsonDecode(response.body);
-      print('url= $url ,body=$body ,headrs=$headers');
-
       print(data);
       return data;
-    }
-    // else if (response.statusCode == 400) {
-    //   Map<String, dynamic> data = jsonDecode(response.body);
-    //   print(data);
-
-    //   return data;
-    // }
-    else {
+    } else {
       Map<String, dynamic> data = jsonDecode(response.body);
       var detail = data['detail'];
-      throw detail;
+      throw Exception(detail);
     }
   }
 

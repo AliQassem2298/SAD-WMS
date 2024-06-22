@@ -205,6 +205,12 @@ class CustomCustomerOrderCard extends StatelessWidget {
                                 ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
           // Positioned(
           //   top: 20,
           //   left: 30,
@@ -223,8 +229,4 @@ class CustomCustomerOrderCard extends StatelessWidget {
           //     ),
           //   ),
           // ),
-        ],
-      ),
-    );
-  }
-}
+   
