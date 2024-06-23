@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/controller/change_password_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/create_replenishment_request_page_controller.dart';
@@ -66,7 +67,9 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   sharedPreferences = await SharedPreferences.getInstance();
-
+  SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp],
+  );
   runApp(const WeareHouseManegmentSystem());
 }
 

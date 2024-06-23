@@ -10,9 +10,12 @@ import 'package:warehouse_manegment_system/controller/shipments_page_controller.
 import 'package:warehouse_manegment_system/controller/cycle_count_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/transfer_page_controller.dart';
 import 'package:warehouse_manegment_system/main.dart';
+import 'package:warehouse_manegment_system/model/models/product_details_by_barcode_model.dart';
 import 'package:warehouse_manegment_system/model/services/list_replenishment_requests_service.dart';
+import 'package:warehouse_manegment_system/model/services/product_details_by_barcode_service.dart';
 
 import 'package:warehouse_manegment_system/view/widgets/custom_card.dart';
+import 'package:warehouse_manegment_system/view/widgets/details_dialog_card.dart';
 
 class HomePage extends StatelessWidget {
   final BarcodeController barcodeController = Get.put(BarcodeController());
@@ -350,26 +353,37 @@ class HomePage extends StatelessWidget {
                   CustomCard(
                     onTap: () async {
                       try {
-                        // String? scannedBarcode =
-                        //     await barcodeController.scanBarcode();
-                        // if (scannedBarcode != null) {
-                        //   // DetailModel response =
-                        //   //     await
-
-                        //   // print('Success: ${response.detail}');
-                        //   // Get.snackbar(
-                        //   //   'Success',
-                        //   //   response.detail,
-                        //   //   colorText: Colors.white,
-                        //   // );
-                        // } else {
-                        //   print('Scan was cancelled.');
-                        //   Get.snackbar(
-                        //     'Cancelled',
-                        //     'Scan was cancelled.',
-                        //     colorText: Colors.white,
-                        //   );
-                        // }
+                        String? scannedBarcode = '1234567890125';
+                        // await barcodeController.scanBarcode();
+                        if (scannedBarcode != null) {
+                          ProductDetailsByBarcodeModel response =
+                              await ProductDetailsByBarcodeService()
+                                  .productDetailsByBarcode(
+                            productBarcode: scannedBarcode,
+                          );
+                          print('Success');
+                          Get.snackbar(
+                            'Success',
+                            '',
+                            colorText: Colors.white,
+                          );
+                          Get.bottomSheet(
+                            CustomDetailsProductDialog(
+                              productDetailsByBarcodeModel: response,
+                            ),
+                            enterBottomSheetDuration:
+                                Duration(milliseconds: 700),
+                            exitBottomSheetDuration:
+                                Duration(milliseconds: 700),
+                          );
+                        } else {
+                          print('Scan was cancelled.');
+                          Get.snackbar(
+                            'Cancelled',
+                            'Scan was cancelled.',
+                            colorText: Colors.white,
+                          );
+                        }
 
                         // showDialog(
                         //   context: context,
@@ -390,6 +404,25 @@ class HomePage extends StatelessWidget {
                         //       ],
                         //     );
                         //   },
+                        // );
+                        // showDialog(
+                        //   context: context,
+                        //   builder: (ctx) => AlertDialog(
+                        //     title: const Text("Alert Dialog Box"),
+                        //     content:
+                        //         const Text("This is simple alert dialog box"),
+                        //     actions: <Widget>[
+                        //       // TextButton(
+                        //       //   onPressed: () =>
+                        //       //       Navigator.pop(context, 'Cancel'),
+                        //       //   child: const Text('Cancel'),
+                        //       // ),
+                        //       TextButton(
+                        //         onPressed: () => Navigator.pop(context, 'OK'),
+                        //         child: const Text('OK'),
+                        //       ),
+                        //     ],
+                        //   ),
                         // );
                       } catch (e) {
                         print(e.toString());

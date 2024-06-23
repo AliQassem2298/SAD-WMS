@@ -12,6 +12,14 @@ class CustomReplenshmentRequestCard extends StatelessWidget {
   });
   ListReplenishmentRequestsModel listAllOrdersModel;
 
+  double calculateTotalPrice() {
+    double totalPrice = 0.0;
+    double price = double.parse(listAllOrdersModel.productModel.price);
+    int quantity = listAllOrdersModel.quantity;
+    totalPrice = price * quantity;
+    return totalPrice;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -53,8 +61,7 @@ class CustomReplenshmentRequestCard extends StatelessWidget {
                   height: 1.h,
                 ),
                 Text(
-                  'Total Price :${listAllOrdersModel.productModel.price}' +
-                      r'$',
+                  'Total Price :${calculateTotalPrice()}' + r'$',
                   style: TextStyle(
                     color: kFirstColor,
                     fontSize: 5.w,
@@ -143,6 +150,11 @@ class CustomReplenshmentRequestCard extends StatelessWidget {
                         ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
           // Positioned(
           //   right: 0.w,
           //   child: Container(
@@ -166,8 +178,3 @@ class CustomReplenshmentRequestCard extends StatelessWidget {
           //     ),
           //   ),
           // ),
-        ],
-      ),
-    );
-  }
-}
