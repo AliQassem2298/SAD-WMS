@@ -1,29 +1,32 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 
 class CustomCard extends StatelessWidget {
+  final String text;
+  final String image;
+  final String? routname;
+  final Function()? onTap;
+
   CustomCard({
     required this.text,
     required this.image,
-    required this.routname,
+    this.routname,
+    this.onTap,
     Key? key,
   }) : super(key: key);
-
-  final String text;
-  final String image;
-  final String routname;
 
   @override
   Widget build(BuildContext context) {
     ScreenSizeConfig.init(context);
 
     return InkWell(
-      onTap: () {
-        Get.toNamed(routname);
-      },
+      onTap: onTap ??
+          () {
+            if (routname != null) {
+              Get.toNamed(routname!);
+            }
+          },
       child: Container(
         width: ScreenSizeConfig.blockSizeHorizontal * 90,
         decoration: BoxDecoration(
@@ -46,14 +49,14 @@ class CustomCard extends StatelessWidget {
               width: double.infinity,
               decoration: BoxDecoration(
                 border: Border.all(width: 7, color: kFirstColor2),
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(35),
               ),
               child: Image.asset(
                 image,
                 height: ScreenSizeConfig.blockSizeVertical * 21,
                 width: double.infinity,
-                fit: BoxFit.fitWidth,
+                fit: BoxFit.cover,
               ),
             ),
             Text(
@@ -73,6 +76,7 @@ class CustomCard extends StatelessWidget {
     );
   }
 }
+
 
             // Padding(
             //   padding: const EdgeInsets.only(),

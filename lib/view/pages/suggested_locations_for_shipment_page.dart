@@ -154,63 +154,58 @@ class SuggestedLocationsForShipmentPage extends StatelessWidget {
                   ),
                   padding:
                       EdgeInsets.symmetric(horizontal: 15.w, vertical: 3.h),
-                  child: Column(
-                    children: [
-                      CustomButton(
-                        hasBorder: true,
-                        onPressed: () async {
-                          try {
-                            String? scannedBarcode =
-                                await barcodeController.scanBarcode();
-                            if (scannedBarcode != null) {
-                              DetailModel response =
-                                  await PutAwayProductService().putAwayProduct(
-                                shipmentDetailId: controller
-                                    .locations!.shipmentDetailId
-                                    .toString(),
-                                locationBarcode: scannedBarcode,
-                                quantity:
-                                    controller.locations!.quantity.toString(),
-                              );
+                  child: CustomButton(
+                    hasBorder: true,
+                    onPressed: () async {
+                      try {
+                        String? scannedBarcode =
+                            await barcodeController.scanBarcode();
+                        if (scannedBarcode != null) {
+                          DetailModel response =
+                              await PutAwayProductService().putAwayProduct(
+                            shipmentDetailId: controller
+                                .locations!.shipmentDetailId
+                                .toString(),
+                            locationBarcode: scannedBarcode,
+                            quantity: controller.locations!.quantity.toString(),
+                          );
 
-                              putAwayPageController.up();
+                          putAwayPageController.up();
 
-                              Get.back();
+                          Get.back();
 
-                              print('Success: ${response.detail}');
-                              Get.snackbar(
-                                'Success',
-                                response.detail,
-                                colorText: Colors.white,
-                              );
-                            } else {
-                              print('Scan was cancelled.');
-                              Get.snackbar(
-                                'Cancelled',
-                                'Scan was cancelled.',
-                                colorText: Colors.white,
-                              );
-                            }
-                          } catch (e) {
-                            print(e.toString());
-                            Get.snackbar(
-                              'Error',
-                              e.toString(),
-                              colorText: Colors.white,
-                            );
-                          }
-                        },
-                        text: 'Scan',
-                        fontSize: 7.w,
-                        textColor: kWhiteColor,
-                        gradient: const LinearGradient(
-                          colors: [
-                            kFirstColor2,
-                            kFirstColor2,
-                          ],
-                        ),
-                      ),
-                    ],
+                          print('Success: ${response.detail}');
+                          Get.snackbar(
+                            'Success',
+                            response.detail,
+                            colorText: Colors.white,
+                          );
+                        } else {
+                          print('Scan was cancelled.');
+                          Get.snackbar(
+                            'Cancelled',
+                            'Scan was cancelled.',
+                            colorText: Colors.white,
+                          );
+                        }
+                      } catch (e) {
+                        print(e.toString());
+                        Get.snackbar(
+                          'Error',
+                          e.toString(),
+                          colorText: Colors.white,
+                        );
+                      }
+                    },
+                    text: 'Scan',
+                    fontSize: 7.w,
+                    textColor: kWhiteColor,
+                    gradient: const LinearGradient(
+                      colors: [
+                        kFirstColor2,
+                        kFirstColor2,
+                      ],
+                    ),
                   ),
                 ),
               ),

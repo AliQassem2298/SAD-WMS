@@ -1,3 +1,4 @@
+import 'package:warehouse_manegment_system/model/models/locations_model.dart';
 import 'package:warehouse_manegment_system/model/models/product_model.dart';
 
 class ListReplenishmentRequestsModel {
@@ -7,7 +8,7 @@ class ListReplenishmentRequestsModel {
   final String status;
   final String reason;
   final DateTime timestamp;
-  final int location;
+  final LocationsModel locationsModel;
   ListReplenishmentRequestsModel({
     required this.id,
     required this.productModel,
@@ -15,7 +16,7 @@ class ListReplenishmentRequestsModel {
     required this.status,
     required this.reason,
     required this.timestamp,
-    required this.location,
+    required this.locationsModel,
   });
   factory ListReplenishmentRequestsModel.fromJson(jsonData) {
     return ListReplenishmentRequestsModel(
@@ -25,7 +26,7 @@ class ListReplenishmentRequestsModel {
       status: jsonData['status'],
       reason: jsonData['reason'],
       timestamp: DateTime.parse(jsonData['timestamp']),
-      location: jsonData['location'],
+      locationsModel: LocationsModel.fromJson(jsonData['location']),
     );
   }
 }

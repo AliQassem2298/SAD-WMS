@@ -3,17 +3,18 @@ import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/barcode_scan_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/transfer_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/cycle_count_page_controller.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_button.dart';
 import 'package:warehouse_manegment_system/view/widgets/custom_text_from_field.dart';
 
-class TransferPage extends StatelessWidget {
-  TransferPage({super.key});
+class CycleCountPage extends StatelessWidget {
+  CycleCountPage({super.key});
   final BarcodeController barcodeController = Get.put(BarcodeController());
+
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<TransferPageController>(
-      init: TransferPageController(),
+    return GetBuilder<CycleCountPageController>(
+      init: CycleCountPageController(),
       builder: (controller) {
         return ModalProgressHUD(
           inAsyncCall: controller.isLoading,
@@ -21,7 +22,7 @@ class TransferPage extends StatelessWidget {
             appBar: AppBar(
               centerTitle: true,
               title: Text(
-                'Transfer Products',
+                'Cycle Count Page',
                 style: TextStyle(color: kWhiteColor),
               ),
               iconTheme: IconThemeData(
@@ -76,7 +77,7 @@ class TransferPage extends StatelessWidget {
                         children: [
                           Padding(
                             padding: EdgeInsets.symmetric(
-                              vertical: 5.h,
+                              vertical: 3.h,
                               horizontal: 3.w,
                             ),
                             child: CustomButton(
@@ -121,103 +122,48 @@ class TransferPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: CustomButton(
-                                  onPressed: () async {
-                                    try {
-                                      controller.fromLocationBarcode =
-                                          await barcodeController.scanBarcode();
-                                      if (controller.fromLocationBarcode !=
-                                          null) {
-                                        print('Success:');
-                                        Get.snackbar(
-                                          'Success',
-                                          'Location Scanned ...!',
-                                          colorText: Colors.white,
-                                        );
-                                      } else {
-                                        print('Scan was cancelled.');
-                                        Get.snackbar(
-                                          'Cancelled',
-                                          'Scan was cancelled.',
-                                          colorText: Colors.white,
-                                        );
-                                      }
-                                      print('success');
-                                    } catch (e) {
-                                      print(e.toString());
-                                      Get.snackbar(
-                                        'Sorry',
-                                        e.toString(),
-                                        colorText: Colors.white,
-                                      );
-                                    }
-                                  },
-                                  text: 'From',
-                                  hasBorder: true,
-                                  gradient: const LinearGradient(
-                                    colors: [
-                                      kFirstColor,
-                                      kFirstColor2,
-                                    ],
-                                    end: Alignment.topLeft,
-                                    begin: Alignment.bottomRight,
-                                  ),
-                                ).paddingSymmetric(
-                                  horizontal: 3.w,
-                                ),
-                              ),
-                              Expanded(
-                                child: CustomButton(
-                                  onPressed: () async {
-                                    try {
-                                      controller.toLocationBarcode =
-                                          await barcodeController.scanBarcode();
-                                      if (controller.toLocationBarcode !=
-                                          null) {
-                                        print('Success:');
-                                        Get.snackbar(
-                                          'Success',
-                                          'Location Scanned ...!',
-                                          colorText: Colors.white,
-                                        );
-                                      } else {
-                                        print('Scan was cancelled.');
-                                        Get.snackbar(
-                                          'Cancelled',
-                                          'Scan was cancelled.',
-                                          colorText: Colors.white,
-                                        );
-                                      }
-                                      print('success');
-                                    } catch (e) {
-                                      print(e.toString());
-                                      Get.snackbar(
-                                        'Sorry',
-                                        e.toString(),
-                                        colorText: Colors.white,
-                                      );
-                                    }
-                                  },
-                                  text: 'To',
-                                  hasBorder: true,
-                                  gradient: const LinearGradient(
-                                    colors: [
-                                      kFirstColor,
-                                      kFirstColor2,
-                                    ],
-                                    end: Alignment.topLeft,
-                                    begin: Alignment.bottomRight,
-                                  ),
-                                ).paddingSymmetric(
-                                  horizontal: 3.w,
-                                ),
-                              ),
-                            ],
+                          CustomButton(
+                            onPressed: () async {
+                              try {
+                                controller.locationBarcode =
+                                    await barcodeController.scanBarcode();
+                                if (controller.locationBarcode != null) {
+                                  print('Success:');
+                                  Get.snackbar(
+                                    'Success',
+                                    'Location Scanned ...!',
+                                    colorText: Colors.white,
+                                  );
+                                } else {
+                                  print('Scan was cancelled.');
+                                  Get.snackbar(
+                                    'Cancelled',
+                                    'Scan was cancelled.',
+                                    colorText: Colors.white,
+                                  );
+                                }
+                                print('success');
+                              } catch (e) {
+                                print(e.toString());
+                                Get.snackbar(
+                                  'Sorry',
+                                  e.toString(),
+                                  colorText: Colors.white,
+                                );
+                              }
+                            },
+                            text: 'Scan Location',
+                            hasBorder: true,
+                            gradient: const LinearGradient(
+                              colors: [
+                                kFirstColor,
+                                kFirstColor2,
+                              ],
+                              end: Alignment.topLeft,
+                              begin: Alignment.bottomRight,
+                            ),
+                          ).paddingSymmetric(
+                            horizontal: 3.w,
                           ),
                           CustomTextFromField(
                             onChanged: (value) {
@@ -252,7 +198,7 @@ class TransferPage extends StatelessWidget {
                             ),
                             child: CustomButton(
                               onPressed: () async {
-                                await controller.submitTransfer();
+                                await controller.submitCycleCount();
                               },
                               text: 'Submit',
                               hasBorder: true,

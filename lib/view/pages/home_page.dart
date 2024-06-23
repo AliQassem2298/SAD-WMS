@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/barcode_scan_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/delivery_page._controller.dart';
-import 'package:warehouse_manegment_system/controller/inventory_scan_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/replenishment_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/orders_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/put_away_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/shipments_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/stocktaking_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/cycle_count_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/transfer_page_controller.dart';
 import 'package:warehouse_manegment_system/main.dart';
 import 'package:warehouse_manegment_system/model/services/list_replenishment_requests_service.dart';
@@ -338,17 +338,68 @@ class HomePage extends StatelessWidget {
                     text: "Transfer",
                   ),
                   CustomCard(
-                    routname: StocktakingPageController.id,
+                    routname: CycleCountPageController.id,
                     image: 'assets/cycle-count.png',
                     text: "Cycle Count",
                   ),
                   CustomCard(
-                    routname: InventoryScanPageController.id,
+                    routname: ReplenishmentPageController.id,
                     image: 'assets/replenishment.png',
                     text: "Replenishment",
                   ),
                   CustomCard(
-                    routname: InventoryScanPageController.id,
+                    onTap: () async {
+                      try {
+                        // String? scannedBarcode =
+                        //     await barcodeController.scanBarcode();
+                        // if (scannedBarcode != null) {
+                        //   // DetailModel response =
+                        //   //     await
+
+                        //   // print('Success: ${response.detail}');
+                        //   // Get.snackbar(
+                        //   //   'Success',
+                        //   //   response.detail,
+                        //   //   colorText: Colors.white,
+                        //   // );
+                        // } else {
+                        //   print('Scan was cancelled.');
+                        //   Get.snackbar(
+                        //     'Cancelled',
+                        //     'Scan was cancelled.',
+                        //     colorText: Colors.white,
+                        //   );
+                        // }
+
+                        // showDialog(
+                        //   context: context,
+                        //   builder: (BuildContext context) {
+                        //     return AlertDialog(
+                        //       title: const Icon(Icons.warning_amber_rounded),
+                        //       content: Text('Hi'),
+                        //       actions: <Widget>[
+                        //         TextButton(
+                        //           onPressed: () {
+                        //             // Navigate to home page
+                        //             Navigator.of(context)
+                        //                 .pop(); // Close the dialog
+                        //             // Replace '/home' with your home route
+                        //           },
+                        //           child: Text('ok'),
+                        //         ),
+                        //       ],
+                        //     );
+                        //   },
+                        // );
+                      } catch (e) {
+                        print(e.toString());
+                        Get.snackbar(
+                          'Error',
+                          e.toString(),
+                          colorText: Colors.white,
+                        );
+                      }
+                    },
                     image: 'assets/scanner.png',
                     text: "Barcode Scanner",
                   ),

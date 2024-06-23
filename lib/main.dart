@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/controller/change_password_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/create_replenishment_request_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/customers_order_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/delivery_page._controller.dart';
 import 'package:warehouse_manegment_system/controller/forget_password_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/home_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/home_page_with_drawer_controller.dart';
-import 'package:warehouse_manegment_system/controller/inventory_scan_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/replenishment_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/onbordingcontroller.dart';
 import 'package:warehouse_manegment_system/controller/orders_for_delivery_page_controller.dart';
 // import 'package:warehouse_manegment_system/controller/onbordingcontroller.dart';
@@ -18,7 +19,7 @@ import 'package:warehouse_manegment_system/controller/sign_in_page_controller.da
 import 'package:warehouse_manegment_system/controller/sign_up_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/drawer_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/splash_page_controller.dart';
-import 'package:warehouse_manegment_system/controller/stocktaking_page_controller.dart';
+import 'package:warehouse_manegment_system/controller/cycle_count_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/suggested_locations_for_orders_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/suggested_locations_for_shipment_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/supplier_shipment_page_controller.dart';
@@ -30,13 +31,14 @@ import 'package:warehouse_manegment_system/middleware/onBoradingMiddleWare.dart'
 import 'package:warehouse_manegment_system/middleware/screen_size_middleware.dart';
 import 'package:warehouse_manegment_system/view/pages/IntroPages/splash_page.dart';
 import 'package:warehouse_manegment_system/view/pages/change_password_page.dart';
+import 'package:warehouse_manegment_system/view/pages/create_replenishment_request_page.dart';
 import 'package:warehouse_manegment_system/view/pages/customers_order_page.dart';
 import 'package:warehouse_manegment_system/view/pages/delivery_page.dart';
 import 'package:warehouse_manegment_system/view/pages/dialog_page.dart';
 import 'package:warehouse_manegment_system/view/pages/forget_password_page.dart';
 import 'package:warehouse_manegment_system/view/pages/home_page.dart';
 import 'package:warehouse_manegment_system/view/pages/home_page_with_drawer.dart';
-import 'package:warehouse_manegment_system/view/pages/inventory_scan_page.dart';
+import 'package:warehouse_manegment_system/view/pages/replenishment_page.dart';
 import 'package:warehouse_manegment_system/view/pages/on_bording_page.dart';
 import 'package:warehouse_manegment_system/view/pages/orders_for_delivery_page.dart';
 import 'package:warehouse_manegment_system/view/pages/orders_page.dart';
@@ -45,7 +47,7 @@ import 'package:warehouse_manegment_system/view/pages/put_away_page.dart';
 import 'package:warehouse_manegment_system/view/pages/shipments_page.dart';
 import 'package:warehouse_manegment_system/view/pages/sign_in_page.dart';
 import 'package:warehouse_manegment_system/view/pages/sign_up_page.dart';
-import 'package:warehouse_manegment_system/view/pages/stocktaking_page.dart';
+import 'package:warehouse_manegment_system/view/pages/cycle_count_page.dart';
 import 'package:warehouse_manegment_system/view/pages/suggested_locations_for_orders_page.dart';
 import 'package:warehouse_manegment_system/view/pages/suggested_locations_for_shipment_page.dart';
 import 'package:warehouse_manegment_system/view/pages/supplier_shipment_page.dart';
@@ -132,12 +134,16 @@ class WeareHouseManegmentSystem extends StatelessWidget {
           page: () => TransferPage(),
         ),
         GetPage(
-          name: StocktakingPageController.id,
-          page: () => const StocktakingPage(),
+          name: CycleCountPageController.id,
+          page: () => CycleCountPage(),
         ),
         GetPage(
-          name: InventoryScanPageController.id,
-          page: () => const InventoryScanPage(),
+          name: ReplenishmentPageController.id,
+          page: () => const ReplenishmentPage(),
+        ),
+        GetPage(
+          name: CreateReplenishmentRequestPageController.id,
+          page: () => CreateReplenishmentRequestPage(),
         ),
         GetPage(
           name: SupplierShipmentPagController.id,
