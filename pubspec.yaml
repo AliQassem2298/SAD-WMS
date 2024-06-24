@@ -52,7 +52,6 @@ dependencies:
   image_picker: ^1.0.8
   flutter_svg: ^2.0.10+1
   awesome_dialog: ^3.0.2
-  rich_alert: ^0.1.32
 
 
 dev_dependencies:
