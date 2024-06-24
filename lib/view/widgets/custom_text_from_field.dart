@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 
 //
-//
+
 class CustomTextFromField extends StatelessWidget {
   CustomTextFromField({
     Key? key,
