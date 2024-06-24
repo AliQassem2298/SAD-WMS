@@ -185,7 +185,7 @@ class CycleCountPage extends StatelessWidget {
                             },
                             hintText: 'Enter The Quantity Of The Product',
                             text: 'Quantity',
-                            toggleVisibility: true,
+                            toggleVisibility: false,
                             keyboardType: TextInputType.number,
                           ).paddingSymmetric(
                             horizontal: 7.w,

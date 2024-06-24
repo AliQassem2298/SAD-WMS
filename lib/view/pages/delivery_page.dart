@@ -124,7 +124,7 @@ class DeliveryPage extends StatelessWidget {
                             },
                             hintText: 'Enter Your Phone Number',
                             text: 'Phone Number',
-                            toggleVisibility: true,
+                            toggleVisibility: false,
                             keyboardType: TextInputType.number,
                           ),
                           Padding(

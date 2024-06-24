@@ -186,7 +186,7 @@ class CreateReplenishmentRequestPage extends StatelessWidget {
                             },
                             hintText: 'Enter The Quantity Of The Product',
                             text: 'Quantity',
-                            toggleVisibility: true,
+                            toggleVisibility: false,
                             keyboardType: TextInputType.number,
                           ).paddingSymmetric(
                             horizontal: 7.w,
@@ -206,7 +206,7 @@ class CreateReplenishmentRequestPage extends StatelessWidget {
                             },
                             hintText: 'Enter The Reason Of The Request',
                             text: 'Reason',
-                            toggleVisibility: true,
+                            toggleVisibility: false,
                           ).paddingSymmetric(
                             horizontal: 7.w,
                             vertical: 1.5.h,
