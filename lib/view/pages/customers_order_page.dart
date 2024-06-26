@@ -24,7 +24,7 @@ class CustomerOrderPage extends StatelessWidget {
     return GetBuilder<CustomerOrderPageController>(
       init: CustomerOrderPageController(),
       builder: (controller) {
-        ListAllOrdersModel listAllOrdersModel =
+        controller.listAllOrdersModel =
             ModalRoute.of(context)!.settings.arguments as ListAllOrdersModel;
         return Scaffold(
           appBar: AppBar(
@@ -42,7 +42,7 @@ class CustomerOrderPage extends StatelessWidget {
             ),
             iconTheme: IconThemeData(color: Colors.white),
             title: Text(
-              '${listAllOrdersModel.customerModel.username}\'s Order',
+              '${controller.listAllOrdersModel!.customerModel.username}\'s Order',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -83,7 +83,7 @@ class CustomerOrderPage extends StatelessWidget {
                 // ),
                 FutureBuilder<SeeOrderDetailModel>(
                   future: SeeOrderDetailsService()
-                      .seeOrderDetails(id: listAllOrdersModel.id),
+                      .seeOrderDetails(id: controller.listAllOrdersModel!.id),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Center(
@@ -146,14 +146,14 @@ class CustomerOrderPage extends StatelessWidget {
                         EdgeInsets.symmetric(horizontal: 15.w, vertical: 3.h),
                     child: Column(
                       children: [
-                        listAllOrdersModel.status == 'picked'
+                        controller.listAllOrdersModel!.status == 'picked'
                             ? CustomButton(
                                 hasBorder: true,
                                 onPressed: () async {
                                   try {
                                     DetailModel response =
                                         await PackOrderService().packOrder(
-                                      id: listAllOrdersModel.id,
+                                      id: controller.listAllOrdersModel!.id,
                                     );
                                     ordersPageController.up();
 

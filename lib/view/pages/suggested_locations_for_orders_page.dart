@@ -22,10 +22,11 @@ class SuggestedLocationsForOrdersPage extends StatelessWidget {
       Get.put(OrdersPageController());
   @override
   Widget build(BuildContext context) {
-    OrderModel order = ModalRoute.of(context)!.settings.arguments as OrderModel;
     return GetBuilder<SuggestedLocationsForOrdersPageController>(
       init: SuggestedLocationsForOrdersPageController(),
       builder: (controller) {
+        controller.order =
+            ModalRoute.of(context)!.settings.arguments as OrderModel;
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
@@ -64,7 +65,7 @@ class SuggestedLocationsForOrdersPage extends StatelessWidget {
                 child: FutureBuilder<PickListForOrderDetailModel>(
                   future:
                       PickListForOrderDetailService().pickListForOrderDetail(
-                    id: order.id,
+                    id: controller.order!.id,
                   ),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -174,7 +175,7 @@ class SuggestedLocationsForOrdersPage extends StatelessWidget {
                             if (scannedBarcode != null) {
                               DetailModel response =
                                   await PickProductService().pickProduct(
-                                id: order.id,
+                                id: controller.order!.id,
                                 barcode: scannedBarcode,
                               );
 
