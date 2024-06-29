@@ -207,33 +207,14 @@ class ProductDetailsPage extends StatelessWidget {
                         '${controller.productDetails!.name}',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 5.5.w,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      SizedBox(
-                        height: 3.h,
-                      ),
-                      Text(
-                        'Price:',
-                        style: TextStyle(
-                          color: Colors.white,
                           fontSize: 6.w,
                           fontWeight: FontWeight.w500,
                         ),
-                      ),
-                      Text(
-                        '${controller.productDetails!.price}' + r'$',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 5.5.w,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ],
-                  ),
+                  ).paddingOnly(top: 3.h),
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,
@@ -247,11 +228,28 @@ class ProductDetailsPage extends StatelessWidget {
                       color: Colors.white,
                     ),
                     child: ListView(
+                      physics: NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.symmetric(
                         horizontal: 7.5.w,
                         vertical: 5.h,
                       ),
                       children: [
+                        Text(
+                          'Price:',
+                          style: TextStyle(
+                            color: kFirstColor2,
+                            fontSize: 6.w,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text(
+                          '${controller.productDetails!.price}' + r'$',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 5.5.w,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                         Row(
                           children: [
                             Text(
@@ -271,7 +269,7 @@ class ProductDetailsPage extends StatelessWidget {
                               ),
                             ),
                           ],
-                        ).paddingOnly(top: 8.h),
+                        ).paddingOnly(top: 1.h),
                         Row(
                           children: [
                             Text(
