@@ -171,10 +171,6 @@ class ProductDetailsPage extends StatelessWidget {
                     colors: [
                       kFirstColor,
                       kFirstColor2,
-
-                      // kSecondtColor,
-                      // kThierdColor,
-                      // kFourthColor,
                     ],
                   ),
                 ),
@@ -194,281 +190,130 @@ class ProductDetailsPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: 6.w,
-                    top: 2.h,
-                    right: 6.w,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${controller.productDetails!.name}',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 6.w,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ).paddingOnly(top: 3.h),
-                ),
-                Align(
-                  alignment: Alignment.bottomCenter,
+                Positioned(
+                  bottom: 2.h,
+                  left: 2.w,
                   child: Container(
-                    height: 65.h,
-                    width: double.infinity,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(45),
-                      ),
+                    width: 90.w,
+                    height: 70.h,
+                    decoration: BoxDecoration(
                       color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(35),
+                        bottomRight: Radius.circular(35),
+                      ),
                     ),
                     child: ListView(
                       physics: NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.symmetric(
                         horizontal: 7.5.w,
-                        vertical: 5.h,
                       ),
                       children: [
                         Text(
-                          'Price:',
+                          '${controller.productDetails!.price}' + r'$',
                           style: TextStyle(
-                            color: kFirstColor2,
-                            fontSize: 6.w,
-                            fontWeight: FontWeight.w500,
+                            decoration: TextDecoration.underline,
+                            color: Colors.black,
+                            fontSize: 5.5.w,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          '${controller.productDetails!.price}' + r'$',
+                          '${controller.productDetails!.name}',
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 5.5.w,
-                            fontWeight: FontWeight.w500,
+                            fontSize: 6.w,
+                            fontWeight: FontWeight.bold,
                           ),
-                        ),
+                        ).paddingOnly(top: 2.h),
                         Row(
                           children: [
                             Text(
                               'Supplier:',
                               style: TextStyle(
                                 color: kFirstColor2,
-                                fontSize: 6.w,
-                                fontWeight: FontWeight.w500,
+                                fontSize: 5.w,
                               ),
                             ),
                             Text(
                               ' ${controller.productDetails!.supplierModel.name}',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 5.5.w,
-                                fontWeight: FontWeight.w500,
+                                fontSize: 5.w,
                               ),
                             ),
                           ],
-                        ).paddingOnly(top: 1.h),
+                        ).paddingOnly(top: 2.h),
                         Row(
                           children: [
                             Text(
                               'Category:',
                               style: TextStyle(
                                 color: kFirstColor2,
-                                fontSize: 6.w,
-                                fontWeight: FontWeight.w500,
+                                fontSize: 5.w,
                               ),
                             ),
                             Text(
                               ' ${controller.productDetails!.categoryModel.name}',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 5.5.w,
-                                fontWeight: FontWeight.w500,
+                                fontSize: 5.w,
                               ),
                             ),
                           ],
-                        ).paddingOnly(top: 1.h),
-                        Text(
-                          'Description:',
-                          style: TextStyle(
-                            color: kFirstColor2,
-                            fontSize: 6.w,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ).paddingOnly(top: 1.h),
+                        ).paddingOnly(top: 2.h),
                         Text(
                           '${controller.productDetails!.description}',
                           style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 5.5.w,
-                            fontWeight: FontWeight.w500,
+                            color: Color.fromARGB(100, 0, 0, 0),
+                            fontSize: 5.w,
                           ),
                           maxLines: 8,
                           overflow: TextOverflow.ellipsis,
-                        ).paddingOnly(top: 1.h),
-
+                        ).paddingOnly(top: 2.h),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Text(
                               'Barcode:',
                               style: TextStyle(
                                 color: kFirstColor2,
-                                fontSize: 6.w,
-                                fontWeight: FontWeight.w500,
+                                fontSize: 5.w,
                               ),
                             ),
                             Text(
                               ' ${controller.productDetails!.barcode}',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 5.5.w,
-                                fontWeight: FontWeight.w500,
+                                fontSize: 5.w,
                               ),
                             ),
                           ],
-                        ).paddingOnly(top: 1.h),
-                        // CustomTextFromField(
-                        //   onChanged: (value) {
-                        //     controller.email.text = value;
-                        //   },
-                        //   textEditingController: controller.email,
-                        //   validator: (value) {
-                        //     if (value!.isEmpty) {
-                        //       return 'Field is empty';
-                        //     }
-                        //     return null;
-                        //   },
-                        //   hintText: 'Enter Your Email Or User Name',
-                        //   text: 'Email/Username',
-                        //   toggleVisibility: false,
-                        // ),
-                        // SizedBox(height: 2.h),
-                        // CustomTextFromField(
-                        //   onChanged: (value) {
-                        //     controller.password.text = value;
-                        //   },
-                        //   textEditingController: controller.password,
-                        //   validator: (value) {
-                        //     if (value!.isEmpty) {
-                        //       return 'Field is empty';
-                        //     }
-                        //     if (value.length < 7) {
-                        //       return 'Password is too short';
-                        //     }
-                        //     return null;
-                        //   },
-                        //   hintText: 'Enter Your Password',
-                        //   text: 'Password',
-                        //   icon: const Icon(Icons.remove_red_eye),
-                        //   toggleVisibility: true,
-                        // ),
-                        // Padding(
-                        //   padding: EdgeInsets.only(top: 2.h),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.end,
-                        //     children: [
-                        //       InkWell(
-                        //         onTap: () {
-                        //           Get.toNamed(
-                        //             ForgetPasswordPageController.id,
-                        //           );
-                        //         },
-                        //         child: const Text(
-                        //           'Forget Password?',
-                        //           style: TextStyle(
-                        //             fontWeight: FontWeight.w500,
-                        //             color: kFirstColor,
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        // Padding(
-                        //   padding: EdgeInsets.symmetric(
-                        //     horizontal: 5.w,
-                        //     vertical: 5.h,
-                        //   ),
-                        //   child: CustomButton(
-                        //     onPressed: () async {
-                        //       if (controller.formState.currentState!
-                        //           .validate()) {
-                        //         controller.loadingIndecatorTrue();
-
-                        //         try {
-                        //           await controller.signIn(controller);
-                        //           print('Success');
-                        //           controller.loadingIndecatorFalse();
-                        //           Get.snackbar(
-                        //             'Hi',
-                        //             'Sign in successful',
-                        //           );
-                        //           Get.toNamed(
-                        //             HomePageWithDrawerController.id,
-                        //           );
-                        //         } catch (e) {
-                        //           print(e.toString());
-                        //           Get.snackbar(
-                        //             'Sorry',
-                        //             e.toString(),
-                        //             colorText: Colors.white,
-                        //           );
-                        //         }
-                        //         controller.loadingIndecatorFalse();
-                        //       }
-                        //     },
-                        //     text: 'SIGN IN',
-                        //     hasBorder: true,
-                        //     gradient: const LinearGradient(
-                        //       colors: [
-                        //         kFirstColor,
-                        //         kFirstColor2,
-                        //       ],
-                        //       end: Alignment.topLeft,
-                        //       begin: Alignment.bottomRight,
-                        //     ),
-                        //     routeName: HomePageWithDrawerController.id,
-                        //   ),
-                        // ),
-                        // Column(
-                        //   crossAxisAlignment: CrossAxisAlignment.end,
-                        //   children: [
-                        //     const Text('Don\'t have an account?'),
-                        //     InkWell(
-                        //       onTap: () {
-                        //         Get.offAllNamed(SignUpPageController.id);
-                        //       },
-                        //       child: const Text(
-                        //         'Sign Up',
-                        //         style: TextStyle(
-                        //           color: Colors.black,
-                        //           fontWeight: FontWeight.w500,
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
+                        ).paddingOnly(top: 3.h),
                       ],
-                    ),
+                    ).paddingOnly(top: 8.h),
                   ),
                 ),
                 Positioned(
-                  top: 25.h,
-                  right: 0.w,
+                  top: 2.h,
+                  right: 2.w,
                   child: Container(
-                    // decoration: BoxDecoration(
-                    //   color: Color(0x30444444),
-                    //   borderRadius: BorderRadius.circular(100),
-                    //   border:
-                    //       Border.all(width: 0.3.w, color: Color(0xFF444444)),
-                    // ),
-                    width: 40.w,
-                    height: 20.h,
+                    width: 60.w,
+                    height: 30.h,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(35),
+                        bottomRight: Radius.circular(35),
+                      ),
+                    ),
                     child: Image.network(
                       '${baseUrlImage}${controller.productDetails!.photo}',
+                      width: 60.w,
+                      height: 40.h,
                     ),
                   ),
                 ),

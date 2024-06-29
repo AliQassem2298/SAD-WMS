@@ -353,7 +353,7 @@ class HomePage extends StatelessWidget {
                   CustomCard(
                     onTap: () async {
                       try {
-                        String? scannedBarcode = '1234567890125';
+                        String? scannedBarcode = '1234567890124';
                         // await barcodeController.scanBarcode();
 
                         if (scannedBarcode != null) {
