@@ -18,8 +18,6 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenSizeConfig.init(context);
-
     return InkWell(
       onTap: onTap ??
           () {
@@ -28,51 +26,60 @@ class CustomCard extends StatelessWidget {
             }
           },
       child: Container(
-        width: ScreenSizeConfig.blockSizeHorizontal * 90,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(35),
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(5, 5),
-              color: Color.fromARGB(50, 0, 0, 0),
-              blurRadius: 10,
-            ),
-          ],
-          color: kFirstColor2,
-        ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              clipBehavior: Clip.none,
-              width: double.infinity,
               decoration: BoxDecoration(
-                border: Border.all(width: 7, color: kFirstColor2),
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(35),
+                color: kWhiteColor,
+                borderRadius: BorderRadius.circular(20),
               ),
               child: Image.asset(
                 image,
-                height: ScreenSizeConfig.blockSizeVertical * 21,
-                width: double.infinity,
-                fit: BoxFit.cover,
+                width: 50.w,
+                height: 20.h,
               ),
+            ),
+            SizedBox(
+              height: 1.h,
             ),
             Text(
               text,
               style: TextStyle(
                 color: kWhiteColor,
-                fontSize: ScreenSizeConfig.blockSizeHorizontal * 4.6,
+                fontSize: 4.w,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: ScreenSizeConfig.blockSizeVertical * 1.5),
           ],
         ),
       ),
-    ).paddingSymmetric(
-      vertical: ScreenSizeConfig.blockSizeVertical * 1.3,
+      // Column(
+      //   children: [
+      //     Container(
+      //       width: 50.w,
+      //       height: 25.h,
+      //       decoration: BoxDecoration(
+      //         color: Colors.red,
+      //         borderRadius: BorderRadius.circular(35),
+      //       ),
+      //       child: Image.asset(
+      //         image,
+      //       ),
+      //     ),
+      //     SizedBox(
+      //       height: 10,
+      //     ),
+      //     Text(
+      //       text,
+      //       style: TextStyle(
+      //         color: kWhiteColor,
+      //         fontSize: ScreenSizeConfig.blockSizeHorizontal * 4.6,
+      //         fontWeight: FontWeight.bold,
+      //       ),
+      //     ),
+      //     // SizedBox(height: ScreenSizeConfig.blockSizeVertical * 1.5),
+      //   ],
+      // ),
     );
   }
 }

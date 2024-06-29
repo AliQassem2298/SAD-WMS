@@ -237,8 +237,20 @@ class HomePage extends StatelessWidget {
       // ],
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: kFirstColor2,
+        // backgroundColor: kFirstColor2,
         // title: Text('Warehouse management system'),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.centerRight,
+              end: Alignment.centerLeft,
+              colors: [
+                kFirstColor,
+                kFirstColor2,
+              ],
+            ),
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: () async {
@@ -293,25 +305,20 @@ class HomePage extends StatelessWidget {
                   begin: Alignment.centerRight,
                   end: Alignment.centerLeft,
                   colors: [
-                    kWhiteColor,
-                    kWhiteColor,
-
-                    // kSecondtColor,
-                    // kThierdColor,
-
-                    // kFourthColor,
+                    kFirstColor,
+                    kFirstColor2,
                   ],
                 ),
               ),
-              child: ListView(
+              child: GridView(
                 clipBehavior: Clip.none,
-                // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                //   crossAxisCount: 2,
-                //   crossAxisSpacing: 24,
-                //   mainAxisSpacing: 20,
-                // ),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 3.5.w,
+                  mainAxisSpacing: 3.h,
+                ),
                 padding: EdgeInsets.symmetric(
-                  horizontal: ScreenSizeConfig.blockSizeHorizontal * 4,
+                  horizontal: ScreenSizeConfig.blockSizeHorizontal * 2,
                   vertical: ScreenSizeConfig.blockSizeVertical * 2,
                 ),
                 children: [

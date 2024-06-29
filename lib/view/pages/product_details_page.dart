@@ -191,13 +191,13 @@ class ProductDetailsPage extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  bottom: 2.h,
+                  bottom: 1.h,
                   left: 2.w,
                   child: Container(
-                    width: 90.w,
+                    width: 96.w,
                     height: 70.h,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: kWhiteColor,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(35),
                         bottomRight: Radius.circular(35),
@@ -301,10 +301,10 @@ class ProductDetailsPage extends StatelessWidget {
                   top: 2.h,
                   right: 2.w,
                   child: Container(
-                    width: 60.w,
-                    height: 30.h,
+                    width: 50.w, ////60.w
+                    height: 22.h,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Color(0xffd8f0ff),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(35),
                         bottomRight: Radius.circular(35),
@@ -312,8 +312,8 @@ class ProductDetailsPage extends StatelessWidget {
                     ),
                     child: Image.network(
                       '${baseUrlImage}${controller.productDetails!.photo}',
-                      width: 60.w,
-                      height: 40.h,
+                      width: 50.w,
+                      height: 25.h,
                     ),
                   ),
                 ),
