@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:warehouse_manegment_system/constans.dart';
 import 'package:warehouse_manegment_system/controller/barcode_scan_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/delivery_page._controller.dart';
+import 'package:warehouse_manegment_system/controller/product_details_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/replenishment_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/orders_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/put_away_page_controller.dart';
@@ -10,6 +11,7 @@ import 'package:warehouse_manegment_system/controller/shipments_page_controller.
 import 'package:warehouse_manegment_system/controller/cycle_count_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/transfer_page_controller.dart';
 import 'package:warehouse_manegment_system/main.dart';
+import 'package:warehouse_manegment_system/model/models/product_details_by_barcode_model.dart';
 import 'package:warehouse_manegment_system/model/services/list_replenishment_requests_service.dart';
 import 'package:warehouse_manegment_system/model/services/product_details_by_barcode_service.dart';
 
@@ -351,32 +353,29 @@ class HomePage extends StatelessWidget {
                   CustomCard(
                     onTap: () async {
                       try {
-                        // if (scannedBarcode != null) {
-                        //   ProductDetailsByBarcodeModel response =
+                        String? scannedBarcode = '1234567890125';
+                        // await barcodeController.scanBarcode();
 
-                        //   print('Success');
-                        //   Get.snackbar(
-                        //     'Success',
-                        //     '',
-                        //     colorText: Colors.white,
-                        //   );
-                        //   Get.bottomSheet(
-                        //     CustomDetailsProductDialog(
-                        //       productDetailsByBarcodeModel: response,
-                        //     ),
-                        //     enterBottomSheetDuration:
-                        //         Duration(milliseconds: 700),
-                        //     exitBottomSheetDuration:
-                        //         Duration(milliseconds: 700),
-                        //   );
-                        // } else {
-                        //   print('Scan was cancelled.');
-                        //   Get.snackbar(
-                        //     'Cancelled',
-                        //     'Scan was cancelled.',
-                        //     colorText: Colors.white,
-                        //   );
-                        // }
+                        if (scannedBarcode != null) {
+                          ProductDetailsByBarcodeModel response =
+                              await ProductDetailsByBarcodeService()
+                                  .productDetailsByBarcode(
+                            productBarcode: scannedBarcode,
+                          );
+                          print('Success');
+
+                          Get.toNamed(
+                            ProductDetailsPageController.id,
+                            arguments: response,
+                          );
+                        } else {
+                          print('Scan was cancelled.');
+                          Get.snackbar(
+                            'Cancelled',
+                            'Scan was cancelled.',
+                            colorText: Colors.white,
+                          );
+                        }
 
                         // showDialog(
                         //   context: context,
@@ -417,12 +416,6 @@ class HomePage extends StatelessWidget {
                         //     ],
                         //   ),
                         // );
-                        String? scannedBarcode =
-                            await barcodeController.scanBarcode();
-                        await ProductDetailsByBarcodeService()
-                            .productDetailsByBarcode(
-                          productBarcode: scannedBarcode!,
-                        );
                       } catch (e) {
                         print(e.toString());
                         Get.snackbar(

@@ -8,6 +8,7 @@ import 'package:warehouse_manegment_system/controller/delivery_page._controller.
 import 'package:warehouse_manegment_system/controller/forget_password_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/home_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/home_page_with_drawer_controller.dart';
+import 'package:warehouse_manegment_system/controller/product_details_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/replenishment_page_controller.dart';
 import 'package:warehouse_manegment_system/controller/onbordingcontroller.dart';
 import 'package:warehouse_manegment_system/controller/orders_for_delivery_page_controller.dart';
@@ -39,6 +40,7 @@ import 'package:warehouse_manegment_system/view/pages/dialog_page.dart';
 import 'package:warehouse_manegment_system/view/pages/forget_password_page.dart';
 import 'package:warehouse_manegment_system/view/pages/home_page.dart';
 import 'package:warehouse_manegment_system/view/pages/home_page_with_drawer.dart';
+import 'package:warehouse_manegment_system/view/pages/product_details_page.dart';
 import 'package:warehouse_manegment_system/view/pages/replenishment_page.dart';
 import 'package:warehouse_manegment_system/view/pages/on_bording_page.dart';
 import 'package:warehouse_manegment_system/view/pages/orders_for_delivery_page.dart';
@@ -100,6 +102,11 @@ class WeareHouseManegmentSystem extends StatelessWidget {
           name: UpdateUserDetailsController.id,
           page: () => UpdateUserDetailsPage(),
         ),
+        GetPage(
+          name: ProductDetailsPageController.id,
+          page: () => ProductDetailsPage(),
+        ),
+
         GetPage(
           name: HomePageWithDrawerController.id,
           page: () => HomePageWithDrawer(),
