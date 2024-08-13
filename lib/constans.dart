@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:warehouse_manegment_system/customer/Models/BasketModel/BasketModel.dart';
 
 // const kFirstColor = Color(0xff2B1836);
 // const kSecondtColor = Color(0xff591C3C);
@@ -67,3 +68,18 @@ extension SizeExtension on num {
   double get w => ScreenSizeConfig.getProportionateScreenWidth(toDouble());
   double get h => ScreenSizeConfig.getProportionateScreenHeight(toDouble());
 }
+
+const lightblue = Color(0xff002244);
+const darkblue = Color(0xff00457c);
+const blackcolor = Colors.black;
+const whitecolor = Colors.white;
+const lightgreycolor = Color(0xffb0b7bc);
+const darkgreycolor = Color(0xff8a8d8f);
+
+const Tdefaultpadding = 20.0;
+const Defaultshadow = BoxShadow(
+    offset: Offset(0, 15),
+    blurRadius: 1,
+    color: Color.fromARGB(121, 158, 158, 158));
+List<Map<String, dynamic>> basketItemsPlaceOrderList1 = [];
+List<BasketItemModel> basketItems = [];
