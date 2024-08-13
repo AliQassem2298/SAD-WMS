@@ -28,6 +28,7 @@ class DeliveryPage extends StatelessWidget {
               iconTheme: IconThemeData(
                 color: Colors.white,
               ),
+              //
               flexibleSpace: Container(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
